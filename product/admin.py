@@ -14,3 +14,11 @@ class ProductAdmin(admin.ModelAdmin):
         ('Specifications',
          {'fields': ['discount', 'inventory', 'slug', 'picture']})
     )
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('name', 'country')
+    list_display_links = ('name',)
+    search_fields = ('name', 'country')
+    list_filter = ('name', 'country')
