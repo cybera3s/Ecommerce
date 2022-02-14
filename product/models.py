@@ -15,6 +15,10 @@ class Product(BaseModel):
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
+    @property
+    def is_available(self):
+        return self.inventory > 0
+
     def __str__(self):
         return f'{self.name}'
 
