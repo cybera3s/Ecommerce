@@ -12,6 +12,14 @@ class Cart(BaseModel):
     off_code = models.ForeignKey('OffCode', on_delete=models.CASCADE, related_name='carts')
     customer = models.ForeignKey('Customer', on_delete=models.CASCADE, related_name='carts')
 
+    def total_worth(self):
+        """
+            calculate total price of cart
+        :return: total price amount (int)
+        """
+        self.total_price = sum([item.product.price for item in self.items.all()])
+        return self.total_price
+
 
 class CartItem(BaseModel):
     """
