@@ -13,7 +13,7 @@ class Product(BaseModel):
     inventory = models.PositiveIntegerField()
     slug = models.SlugField(max_length=30, help_text='a short label for product')
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
-    discount = models.ForeignKey('Discount', on_delete=models.CASCADE)
+    discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     class Meta:
