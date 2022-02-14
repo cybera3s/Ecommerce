@@ -61,7 +61,7 @@ class BaseDiscount(BaseModel):
         :param price: int (item value)
         :return: profit
         """
-        if self.type == 'price':
+        if self.type == 'PRI':
             return min(self.value, price)
         else:  # percent
             raw_profit = int((self.value / 100) * price)
