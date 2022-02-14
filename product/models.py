@@ -11,6 +11,7 @@ class Product(BaseModel):
     description = models.TextField()
     picture = models.FileField(verbose_name='product image', null=True, blank=True)
     inventory = models.PositiveIntegerField()
+    slug = models.SlugField(max_length=30, help_text='a short label for product')
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
