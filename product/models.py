@@ -16,3 +16,14 @@ class Product(BaseModel):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class Brand(BaseModel):
+    """
+        implement brands
+    """
+    name = models.CharField(max_length=50, verbose_name='Name')
+    country = models.CharField(max_length=50, verbose_name='Country')
+
+    def __str__(self):
+        return self.name
