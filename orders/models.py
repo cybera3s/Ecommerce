@@ -20,6 +20,15 @@ class Cart(BaseModel):
         self.total_price = sum([item.product.price for item in self.items.all()])
         return self.total_price
 
+    def final_worth(self):
+        """
+        calculate final price of cart e.g with considering discounts
+        :return: final price (int)
+        """
+        total = self.total_worth()
+        self.final_price = total - self.off_code.profit_value(total) if self.off_code else total
+        return self.final_price
+
 
 class CartItem(BaseModel):
     """
