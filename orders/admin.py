@@ -15,3 +15,11 @@ class OffCodeAdmin(admin.ModelAdmin):
     list_display = ('value', 'type',)
     search_fields = ('value', 'type')
     list_filter = ('created',)
+
+
+@admin.register(CartItem)
+class CartItemAdmin(admin.ModelAdmin):
+    list_display = ('product', 'count',)
+    search_fields = ('product', )
+    list_filter = ('cart',)
+    raw_id_fields = ('cart', 'product')
