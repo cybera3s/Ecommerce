@@ -43,7 +43,7 @@ class Category(BaseModel):
         implement categories
     """
     name = models.CharField(max_length=100, verbose_name='Name')
-    root = models.ForeignKey('self', default=None, null=True, blank=True)
+    root = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True)
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
