@@ -4,7 +4,7 @@ from .models import Customer, Address
 
 class AddressInline(admin.StackedInline):
     model = Address
-    extra = 2
+    extra = 1
 
 
 @admin.register(Customer)
