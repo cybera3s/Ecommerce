@@ -27,3 +27,18 @@ class Brand(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class Category(BaseModel):
+    """
+        implement categories
+    """
+    name = models.CharField(max_length=100, verbose_name='Name')
+    root = models.ForeignKey('self', default=None)
+    discount = models.ForeignKey('Discount', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "categories"
+
+    def __str__(self):
+        return self.name
