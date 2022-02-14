@@ -6,8 +6,6 @@ from .models import Customer, Address
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ('username', 'email',)
     search_fields = ('username', 'email',)
-    list_filter = ('last_updated',)
-    list_editable = ['phone_number', ]
 
 
 @admin.register(Address)
