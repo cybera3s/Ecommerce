@@ -47,7 +47,7 @@ class OffCode(BaseDiscount):
     """
         A class to implement off codes
     """
-    start_time = models.DateTimeField()
+    valid_from = models.DateTimeField()
     end_time = models.DateTimeField()
     code = models.CharField(max_length=50, verbose_name='off code')
 
