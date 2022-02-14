@@ -2,16 +2,14 @@ from orders.models import Cart, CartItem, OffCode
 from customers.models import Customer
 from product.models import Product, Brand, Discount, Category
 from django.test import TestCase
-from datetime import datetime, timedelta
-from django.utils.text import slugify
 
 
 class CartTest(TestCase):
     def setUp(self) -> None:
-        self.customer1 = Customer.objects.create_user('test1', 'test1@email.com', 'test1')
-        self.off_code1 = OffCode.objects.create(value=10000, type='PRI', valid_from=datetime.now(),
-                                                valid_to=datetime.now() + timedelta(days=5), code='abcd123465')
-        self.cart1 = Cart(off_code=self.off_code1, customer=self.customer1)
+        self.customer1 = Customer.objects.create_user('test1', 'test1@email.com', 'test1', gender=1,
+                                                      phone_number='09224023292')
+        # self.off_code1 = OffCode.objects.create(value=10000, type='PRI', code='abcd123465')
+        self.cart1 = Cart.objects.create(customer=self.customer1)
 
         # brands
         self.brand1 = Brand.objects.create(name='LG', country='Japan')
@@ -37,3 +35,9 @@ class CartTest(TestCase):
 
         self.cart_item1 = CartItem.objects.create(cart=self.cart1, product=self.product1)
         self.cart_item2 = CartItem.objects.create(cart=self.cart1, product=self.product2)
+
+    def test1_total_worth_success(self):
+        print(self.cart1.total_worth())
+
+    def test2_final_worth_success(self):
+        print(self.cart1.final_worth())
