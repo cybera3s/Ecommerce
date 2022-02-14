@@ -11,6 +11,7 @@ class AddressInline(admin.StackedInline):
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ('username', 'email',)
     search_fields = ('username', 'email',)
+    inlines = [AddressInline]
 
 
 @admin.register(Address)
