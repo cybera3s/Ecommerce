@@ -1,5 +1,16 @@
 from core.models import BaseModel
 from django.db import models
+from customers.models import Customer
+
+
+class Cart(BaseModel):
+    """
+        A class used to implement carts
+    """
+    total_price = models.PositiveIntegerField(default=0, verbose_name='Total Price')
+    final_price = models.PositiveIntegerField(default=0, verbose_name='Final Price')
+    off_code = models.ForeignKey('OffCode', on_delete=models.CASCADE)
+    customers = models.ForeignKey('Customer', on_delete=models.CASCADE)
 
 
 class CartItem(BaseModel):
