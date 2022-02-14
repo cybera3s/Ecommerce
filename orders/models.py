@@ -18,7 +18,7 @@ class Cart(BaseModel):
             calculate total price of cart
         :return: total price amount (int)
         """
-        self.total_price = sum([item.product.price for item in self.items.all()])
+        self.total_price = sum([item.product.final_price for item in self.items.all()])
         return self.total_price
 
     def final_worth(self):
