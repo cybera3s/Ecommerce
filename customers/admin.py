@@ -2,6 +2,11 @@ from django.contrib import admin
 from .models import Customer, Address
 
 
+class AddressInline(admin.StackedInline):
+    model = Address
+    extra = 2
+
+
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ('username', 'email',)
