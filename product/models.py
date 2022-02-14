@@ -44,7 +44,7 @@ class Category(BaseModel):
     """
     name = models.CharField(max_length=100, verbose_name='Name')
     root = models.ForeignKey('self', default=None, null=True, blank=True)
-    discount = models.ForeignKey('Discount', on_delete=models.CASCADE)
+    discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "categories"
