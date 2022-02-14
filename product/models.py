@@ -10,6 +10,7 @@ class Product(BaseModel):
     price = models.PositiveIntegerField(default=0, verbose_name='Price')
     description = models.TextField()
     picture = models.FileField(verbose_name='product image', null=True, blank=True)
+    inventory = models.PositiveIntegerField()
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
