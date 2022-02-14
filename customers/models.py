@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+
 from core.models import BaseModel
 
 
@@ -13,3 +14,13 @@ class Customer(User):
     phone_number = models.CharField(max_length=32, verbose_name='Phone Number')
     gender = models.IntegerField(choices=[(1, 'male'), (2, 'female'), (3, 'other'), ])
 
+
+class Address(BaseModel):
+    """
+        A class used to implement customers
+    """
+    state = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    postal_code = models.IntegerField(max_length=10, verbose_name='Postal Code')
+    address_detail = models.TextField()
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='addresses')
