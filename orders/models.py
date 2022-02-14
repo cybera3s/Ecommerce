@@ -1,6 +1,7 @@
 from core.models import BaseModel, BaseDiscount
 from django.db import models
 from customers.models import Customer
+from product.models import Product
 
 
 class Cart(BaseModel):
@@ -37,7 +38,7 @@ class CartItem(BaseModel):
 
     count = models.PositiveIntegerField(default=1)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items')
-    product = models.OneToOneField('Product', on_delete=models.CASCADE)
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.count} of {self.product}'
