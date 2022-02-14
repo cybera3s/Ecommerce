@@ -1,5 +1,5 @@
 from django.db import models
-from core.models import BaseModel
+from core.models import BaseModel, BaseDiscount
 
 
 class Product(BaseModel):
@@ -42,3 +42,12 @@ class Category(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class Discount(BaseDiscount):
+    """
+        Implement discounts
+    """
+
+    def __str__(self):
+        return f'Discount {self.value}'
