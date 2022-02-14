@@ -23,6 +23,14 @@ class Product(BaseModel):
     def is_available(self):
         return self.inventory > 0
 
+    @property
+    def final_price(self):
+        """
+        calculate price with discounts
+        :return:
+        """
+        return self.price - self.discount.profit_value(self.price) if self.discount else self.price
+
     def __str__(self):
         return f'{self.name}'
 
