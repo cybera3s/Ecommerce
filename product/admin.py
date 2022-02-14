@@ -22,3 +22,11 @@ class BrandAdmin(admin.ModelAdmin):
     list_display_links = ('name',)
     search_fields = ('name', 'country')
     list_filter = ('name', 'country')
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name', )
+    list_filter = ('name',)
+
