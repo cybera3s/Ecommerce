@@ -16,6 +16,9 @@ class Product(BaseModel):
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-created']
+
     @property
     def is_available(self):
         return self.inventory > 0
