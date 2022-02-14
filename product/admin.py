@@ -30,3 +30,8 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('name', )
     list_filter = ('name',)
 
+
+@admin.register(Discount)
+class DiscountAdmin(admin.ModelAdmin):
+    list_display = ('value', 'type')
+    search_fields = ('value', )
