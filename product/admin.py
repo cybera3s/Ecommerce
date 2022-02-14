@@ -14,6 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
         ('Specifications',
          {'fields': ['discount', 'inventory', 'slug', 'picture']})
     )
+    prepopulated_fields = {'slug': ('description',)}
 
 
 @admin.register(Brand)
@@ -27,11 +28,11 @@ class BrandAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    search_fields = ('name', )
+    search_fields = ('name',)
     list_filter = ('name',)
 
 
 @admin.register(Discount)
 class DiscountAdmin(admin.ModelAdmin):
     list_display = ('value', 'type')
-    search_fields = ('value', )
+    search_fields = ('value',)
