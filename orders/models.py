@@ -1,4 +1,4 @@
-from core.models import BaseModel
+from core.models import BaseModel, BaseDiscount
 from django.db import models
 from customers.models import Customer
 
@@ -26,10 +26,13 @@ class CartItem(BaseModel):
         return f'{self.count} of {self.product}'
 
 
-class OffCode(BaseModel):
+class OffCode(BaseDiscount):
     """
         A class to implement off codes
     """
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     code = models.CharField(max_length=50, verbose_name='off code')
+
+    def __str__(self):
+        return f"Off Code {self.value}"
