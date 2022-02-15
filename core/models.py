@@ -58,7 +58,10 @@ class BaseDiscount(BaseModel):
 
     def clean(self):
         if self.type == 'PER' and not (0 <= self.value <= 100):
-            raise ValidationError('type percent must be 0 to 100')
+            raise ValidationError({'value': 'type percent must be 0 to 100'})
+
+        if self.type == 'PRI' and self.max_price:
+            raise ValidationError({'max_price': 'price type has no max price!'})
 
     def profit_value(self, price: int):
         """
