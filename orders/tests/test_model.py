@@ -52,3 +52,9 @@ class CartTest(TestCase):
 
         self.assertLess(self.cart1.final_worth(), total_price)
         self.assertEqual(self.cart1.final_worth(), total_price - self.off_code1.profit_value(total_price))
+
+
+class OffCodeTest(TestCase):
+    def setUp(self) -> None:
+        self.off_code1 = OffCode.objects.create(value=10000, type='PER', code='123465', valid_from=timezone.now(),
+                                                valid_to=timezone.now() + timedelta(days=5))
