@@ -24,3 +24,6 @@ class Address(BaseModel):
     postal_code = models.IntegerField(verbose_name='Postal Code')
     address_detail = models.TextField()
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='addresses')
+
+    def __str__(self):
+        return f'{self.state} - {self.city}'
