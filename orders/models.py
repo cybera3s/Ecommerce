@@ -7,6 +7,17 @@ from product.models import Product
 class Cart(BaseModel):
     """
         A class used to implement carts
+
+        attributes:
+
+            total_price: a positive integer\n
+            final_price: a positive integer\n
+            off_code: foreign key to OffCode Model\n
+            customer: foreign key to customer Model\n
+
+        methods:
+            total_worth: calculate sum of items prices without considering off code\n
+            final_worth: calculate  sum of items prices *By considering* off code
     """
     total_price = models.PositiveIntegerField(default=0, verbose_name='Total Price')
     final_price = models.PositiveIntegerField(default=0, verbose_name='Final Price')
