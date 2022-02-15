@@ -1,3 +1,7 @@
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from core.models import BaseModel, BaseDiscount
 from django.db import models
 from customers.models import Customer
@@ -59,7 +63,7 @@ class OffCode(BaseDiscount):
     """
         A class to implement off codes
     """
-    valid_from = models.DateTimeField()
+    valid_from = models.DateTimeField(validators=[MinValueValidator(timezone.now(), 'valid from date invalid')])
     valid_to = models.DateTimeField()
     code = models.CharField(max_length=50, verbose_name='off code')
 
