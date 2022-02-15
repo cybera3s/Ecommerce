@@ -55,6 +55,9 @@ class CartItem(BaseModel):
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items')
     product = models.OneToOneField(Product, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'orders'
+
     @classmethod
     def filter_by_category(cls, category: Category):
         """
