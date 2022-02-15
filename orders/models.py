@@ -63,7 +63,7 @@ class OffCode(BaseDiscount):
     """
         A class to implement off codes
     """
-    valid_from = models.DateTimeField(validators=[MinValueValidator(timezone.now(), 'valid from date invalid')])
+    valid_from = models.DateTimeField(validators=[MinValueValidator(timezone.now(), 'must be greater than now')])
     valid_to = models.DateTimeField()
     code = models.CharField(max_length=50, verbose_name='off code')
 
