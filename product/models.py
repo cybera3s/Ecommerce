@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Max
 from core.models import BaseModel, BaseDiscount
 
 
@@ -30,6 +31,14 @@ class Product(BaseModel):
         :return:
         """
         return self.price - self.discount.profit_value(self.price) if self.discount else self.price
+
+    @classmethod
+    def highest_price(cls):
+        """
+        Returns the product with the highest price
+        """
+        highest = cls.objects.aggregate(max_price=Max('price'))['max_price']
+        return cls.objects.get(price=highest)
 
     def __str__(self):
         return f'{self.name}'
