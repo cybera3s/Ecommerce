@@ -76,6 +76,15 @@ class CartItem(BaseModel):
         """
         return cls.objects.filter(product=product)
 
+    @classmethod
+    def filter_by_product_category(cls, category: Category):
+        """
+         filter Cart Items that their product consist of this category
+        :param category: ( category object )
+        :return: cart items with corresponding product category
+        """
+        return cls.objects.filter(product__category=category)
+
     def __str__(self):
         return f'{self.count} of {self.product}'
 
