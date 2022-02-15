@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -54,6 +55,10 @@ class BaseDiscount(BaseModel):
     value = models.PositiveIntegerField(null=False)
     type = models.CharField(max_length=10, choices=[('PRI', 'Price'), ('PER', 'Percent')], null=False)
     max_price = models.PositiveIntegerField(null=True, blank=True)
+
+    def clean(self):
+        if self.type == 'PER' and not (0 <= self.value <= 100):
+            raise ValidationError('type percent must be 0 to 100')
 
     def profit_value(self, price: int):
         """
