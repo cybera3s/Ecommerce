@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MinLengthValidator
 from django.utils import timezone
 from core.models import BaseModel, BaseDiscount
 from django.db import models
@@ -66,7 +66,8 @@ class OffCode(BaseDiscount):
     valid_from = models.DateTimeField(validators=[MinValueValidator(timezone.now(), 'must be greater than now')])
     valid_to = models.DateTimeField(
         validators=[MinValueValidator(timezone.now() + timedelta(minutes=1), 'must be greater than now')])
-    code = models.CharField(max_length=50, verbose_name='off code')
+    code = models.CharField(max_length=50, verbose_name='off code',
+                            validators=[MinLengthValidator(5, 'must be more than five letters')])
 
     def __str__(self):
         return f"Off Code {self.value}"
