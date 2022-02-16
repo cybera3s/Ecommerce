@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 10:27+0000\n"
+"POT-Creation-Date: 2022-02-16 10:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,6 +74,14 @@ msgstr ""
 msgid "Price type has no max price!"
 msgstr ""
 
+#: core/models.py:81 product/models.py:19 product/models.py:74
+msgid "Discount"
+msgstr ""
+
+#: core/models.py:82
+msgid "Discounts"
+msgstr ""
+
 #: customers/apps.py:8 customers/models.py:19
 msgid "Customers"
 msgstr ""
@@ -114,6 +122,10 @@ msgstr ""
 msgid "Addresses"
 msgstr ""
 
+#: orders/apps.py:8 orders/models.py:66
+msgid "Orders"
+msgstr ""
+
 #: orders/models.py:27
 msgid "Total Price"
 msgstr ""
@@ -122,7 +134,7 @@ msgstr ""
 msgid "Final Price"
 msgstr ""
 
-#: orders/models.py:30 orders/models.py:108
+#: orders/models.py:30 orders/models.py:108 orders/models.py:112
 msgid "Off Code"
 msgstr ""
 
@@ -148,10 +160,6 @@ msgstr ""
 msgid "Order"
 msgstr ""
 
-#: orders/models.py:66
-msgid "Orders"
-msgstr ""
-
 #: orders/models.py:103 orders/models.py:106
 msgid "must be greater than now"
 msgstr ""
@@ -166,6 +174,14 @@ msgstr ""
 
 #: orders/models.py:109
 msgid "must be more than five letters"
+msgstr ""
+
+#: orders/models.py:113
+msgid "Off Codes"
+msgstr ""
+
+#: product/apps.py:8 product/models.py:25
+msgid "Products"
 msgstr ""
 
 #: product/models.py:11 product/models.py:55 product/models.py:70
@@ -200,16 +216,8 @@ msgstr ""
 msgid "Brand"
 msgstr ""
 
-#: product/models.py:19 product/models.py:74
-msgid "Discount"
-msgstr ""
-
 #: product/models.py:20 product/models.py:77
 msgid "Category"
-msgstr ""
-
-#: product/models.py:25
-msgid "Products"
 msgstr ""
 
 #: product/models.py:56
