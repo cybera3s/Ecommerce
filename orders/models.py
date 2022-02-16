@@ -108,6 +108,12 @@ class OffCode(BaseDiscount):
     code = models.CharField(max_length=50, verbose_name=_('Off Code'),
                             validators=[MinLengthValidator(5, _('must be more than five letters'))])
 
+    @property
+    def is_active(self):
+        if self.valid_from < timezone.now() < self.valid_to:
+            return True
+        return False
+
     class Meta:
         verbose_name = _('Off Code')
         verbose_name_plural = _('Off Codes')
