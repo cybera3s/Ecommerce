@@ -57,12 +57,13 @@ class CartItem(BaseModel):
         A class used to implement cart items
     """
 
-    count = models.PositiveIntegerField(default=1)
-    cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items')
-    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    count = models.PositiveIntegerField(default=1, verbose_name=_('Count'))
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items', verbose_name=_('Cart'))
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, verbose_name=_('Product'))
 
     class Meta:
-        verbose_name = 'orders'
+        verbose_name = _('Order')
+        verbose_name_plural = _('Orders')
 
     @classmethod
     def filter_by_category(cls, category: Category):
