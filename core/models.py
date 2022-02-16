@@ -78,3 +78,5 @@ class BaseDiscount(BaseModel):
 
     class Meta:
         abstract = True
+        verbose_name = _('Discount')
+        verbose_name_plural = _('Discounts')
