@@ -9,9 +9,9 @@ class BaseModel(models.Model):
     """
         This model mixin usable for logical delete and logical activate status datas.
     """
-    created = models.DateTimeField(auto_now_add=True, editable=False, )
-    last_updated = models.DateTimeField(auto_now=True, editable=False)
-    delete_timestamp = models.DateTimeField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, editable=False, verbose_name=_('Created'))
+    last_updated = models.DateTimeField(auto_now=True, editable=False, verbose_name=_('Last Update'))
+    delete_timestamp = models.DateTimeField(null=True, blank=True, verbose_name=_('Delete Timestamp'))
     deleted_at = models.DateTimeField(
         null=True, blank=True,
         verbose_name=_("Deleted Datetime"),
