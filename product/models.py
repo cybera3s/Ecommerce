@@ -1,24 +1,28 @@
 from django.db import models
 from django.db.models import Max
 from core.models import BaseModel, BaseDiscount
+from django.utils.translation import gettext as _
 
 
 class Product(BaseModel):
     """
         A class used to implement products
     """
-    name = models.CharField(max_length=100, verbose_name='Name')
-    price = models.PositiveIntegerField(default=0, verbose_name='Price')
-    description = models.TextField()
-    picture = models.FileField(verbose_name='product image', null=True, blank=True)
-    inventory = models.PositiveIntegerField()
-    slug = models.SlugField(max_length=30, help_text='a short label for product')
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
-    discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, verbose_name=_('Name'))
+    price = models.PositiveIntegerField(default=0, verbose_name=_('Price'))
+    description = models.TextField(verbose_name=_('Description'))
+    picture = models.FileField(verbose_name=_('Product Image'), null=True, blank=True)
+    inventory = models.PositiveIntegerField(verbose_name=_('Inventory'))
+    slug = models.SlugField(max_length=30, help_text=_('A short label for product'), verbose_name=_('Slug'))
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, verbose_name=_('Brand'))
+    discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True,
+                                 verbose_name=_('Discount'))
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name=_('Category'))
 
     class Meta:
         ordering = ['-created']
+        verbose_name = _('Product')
+        verbose_name_plural = _('Products')
 
     @property
     def is_available(self):
