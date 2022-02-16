@@ -28,7 +28,7 @@ class Cart(BaseModel):
     final_price = models.PositiveIntegerField(default=0, verbose_name=_('Final Price'))
     off_code = models.OneToOneField('OffCode', on_delete=models.CASCADE, related_name='carts', null=True, blank=True,
                                  verbose_name=_('Off Code'))
-    customer = models.OneToOneField(Customer, on_delete=models.CASCADE, related_name='carts', verbose_name=_('Customer'))
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='carts', verbose_name=_('Customer'))
 
     class Meta:
         verbose_name = _('Cart')
