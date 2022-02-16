@@ -135,3 +135,7 @@ dmypy.json
  # django
  migrations
  db.sqlite3
+/orders/migrations/
+/product/migrations/
+/core/migrations/
+/customers/migrations/
