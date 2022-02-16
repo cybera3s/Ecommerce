@@ -100,11 +100,13 @@ class OffCode(BaseDiscount):
     """
         A class to implement off codes
     """
-    valid_from = models.DateTimeField(validators=[MinValueValidator(timezone.now(), 'must be greater than now')])
+    valid_from = models.DateTimeField(validators=[MinValueValidator(timezone.now(), _('must be greater than now'))],
+                                      verbose_name=_('Valid From'))
     valid_to = models.DateTimeField(
-        validators=[MinValueValidator(timezone.now() + timedelta(minutes=1), 'must be greater than now')])
-    code = models.CharField(max_length=50, verbose_name='off code',
-                            validators=[MinLengthValidator(5, 'must be more than five letters')])
+        validators=[MinValueValidator(timezone.now() + timedelta(minutes=1), _('must be greater than now'))],
+        verbose_name=_('Valid To'))
+    code = models.CharField(max_length=50, verbose_name=_('Off Code'),
+                            validators=[MinLengthValidator(5, _('must be more than five letters'))])
 
     def __str__(self):
         return f"Off Code {self.value}"
