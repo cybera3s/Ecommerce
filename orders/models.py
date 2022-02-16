@@ -109,7 +109,7 @@ class OffCode(BaseDiscount):
                             validators=[MinLengthValidator(5, _('must be more than five letters'))])
 
     @property
-    def is_active(self):
+    def active(self):
         if self.valid_from < timezone.now() < self.valid_to:
             return True
         return False
