@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 10:06+0000\n"
+"POT-Creation-Date: 2022-02-16 10:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,6 +74,10 @@ msgstr "نوع درصدی باید بین صفر تا صد باشد!"
 msgid "Price type has no max price!"
 msgstr "نوع قیمت بیشینه قیمت ندارد!"
 
+#: customers/apps.py:8 customers/models.py:19
+msgid "Customers"
+msgstr "مشتریان"
+
 #: customers/models.py:14
 msgid "Phone Number"
 msgstr "شماره تماس"
@@ -82,13 +86,9 @@ msgstr "شماره تماس"
 msgid "Gender"
 msgstr "جنسیت"
 
-#: customers/models.py:18 orders/models.py:31
+#: customers/models.py:18 customers/models.py:31 orders/models.py:31
 msgid "Customer"
 msgstr "مشتری"
-
-#: customers/models.py:19
-msgid "Customers"
-msgstr "مشتریان"
 
 #: customers/models.py:26
 msgid "State"
@@ -108,11 +108,11 @@ msgstr "کد پستی"
 msgid "Address Detail"
 msgstr "جزئیات آدرس"
 
-#: customers/models.py:33
+#: customers/models.py:34
 msgid "Address"
 msgstr "آدرس"
 
-#: customers/models.py:34
+#: customers/models.py:35
 msgid "Addresses"
 msgstr "آدرس ها"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 10:06+0000\n"
+"POT-Creation-Date: 2022-02-16 10:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,6 +74,10 @@ msgstr ""
 msgid "Price type has no max price!"
 msgstr ""
 
+#: customers/apps.py:8 customers/models.py:19
+msgid "Customers"
+msgstr ""
+
 #: customers/models.py:14
 msgid "Phone Number"
 msgstr ""
@@ -82,12 +86,8 @@ msgstr ""
 msgid "Gender"
 msgstr ""
 
-#: customers/models.py:18 orders/models.py:31
+#: customers/models.py:18 customers/models.py:31 orders/models.py:31
 msgid "Customer"
-msgstr ""
-
-#: customers/models.py:19
-msgid "Customers"
 msgstr ""
 
 #: customers/models.py:26
@@ -106,11 +106,11 @@ msgstr ""
 msgid "Address Detail"
 msgstr ""
 
-#: customers/models.py:33
+#: customers/models.py:34
 msgid "Address"
 msgstr ""
 
-#: customers/models.py:34
+#: customers/models.py:35
 msgid "Addresses"
 msgstr ""
 
