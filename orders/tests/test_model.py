@@ -57,4 +57,9 @@ class CartTest(TestCase):
 class OffCodeTest(TestCase):
     def setUp(self) -> None:
         self.off_code1 = OffCode.objects.create(value=10000, type='PER', code='123465', valid_from=timezone.now(),
-                                                valid_to=timezone.now() + timedelta(days=5))
+                                                valid_to=timezone.now() + timedelta(days=1))
+
+    def test1_is_active_success(self):
+        off_code = self.off_code1
+
+        self.assertTrue(off_code.valid_from <= timezone.now() < off_code.valid_to)
