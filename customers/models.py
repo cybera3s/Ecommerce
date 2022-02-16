@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.utils.translation import gettext as _
 from core.models import BaseModel
 
 
@@ -11,8 +11,12 @@ class Customer(User):
     # first_name = models.CharField(max_length=32, verbose_name='First Name')
     # last_name = models.CharField(max_length=32, verbose_name='Last Name')
     # email = models.EmailField(verbose_name='Email')
-    phone_number = models.CharField(max_length=32, verbose_name='Phone Number')
-    gender = models.IntegerField(choices=[(1, 'male'), (2, 'female'), (3, 'other'), ])
+    phone_number = models.CharField(max_length=32, verbose_name=_('Phone Number'))
+    gender = models.IntegerField(choices=[(1, 'male'), (2, 'female'), (3, 'other'), ], verbose_name=_('Gender'))
+
+    class Meta:
+        verbose_name = _('Customer')
+        verbose_name_plural = _('Customers')
 
 
 class Address(BaseModel):
