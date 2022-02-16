@@ -67,12 +67,15 @@ class Category(BaseModel):
     """
         implement categories
     """
-    name = models.CharField(max_length=100, verbose_name='Name')
-    root = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True)
-    discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True)
+    name = models.CharField(max_length=100, verbose_name=_('Name'))
+    root = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True,
+                             verbose_name=_('Parent'))
+    discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True,
+                                 verbose_name=_('Discount'))
 
     class Meta:
-        verbose_name_plural = "categories"
+        verbose_name = _('Category')
+        verbose_name_plural = _("Categories")
 
     def __str__(self):
         return self.name
