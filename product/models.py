@@ -52,8 +52,12 @@ class Brand(BaseModel):
     """
         implement brands
     """
-    name = models.CharField(max_length=50, verbose_name='Name')
-    country = models.CharField(max_length=50, verbose_name='Country')
+    name = models.CharField(max_length=50, verbose_name=_('Name'))
+    country = models.CharField(max_length=50, verbose_name=_('Country'))
+
+    class Meta:
+        verbose_name = _('Brand')
+        verbose_name_plural = _('Brands')
 
     def __str__(self):
         return self.name
