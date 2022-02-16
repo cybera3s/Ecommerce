@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 10:40+0000\n"
+"POT-Creation-Date: 2022-02-16 10:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,8 +79,7 @@ msgid "Discount"
 msgstr "تخفیف"
 
 #: core/models.py:82
-#, fuzzy
-#| msgid "Discount"
+# msgid "Discount"
 msgid "Discounts"
 msgstr "تخفیف ها"
 
@@ -181,8 +180,7 @@ msgid "must be more than five letters"
 msgstr "باید بیشتر از پنج حرف باشد"
 
 #: orders/models.py:113
-#, fuzzy
-#| msgid "Off Code"
+# msgid "Off Code"
 msgid "Off Codes"
 msgstr "کد های تخفیف"
 
