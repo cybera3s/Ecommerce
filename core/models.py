@@ -52,16 +52,17 @@ class BaseDiscount(BaseModel):
     """
         Implement base discount
     """
-    value = models.PositiveIntegerField(null=False)
-    type = models.CharField(max_length=10, choices=[('PRI', 'Price'), ('PER', 'Percent')], null=False)
-    max_price = models.PositiveIntegerField(null=True, blank=True)
+    value = models.PositiveIntegerField(null=False, verbose_name=_('Value'))
+    type = models.CharField(max_length=10, choices=[('PRI', 'Price'), ('PER', 'Percent')], null=False,
+                            verbose_name=_('Type'))
+    max_price = models.PositiveIntegerField(null=True, blank=True, verbose_name=_('Max Price'))
 
     def clean(self):
         if self.type == 'PER' and not (0 <= self.value <= 100):
-            raise ValidationError({'value': 'type percent must be 0 to 100'})
+            raise ValidationError({'value': _('Type percent must be 0 to 100')})
 
         if self.type == 'PRI' and self.max_price:
-            raise ValidationError({'max_price': 'price type has no max price!'})
+            raise ValidationError({'max_price': _('Price type has no max price!')})
 
     def profit_value(self, price: int):
         """
