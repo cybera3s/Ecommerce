@@ -63,3 +63,39 @@ class OffCodeTest(TestCase):
         off_code = self.off_code1
 
         self.assertTrue(off_code.valid_from <= timezone.now() < off_code.valid_to)
+
+
+class CartItemTest(TestCase):
+    def setUp(self) -> None:
+        # brands
+        self.brand1 = Brand.objects.create(name='iphone', country='USA')
+        self.brand2 = Brand.objects.create(name='samsung', country='Japan')
+
+        # categories
+        self.category1 = Category.objects.create(name='electronic')
+        self.category2 = Category.objects.create(name='Phone', root=self.category1)
+
+        # discounts
+        self.discount1 = Discount.objects.create(value=5000, type='PRI')
+        self.discount2 = Discount.objects.create(value=20, type='PER', max_price=100000)
+
+        # products
+        self.product1 = Product.objects.create(name='X', price=100000, description='some text', inventory=5,
+                                               brand=self.brand1,
+                                               category=self.category2, discount=self.discount1, slug='some-text')
+        self.product2 = Product.objects.create(name='J5 Pro', price=200000, description='some text', inventory=10,
+                                               brand=self.brand2,
+                                               category=self.category2, slug='another-text')
+
+        # Cart requirements
+        self.customer1 = Customer.objects.create_user('test1', 'test1@email.com', 'test1', gender=1,
+                                                      phone_number='09123456789')
+        self.off_code1 = OffCode.objects.create(value=5000, type='PRI', code='123465', valid_from=timezone.now(),
+                                                valid_to=timezone.now() + timedelta(days=3))
+        self.cart1 = Cart.objects.create(customer=self.customer1, off_code=self.off_code1)
+
+        # cart items
+
+        self.cart_item1 = CartItem.objects.create(cart=self.cart1, product=self.product1)
+        self.cart_item2 = CartItem.objects.create(cart=self.cart1, product=self.product2)
+
