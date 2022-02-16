@@ -26,7 +26,7 @@ class Cart(BaseModel):
     """
     total_price = models.PositiveIntegerField(default=0, verbose_name=_('Total Price'))
     final_price = models.PositiveIntegerField(default=0, verbose_name=_('Final Price'))
-    off_code = models.ForeignKey('OffCode', on_delete=models.CASCADE, related_name='carts', null=True, blank=True,
+    off_code = models.OneToOneField('OffCode', on_delete=models.CASCADE, related_name='carts', null=True, blank=True,
                                  verbose_name=_('Off Code'))
     customer = models.OneToOneField(Customer, on_delete=models.CASCADE, related_name='carts', verbose_name=_('Customer'))
 
