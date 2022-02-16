@@ -30,6 +30,10 @@ class Cart(BaseModel):
                                  verbose_name=_('Off Code'))
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='carts', verbose_name=_('Customer'))
 
+    class Meta:
+        verbose_name = _('Cart')
+        verbose_name_plural = _('Carts')
+
     def total_worth(self):
         """
             calculate total price of cart
