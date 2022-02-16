@@ -108,5 +108,9 @@ class OffCode(BaseDiscount):
     code = models.CharField(max_length=50, verbose_name=_('Off Code'),
                             validators=[MinLengthValidator(5, _('must be more than five letters'))])
 
+    class Meta:
+        verbose_name = _('Off Code')
+        verbose_name_plural = _('Off Codes')
+
     def __str__(self):
         return f"Off Code {self.value}"
