@@ -6,6 +6,7 @@ from django.db import models
 from customers.models import Customer
 from product.models import Product
 from product.models import Category
+from django.utils.translation import gettext as _
 
 
 class Cart(BaseModel):
@@ -23,10 +24,11 @@ class Cart(BaseModel):
             total_worth: calculate sum of items prices without considering off code\n
             final_worth: calculate  sum of items prices *By considering* off code
     """
-    total_price = models.PositiveIntegerField(default=0, verbose_name='Total Price')
-    final_price = models.PositiveIntegerField(default=0, verbose_name='Final Price')
-    off_code = models.ForeignKey('OffCode', on_delete=models.CASCADE, related_name='carts', null=True, blank=True)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='carts')
+    total_price = models.PositiveIntegerField(default=0, verbose_name=_('Total Price'))
+    final_price = models.PositiveIntegerField(default=0, verbose_name=_('Final Price'))
+    off_code = models.ForeignKey('OffCode', on_delete=models.CASCADE, related_name='carts', null=True, blank=True,
+                                 verbose_name=_('Off Code'))
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='carts', verbose_name=_('Customer'))
 
     def total_worth(self):
         """
