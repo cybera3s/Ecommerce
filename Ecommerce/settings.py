@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Rest Framework
     'rest_framework',
     # my apps
+    'rosetta',
     'core.apps.CoreConfig',
     'customers.apps.CustomersConfig',
     'orders.apps.OrdersConfig',
