@@ -9,3 +9,8 @@ from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIV
 class ProductListCreateApiView(ListCreateAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+
+class ProductDetailApi(RetrieveUpdateDestroyAPIView):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
