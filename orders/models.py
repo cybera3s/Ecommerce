@@ -59,7 +59,7 @@ class CartItem(BaseModel):
 
     count = models.PositiveIntegerField(default=1, verbose_name=_('Count'))
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items', verbose_name=_('Cart'))
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, verbose_name=_('Product'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_('Product'))
 
     class Meta:
         verbose_name = _('Order')
