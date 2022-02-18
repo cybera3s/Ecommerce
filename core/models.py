@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
@@ -80,3 +81,12 @@ class BaseDiscount(BaseModel):
         abstract = True
         verbose_name = _('Discount')
         verbose_name_plural = _('Discounts')
+
+
+class MyUserManager(UserManager):
+    """
+    implement user Manger
+    """
+    def create_superuser(self, username=None, email=None, password=None, **extra_fields):
+        username = extra_fields['phone']
+        return super().create_superuser(username, email, password, **extra_fields)
