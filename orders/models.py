@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MinLengthValidator
 from django.utils import timezone
 from core.models import BaseModel, BaseDiscount
 from django.db import models
-from customers.models import Customer
+from customers.models import Customer, Address
 from product.models import Product
 from product.models import Category
 from django.utils.translation import gettext as _
@@ -27,8 +27,9 @@ class Cart(BaseModel):
     total_price = models.PositiveIntegerField(default=0, verbose_name=_('Total Price'))
     final_price = models.PositiveIntegerField(default=0, verbose_name=_('Final Price'))
     off_code = models.OneToOneField('OffCode', on_delete=models.CASCADE, related_name='carts', null=True, blank=True,
-                                 verbose_name=_('Off Code'))
+                                    verbose_name=_('Off Code'))
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='carts', verbose_name=_('Customer'))
+    address = models.ForeignKey(Address, on_delete=models.RESTRICT, related_name='carts', verbose_name=_('Address'))
 
     class Meta:
         verbose_name = _('Cart')
