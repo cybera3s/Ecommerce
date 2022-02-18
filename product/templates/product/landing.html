@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}
     Landing
 {% endblock %}
 {% block content %}
-    landing
+    {% get_available_languages as LANGUAGES %}
+    {% get_language_info_list for LANGUAGES as languages %}
+        <ul class="list-group w-25">
+            {% for lang in languages %}
+                <li class="list-group-item">
+                    <a href="/{{ lang.code }}/" class="text-decoration-none">
+                    {{ lang.code }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+    {{ title }}
+    <h4>{% trans 'Header' %}</h4>
 {% endblock %}
