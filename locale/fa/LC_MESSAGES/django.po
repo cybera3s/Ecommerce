@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 19:50+0000\n"
-"PO-Revision-Date: 2022-02-18 21:06+0000\n"
+"POT-Creation-Date: 2022-02-18 23:15+0000\n"
+"PO-Revision-Date: 2022-02-18 23:16+0000\n"
 "Last-Translator:   <cybera.3s@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: core/apps.py:8
+msgid "Core"
+msgstr "هسته"
 
 #: core/models.py:13
 msgid "Created"
@@ -84,43 +88,47 @@ msgstr "تخفیف"
 msgid "Discounts"
 msgstr "تخفیف ها"
 
-#: customers/apps.py:8 customers/models.py:20
-msgid "Customers"
-msgstr "مشتریان"
-
-#: customers/models.py:15
+#: core/models.py:98 customers/models.py:12
 msgid "Phone Number"
 msgstr "شماره تماس"
 
-#: customers/models.py:16
+#: customers/apps.py:8 customers/models.py:17
+msgid "Customers"
+msgstr "مشتریان"
+
+#: customers/models.py:11
+msgid "User"
+msgstr "کاربر"
+
+#: customers/models.py:13
 msgid "Gender"
 msgstr "جنسیت"
 
-#: customers/models.py:19 customers/models.py:32 orders/models.py:31
+#: customers/models.py:16 customers/models.py:29 orders/models.py:31
 msgid "Customer"
 msgstr "مشتری"
 
-#: customers/models.py:27
+#: customers/models.py:24
 msgid "State"
 msgstr "استان"
 
-#: customers/models.py:28
+#: customers/models.py:25
 msgid "City"
 msgstr "شهر"
 
-#: customers/models.py:29
+#: customers/models.py:26
 msgid "Postal Code"
 msgstr "کد پستی"
 
-#: customers/models.py:30
+#: customers/models.py:27
 msgid "Address Detail"
 msgstr "جزئیات آدرس"
 
-#: customers/models.py:35 orders/models.py:32
+#: customers/models.py:32 orders/models.py:32
 msgid "Address"
 msgstr "آدرس"
 
-#: customers/models.py:36
+#: customers/models.py:33
 msgid "Addresses"
 msgstr "آدرس ها"
 
@@ -237,7 +245,7 @@ msgstr "ریشه / والد"
 msgid "Categories"
 msgstr "دسته بندی ها"
 
-#: product/templates/product/landing.html:9
+#: product/templates/product/landing.html:20
 msgid "Header"
 msgstr "سر تیتر"
 
