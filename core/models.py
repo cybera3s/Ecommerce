@@ -95,5 +95,5 @@ class MyUserManager(UserManager):
 
 class User(AbstractUser):
     objects = MyUserManager()
-    phone = models.CharField(max_length=13, unique=True)
+    phone = models.CharField(max_length=13, unique=True, verbose_name=_('Phone Number'))
     USERNAME_FIELD = 'phone'
