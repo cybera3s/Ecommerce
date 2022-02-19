@@ -9,7 +9,6 @@ class Customer(models.Model):
         A class used to implement customers
     """
     user = models.OneToOneField(User, on_delete=models.RESTRICT, verbose_name=_('User'))
-    phone_number = models.CharField(max_length=32, verbose_name=_('Phone Number'))
     gender = models.IntegerField(choices=[(1, 'male'), (2, 'female'), (3, 'other'), ], verbose_name=_('Gender'))
 
     class Meta:
