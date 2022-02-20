@@ -24,7 +24,13 @@
                     {{ form.phone }}
                     {{ form.phone.label_tag }}
                 </div>
-
+                 {% if form.phone.errors %}
+                    {% for error in form.phone.errors %}
+                        <ul>
+                            <li class="text-danger">{{ error|escape }}</li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
                 <div class="form-floating mb-3">
                     {{ form.email }}
                     {{ form.email.label_tag }}
