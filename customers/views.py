@@ -45,3 +45,7 @@ class CustomerLoginView(View):
 
     def get(self, request):
         return render(request, self.template_name, self.data)
+
+    def setup(self, request, *args, **kwargs):
+        self.next = request.GET.get('next')
+        return super().setup(request, *args, **kwargs)
