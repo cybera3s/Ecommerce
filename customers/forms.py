@@ -1,8 +1,7 @@
 from django import forms
-
-
-# from django.core.exceptions import ValidationError
-# from .models import Customer
+from django.core.exceptions import ValidationError
+from core.models import User
+from django.utils.translation import gettext as _
 
 
 class CustomerRegistrationForm(forms.Form):
@@ -21,3 +20,13 @@ class CustomerRegistrationForm(forms.Form):
     confirm_password = forms.CharField(label='confirm password',
                                        widget=forms.PasswordInput(
                                            attrs={'class': 'form-control', 'placeholder': 'confirm password'}))
+
+    def clean_phone(self):
+        """
+        stop repetitious phone number
+        """
+        phone = self.cleaned_data['phone']
+        user = User.objects.filter(username=phone).exists()
+        if user:
+            raise ValidationError(_('User with this phone number already exists!'))
+        return phone
