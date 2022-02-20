@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views import View
 from core.models import User
@@ -24,10 +25,10 @@ class CustomerRegisterView(View):
 
         if form.is_valid():
             cd = form.cleaned_data
-            new_user = User.objects.create_user(cd['phone'], cd['email'], cd['password'])
+            new_user = User.objects.create_user(phone=cd['phone'], email=cd['email'], password=cd['password'])
             Customer.objects.create(user=new_user, gender=cd['gender'])
             messages.success(request, 'Registered successfully !', 'success')
-            return redirect('product:landing')
+            return redirect('customers:customer_login')
 
         # Handle Invalid form
         self.data['form'] = form
