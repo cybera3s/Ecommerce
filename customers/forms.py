@@ -14,7 +14,7 @@ class CustomerRegistrationForm(forms.Form):
     email = forms.EmailField(max_length=100,
                              widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
     gender = forms.ChoiceField(choices=GENDER_CHOICES,
-                               widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Gender'}))
+                               widget=forms.Select(attrs={'class': 'form-select mb-3', 'placeholder': 'Gender'}))
 
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
