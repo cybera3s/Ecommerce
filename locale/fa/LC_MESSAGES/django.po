@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 23:15+0000\n"
+"POT-Creation-Date: 2022-02-20 16:15+0000\n"
 "PO-Revision-Date: 2022-02-18 23:16+0000\n"
 "Last-Translator:   <cybera.3s@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,11 +88,11 @@ msgstr "تخفیف"
 msgid "Discounts"
 msgstr "تخفیف ها"
 
-#: core/models.py:98 customers/models.py:12
+#: core/models.py:98
 msgid "Phone Number"
 msgstr "شماره تماس"
 
-#: customers/apps.py:8 customers/models.py:17
+#: customers/apps.py:8 customers/models.py:16
 msgid "Customers"
 msgstr "مشتریان"
 
@@ -100,37 +100,45 @@ msgstr "مشتریان"
 msgid "User"
 msgstr "کاربر"
 
-#: customers/models.py:13
+#: customers/models.py:12
 msgid "Gender"
 msgstr "جنسیت"
 
-#: customers/models.py:16 customers/models.py:29 orders/models.py:31
+#: customers/models.py:15 customers/models.py:28 orders/models.py:31
 msgid "Customer"
 msgstr "مشتری"
 
-#: customers/models.py:24
+#: customers/models.py:23
 msgid "State"
 msgstr "استان"
 
-#: customers/models.py:25
+#: customers/models.py:24
 msgid "City"
 msgstr "شهر"
 
-#: customers/models.py:26
+#: customers/models.py:25
 msgid "Postal Code"
 msgstr "کد پستی"
 
-#: customers/models.py:27
+#: customers/models.py:26
 msgid "Address Detail"
 msgstr "جزئیات آدرس"
 
-#: customers/models.py:32 orders/models.py:32
+#: customers/models.py:31 orders/models.py:32
 msgid "Address"
 msgstr "آدرس"
 
-#: customers/models.py:33
+#: customers/models.py:32
 msgid "Addresses"
 msgstr "آدرس ها"
+
+#: customers/templates/customers/register.html:79
+msgid "If you Already have an account"
+msgstr ""
+
+#: customers/templates/customers/register.html:79
+msgid "Sign in here"
+msgstr ""
 
 #: orders/apps.py:8 orders/models.py:67
 msgid "Orders"

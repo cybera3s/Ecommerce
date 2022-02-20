@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 23:15+0000\n"
+"POT-Creation-Date: 2022-02-20 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,11 +86,11 @@ msgstr ""
 msgid "Discounts"
 msgstr ""
 
-#: core/models.py:98 customers/models.py:12
+#: core/models.py:98
 msgid "Phone Number"
 msgstr ""
 
-#: customers/apps.py:8 customers/models.py:17
+#: customers/apps.py:8 customers/models.py:16
 msgid "Customers"
 msgstr ""
 
@@ -98,36 +98,44 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: customers/models.py:13
+#: customers/models.py:12
 msgid "Gender"
 msgstr ""
 
-#: customers/models.py:16 customers/models.py:29 orders/models.py:31
+#: customers/models.py:15 customers/models.py:28 orders/models.py:31
 msgid "Customer"
 msgstr ""
 
-#: customers/models.py:24
+#: customers/models.py:23
 msgid "State"
 msgstr ""
 
-#: customers/models.py:25
+#: customers/models.py:24
 msgid "City"
 msgstr ""
 
-#: customers/models.py:26
+#: customers/models.py:25
 msgid "Postal Code"
 msgstr ""
 
-#: customers/models.py:27
+#: customers/models.py:26
 msgid "Address Detail"
 msgstr ""
 
-#: customers/models.py:32 orders/models.py:32
+#: customers/models.py:31 orders/models.py:32
 msgid "Address"
 msgstr ""
 
-#: customers/models.py:33
+#: customers/models.py:32
 msgid "Addresses"
+msgstr ""
+
+#: customers/templates/customers/register.html:79
+msgid "If you Already have an account"
+msgstr ""
+
+#: customers/templates/customers/register.html:79
+msgid "Sign in here"
 msgstr ""
 
 #: orders/apps.py:8 orders/models.py:67
