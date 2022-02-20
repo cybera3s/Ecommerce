@@ -51,3 +51,11 @@ class CustomerRegistrationForm(forms.Form):
 
         if p1 and p2 and p1 != p2:
             raise ValidationError(_('passwords does not match!'))
+
+
+class CustomerLoginForm(forms.Form):
+    phone = forms.CharField(max_length=100,
+                            widget=forms.TextInput(
+                                attrs={'placeholder': _('phone number or email'), 'class': 'form-control'}))
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': _('your password'), 'class': 'form-control'}))
