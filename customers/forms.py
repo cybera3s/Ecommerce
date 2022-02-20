@@ -5,21 +5,21 @@ from django.utils.translation import gettext as _
 
 
 class CustomerRegistrationForm(forms.Form):
-    GENDER_CHOICES = [('0', 'select your gender'), ('1', 'Male'), ('2', 'Female'), ('3', 'Other')]
+    GENDER_CHOICES = [('0', _('select your gender')), ('1', _('Male')), ('2', _('Female')), ('3', _('Other'))]
 
     phone = forms.CharField(max_length=100,
                             widget=forms.TextInput(
-                                attrs={'class': 'form-control', 'type': 'tel', 'placeholder': 'phone'}))
+                                attrs={'class': 'form-control', 'type': 'tel', 'placeholder': _('phone')}))
     email = forms.EmailField(max_length=100,
-                             widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
+                             widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Email')}))
     gender = forms.ChoiceField(choices=GENDER_CHOICES,
                                widget=forms.Select(attrs={'class': 'form-select mb-3', 'placeholder': 'Gender'}))
 
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
-    confirm_password = forms.CharField(label='confirm password',
+    confirm_password = forms.CharField(label=_('confirm password'),
                                        widget=forms.PasswordInput(
-                                           attrs={'class': 'form-control', 'placeholder': 'confirm password'}))
+                                           attrs={'class': 'form-control', 'placeholder': _('confirm password')}))
 
     def clean_phone(self):
         """
