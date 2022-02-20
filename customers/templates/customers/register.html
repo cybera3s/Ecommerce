@@ -15,6 +15,8 @@
     <div class="container-fluid py-5">
         <div class="row">
             <form method="post" class="col-11 col-sm-10 col-md-7 col-lg-5 col-xl-4 mx-auto p-3 rounded" novalidate>
+                {{ form.non_field_errors }}
+
                 <h1 class="fw-bold mb-2" style="font-family: 'SansSerif';color:blue;">{{ title }}</h1>
                 <hr>
                 {% csrf_token %}
@@ -28,17 +30,49 @@
                     {{ form.email.label_tag }}
                 </div>
 
-                    {{ form.gender }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <ul>
+                            <li class="text-danger">{{ error|escape }}</li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+
+
+                {{ form.gender }}
+                {% if form.gender.errors %}
+                    {% for error in form.gender.errors %}
+                        <ul>
+                            <li class="text-danger">{{ error|escape }}</li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
 
                 <div class="form-floating mb-3">
                     {{ form.password }}
                     {{ form.password.label_tag }}
                 </div>
 
+                 {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <ul>
+                            <li class="text-danger">{{ error|escape }}</li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+
                 <div class="form-floating mb-3">
                     {{ form.confirm_password }}
                     {{ form.confirm_password.label_tag }}
                 </div>
+
+                {% if form.confirm_password.errors %}
+                    {% for error in form.confirm_password.errors %}
+                        <ul>
+                            <li class="text-danger">{{ error|escape }}</li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
 
                 <input type="submit" value="{{ title }}" class="w-100 btn btn-primary p-2 mb-3 fw-bold">
                 <h5 class="text-center">Or</h5>
