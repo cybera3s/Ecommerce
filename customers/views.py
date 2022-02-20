@@ -49,3 +49,21 @@ class CustomerLoginView(View):
     def setup(self, request, *args, **kwargs):
         self.next = request.GET.get('next')
         return super().setup(request, *args, **kwargs)
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request, phone=cd['phone'], password=cd['password'])
+            if user is not None:
+                login(request, user)
+                messages.success(request, _('logged in successfully'), 'success')
+                if self.next:
+                    return redirect(self.next)
+                return redirect('product:landing')
+            # Handle invalid username or password
+            messages.error(request, _('Username or Password is Incorrect'), 'warning')
+
+        # Handle Invalid form
+        self.data['form'] = form
+        return render(request, self.template_name, self.data)
