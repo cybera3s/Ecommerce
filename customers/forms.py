@@ -40,3 +40,14 @@ class CustomerRegistrationForm(forms.Form):
         if user:
             raise ValidationError('Email already exists!')
         return email
+
+    def clean(self):
+        """
+        Check that passwords are the same
+        """
+        cd = super().clean()
+        p1 = cd.get('password')
+        p2 = cd.get('confirm_password')
+
+        if p1 and p2 and p1 != p2:
+            raise ValidationError(_('passwords does not match!'))
