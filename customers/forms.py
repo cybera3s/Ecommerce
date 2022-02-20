@@ -30,3 +30,13 @@ class CustomerRegistrationForm(forms.Form):
         if user:
             raise ValidationError(_('User with this phone number already exists!'))
         return phone
+
+    def clean_email(self):
+        """
+        stop repetitious email
+        """
+        email = self.cleaned_data['email']
+        user = User.objects.filter(email=email).exists()
+        if user:
+            raise ValidationError('Email already exists!')
+        return email
