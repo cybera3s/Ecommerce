@@ -2,8 +2,9 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views import View
 from core.models import User
-from .forms import CustomerRegistrationForm
+from .forms import CustomerRegistrationForm, CustomerLoginForm
 from .models import Customer
+from django.utils.translation import gettext as _
 
 
 class CustomerRegisterView(View):
@@ -30,4 +31,16 @@ class CustomerRegisterView(View):
 
         # Handle Invalid form
         self.data['form'] = form
+        return render(request, self.template_name, self.data)
+
+
+class CustomerLoginView(View):
+    template_name = 'customers/login.html'
+    form_class = CustomerLoginForm
+    data = {
+        'title': _('Login'),
+        'form': form_class
+    }
+
+    def get(self, request):
         return render(request, self.template_name, self.data)
