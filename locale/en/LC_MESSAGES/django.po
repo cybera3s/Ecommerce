@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-20 16:15+0000\n"
+"POT-Creation-Date: 2022-02-21 14:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Price type has no max price!"
 msgstr ""
 
-#: core/models.py:82 product/models.py:19 product/models.py:74
+#: core/models.py:82 product/models.py:19 product/models.py:79
 msgid "Discount"
 msgstr ""
 
@@ -86,12 +86,56 @@ msgstr ""
 msgid "Discounts"
 msgstr ""
 
-#: core/models.py:98
+#: core/models.py:102
 msgid "Phone Number"
 msgstr ""
 
 #: customers/apps.py:8 customers/models.py:16
 msgid "Customers"
+msgstr ""
+
+#: customers/forms.py:8
+msgid "select your gender"
+msgstr ""
+
+#: customers/forms.py:8
+msgid "Male"
+msgstr ""
+
+#: customers/forms.py:8
+msgid "Female"
+msgstr ""
+
+#: customers/forms.py:8
+msgid "Other"
+msgstr ""
+
+#: customers/forms.py:12
+msgid "phone"
+msgstr ""
+
+#: customers/forms.py:14
+msgid "Email"
+msgstr ""
+
+#: customers/forms.py:20 customers/forms.py:22
+msgid "confirm password"
+msgstr ""
+
+#: customers/forms.py:31
+msgid "User with this phone number already exists!"
+msgstr ""
+
+#: customers/forms.py:53
+msgid "passwords does not match!"
+msgstr ""
+
+#: customers/forms.py:59
+msgid "phone number or email"
+msgstr ""
+
+#: customers/forms.py:62
+msgid "your password"
 msgstr ""
 
 #: customers/models.py:11
@@ -130,12 +174,32 @@ msgstr ""
 msgid "Addresses"
 msgstr ""
 
-#: customers/templates/customers/register.html:79
+#: customers/templates/customers/login.html:51
+msgid "If you have not an account"
+msgstr ""
+
+#: customers/templates/customers/login.html:51
+msgid "Sign Up here"
+msgstr ""
+
+#: customers/templates/customers/register.html:85
 msgid "If you Already have an account"
 msgstr ""
 
-#: customers/templates/customers/register.html:79
+#: customers/templates/customers/register.html:85
 msgid "Sign in here"
+msgstr ""
+
+#: customers/views.py:42
+msgid "Login"
+msgstr ""
+
+#: customers/views.py:60
+msgid "logged in successfully"
+msgstr ""
+
+#: customers/views.py:65
+msgid "Username or Password is Incorrect"
 msgstr ""
 
 #: orders/apps.py:8 orders/models.py:67
@@ -166,7 +230,7 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-#: orders/models.py:63 product/models.py:24
+#: orders/models.py:63 product/models.py:25
 msgid "Product"
 msgstr ""
 
@@ -194,11 +258,11 @@ msgstr ""
 msgid "Off Codes"
 msgstr ""
 
-#: product/apps.py:8 product/models.py:25
+#: product/apps.py:8 product/models.py:26
 msgid "Products"
 msgstr ""
 
-#: product/models.py:11 product/models.py:55 product/models.py:70
+#: product/models.py:11 product/models.py:60 product/models.py:75
 msgid "Name"
 msgstr ""
 
@@ -226,27 +290,27 @@ msgstr ""
 msgid "Slug"
 msgstr ""
 
-#: product/models.py:17 product/models.py:59
+#: product/models.py:17 product/models.py:64
 msgid "Brand"
 msgstr ""
 
-#: product/models.py:20 product/models.py:77
+#: product/models.py:20 product/models.py:82
 msgid "Category"
 msgstr ""
 
-#: product/models.py:56
+#: product/models.py:61
 msgid "Country"
 msgstr ""
 
-#: product/models.py:60
+#: product/models.py:65
 msgid "Brands"
 msgstr ""
 
-#: product/models.py:72
+#: product/models.py:77
 msgid "Parent"
 msgstr ""
 
-#: product/models.py:78
+#: product/models.py:83
 msgid "Categories"
 msgstr ""
 
