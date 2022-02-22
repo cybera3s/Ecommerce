@@ -54,11 +54,24 @@
 								<a href="{% url 'product:landing' %}">Home</a>
 							</li>
 
-                            <li class="active-menu">
-								<a href="#">Categories</a>
-								<ul class="sub-menu">
-									<li><a href="#">Mobile</a></li>
-									<li><a href="#">Computer</a></li>
+                            <li>
+								<a href="{% url 'product:category_list' %}">Categories</a>
+								<ul class="sub-menu categories">
+									<li>
+                                        <a href="#">digital</a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="#">Computer</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Mobile</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Tablet</a>
+                                    </li>
+                                </ul>
+                            </li>
+
 								</ul>
 							</li>
 
@@ -157,8 +170,8 @@
 				</li>
 
 				<li>
-					<a href="#">Categories</a>
-					<ul class="sub-menu-m">
+					<a href="{% url 'product:category_list' %}">Categories</a>
+					<ul class="sub-menu-m categories">
 						<li><a href="home-02.html">Mobile</a></li>
 						<li><a href="home-03.html">laptop</a></li>
 					</ul>
