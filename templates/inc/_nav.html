@@ -51,23 +51,23 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="product.html">Home</a>
+								<a href="{% url 'product:landing' %}">Home</a>
 							</li>
 
                             <li class="active-menu">
-								<a href="index.html">Categories</a>
+								<a href="#">Categories</a>
 								<ul class="sub-menu">
-									<li><a href="index.html">Mobile</a></li>
-									<li><a href="home-02.html">Computer</a></li>
+									<li><a href="#">Mobile</a></li>
+									<li><a href="#">Computer</a></li>
 								</ul>
 							</li>
 
                             <li>
-								<a href="about.html">About</a>
+								<a href="#">About</a>
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="#">Contact</a>
 							</li>
 
 						</ul>
@@ -92,7 +92,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
-
+                Aiva Shop
 			</div>
 
 			<!-- Icon header -->
@@ -127,36 +127,40 @@
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-					    <a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
+                        {% for lang in languages %}
 
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-							FA
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+                                <a href="/{{ lang.code }}/" class="flex-c-m trans-04 p-lr-25">
+                                        {{ lang.name_local }}
+                                </a>
+                            {% endfor %}
+                    {% if not request.user.is_authenticated %}
+						<a href="{% url 'customers:customer_login' %}" class="flex-c-m trans-04 p-lr-25">
 							Login
 						</a>
 
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
+                        <a href="{% url 'customers:customer_register' %}" class="flex-c-m trans-04 p-lr-25">
 							Register
 						</a>
-
-                         <a href="#" class="flex-c-m trans-04 p-lr-25">
+                    {% else %}
+                         <a href="{% url 'customers:customer_logout' %}" class="flex-c-m trans-04 p-lr-25">
 							Logout
 						</a>
+                    {% endif %}
 					</div>
 				</li>
 			</ul>
 
 			<ul class="main-menu-m">
+
+                <li>
+					<a href="{% url 'product:landing' %}">Home</a>
+				</li>
+
 				<li>
-					<a href="index.html">Home</a>
+					<a href="#">Categories</a>
 					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
+						<li><a href="home-02.html">Mobile</a></li>
+						<li><a href="home-03.html">laptop</a></li>
 					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -164,23 +168,11 @@
 				</li>
 
 				<li>
-					<a href="product.html">Shop</a>
+					<a href="#">About</a>
 				</li>
 
 				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
-				</li>
-
-				<li>
-					<a href="blog.html">Blog</a>
-				</li>
-
-				<li>
-					<a href="about.html">About</a>
-				</li>
-
-				<li>
-					<a href="contact.html">Contact</a>
+					<a href="#">Contact</a>
 				</li>
 			</ul>
 		</div>
