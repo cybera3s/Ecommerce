@@ -1,5 +1,6 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 from core.models import User
@@ -67,3 +68,11 @@ class CustomerLoginView(View):
         # Handle Invalid form
         self.data['form'] = form
         return render(request, self.template_name, self.data)
+
+
+class CustomerLogoutView(LoginRequiredMixin, View):
+    """user logout view"""
+
+    def get(self, request):
+        logout(request)
+        return redirect('product:landing')
