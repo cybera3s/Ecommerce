@@ -1,0 +1,45 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block title %}
+Categories
+{% endblock %}
+
+{% block content %}
+    <section class="bg0 p-t-23 p-b-140" style="padding-top: 6rem;">
+		<div class="container">
+			<div class="p-b-10">
+				<h3 class="ltext-103 cl5">
+					{% trans 'Categories' %}
+				</h3>
+			</div>
+
+
+			<div class="row isotope-grid" id="Categories" style="padding-top: 5rem;">
+                {% for category in categories %}
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${product.brand}" id="${product.id}">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-pic hov-img0">
+                                <img src="#" alt="{{ category.name }}" width="200" height="300">
+
+                            </div>
+
+                            <div class="block2-txt flex-w flex-t p-t-14">
+                                <div class="block2-txt-child1 flex-col-l ">
+                                    <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        {{ category.name }}
+                                    </a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+			</div>
+
+		</div>
+	</section>
+
+{% endblock %}
