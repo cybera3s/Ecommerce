@@ -44,6 +44,12 @@ class CustomerLoginView(View):
         'form': form_class
     }
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('product:landing')
+        else:
+            return super().dispatch(request, *args, **kwargs)
+
     def get(self, request):
         return render(request, self.template_name, self.data)
 
