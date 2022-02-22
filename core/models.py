@@ -101,3 +101,7 @@ class User(AbstractUser):
     objects = MyUserManager()
     phone = models.CharField(max_length=13, unique=True, verbose_name=_('Phone Number'))
     USERNAME_FIELD = 'phone'
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.username = self.phone
+        return super().save(force_insert, force_update, using, update_fields)
