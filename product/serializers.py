@@ -13,3 +13,9 @@ class ProductSerializer(serializers.ModelSerializer):
             'name', 'price', 'description', 'picture', 'inventory', 'slug', 'created', 'last_updated', 'is_active',
             'brand',
             'discount', 'final_worth', 'category')
+
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = '__all__'
