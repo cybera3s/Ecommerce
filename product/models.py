@@ -18,6 +18,7 @@ class Product(BaseModel):
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True,
                                  verbose_name=_('Discount'))
     category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name=_('Category'))
+    final_worth = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ['-created']
@@ -43,6 +44,10 @@ class Product(BaseModel):
         """
         highest = cls.objects.aggregate(max_price=Max('price'))['max_price']
         return cls.objects.get(price=highest)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.final_worth = self.final_price
+        super().save(force_insert, force_update, using, update_fields)
 
     def __str__(self):
         return f'{self.name}'
