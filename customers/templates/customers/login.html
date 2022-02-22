@@ -48,7 +48,7 @@
 
                 <input type="submit" value="{{ title }}" class="w-100 btn btn-primary p-2 mb-3 fw-bold">
                 <h5 class="text-center">Or</h5>
-                <h5 class="text-center">{% trans 'If you have not an account' %} <a href="#">{% trans 'Sign Up here' %}</a></h5>
+                <h5 class="text-center">{% trans 'If you have not an account' %} <a href="{% url 'customers:customer_register' %}">{% trans 'Sign Up here' %}</a></h5>
             </form>
         </div>
     </div>
