@@ -27,7 +27,7 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'root')
     search_fields = ('name',)
     list_filter = ('name',)
 
