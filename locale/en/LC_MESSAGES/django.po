@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-21 14:52+0000\n"
+"POT-Creation-Date: 2022-02-22 09:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,15 +190,15 @@ msgstr ""
 msgid "Sign in here"
 msgstr ""
 
-#: customers/views.py:42
+#: customers/views.py:43
 msgid "Login"
 msgstr ""
 
-#: customers/views.py:60
+#: customers/views.py:61
 msgid "logged in successfully"
 msgstr ""
 
-#: customers/views.py:65
+#: customers/views.py:66
 msgid "Username or Password is Incorrect"
 msgstr ""
 
@@ -314,8 +314,8 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: product/templates/product/landing.html:20
-msgid "Header"
+#: product/templates/product/landing.html:10
+msgid "Product Overview"
 msgstr ""
 
 #: product/views.py:11
