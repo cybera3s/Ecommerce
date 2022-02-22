@@ -4,13 +4,13 @@ from .models import Product, Brand, Category, Discount
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'category')
+    list_display = ('name', 'price', 'category', 'final_worth')
     search_fields = ('name', 'category', 'brand')
     list_filter = ('inventory',)
     raw_id_fields = ('brand', 'discount', 'category')
     fieldsets = (
         ('information',
-         {'fields': ['name', 'price', 'description', 'brand', 'category']}),
+         {'fields': ['name', 'price', 'description', 'brand', 'category', 'final_worth']}),
         ('Specifications',
          {'fields': ['discount', 'inventory', 'slug', 'picture']})
     )
