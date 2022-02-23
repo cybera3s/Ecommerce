@@ -74,7 +74,7 @@ class Category(BaseModel):
     """
     name = models.CharField(max_length=100, verbose_name=_('Name'))
     root = models.ForeignKey('self', on_delete=models.CASCADE, default=None, null=True, blank=True,
-                             verbose_name=_('Parent'))
+                             verbose_name=_('Parent'), related_name='children')
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True,
                                  verbose_name=_('Discount'))
     picture = models.FileField(verbose_name=_('Category Image'), null=True, blank=True)
