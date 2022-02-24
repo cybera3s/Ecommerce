@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from customers.models import Address
+from customers.models import Address, Customer
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -8,4 +8,8 @@ class AddressSerializer(serializers.ModelSerializer):
         model = Address
         fields = '__all__'
 
-        
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = '__all__'
