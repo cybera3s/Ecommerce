@@ -21,7 +21,7 @@ class CategoryListView(ListView):
     context_object_name = 'categories'
 
     def get_queryset(self):
-        categories = Category.objects.all().exclude(root=None)
+        categories = Category.objects.filter(root=None)
         return categories
 
 
