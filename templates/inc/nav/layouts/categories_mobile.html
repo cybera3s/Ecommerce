@@ -1,0 +1,59 @@
+<ul class="sub-menu-m">
+
+    {% if nav_categories %}
+
+        {% for category in nav_categories %}
+
+            {% if not category.root %}
+
+                <li>
+
+                    <a href="#" class="d-flex justify-content-between align-items-center">{{ category.name }}
+
+                        {% if category.children.all %}
+
+                            <i class="fa fa-angle-down" id="right_angle"></i>
+
+                        {% endif %}
+
+                    </a>
+
+                    {% if category.children.all %}
+                        <ul class="sub-menu-m">
+
+                            {% for child in category.children.all  %}
+
+                                <li>
+                                   <a href="#" class="d-flex justify-content-between align-items-center">{{ child.name }}
+                                      {% if child.children.all %}
+                                          <i class="fa fa-angle-down" id="right_angle"></i>
+                                      {% endif %}
+                                   </a>
+
+                                   {% if child.children.all %}
+                                        <ul class="sub-menu-m">
+
+                                            {% for second_child in child.children.all %}
+
+                                                <li><a href="">{{ second_child.name }}</a></li>
+
+                                            {% endfor %}
+
+                                        </ul>
+                                   {% endif %}
+                                </li>
+
+                            {% endfor %}
+
+                        </ul>
+                    {% endif %}
+
+                </li>
+
+            {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+</ul>
