@@ -1,0 +1,55 @@
+<ul class="sub-menu">
+
+    {% if nav_categories %}
+
+        {% for category in nav_categories %}
+
+            {% if not category.root %}
+
+                <li>
+
+                    <a href="#" class="d-flex justify-content-between">{{ category.name }}
+                        {% if category.children.all %}
+                            <span ><i class="fa fa-angle-right"></i></span>
+                        {% endif %}
+                    </a>
+
+                    {% if category.children.all %}
+                        <ul class="sub-menu">
+
+                            {% for child in category.children.all  %}
+
+                                <li>
+                                    <a href="#" class="d-flex justify-content-between">{{ child.name }}
+                                        {% if child.children.all %}
+                                            <span ><i class="fa fa-angle-right"></i></span>
+                                        {% endif %}
+                                    </a>
+                                    {% if child.children.all %}
+                                        <ul class="sub-menu">
+
+                                            {% for second_child in child.children.all %}
+
+                                                <li><a href="">{{ second_child.name }}</a></li>
+
+                                            {% endfor %}
+
+                                        </ul>
+                                    {% endif %}
+                                </li>
+
+                            {% endfor %}
+
+                        </ul>
+                    {% endif %}
+
+                </li>
+
+            {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+</ul>
