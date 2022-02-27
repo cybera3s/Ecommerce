@@ -1,28 +1,13 @@
-# from rest_framework import status, generics
-# from rest_framework.decorators import api_view
-# from rest_framework.response import Response
-import customers
+from rest_framework import viewsets
+from .permissions import IsSuperuserPermission, IsOwnerPermission
 from .serializers import AddressSerializer, CustomerSerializer
 from customers.models import *
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView, ListAPIView, RetrieveAPIView
-from rest_framework import permissions
+from rest_framework import authentication
 
 
-class CustomerListApiView(ListCreateAPIView):
+class CustomerViewSet(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
     queryset = Customer.objects.all()
+    permission_classes = [IsSuperuserPermission]
+    authentication_classes = [authentication.BasicAuthentication]
 
-
-class CustomerDetailView(RetrieveAPIView):
-    serializer_class = CustomerSerializer
-    queryset = Customer.objects.all()
-#
-#
-# class BrandListCreateApiView(ListCreateAPIView):
-#     serializer_class = BrandSerializer
-#     queryset = Brand.objects.all()
-#
-#
-# class CategoryListApiView(ListAPIView):
-#     serializer_class = CategorySerializer
-#     queryset = Category.objects.all()
