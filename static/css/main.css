@@ -159,7 +159,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   position: fixed;
   width: 40px;
   height: 38px;
-  bottom: 0px;
+  bottom: 0;
   right: 40px;
   background-color: #717fe0;
   opacity: 0.5;
@@ -186,7 +186,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 @media (max-width: 575px) {
   .btn-back-to-top {
-    bottom: 0px;
+    bottom: 0;
     right: 15px;
   }
 }
@@ -276,7 +276,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   width: 100%;
   height: 84px;
   top: 40px;
-  left: 0px; 
+  left: 0;
 
   -webkit-transition: height 0.3s, background-color 0.3s;
   -o-transition: height 0.3s, background-color 0.3s;
@@ -362,8 +362,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .main-menu > li {
   display: block;
   position: relative;
-  padding: 20px 10px 20px 0px;
-  margin: 0px 4px 0px 14px;
+  padding: 20px 10px 20px 0;
+  margin: 0 4px 0 14px;
 }
 
 .main-menu > li > a {
@@ -396,11 +396,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   -moz-transition: all 0.4s;
   padding: 5px 0;
 
-  box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
-  -webkit-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
-  -o-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
-  -ms-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2);
+  -o-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2);
+  -ms-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2);
 
   visibility: hidden;
   opacity: 0; 
@@ -493,6 +493,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .icon-header-noti::after {
   content: attr(data-notify);
   font-family: Poppins-Regular;
+  border-radius: 5px;
   font-size: 12px;
   color: #fff;
   line-height: 15px;
@@ -839,7 +840,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
-  -moz-transition: all 0.34;  
+  -moz-transition: all 0.34s;
   transition: all 0.4s;
 
   box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.18);
@@ -896,7 +897,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
-  -moz-transition: all 0.34;  
+  -moz-transition: all 0.34s;
   transition: all 0.4s;
 }
 
@@ -935,14 +936,14 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
-  -moz-transition: all 0.34;  
+  -moz-transition: all 0.34s;
   transition: all 0.4s;
 
-  box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
   -webkit-box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.18);
-  -o-box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.18);
-  -ms-box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.18);
+  -o-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
 }
 
 .header-cart::after {
@@ -2042,6 +2043,7 @@ input.num-product::-webkit-inner-spin-button {
 [ Block2 ]*/
 .block2-pic {
   position: relative;
+  -webkit-border-radius: 10px;
 }
 
 .block2-btn {
