@@ -235,6 +235,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # My context_processors
+                'core.context_processors.access_category_items',
             ],
         },
     },
