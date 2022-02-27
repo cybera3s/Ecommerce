@@ -11,3 +11,13 @@ class CustomerViewSet(viewsets.ModelViewSet):
     permission_classes = [IsSuperuserPermission]
     authentication_classes = [authentication.BasicAuthentication]
 
+
+class AddressViewSet(viewsets.ModelViewSet):
+    serializer_class = AddressSerializer
+    queryset = Address.objects.all()
+    permission_classes = [IsOwnerPermission]
+    authentication_classes = [authentication.BasicAuthentication]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Address.objects.filter(customer__user=user)
