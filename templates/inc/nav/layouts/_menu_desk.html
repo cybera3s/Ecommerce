@@ -1,0 +1,23 @@
+{% load i18n %}
+<div class="menu-desktop">
+    <ul class="main-menu">
+        <li>  <!-- consider class="active-menu" -->
+            <a href="{% url 'product:landing' %}">{% trans 'Home' %}</a>
+        </li>
+
+        <li>
+
+            <a href="#">Categories</a>
+            {% include 'inc/nav/layouts/categories_desk.html' %}
+        </li>
+
+        <li>
+            <a href="#">{% trans 'About' %}</a>   <!-- consider this attribute > data-label1="hot" -->
+        </li>
+
+        <li>
+            <a href="#">{% trans 'Contact' %}</a>
+        </li>
+
+    </ul>
+</div>
