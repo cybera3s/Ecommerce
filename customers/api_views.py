@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .permissions import IsSuperuserPermission, IsOwnerPermission
+from core.permissions import IsSuperuserPermission, IsOwnerPermission
 from .serializers import AddressSerializer, CustomerSerializer
 from customers.models import *
 from rest_framework import authentication
