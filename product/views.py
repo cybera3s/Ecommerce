@@ -1,18 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.utils.translation import gettext as _
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 from product.models import Category, Product
 
 
-class LandingView(View):
-    template_name = 'product/landing.html'
+class LandingView(TemplateView):
+    template_name = 'product/landing/landing.html'
 
-    def get(self, request):
-        data = {
-            'title': _('landing')
-        }
-        return render(request, self.template_name, data)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('landing')
+        return context
 
 
 class CategoryListView(ListView):
