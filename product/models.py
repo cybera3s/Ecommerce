@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models import Max
+from django.urls import reverse
+
 from core.models import BaseModel, BaseDiscount
 from django.utils.translation import gettext as _
 
@@ -82,6 +84,15 @@ class Category(BaseModel):
     class Meta:
         verbose_name = _('Category')
         verbose_name_plural = _("Categories")
+
+    def get_absolute_url(self):
+        """
+        make url for categories that are not root
+        :return: category url
+        """
+        if self.root:
+            return reverse('product:category_detail', args=(self.id,))
+        return reverse('product:category_list')
 
     def __str__(self):
         return self.name
