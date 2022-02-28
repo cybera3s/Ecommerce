@@ -92,7 +92,7 @@ class Category(BaseModel):
         :return: category url
         """
         if self.root:
-            return reverse('product:category_detail', args=(self.id,))
+            return reverse('product:category_detail', args=(self.id, self.slug))
         return reverse('product:category_list')
 
     def __str__(self):
