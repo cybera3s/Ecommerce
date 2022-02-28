@@ -28,7 +28,7 @@ class CategoryDetailView(View):
     template_name = 'product/category/category_detail.html'
 
     def setup(self, request, *args, **kwargs):
-        self.category_instance = get_object_or_404(Category, pk=kwargs['category_id'])
+        self.category_instance = get_object_or_404(Category, pk=kwargs['category_id'], slug=kwargs['category_slug'])
         return super().setup(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
