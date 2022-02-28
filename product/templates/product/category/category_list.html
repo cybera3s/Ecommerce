@@ -1,4 +1,5 @@
 {% extends '_base.html' %}
+{% load static %}
 {% load i18n %}
 {% block title %}
 Categories
@@ -20,7 +21,7 @@ Categories
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-pic hov-img0">
-                                <img src="{{ category.picture.url }}" alt="{{ category.name }}" width="200" height="300">
+                                <img {% if category.picture %}src="{{ category.picture.url }}"{% else %}src="{% static 'images/product/category/category-default.jpg' %}"{% endif %} alt="{{ category.name }}" width="200" height="300">
 
                             </div>
 
@@ -28,6 +29,11 @@ Categories
                                 <div class="block2-txt-child1 flex-col-l ">
                                     <a href="{% url 'product:category_detail' category.id %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         <h2>{{ category.name }}</h2>
+                                        <p>
+
+                                            <span>{{ category.children.all|join:" - " }}</span>
+
+                                        </p>
                                     </a>
 
 
