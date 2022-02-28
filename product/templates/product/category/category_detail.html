@@ -67,7 +67,8 @@
 						</div>
 					</div>
 				</div>
-
+            {% empty %}
+                    <div class="alert alert-danger w-50 text-center mx-auto font-weight-bold">There is no item</div>
             {% endfor %}
 
 			</div>
