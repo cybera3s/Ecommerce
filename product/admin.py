@@ -30,6 +30,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'root')
     search_fields = ('name',)
     list_filter = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Discount)
