@@ -30,7 +30,7 @@
 
                                             {% for second_child in child.children.all %}
 
-                                                <li><a href="">{{ second_child.name }}</a></li>
+                                                <li><a href="{{ second_child.get_absolute_url }}">{{ second_child.name }}</a></li>
 
                                             {% endfor %}
 
