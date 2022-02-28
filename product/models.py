@@ -79,6 +79,7 @@ class Category(BaseModel):
                              verbose_name=_('Parent'), related_name='children')
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE, blank=True, null=True,
                                  verbose_name=_('Discount'))
+    slug = models.SlugField(null=True, blank=True)
     picture = models.FileField(verbose_name=_('Category Image'), null=True, blank=True)
 
     class Meta:
