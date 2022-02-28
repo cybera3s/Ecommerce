@@ -26,9 +26,9 @@
                     <div class="block2-pic hov-img0">
                         <img src="${product.picture}" alt="${product.name}" width="200" height="300">
 
-                        <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" onclick="show_modal()">
+                        <button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" onclick="show_modal(${product.id})">
                             Quick View
-                        </a>
+                        </button>
                     </div>
 
                     <div class="block2-txt flex-w flex-t p-t-14">
@@ -61,7 +61,7 @@
         }
     }
 
-    function show_modal(){
+    function show_modal(id){
         $('.js-show-modal1').on('click',function(e){
         e.preventDefault();
         $('.js-modal1').addClass('show-modal1');
