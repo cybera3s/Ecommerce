@@ -8,7 +8,7 @@
 
                 <li>
 
-                    <a href="#" class="d-flex justify-content-between">{{ category.name }}
+                    <a href="{{ category.get_absolute_url }}" class="d-flex justify-content-between">{{ category.name }}
                         {% if category.children.all %}
                             <span ><i class="fa fa-angle-right"></i></span>
                         {% endif %}
@@ -20,7 +20,7 @@
                             {% for child in category.children.all  %}
 
                                 <li>
-                                    <a href="#" class="d-flex justify-content-between">{{ child.name }}
+                                    <a href="{{ child.get_absolute_url }}" class="d-flex justify-content-between">{{ child.name }}
                                         {% if child.children.all %}
                                             <span ><i class="fa fa-angle-right"></i></span>
                                         {% endif %}
