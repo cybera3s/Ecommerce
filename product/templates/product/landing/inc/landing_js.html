@@ -101,7 +101,14 @@
 
         $('#modal-nameProduct').text(product.name)
 
-        $('#modal-Price').html(product.price)
+        // check product's discount available
+        if (product.discount != null){
+            $('#modal-Price').text(product.price)
+        }else {
+            $('#modal-Price').empty()
+        }
+
+
         $('#modal-finalPrice').html(product.final_worth)
         $('#modal-description').html(product.description)
 
