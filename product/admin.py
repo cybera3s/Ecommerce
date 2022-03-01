@@ -14,7 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
         ('Specifications',
          {'fields': ['discount', 'inventory', 'slug', 'picture']})
     )
-    prepopulated_fields = {'slug': ('description',)}
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Brand)
