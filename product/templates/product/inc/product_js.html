@@ -1,12 +1,15 @@
 {% load i18n %}
 <script>
-    // AJAX for Products
-    $.get(
+    // get all Products
+    function getAllProducts() {
+        $.get(
         '{% url "product:product_list_create_api" %}',
         function (data){
             products(data)
             }
-    )
+        )
+    }
+
 
     // AJAX for Brands
     $.get(
