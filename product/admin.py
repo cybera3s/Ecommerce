@@ -10,9 +10,8 @@ class ProductAdmin(admin.ModelAdmin):
     raw_id_fields = ('brand', 'discount', 'category')
     fieldsets = (
         ('information',
-         {'fields': ['name', 'price', 'description', 'brand', 'category', 'final_worth']}),
-        ('Specifications',
-         {'fields': ['discount', 'inventory', 'slug', 'picture']})
+         {'fields': ['name', 'price', 'description', 'brand', 'category', 'final_worth', 'discount', 'inventory',
+                     'slug', 'picture']}),
     )
     prepopulated_fields = {'slug': ('name',)}
 
