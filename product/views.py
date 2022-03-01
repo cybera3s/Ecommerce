@@ -43,3 +43,8 @@ class CategoryDetailView(View):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product/product_detail.html'
+    context_object_name = 'product'
+
+    def setup(self, request, *args, **kwargs):
+        self.product_instance = get_object_or_404(Product, pk=kwargs['pk'], slug=kwargs['product_slug'])
+        return super().setup(request, *args, **kwargs)
