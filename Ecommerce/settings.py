@@ -201,6 +201,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Rest Framework
     'rest_framework',
+    'django_filters',
     # my apps
     'rosetta',
     'core.apps.CoreConfig',
