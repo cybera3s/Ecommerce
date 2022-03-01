@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 07:47+0000\n"
+"POT-Creation-Date: 2022-03-01 08:01+0000\n"
 "PO-Revision-Date: 2022-03-01 07:56+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,7 +133,6 @@ msgid "passwords does not match!"
 msgstr "رمزهای عبور ها مطابقت ندارند!"
 
 #: customers/forms.py:59
-#| msgid "Phone Number"
 msgid "phone number or email"
 msgstr "شماره تماس یا ایمیل"
 
@@ -316,19 +315,17 @@ msgid "Parent"
 msgstr "ریشه / والد"
 
 #: product/models.py:83
-#| msgid "Category"
 msgid "Category Image"
 msgstr "تصویر دسته بندی"
 
 #: product/models.py:87
 #: product/templates/product/category/category_list.html:13
-#: templates/inc/_footer.html:8
+#: templates/inc/_footer.html:8 templates/inc/nav/layouts/_menu_desk.html:10
 msgid "Categories"
 msgstr "دسته بندی ها"
 
 #: product/templates/product/category/category_detail.html:19
 #: product/templates/product/inc/filter_brand.html:4
-#| msgid "Products"
 msgid "All Products"
 msgstr "تمام محصولات"
 
@@ -344,6 +341,14 @@ msgstr "نتایج بیشتر"
 #: product/templates/product/inc/quick_view_modal.html:106
 msgid "Add to cart"
 msgstr "اضافه به سبد خرید"
+
+#: product/templates/product/landing/landing.html:26
+msgid "Filter"
+msgstr ""
+
+#: product/templates/product/landing/landing.html:32
+msgid "Search"
+msgstr ""
 
 #: product/views.py:13
 msgid "landing"
