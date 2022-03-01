@@ -13,7 +13,7 @@
 
     // get all Brands
     $.get(
-        '{% url "product:brand_list_create_api" %}',
+        '{% url "product:brand-list" %}',
         function (data){
             brands(data)
             }
