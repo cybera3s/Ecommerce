@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 09:47+0000\n"
+"POT-Creation-Date: 2022-03-01 07:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Price type has no max price!"
 msgstr ""
 
-#: core/models.py:82 product/models.py:19 product/models.py:79
+#: core/models.py:82 product/models.py:21 product/models.py:81
 msgid "Discount"
 msgstr ""
 
@@ -190,15 +190,15 @@ msgstr ""
 msgid "Sign in here"
 msgstr ""
 
-#: customers/views.py:43
+#: customers/views.py:49 templates/inc/nav/layouts/_topbar_desk.html:15
 msgid "Login"
 msgstr ""
 
-#: customers/views.py:61
+#: customers/views.py:73
 msgid "logged in successfully"
 msgstr ""
 
-#: customers/views.py:66
+#: customers/views.py:78
 msgid "Username or Password is Incorrect"
 msgstr ""
 
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-#: orders/models.py:63 product/models.py:25
+#: orders/models.py:63 product/models.py:27
 msgid "Product"
 msgstr ""
 
@@ -258,66 +258,123 @@ msgstr ""
 msgid "Off Codes"
 msgstr ""
 
-#: product/apps.py:8 product/models.py:26
+#: product/apps.py:8 product/models.py:28
+#: product/templates/product/landing/landing.html:12
 msgid "Products"
 msgstr ""
 
-#: product/models.py:11 product/models.py:60 product/models.py:75
+#: product/models.py:13 product/models.py:62 product/models.py:77
 msgid "Name"
 msgstr ""
 
-#: product/models.py:12
+#: product/models.py:14
 msgid "Price"
 msgstr ""
 
-#: product/models.py:13
+#: product/models.py:15
 msgid "Description"
 msgstr ""
 
-#: product/models.py:14
+#: product/models.py:16
 msgid "Product Image"
 msgstr ""
 
-#: product/models.py:15
+#: product/models.py:17
 msgid "Inventory"
 msgstr ""
 
-#: product/models.py:16
+#: product/models.py:18
 msgid "A short label for product"
 msgstr ""
 
-#: product/models.py:16
+#: product/models.py:18
 msgid "Slug"
 msgstr ""
 
-#: product/models.py:17 product/models.py:64
+#: product/models.py:19 product/models.py:66
 msgid "Brand"
 msgstr ""
 
-#: product/models.py:20 product/models.py:82
+#: product/models.py:22 product/models.py:86
 msgid "Category"
 msgstr ""
 
-#: product/models.py:61
+#: product/models.py:63
 msgid "Country"
 msgstr ""
 
-#: product/models.py:65
+#: product/models.py:67
 msgid "Brands"
 msgstr ""
 
-#: product/models.py:77
+#: product/models.py:79
 msgid "Parent"
 msgstr ""
 
 #: product/models.py:83
+msgid "Category Image"
+msgstr ""
+
+#: product/models.py:87
+#: product/templates/product/category/category_list.html:13
+#: templates/inc/_footer.html:8
 msgid "Categories"
 msgstr ""
 
-#: product/templates/product/landing.html:10
-msgid "Product Overview"
+#: product/templates/product/category/category_detail.html:19
+#: product/templates/product/inc/filter_brand.html:4
+msgid "All Products"
 msgstr ""
 
-#: product/views.py:11
+#: product/templates/product/category/category_detail.html:50
+#: product/templates/product/inc/product_js.html:30
+msgid "Quick View"
+msgstr ""
+
+#: product/templates/product/inc/load_more.html:4
+msgid "Load More"
+msgstr ""
+
+#: product/templates/product/inc/quick_view_modal.html:106
+msgid "Add to cart"
+msgstr ""
+
+#: product/views.py:13
 msgid "landing"
+msgstr ""
+
+#: templates/inc/_footer.html:26
+msgid "GET IN TOUCH"
+msgstr ""
+
+#: templates/inc/_footer.html:30
+msgid "Any questions? Let us know in Mashhad by +989224023292"
+msgstr ""
+
+#: templates/inc/_footer.html:51
+msgid "Visit Us"
+msgstr ""
+
+#: templates/inc/nav/_nav.html:36
+msgid "Aiva Shop"
+msgstr ""
+
+#: templates/inc/nav/layouts/_menu_desk.html:5
+msgid "Home"
+msgstr ""
+
+#: templates/inc/nav/layouts/_menu_desk.html:15
+msgid "About"
+msgstr ""
+
+#: templates/inc/nav/layouts/_menu_desk.html:19
+msgid "Contact"
+msgstr ""
+
+#: templates/inc/nav/layouts/_topbar_desk.html:17
+msgid "Register"
+msgstr ""
+
+#: templates/inc/nav/layouts/_topbar_desk.html:19
+msgid "Logout"
 msgstr ""

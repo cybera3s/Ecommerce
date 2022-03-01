@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 09:47+0000\n"
-"PO-Revision-Date: 2022-02-18 23:16+0000\n"
-"Last-Translator:   <cybera.3s@gmail.com>\n"
+"POT-Creation-Date: 2022-03-01 07:47+0000\n"
+"PO-Revision-Date: 2022-03-01 07:56+0000\n"
+"Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "نوع درصدی باید بین صفر تا صد باشد!"
 msgid "Price type has no max price!"
 msgstr "نوع قیمت بیشینه قیمت ندارد!"
 
-#: core/models.py:82 product/models.py:19 product/models.py:79
+#: core/models.py:82 product/models.py:21 product/models.py:81
 msgid "Discount"
 msgstr "تخفیف"
 
@@ -98,49 +98,48 @@ msgstr "مشتریان"
 
 #: customers/forms.py:8
 msgid "select your gender"
-msgstr ""
+msgstr "جنسیت خود را انتخاب کنید"
 
 #: customers/forms.py:8
 msgid "Male"
-msgstr ""
+msgstr "آقا"
 
 #: customers/forms.py:8
 msgid "Female"
-msgstr ""
+msgstr "خانم"
 
 #: customers/forms.py:8
 msgid "Other"
-msgstr ""
+msgstr "دیگر"
 
 #: customers/forms.py:12
 msgid "phone"
-msgstr ""
+msgstr "شماره تماس"
 
 #: customers/forms.py:14
 msgid "Email"
-msgstr ""
+msgstr "آدرس ایمیل"
 
 #: customers/forms.py:20 customers/forms.py:22
 msgid "confirm password"
-msgstr ""
+msgstr "تایید پسورد"
 
 #: customers/forms.py:31
 msgid "User with this phone number already exists!"
-msgstr ""
+msgstr "کاربری با این شماره تلفن وجود دارد!"
 
 #: customers/forms.py:53
 msgid "passwords does not match!"
-msgstr ""
+msgstr "رمزهای عبور ها مطابقت ندارند!"
 
 #: customers/forms.py:59
-#, fuzzy
 #| msgid "Phone Number"
 msgid "phone number or email"
-msgstr "شماره تماس"
+msgstr "شماره تماس یا ایمیل"
 
 #: customers/forms.py:62
 msgid "your password"
-msgstr ""
+msgstr "رمز عبور شما"
 
 #: customers/models.py:11
 msgid "User"
@@ -180,31 +179,31 @@ msgstr "آدرس ها"
 
 #: customers/templates/customers/login.html:51
 msgid "If you have not an account"
-msgstr ""
+msgstr "اگر شما حساب کاربری ندارید"
 
 #: customers/templates/customers/login.html:51
 msgid "Sign Up here"
-msgstr ""
+msgstr "اینجا ثبت نام کنید"
 
 #: customers/templates/customers/register.html:85
 msgid "If you Already have an account"
-msgstr ""
+msgstr "اگر شما در حال حاضر حساب کاربری دارید"
 
 #: customers/templates/customers/register.html:85
 msgid "Sign in here"
-msgstr ""
+msgstr "ازینجا وارد شوید"
 
-#: customers/views.py:43
+#: customers/views.py:49 templates/inc/nav/layouts/_topbar_desk.html:15
 msgid "Login"
-msgstr ""
+msgstr "ورود"
 
-#: customers/views.py:61
+#: customers/views.py:73
 msgid "logged in successfully"
-msgstr ""
+msgstr "با موفقیت وارد شد"
 
-#: customers/views.py:66
+#: customers/views.py:78
 msgid "Username or Password is Incorrect"
-msgstr ""
+msgstr "نام کاربری یا کلمه عبور اشتباه است"
 
 #: orders/apps.py:8 orders/models.py:67
 msgid "Orders"
@@ -234,7 +233,7 @@ msgstr "سبد های خرید"
 msgid "Count"
 msgstr "تعداد"
 
-#: orders/models.py:63 product/models.py:25
+#: orders/models.py:63 product/models.py:27
 msgid "Product"
 msgstr "محصول"
 
@@ -263,69 +262,128 @@ msgstr "باید بیشتر از پنج حرف باشد"
 msgid "Off Codes"
 msgstr "کد های تخفیف"
 
-#: product/apps.py:8 product/models.py:26
+#: product/apps.py:8 product/models.py:28
+#: product/templates/product/landing/landing.html:12
 msgid "Products"
 msgstr "محصولات"
 
-#: product/models.py:11 product/models.py:60 product/models.py:75
+#: product/models.py:13 product/models.py:62 product/models.py:77
 msgid "Name"
 msgstr "نام"
 
-#: product/models.py:12
+#: product/models.py:14
 msgid "Price"
 msgstr "قیمت"
 
-#: product/models.py:13
+#: product/models.py:15
 msgid "Description"
 msgstr "توضیحات"
 
-#: product/models.py:14
+#: product/models.py:16
 msgid "Product Image"
 msgstr "عکس محصول"
 
-#: product/models.py:15
+#: product/models.py:17
 msgid "Inventory"
 msgstr "انبار"
 
-#: product/models.py:16
+#: product/models.py:18
 msgid "A short label for product"
 msgstr "یک برچسب کوتاه برای محصول"
 
-#: product/models.py:16
+#: product/models.py:18
 msgid "Slug"
 msgstr "برچسب آدرس "
 
-#: product/models.py:17 product/models.py:64
+#: product/models.py:19 product/models.py:66
 msgid "Brand"
 msgstr "نام تجاری"
 
-#: product/models.py:20 product/models.py:82
+#: product/models.py:22 product/models.py:86
 msgid "Category"
 msgstr "دسته بندی"
 
-#: product/models.py:61
+#: product/models.py:63
 msgid "Country"
 msgstr "کشور"
 
-#: product/models.py:65
+#: product/models.py:67
 msgid "Brands"
 msgstr "نام های تجاری"
 
-#: product/models.py:77
+#: product/models.py:79
 msgid "Parent"
 msgstr "ریشه / والد"
 
 #: product/models.py:83
+#| msgid "Category"
+msgid "Category Image"
+msgstr "تصویر دسته بندی"
+
+#: product/models.py:87
+#: product/templates/product/category/category_list.html:13
+#: templates/inc/_footer.html:8
 msgid "Categories"
 msgstr "دسته بندی ها"
 
-#: product/templates/product/landing.html:10
+#: product/templates/product/category/category_detail.html:19
+#: product/templates/product/inc/filter_brand.html:4
+#| msgid "Products"
+msgid "All Products"
+msgstr "تمام محصولات"
 
-#: msgid "Product Image"
-msgid "Product Overview"
-msgstr "بررسی محصولات"
+#: product/templates/product/category/category_detail.html:50
+#: product/templates/product/inc/product_js.html:30
+msgid "Quick View"
+msgstr "نمایش سریع"
 
-#: product/views.py:11
+#: product/templates/product/inc/load_more.html:4
+msgid "Load More"
+msgstr "نتایج بیشتر"
+
+#: product/templates/product/inc/quick_view_modal.html:106
+msgid "Add to cart"
+msgstr "اضافه به سبد خرید"
+
+#: product/views.py:13
 msgid "landing"
 msgstr "صفحه ی اصلی"
 
+#: templates/inc/_footer.html:26
+msgid "GET IN TOUCH"
+msgstr "در تماس باشید"
+
+#: templates/inc/_footer.html:30
+msgid "Any questions? Let us know in Mashhad by +989224023292"
+msgstr "سوالی دارید ؟ با ما در تماس باشید در مشهد با شماره تلفن 09224023292"
+
+#: templates/inc/_footer.html:51
+msgid "Visit Us"
+msgstr "به ما سر بزنید"
+
+#: templates/inc/nav/_nav.html:36
+msgid "Aiva Shop"
+msgstr "فروشگاه آیوا"
+
+#: templates/inc/nav/layouts/_menu_desk.html:5
+msgid "Home"
+msgstr "خانه"
+
+#: templates/inc/nav/layouts/_menu_desk.html:15
+msgid "About"
+msgstr "درباره "
+
+#: templates/inc/nav/layouts/_menu_desk.html:19
+msgid "Contact"
+msgstr "تماس با ما"
+
+#: templates/inc/nav/layouts/_topbar_desk.html:17
+msgid "Register"
+msgstr "ثبت نام"
+
+#: templates/inc/nav/layouts/_topbar_desk.html:19
+msgid "Logout"
+msgstr "خروج"
+
+#~ msgid "Product Overview"
+#~ msgstr "بررسی محصولات"
