@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-01 08:01+0000\n"
-"PO-Revision-Date: 2022-03-01 07:56+0000\n"
+"PO-Revision-Date: 2022-03-01 08:01+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -344,11 +344,11 @@ msgstr "اضافه به سبد خرید"
 
 #: product/templates/product/landing/landing.html:26
 msgid "Filter"
-msgstr ""
+msgstr "تفکیک"
 
 #: product/templates/product/landing/landing.html:32
 msgid "Search"
-msgstr ""
+msgstr "جستجو"
 
 #: product/views.py:13
 msgid "landing"
