@@ -51,6 +51,13 @@ class Product(BaseModel):
         self.final_worth = self.final_price
         super().save(force_insert, force_update, using, update_fields)
 
+    def get_absolute_url(self):
+        """
+        make url for product
+        :return: product detail page url
+        """
+        return reverse('product:product_detail', args=(self.id, self.slug))
+
     def __str__(self):
         return f'{self.name}'
 
