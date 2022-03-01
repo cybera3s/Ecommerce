@@ -20,8 +20,13 @@
     )
     // fill products section
     function products(data){
+        let products = $('#products')
 
-        for (let i=0;i<=data.length;i++){
+        let alertEmpty = '<div class="alert alert-info mx-auto w-50 font-weight-bold text-center">Sorry There is No Item! </div>'
+        if (data.length == 0) {
+            products.html(alertEmpty)
+        }else{
+            for (let i=0;i<=data.length;i++){
             let product = data[i]
             elem = `<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${product.brand}" id="${product.id}">
                 <!-- Block2 -->
@@ -47,8 +52,10 @@
                     </div>
                 </div>
             </div>`
-            $('#products').append(elem)
+            products.append(elem)
         }
+        }
+
     }
 
     // get products filtered by category
