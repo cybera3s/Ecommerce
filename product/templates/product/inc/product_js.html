@@ -3,7 +3,7 @@
     // get all Products
     function getAllProducts() {
         $.get(
-        '{% url "product:product_list_create_api" %}',
+        '{% url "product:product-list" %}',
         function (data){
             products(data)
             }
@@ -61,7 +61,7 @@
     // get products filtered by category
     function filterByCategory(category_id) {
         $.get(
-        '{% url 'product:product_list_create_api' %}' + '?category='+ category_id,
+        '{% url 'product:product-list' %}' + '?category='+ category_id,
         function (data){
             products(data)
         }
@@ -96,7 +96,7 @@
     // get one product
     function getProduct(productId){
         // AJAX for Products
-        let url = '{% url "product:product_detail_api" 0 %}'.replace('0', productId);
+        let url = '{% url "product:product-detail" 0 %}'.replace('0', productId);
 
         $.get(
         url,
