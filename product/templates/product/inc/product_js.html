@@ -48,6 +48,16 @@
         }
     }
 
+    // get products filtered by category
+    function filterByCategory(category_id) {
+        $.get(
+        '{% url 'product:product_list_create_api' %}' + '?category='+ category_id,
+        function (data){
+            products(data)
+        }
+        )
+    }
+
     // fill brands section
     function brands(data) {
 
