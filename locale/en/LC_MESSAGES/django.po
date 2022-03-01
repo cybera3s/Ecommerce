@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 08:01+0000\n"
+"POT-Creation-Date: 2022-03-01 13:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Price type has no max price!"
 msgstr ""
 
-#: core/models.py:82 product/models.py:21 product/models.py:81
+#: core/models.py:82 product/models.py:21 product/models.py:88
 msgid "Discount"
 msgstr ""
 
@@ -263,7 +263,7 @@ msgstr ""
 msgid "Products"
 msgstr ""
 
-#: product/models.py:13 product/models.py:62 product/models.py:77
+#: product/models.py:13 product/models.py:69 product/models.py:84
 msgid "Name"
 msgstr ""
 
@@ -291,31 +291,31 @@ msgstr ""
 msgid "Slug"
 msgstr ""
 
-#: product/models.py:19 product/models.py:66
+#: product/models.py:19 product/models.py:73
 msgid "Brand"
 msgstr ""
 
-#: product/models.py:22 product/models.py:86
+#: product/models.py:22 product/models.py:93
 msgid "Category"
 msgstr ""
 
-#: product/models.py:63
+#: product/models.py:70
 msgid "Country"
 msgstr ""
 
-#: product/models.py:67
+#: product/models.py:74
 msgid "Brands"
 msgstr ""
 
-#: product/models.py:79
+#: product/models.py:86
 msgid "Parent"
 msgstr ""
 
-#: product/models.py:83
+#: product/models.py:90
 msgid "Category Image"
 msgstr ""
 
-#: product/models.py:87
+#: product/models.py:94
 #: product/templates/product/category/category_list.html:13
 #: templates/inc/_footer.html:8 templates/inc/nav/layouts/_menu_desk.html:10
 msgid "Categories"
@@ -326,13 +326,12 @@ msgstr ""
 msgid "All Products"
 msgstr ""
 
-#: product/templates/product/category/category_detail.html:50
-#: product/templates/product/inc/product_js.html:30
-msgid "Quick View"
-msgstr ""
-
 #: product/templates/product/inc/load_more.html:4
 msgid "Load More"
+msgstr ""
+
+#: product/templates/product/inc/product_js.html:38
+msgid "Quick View"
 msgstr ""
 
 #: product/templates/product/inc/quick_view_modal.html:106
@@ -345,6 +344,10 @@ msgstr ""
 
 #: product/templates/product/landing/landing.html:32
 msgid "Search"
+msgstr ""
+
+#: product/templates/product/product_detail.html:117
+msgid "description"
 msgstr ""
 
 #: product/views.py:13
@@ -365,6 +368,18 @@ msgstr ""
 
 #: templates/inc/nav/_nav.html:36
 msgid "Aiva Shop"
+msgstr ""
+
+#: templates/inc/nav/layouts/_cart.html:8
+msgid "Your Cart"
+msgstr ""
+
+#: templates/inc/nav/layouts/_cart.html:44
+msgid "View Cart"
+msgstr ""
+
+#: templates/inc/nav/layouts/_cart.html:48
+msgid "Check Out"
 msgstr ""
 
 #: templates/inc/nav/layouts/_menu_desk.html:5

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 08:01+0000\n"
+"POT-Creation-Date: 2022-03-01 13:17+0000\n"
 "PO-Revision-Date: 2022-03-01 08:01+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,7 +79,7 @@ msgstr "نوع درصدی باید بین صفر تا صد باشد!"
 msgid "Price type has no max price!"
 msgstr "نوع قیمت بیشینه قیمت ندارد!"
 
-#: core/models.py:82 product/models.py:21 product/models.py:81
+#: core/models.py:82 product/models.py:21 product/models.py:88
 msgid "Discount"
 msgstr "تخفیف"
 
@@ -182,7 +182,7 @@ msgstr "اگر شما حساب کاربری ندارید"
 
 #: customers/templates/customers/login.html:51
 msgid "Sign Up here"
-msgstr "اینجا ثبت نام کنید"
+msgstr "از اینجا ثبت نام کنید"
 
 #: customers/templates/customers/register.html:85
 msgid "If you Already have an account"
@@ -190,7 +190,7 @@ msgstr "اگر شما در حال حاضر حساب کاربری دارید"
 
 #: customers/templates/customers/register.html:85
 msgid "Sign in here"
-msgstr "ازینجا وارد شوید"
+msgstr "از اینجا وارد شوید"
 
 #: customers/views.py:49 templates/inc/nav/layouts/_topbar_desk.html:15
 msgid "Login"
@@ -266,7 +266,7 @@ msgstr "کد های تخفیف"
 msgid "Products"
 msgstr "محصولات"
 
-#: product/models.py:13 product/models.py:62 product/models.py:77
+#: product/models.py:13 product/models.py:69 product/models.py:84
 msgid "Name"
 msgstr "نام"
 
@@ -294,31 +294,31 @@ msgstr "یک برچسب کوتاه برای محصول"
 msgid "Slug"
 msgstr "برچسب آدرس "
 
-#: product/models.py:19 product/models.py:66
+#: product/models.py:19 product/models.py:73
 msgid "Brand"
 msgstr "نام تجاری"
 
-#: product/models.py:22 product/models.py:86
+#: product/models.py:22 product/models.py:93
 msgid "Category"
 msgstr "دسته بندی"
 
-#: product/models.py:63
+#: product/models.py:70
 msgid "Country"
 msgstr "کشور"
 
-#: product/models.py:67
+#: product/models.py:74
 msgid "Brands"
 msgstr "نام های تجاری"
 
-#: product/models.py:79
+#: product/models.py:86
 msgid "Parent"
 msgstr "ریشه / والد"
 
-#: product/models.py:83
+#: product/models.py:90
 msgid "Category Image"
 msgstr "تصویر دسته بندی"
 
-#: product/models.py:87
+#: product/models.py:94
 #: product/templates/product/category/category_list.html:13
 #: templates/inc/_footer.html:8 templates/inc/nav/layouts/_menu_desk.html:10
 msgid "Categories"
@@ -329,14 +329,13 @@ msgstr "دسته بندی ها"
 msgid "All Products"
 msgstr "تمام محصولات"
 
-#: product/templates/product/category/category_detail.html:50
-#: product/templates/product/inc/product_js.html:30
-msgid "Quick View"
-msgstr "نمایش سریع"
-
 #: product/templates/product/inc/load_more.html:4
 msgid "Load More"
 msgstr "نتایج بیشتر"
+
+#: product/templates/product/inc/product_js.html:38
+msgid "Quick View"
+msgstr "نمایش سریع"
 
 #: product/templates/product/inc/quick_view_modal.html:106
 msgid "Add to cart"
@@ -349,6 +348,12 @@ msgstr "تفکیک"
 #: product/templates/product/landing/landing.html:32
 msgid "Search"
 msgstr "جستجو"
+
+#: product/templates/product/product_detail.html:117
+#, fuzzy
+#| msgid "Description"
+msgid "description"
+msgstr "توضیحات"
 
 #: product/views.py:13
 msgid "landing"
@@ -369,6 +374,22 @@ msgstr "به ما سر بزنید"
 #: templates/inc/nav/_nav.html:36
 msgid "Aiva Shop"
 msgstr "فروشگاه آیوا"
+
+#: templates/inc/nav/layouts/_cart.html:8
+#, fuzzy
+#| msgid "Cart"
+msgid "Your Cart"
+msgstr "سبد خرید"
+
+#: templates/inc/nav/layouts/_cart.html:44
+#, fuzzy
+#| msgid "Cart"
+msgid "View Cart"
+msgstr "سبد خرید"
+
+#: templates/inc/nav/layouts/_cart.html:48
+msgid "Check Out"
+msgstr ""
 
 #: templates/inc/nav/layouts/_menu_desk.html:5
 msgid "Home"
