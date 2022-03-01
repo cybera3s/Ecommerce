@@ -4,3 +4,4 @@ from .api_views import *
 router = routers.DefaultRouter()
 
 router.register('products', ProductViewSet)
+router.register('brands', BrandViewSet)
