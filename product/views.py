@@ -33,9 +33,8 @@ class CategoryDetailView(View):
 
     def get(self, request, *args, **kwargs):
         data = {
-            'title': self.category_instance.name
+            'title': self.category_instance.name,
+            'category_id': self.kwargs['category_id']
         }
-        category = self.category_instance
-        data['products'] = Product.objects.filter(category=category)
 
         return render(request, self.template_name, data)
