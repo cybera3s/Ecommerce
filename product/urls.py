@@ -10,7 +10,5 @@ urlpatterns = [
     path('categories/', CategoryListView.as_view(), name='category_list'),
     # product api urls
     path('api/', include(router.urls)),
-    # brand api urls
-    path('api/brand_list/', BrandListCreateApiView.as_view(), name='brand_list_create_api'),
 
 ]
