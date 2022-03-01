@@ -38,3 +38,8 @@ class CategoryDetailView(View):
         }
 
         return render(request, self.template_name, data)
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product/product_detail.html'
