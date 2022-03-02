@@ -9,6 +9,12 @@ class CartAdmin(admin.ModelAdmin):
     list_filter = ('created',)
     raw_id_fields = ('customer', 'off_code')
 
+    fieldsets = (
+        ('pricing', {'fields': ['total_price', 'final_price', 'off_code', ]}),
+        ('customer', {'fields': ['customer', 'address', ]})
+    )
+    readonly_fields = ('final_price', 'total_price')
+
 
 @admin.register(OffCode)
 class OffCodeAdmin(admin.ModelAdmin):
@@ -20,6 +26,6 @@ class OffCodeAdmin(admin.ModelAdmin):
 @admin.register(CartItem)
 class CartItemAdmin(admin.ModelAdmin):
     list_display = ('product', 'count',)
-    search_fields = ('product', )
+    search_fields = ('product',)
     list_filter = ('cart',)
     raw_id_fields = ('cart', 'product')
