@@ -52,6 +52,15 @@ class Cart(BaseModel):
         self.final_price = total - self.off_code.profit_value(total) if self.off_code else total
         return self.final_price
 
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        """
+        save calculated prices in db
+        """
+        self.total_price = self.total_worth
+        self.final_price = self.final_worth
+
+        super().save(force_insert, force_update, using, update_fields)
+
 
 class CartItem(BaseModel):
     """
