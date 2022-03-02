@@ -10,7 +10,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['category', 'discount', 'brand']
-    search_fields = ['name', ]
+    search_fields = ['name', 'brand__name']
     ordering_fields = '__all__'
 
 
