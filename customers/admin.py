@@ -4,6 +4,7 @@ from .models import Customer, Address
 
 class AddressInline(admin.StackedInline):
     model = Address
+    fields = ('state', 'city', 'postal_code', 'address_detail', 'customer')
     extra = 1
 
 
