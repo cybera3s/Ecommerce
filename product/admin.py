@@ -9,11 +9,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('inventory',)
     raw_id_fields = ('brand', 'discount', 'category')
     fieldsets = (
-        ('information',
-         {'fields': ['name', 'price', 'description', 'brand', 'category', 'final_worth', 'discount', 'inventory',
-                     'slug', 'picture']}),
+        ('information', {'fields': ['name', 'price', 'description', 'brand', 'category', 'final_worth', 'slug', ]}),
+        ('specific', {'fields': ['discount', 'inventory', 'picture']})
     )
     prepopulated_fields = {'slug': ('name',)}
+    readonly_fields = ('final_worth',)
 
 
 @admin.register(Brand)
