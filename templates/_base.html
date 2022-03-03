@@ -4,7 +4,7 @@
 {% get_language_info_list for LANGUAGES as languages %}
 {% get_current_language as current_lang %}
 <!DOCTYPE html>
-<html lang="en" {% if current_lang == 'fa' %}dir="rtl"{% else %}dir="ltr"{% endif %}>
+<html lang="{{ current_lang }}" {% if current_lang == 'fa' %}dir="rtl" {% else %}dir="ltr"{% endif %}>
 <head>
 	<title>
         {% block title %}
