@@ -1,5 +1,4 @@
 from django.shortcuts import redirect
-from django.urls import URLResolver, URLPattern
 
 
 # LOGIN_EXEMPT_URLS = [
