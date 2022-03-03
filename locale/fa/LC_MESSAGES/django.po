@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 16:14+0000\n"
+"POT-Creation-Date: 2022-03-03 23:44+0330\n"
 "PO-Revision-Date: 2022-03-01 16:28+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,7 +79,7 @@ msgstr "نوع درصدی باید بین 0 تا 100 باشد"
 msgid "Price type has no max price!"
 msgstr "نوع قیمتی بیشترین قیمت ندارد!"
 
-#: core/models.py:82 product/models.py:21 product/models.py:88
+#: core/models.py:82 product/models.py:22 product/models.py:91
 msgid "Discount"
 msgstr "تخفیف"
 
@@ -147,31 +147,31 @@ msgstr "کاربر"
 msgid "Gender"
 msgstr "جنسیت"
 
-#: customers/models.py:15 customers/models.py:28 orders/models.py:31
+#: customers/models.py:15 customers/models.py:31 orders/models.py:31
 msgid "Customer"
 msgstr "مشتری"
 
-#: customers/models.py:23
+#: customers/models.py:26
 msgid "State"
 msgstr "وضعیت"
 
-#: customers/models.py:24
+#: customers/models.py:27
 msgid "City"
 msgstr "شهر"
 
-#: customers/models.py:25
+#: customers/models.py:28
 msgid "Postal Code"
 msgstr "کد پستی"
 
-#: customers/models.py:26
+#: customers/models.py:29
 msgid "Address Detail"
 msgstr "جزئیات آدرس"
 
-#: customers/models.py:31 orders/models.py:32
+#: customers/models.py:34 orders/models.py:32
 msgid "Address"
 msgstr "آدرس"
 
-#: customers/models.py:32
+#: customers/models.py:35
 msgid "Addresses"
 msgstr "آدرس ها"
 
@@ -203,7 +203,7 @@ msgstr "با موفقیت وارد شدید !"
 msgid "Username or Password is Incorrect"
 msgstr "نام کاربری یا کلمه ی عبور اشتباه است"
 
-#: orders/apps.py:8 orders/models.py:67
+#: orders/apps.py:8 orders/models.py:76
 msgid "Orders"
 msgstr "سفارش ها"
 
@@ -215,11 +215,11 @@ msgstr "قیمت کل"
 msgid "Final Price"
 msgstr "قیمت نهایی"
 
-#: orders/models.py:30 orders/models.py:109 orders/models.py:119
+#: orders/models.py:30 orders/models.py:118 orders/models.py:128
 msgid "Off Code"
 msgstr "کد تخفیف"
 
-#: orders/models.py:35 orders/models.py:62
+#: orders/models.py:35 orders/models.py:71
 msgid "Cart"
 msgstr "سبد خرید"
 
@@ -227,96 +227,96 @@ msgstr "سبد خرید"
 msgid "Carts"
 msgstr "سبد های خرید"
 
-#: orders/models.py:61
+#: orders/models.py:70
 msgid "Count"
 msgstr "تعداد"
 
-#: orders/models.py:63 product/models.py:27
+#: orders/models.py:72 product/models.py:28
 msgid "Product"
 msgstr "محصول"
 
-#: orders/models.py:66
+#: orders/models.py:75
 msgid "Order"
 msgstr "سفارش"
 
-#: orders/models.py:104 orders/models.py:107
+#: orders/models.py:113 orders/models.py:116
 msgid "must be greater than now"
 msgstr "باید از زمان کنونی بیشتر باشد"
 
-#: orders/models.py:105
+#: orders/models.py:114
 msgid "Valid From"
 msgstr "شروع اعتبار"
 
-#: orders/models.py:108
+#: orders/models.py:117
 msgid "Valid To"
 msgstr "پایان اعتبار"
 
-#: orders/models.py:110
+#: orders/models.py:119
 msgid "must be more than five letters"
 msgstr "باید از پنج حرف بیشتر باشد"
 
-#: orders/models.py:120
+#: orders/models.py:129
 msgid "Off Codes"
 msgstr "کد های تخفیف"
 
-#: product/apps.py:8 product/models.py:28
+#: product/apps.py:8 product/models.py:29
 #: product/templates/product/landing/landing.html:12
 msgid "Products"
 msgstr "محصولات"
 
-#: product/models.py:13 product/models.py:69 product/models.py:84
+#: product/models.py:14 product/models.py:72 product/models.py:87
 msgid "Name"
 msgstr "نام"
 
-#: product/models.py:14
+#: product/models.py:15
 msgid "Price"
 msgstr "قیمت"
 
-#: product/models.py:15
+#: product/models.py:16
 msgid "Description"
 msgstr "توضیحات"
 
-#: product/models.py:16
+#: product/models.py:17
 msgid "Product Image"
 msgstr "عکس محصول"
 
-#: product/models.py:17
+#: product/models.py:18
 msgid "Inventory"
 msgstr "موجودی"
 
-#: product/models.py:18
+#: product/models.py:19
 msgid "A short label for product"
 msgstr "برچسب برای محصول"
 
-#: product/models.py:18
+#: product/models.py:19
 msgid "Slug"
 msgstr "برچسب "
 
-#: product/models.py:19 product/models.py:73
+#: product/models.py:20 product/models.py:76
 msgid "Brand"
 msgstr "برند"
 
-#: product/models.py:22 product/models.py:93
+#: product/models.py:23 product/models.py:96
 msgid "Category"
 msgstr "دسته بندی"
 
-#: product/models.py:70
+#: product/models.py:73
 msgid "Country"
 msgstr "کشور"
 
-#: product/models.py:74
+#: product/models.py:77
 msgid "Brands"
 msgstr "برند ها"
 
-#: product/models.py:86
+#: product/models.py:89
 msgid "Parent"
 msgstr "والد"
 
-#: product/models.py:90
+#: product/models.py:93
 msgid "Category Image"
 msgstr "تصویر دسته بندی"
 
-#: product/models.py:94
+#: product/models.py:97
 #: product/templates/product/category/category_list.html:13
 #: templates/inc/_footer.html:8 templates/inc/nav/layouts/_menu_desk.html:10
 msgid "Categories"
@@ -361,7 +361,8 @@ msgstr "در تماس باشید"
 
 #: templates/inc/_footer.html:30
 msgid "Any questions? Let us know in Mashhad by +989224023292"
-msgstr "سوالی دارید ؟ با ما در تماس باشید به آدرس مشهد و شماره تماس 09224023292"
+msgstr ""
+"سوالی دارید ؟ با ما در تماس باشید به آدرس مشهد و شماره تماس 09224023292"
 
 #: templates/inc/_footer.html:51
 msgid "Visit Us"
