@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 from django.db.models import Max
 from django.urls import reverse
@@ -27,7 +28,7 @@ class Product(BaseModel):
         verbose_name = _('Product')
         verbose_name_plural = _('Products')
 
-    @property
+    @admin.display(boolean=True)
     def is_available(self):
         return self.inventory > 0
 
@@ -37,7 +38,9 @@ class Product(BaseModel):
         calculate price with discounts
         :return:
         """
-        return self.price - self.discount.profit_value(self.price) if self.discount else self.price
+        category_discount = self.category.discount.profit_value(self.price) if self.category.discount else 0
+        product_discount = self.discount.profit_value(self.price) if self.discount else 0
+        return self.price - (category_discount + product_discount)
 
     @classmethod
     def highest_price(cls):
