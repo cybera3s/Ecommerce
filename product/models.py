@@ -66,7 +66,7 @@ class Product(BaseModel):
 
 
 class Picture(BaseModel):
-    picture = models.FileField(verbose_name=_('Product Image'), null=True, blank=True)
+    picture = models.FileField(upload_to='products/images/%Y/%m/%d/', verbose_name=_('Product Image'), null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.RESTRICT, verbose_name=_('Corresponding product'),
                                 related_name=_('Pictures'))
 
