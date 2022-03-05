@@ -2,6 +2,11 @@ from django.contrib import admin
 from .models import Product, Brand, Category, Discount, Picture
 
 
+class PictureInline(admin.StackedInline):
+    model = Picture
+    extra = 1
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'category', 'final_worth', 'is_available')
