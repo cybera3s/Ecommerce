@@ -67,7 +67,8 @@ class Product(BaseModel):
 
 class Picture(BaseModel):
     picture = models.FileField(verbose_name=_('Product Image'), null=True, blank=True)
-    product = models.ForeignKey(on_delete=models.SET_NULL)
+    product = models.ForeignKey(Product, on_delete=models.RESTRICT, verbose_name=_('Corresponding product'),
+                                related_name=_('Pictures'))
 
     def __str__(self):
         return self.product.name
