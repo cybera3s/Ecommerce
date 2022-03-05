@@ -70,6 +70,10 @@ class Picture(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.RESTRICT, verbose_name=_('Corresponding product'),
                                 related_name=_('Pictures'))
 
+    class Meta:
+        verbose_name = _('Picture')
+        verbose_name_plural = _('Pictures')
+
     def __str__(self):
         return self.product.name
 
