@@ -40,6 +40,12 @@
 							{{ product.name }}
 						</h4>
 
+                        {% if product.final_price %}
+                            <div>
+                                <del class="cl2 font-weight-light">{{ product.price }}</del>
+                            </div>
+                        {% endif %}
+
 						<span class="mtext-106 cl2">
 							{{ product.final_worth }}
 						</span>
