@@ -15,10 +15,11 @@ class ProductAdmin(admin.ModelAdmin):
     raw_id_fields = ('brand', 'discount', 'category')
     fieldsets = (
         ('information', {'fields': ['name', 'price', 'description', 'brand', 'category', 'final_worth', 'slug', ]}),
-        ('specific', {'fields': ['discount', 'inventory', 'picture']})
+        ('specific', {'fields': ['discount', 'inventory',]})
     )
     prepopulated_fields = {'slug': ('name',)}
     readonly_fields = ('final_worth',)
+    inlines = [PictureInline]
 
 
 @admin.register(Brand)
