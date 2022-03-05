@@ -3,8 +3,9 @@
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
 {% get_current_language as current_lang %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
 <!DOCTYPE html>
-<html lang="{{ current_lang }}" {% if current_lang == 'fa' %}dir="rtl" {% else %}dir="ltr"{% endif %}>
+<html lang="{{ current_lang }}" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr"{% endif %}>
 <head>
 	<title>
         {% block title %}
