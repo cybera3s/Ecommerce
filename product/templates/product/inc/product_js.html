@@ -113,9 +113,9 @@
         let product = data
         let galleryElement = `<div class="item-slick3" data-thumb="${product.picture}">
             <div class="wrap-pic-w pos-relative">
-                <img src="${product.picture}" alt="${product.name}" class="rounded">
+                <img src="${product.images[0]}" alt="${product.name}" class="rounded">
 
-                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${product.picture}">
+                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="${product.images[0]}">
                     <i class="fa fa-expand"></i>
                 </a>
             </div>
