@@ -65,6 +65,14 @@ class Product(BaseModel):
         return f'{self.name}'
 
 
+class Picture(BaseModel):
+    picture = models.FileField(verbose_name=_('Product Image'), null=True, blank=True)
+    product = models.ForeignKey(on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.product.name
+
+
 class Brand(BaseModel):
     """
         implement brands
