@@ -49,13 +49,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Login required middleware
-    'core.middlewares.LoginRequiredMiddleware',
+    # 'core.middlewares.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'Ecommerce.urls'
@@ -160,7 +161,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": SITE_NAME,
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "images/logo/logo.jpg",
+    "site_logo": "core/images/logo/logo.jpg",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
