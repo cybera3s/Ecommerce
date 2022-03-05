@@ -4,7 +4,7 @@ from django.db.models import Max
 from django.urls import reverse
 
 from core.models import BaseModel, BaseDiscount
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 
 class Product(BaseModel):
@@ -14,7 +14,7 @@ class Product(BaseModel):
     name = models.CharField(max_length=100, verbose_name=_('Name'))
     price = models.PositiveIntegerField(default=0, verbose_name=_('Price'))
     description = models.TextField(verbose_name=_('Description'))
-    picture = models.FileField(verbose_name=_('Product Image'), null=True, blank=True)
+    picture = models.ForeignKey('Picture', verbose_name=_('Image'))
     inventory = models.PositiveIntegerField(verbose_name=_('Inventory'))
     slug = models.SlugField(max_length=30, help_text=_('A short label for product'), verbose_name=_('Slug'))
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE, verbose_name=_('Brand'))
