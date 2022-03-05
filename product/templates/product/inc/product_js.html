@@ -10,14 +10,16 @@
         )
     }
 
-
     // get all Brands
-    $.get(
+    function getAllBrands() {
+        $.get(
         '{% url "product:brand-list" %}',
         function (data){
             brands(data)
             }
-    )
+        )
+    }
+
     // fill products section
     function products(data){
         let products = $('#products')
