@@ -67,14 +67,14 @@ class Product(BaseModel):
 class Picture(BaseModel):
     picture = models.FileField(upload_to='products/images/%Y/%m/%d/', verbose_name=_('Product Image'), null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.RESTRICT, verbose_name=_('Corresponding product'),
-                                related_name=_('Pictures'))
+                                related_name=_('pictures'))
 
     class Meta:
         verbose_name = _('Picture')
         verbose_name_plural = _('Pictures')
 
     def __str__(self):
-        return self.product.name
+        return self.picture.url
 
 
 class Brand(BaseModel):
