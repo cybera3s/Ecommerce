@@ -4,6 +4,7 @@ from .models import Product, Brand, Category, Discount, Picture
 
 class PictureInline(admin.StackedInline):
     model = Picture
+    fields = ('picture', 'product')
     extra = 1
 
 
