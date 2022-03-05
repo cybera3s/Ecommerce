@@ -1,6 +1,20 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% block extra_head %}
+    <style>
+    #products > div {
+        transition: ease 500ms;
+        padding: 1rem;
+    }
+    #products > div:hover {
+
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+        border-radius: 10px;
+    }
+
+    </style>
+{% endblock %}
 {% block content %}
 
     <section class="bg0 p-t-23 p-b-140" style="padding-top: 6rem;">
