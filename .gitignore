@@ -139,3 +139,4 @@ dmypy.json
 /product/migrations/
 /core/migrations/
 /customers/migrations/
+comments/migrations/
