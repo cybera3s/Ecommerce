@@ -12,6 +12,7 @@ class AddressInline(admin.StackedInline):
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ('user', 'gender')
     inlines = [AddressInline]
+    raw_id_fields = ('user',)
 
 
 @admin.register(Address)
@@ -20,5 +21,3 @@ class AddressAdmin(admin.ModelAdmin):
     list_display = ('state', 'city', 'customer')
     search_fields = ('state', 'city', 'customer')
     list_filter = ('last_updated',)
-
-
