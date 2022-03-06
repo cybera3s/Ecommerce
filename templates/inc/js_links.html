@@ -107,15 +107,15 @@
 
 <script>
 
-    {#var alertList = document.querySelectorAll('.alert')#}
-    {#alertList.forEach(function (alert) {#}
-    {#    new bootstrap.Alert(alert)#}
-    {#})#}
-    {##}
-    {#// fade alert box auto#}
-    {#$(document).ready(function () {#}
-    {#    if ($(".fade").css('display') !== 'none') {#}
-    {#        $(".fade").delay(2000).fadeOut(700)#}
-    {#    }#}
-    {#});#}
+    var alertList = document.querySelectorAll('.alert')
+    alertList.forEach(function (alert) {
+        new bootstrap.Alert(alert)
+    })
+
+    // fade alert box auto
+    $(document).ready(function () {
+        if ($(".fade").css('display') !== 'none') {
+            $(".fade").delay(2000).fadeOut(700)
+        }
+    });
 </script>
