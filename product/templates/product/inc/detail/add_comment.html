@@ -7,42 +7,27 @@
             {% trans 'Add a Comment' %}
         </h5>
 
-        <p class="stext-102 cl6">
-            {% trans 'Your email address will not be published. Required fields are marked *' %}
-        </p>
+{#        <p class="stext-102 cl6">#}
+{#            {% trans 'Your email address will not be published. Required fields are marked *' %}#}
+{#        </p>#}
 
         <!-- Rating -->
-        <div class="flex-w flex-m p-t-50 p-b-23">
-            <span class="stext-102 cl3 m-r-16">
-                {% trans 'Your Rating' %}
-            </span>
-
-            <span class="wrap-rating fs-18 cl11 pointer">
-                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                <input class="dis-none" type="number" name="rating" id="rating">
-            </span>
-        </div>
+{#        <div class="flex-w flex-m p-t-50 p-b-23">#}
+{#            <span class="stext-102 cl3 m-r-16">#}
+{#                {% trans 'Your Rating' %}#}
+{#            </span>#}
+{##}
+{#            <span class="wrap-rating fs-18 cl11 pointer">#}
+{#                <i class="item-rating pointer zmdi zmdi-star-outline"></i>#}
+{#                <i class="item-rating pointer zmdi zmdi-star-outline"></i>#}
+{#                <i class="item-rating pointer zmdi zmdi-star-outline"></i>#}
+{#                <i class="item-rating pointer zmdi zmdi-star-outline"></i>#}
+{#                <i class="item-rating pointer zmdi zmdi-star-outline"></i>#}
+{#                <input class="dis-none" type="number" name="rating" id="rating">#}
+{#            </span>#}
+{#        </div>#}
 
         <div class="row p-b-25">
-
-            <!-- comment body field -->
-            <div class="col-12 p-b-5">
-                <label class="stext-102 cl3" for="review">{% trans 'Your review' %}</label>
-{#                <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>#}
-                {{ comment_form.body }}
-                {% if comment_form.body.errors %}
-                    {% for error in comment_form.body.errors %}
-                        <ul>
-                            <li class="text-danger">{{ error|escape }}</li>
-                        </ul>
-                    {% endfor %}
-                {% endif %}
-
-            </div>
 
             <!-- name field -->
             <div class="col-sm-6 p-b-5">
@@ -59,19 +44,36 @@
 {#                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">#}
             </div>
 
-            <!-- email field -->
-            <div class="col-sm-6 p-b-5">
-                <label class="stext-102 cl3" for="email">Email</label>
-                    {{ comment_form.email }}
-                    {% if comment_form.email.errors %}
-                        {% for error in comment_form.email.errors %}
-                            <ul>
-                                <li class="text-danger">{{ error|escape }}</li>
-                            </ul>
-                        {% endfor %}
-                    {% endif %}
-{#                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">#}
+            <!-- comment body field -->
+            <div class="col-12 p-b-5">
+                <label class="stext-102 cl3" for="review">{% trans 'comment' %}</label>
+{#                <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>#}
+                {{ comment_form.body }}
+                {% if comment_form.body.errors %}
+                    {% for error in comment_form.body.errors %}
+                        <ul>
+                            <li class="text-danger">{{ error|escape }}</li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+
             </div>
+
+
+
+{#            <!-- email field -->#}
+{#            <div class="col-sm-6 p-b-5">#}
+{#                <label class="stext-102 cl3" for="email">Email</label>#}
+{#                    {{ comment_form.email }}#}
+{#                    {% if comment_form.email.errors %}#}
+{#                        {% for error in comment_form.email.errors %}#}
+{#                            <ul>#}
+{#                                <li class="text-danger">{{ error|escape }}</li>#}
+{#                            </ul>#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
+{#                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">#}
+{#            </div>#}
 
         </div>
 
