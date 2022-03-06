@@ -48,3 +48,11 @@ class ProductDetailView(DetailView):
     def setup(self, request, *args, **kwargs):
         self.product_instance = get_object_or_404(Product, pk=kwargs['pk'], slug=kwargs['product_slug'])
         return super().setup(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        comments = self.product_instance.pcomments.filter(is_reply=False, can_publish=True)
+        context['comments'] = comments
+
+        return self.render_to_response(context)
