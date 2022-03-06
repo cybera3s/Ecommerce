@@ -4,6 +4,11 @@ from django.utils.translation import gettext as _
 from core.models import BaseModel
 
 
+def user_avatar_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return 'customers/images/avatars/user_{0}/{1}'.format(instance.user.id, filename)
+
+
 class Customer(models.Model):
     """
         A class used to implement customers
