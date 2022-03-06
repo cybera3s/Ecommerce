@@ -16,3 +16,11 @@ class Comment(BaseModel):
 
     def __str__(self):
         return f'{self.user} - {self.body[:30]}'
+
+
+class Rating(BaseModel):
+    user = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='uvote', verbose_name=_('User'))
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='pvotes', verbose_name=_('Product'))
+
+    def __str__(self):
+        return f'{self.user} liked {self.product.slug}'
