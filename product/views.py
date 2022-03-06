@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.decorators import method_decorator
@@ -52,24 +53,34 @@ class ProductDetailView(DetailView):
 
     def setup(self, request, *args, **kwargs):
         self.product_instance = get_object_or_404(Product, pk=kwargs['pk'], slug=kwargs['product_slug'])
+        self.comments = self.product_instance.pcomments.filter(is_reply=False, can_publish=True)
+
         return super().setup(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
-        comments = self.product_instance.pcomments.filter(is_reply=False, can_publish=True)
-        context['comments'] = comments
+        context['comments'] = self.comments
         context['comment_form'] = self.form_class
         return self.render_to_response(context)
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        print(form.is_valid())
         if form.is_valid():
             new_comment = form.save(commit=False)
             new_comment.user = request.user.customer
-            request.user.first_name = form.cleaned_data['name']
+            if not request.user.first_name:
+                request.user.first_name = form.cleaned_data['name']
             request.user.save()
             new_comment.product = self.product_instance
             new_comment.save()
+            messages.success(request, 'thanks for your review, after admin confirmation will show')
             return redirect('product:product_detail', self.product_instance.id, self.product_instance.slug)
+        context = {
+            'comment_form': form,
+            'comments': self.comments,
+            'product': self.get_object()
+        }
+        return render(request, self.template_name, context)
