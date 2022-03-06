@@ -13,5 +13,5 @@ class CommentCreateForm(forms.ModelForm):
 
     name = forms.CharField(required=True, widget=forms.TextInput(
         attrs={'class': 'size-111 bor8 stext-102 cl2 p-lr-20', 'placeholder': 'your name'}))
-    email = forms.EmailField(required=True, widget=forms.EmailInput(
-        attrs={'class': 'size-111 bor8 stext-102 cl2 p-lr-20', 'placeholder': 'your email'}))
+    # email = forms.EmailField(required=True, widget=forms.EmailInput(
+    #     attrs={'class': 'size-111 bor8 stext-102 cl2 p-lr-20', 'placeholder': 'your email'}))
