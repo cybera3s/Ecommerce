@@ -1,0 +1,58 @@
+{% load i18n%}
+{% load static %}
+<div class="tab-pane fade" id="reviews" role="tabpanel">
+    <div class="row">
+        <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+            <div class="p-b-30 m-lr-15-sm">
+                <!-- Review -->
+                <div id="comments">
+                    {% for comment in comments  %}
+
+                        <div class="flex-w flex-t p-b-68">
+                            <!-- comment avatar section -->
+                            <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+                                <img src="{% if comment.user.avatar.url %}{{ comment.user.avatar.url }}{% else %}{% static 'core/images/avatar/default_avatar.jpg' %}{% endif %}" alt="{{ comment.user }} Avatar">
+                            </div>
+
+                            <div class="size-207">
+                                <!-- Comment header -->
+                                <div class="flex-w flex-sb-m p-b-17">
+                                    <span class="mtext-107 cl2 p-r-20">
+                                    {{ comment.user.user.firstname }}
+
+                                </span>
+
+                                    <span class="font-weight-light">
+                                        {{ comment.created|timesince }} ago
+                                </span>
+
+                                    <span class="fs-18 cl11">
+                                <i class="zmdi zmdi-star"></i>
+                                <i class="zmdi zmdi-star"></i>
+                                <i class="zmdi zmdi-star"></i>
+                                <i class="zmdi zmdi-star"></i>
+                                <i class="zmdi zmdi-star-half"></i>
+                            </span>
+                                </div>
+
+                                <!-- Comment body -->
+                                <p class="stext-102 cl6">
+                            {{ comment.body }}
+                        </p>
+                            </div>
+                        </div>
+
+                    {% empty %}
+
+                        <div class="alert alert-info p-2 rounded font-weight-bold text-center">{% trans 'There is No Comments' %}</div>
+
+                    {% endfor %}
+                </div>
+
+
+                <!-- Add review -->
+                {% include 'product/inc/detail/add_comment.html' %}
+            </div>
+        </div>
+    </div>
+</div>
