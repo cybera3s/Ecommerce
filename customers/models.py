@@ -10,6 +10,8 @@ class Customer(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.RESTRICT, verbose_name=_('User'))
     gender = models.IntegerField(choices=[(1, 'male'), (2, 'female'), (3, 'other'), ], verbose_name=_('Gender'))
+    avatar = models.FileField(upload_to=user_avatar_path, verbose_name=_('Avatar'), null=True,
+                              blank=True, default='customers/images/default_avatar.jpg')
 
     class Meta:
         verbose_name = _('Customer')
