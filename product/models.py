@@ -65,7 +65,8 @@ class Product(BaseModel):
 
 
 class Picture(BaseModel):
-    picture = models.FileField(upload_to='products/images/%Y/%m/%d/', verbose_name=_('Product Image'), null=True, blank=True)
+    picture = models.FileField(upload_to='products/images/%Y/%m/%d/', verbose_name=_('Product Image'), null=True,
+                               blank=True)
     product = models.ForeignKey(Product, on_delete=models.RESTRICT, verbose_name=_('Corresponding product'),
                                 related_name=_('pictures'))
 
@@ -116,6 +117,16 @@ class Category(BaseModel):
         if self.root:
             return reverse('product:category_detail', args=(self.id, self.slug))
         return reverse('product:category_list')
+
+    @property
+    def get_ancestors(self):
+        father = self
+
+        ancestors = []
+        while father:
+            ancestors.append(father)
+            father = father.root
+        return ancestors[::-1]
 
     def __str__(self):
         return self.name
