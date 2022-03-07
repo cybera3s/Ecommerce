@@ -6,23 +6,23 @@
     {% include 'product/inc/detail/breadcrumb.html' %}
 
     <!-- Product Detail section -->
-	<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <section class="sec-product-detail bg0 p-t-65 p-b-60">
 
-		<div class="container">
+        <div class="container">
 
-			<div class="row">
+            <div class="row">
 
                 <!-- Pictures Section -->
                 {% include 'product/inc/detail/picture_section.html' %}
 
                 <!-- Detail of product -->
-				<div class="col-md-6 col-lg-5 p-b-30">
-					<div class="p-r-50 p-t-5 p-lr-0-lg">
+                <div class="col-md-6 col-lg-5 p-b-30">
+                    <div class="p-r-50 p-t-5 p-lr-0-lg">
 
                         <!-- Product Name -->
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							{{ product.name }}
-						</h4>
+                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                            {{ product.name }}
+                        </h4>
 
                         <!-- Product real price -->
                         {% if product.final_worth != product.price %}
@@ -32,32 +32,32 @@
                         {% endif %}
 
                         <!-- Product price with discounts -->
-						<span class="mtext-106 cl2">
+                        <span class="mtext-106 cl2">
 							${{ product.final_worth }}
 						</span>
 
-						<p class="stext-102 cl3 p-t-23">
+                        <p class="stext-102 cl3 p-t-23">
                             {{ product.description }}
-						</p>
+                        </p>
 
                         <!-- Add to cart form -->
                         {% include 'product/inc/detail/add_to_cart.html' %}
 
-						<!-- social media -->
+                        <!-- social media -->
                         {% include 'product/inc/detail/social_media.html' %}
 
-					</div>
-				</div>
-			</div>
+                    </div>
+                </div>
+            </div>
 
             <!-- tabs -->
             {% include 'product/inc/detail/tabs.html' %}
 
 
-	</section>
+    </section>
 
 
     <!-- Related Products  -->
-{#    {% include 'product/inc/related_products.html' %}#}
+    {#    {% include 'product/inc/related_products.html' %}#}
 
 {% endblock %}
