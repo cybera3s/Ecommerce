@@ -161,7 +161,7 @@
 
         // Post request for add item to cart
         $.post(
-                "{% url 'orders:add_to_cart' %}",
+                "{% url 'orders:add_to_cart_api' %}",
                 {
                     "csrfmiddlewaretoken": "{{ csrf_token }}",
                     'product': productId,
