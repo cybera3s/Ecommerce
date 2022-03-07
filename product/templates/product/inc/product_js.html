@@ -153,4 +153,29 @@
           return "";
         }
 
+    // add corresponding product to cart
+    function addToCart(productId){
+
+        let cartIcon = $('#cartIcon')
+        let countProduct = $('#num-product')
+
+        // Post request for add item to cart
+        $.post(
+                "{% url 'orders:add_to_cart' %}",
+                {
+                    "csrfmiddlewaretoken": "{{ csrf_token }}",
+                    'product': productId,
+                    'count': countProduct.val(),
+                },
+
+                function (data) {
+                    console.log(data)
+
+                    // set cart length for cart icon on navbar
+                    let cartLength = Object.keys(data.cart).length
+                    cartIcon.attr('data-notify', cartLength)
+
+                    fillCart(data)
+                });
+    }
 </script>
