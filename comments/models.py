@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 from core.models import BaseModel, User
 from customers.models import Customer
@@ -16,6 +17,10 @@ class Comment(BaseModel):
 
     def __str__(self):
         return f'{self.user} - {self.body[:30]}'
+
+    @admin.display(boolean=True)
+    def can_be_published(self):
+        return self.can_publish
 
 
 class Rating(BaseModel):
