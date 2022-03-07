@@ -4,5 +4,5 @@ from .api_urls import router
 app_name = 'orders'
 
 urlpatterns = [
-    path('', include(router.urls,),),
+    path('api/', include(router.urls,),),
 ]
