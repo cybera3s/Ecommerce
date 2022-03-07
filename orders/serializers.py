@@ -13,7 +13,7 @@ class CartSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('customer', 'address', 'final_price', 'items')
 
 
-class CartItemSerializer(serializers.HyperlinkedModelSerializer):
+class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = CartItem
-        fields = '__all__'
+        fields = ('count', 'cart', 'product')
