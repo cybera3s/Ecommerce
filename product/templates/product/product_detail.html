@@ -40,8 +40,12 @@
                             {{ product.description }}
                         </p>
 
+                    {% if product.is_available %}
                         <!-- Add to cart form -->
                         {% include 'product/inc/detail/add_to_cart.html' %}
+                    {% else %}
+                        <div class="alert alert-info">{% trans 'this item is not available in inventory' %}</div>
+                    {% endif %}
 
                         <!-- social media -->
                         {% include 'product/inc/detail/social_media.html' %}
@@ -60,4 +64,7 @@
     <!-- Related Products  -->
     {#    {% include 'product/inc/related_products.html' %}#}
 
+{% endblock %}
+{% block extra_footer %}
+    {% include 'product/inc/product_js.html' %}
 {% endblock %}
