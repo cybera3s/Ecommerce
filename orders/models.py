@@ -24,12 +24,12 @@ class Cart(BaseModel):
             total_worth: calculate sum of items prices without considering off code\n
             final_worth: calculate  sum of items prices *By considering* off code
     """
-    total_price = models.PositiveIntegerField(default=0, verbose_name=_('Total Price'))
-    final_price = models.PositiveIntegerField(default=0, verbose_name=_('Final Price'))
+    total_price = models.PositiveIntegerField(default=0, verbose_name=_('Total Price'), null=True, blank=True)
+    final_price = models.PositiveIntegerField(default=0, verbose_name=_('Final Price'), null=True, blank=True)
     off_code = models.OneToOneField('OffCode', on_delete=models.CASCADE, related_name='carts', null=True, blank=True,
                                     verbose_name=_('Off Code'))
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='carts', verbose_name=_('Customer'))
-    address = models.ForeignKey(Address, on_delete=models.RESTRICT, related_name='carts', verbose_name=_('Address'))
+    address = models.ForeignKey(Address, on_delete=models.RESTRICT, related_name='carts', verbose_name=_('Address'), null=True, blank=True)
 
     class Meta:
         verbose_name = _('Cart')
@@ -40,7 +40,7 @@ class Cart(BaseModel):
             calculate total price of cart
         :return: total price amount (int)
         """
-        self.total_price = sum([item.product.final_price for item in self.items.all()])
+        self.total_price = sum([item.product.final_price*item.count for item in self.items.all()])
         return self.total_price
 
     def final_worth(self):
@@ -56,8 +56,8 @@ class Cart(BaseModel):
         """
         save calculated prices in db
         """
-        self.total_price = self.total_worth
-        self.final_price = self.final_worth
+        self.total_price = self.total_worth()
+        self.final_price = self.final_worth()
 
         super().save(force_insert, force_update, using, update_fields)
 
