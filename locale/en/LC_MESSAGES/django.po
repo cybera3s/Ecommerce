@@ -1,0 +1,403 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-03 23:44+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/apps.py:8
+msgid "Core"
+msgstr ""
+
+#: core/models.py:13
+msgid "Created"
+msgstr ""
+
+#: core/models.py:14
+msgid "Last Update"
+msgstr ""
+
+#: core/models.py:15
+msgid "Delete Timestamp"
+msgstr ""
+
+#: core/models.py:18
+msgid "Deleted Datetime"
+msgstr ""
+
+#: core/models.py:19
+msgid "This is deleted datetime"
+msgstr ""
+
+#: core/models.py:23
+msgid "Deleted status"
+msgstr ""
+
+#: core/models.py:24
+msgid "This is deleted status"
+msgstr ""
+
+#: core/models.py:28
+msgid "Active status"
+msgstr ""
+
+#: core/models.py:29
+msgid "This is active status"
+msgstr ""
+
+#: core/models.py:56
+msgid "Value"
+msgstr ""
+
+#: core/models.py:58
+msgid "Type"
+msgstr ""
+
+#: core/models.py:59
+msgid "Max Price"
+msgstr ""
+
+#: core/models.py:63
+msgid "Type percent must be 0 to 100"
+msgstr ""
+
+#: core/models.py:66
+msgid "Price type has no max price!"
+msgstr ""
+
+#: core/models.py:82 product/models.py:22 product/models.py:91
+msgid "Discount"
+msgstr ""
+
+#: core/models.py:83
+msgid "Discounts"
+msgstr ""
+
+#: core/models.py:102
+msgid "Phone Number"
+msgstr ""
+
+#: customers/apps.py:8 customers/models.py:16
+msgid "Customers"
+msgstr ""
+
+#: customers/forms.py:8
+msgid "select your gender"
+msgstr ""
+
+#: customers/forms.py:8
+msgid "Male"
+msgstr ""
+
+#: customers/forms.py:8
+msgid "Female"
+msgstr ""
+
+#: customers/forms.py:8
+msgid "Other"
+msgstr ""
+
+#: customers/forms.py:12
+msgid "phone"
+msgstr ""
+
+#: customers/forms.py:14
+msgid "Email"
+msgstr ""
+
+#: customers/forms.py:20 customers/forms.py:22
+msgid "confirm password"
+msgstr ""
+
+#: customers/forms.py:31
+msgid "User with this phone number already exists!"
+msgstr ""
+
+#: customers/forms.py:53
+msgid "passwords does not match!"
+msgstr ""
+
+#: customers/forms.py:59
+msgid "phone number or email"
+msgstr ""
+
+#: customers/forms.py:62
+msgid "your password"
+msgstr ""
+
+#: customers/models.py:11
+msgid "User"
+msgstr ""
+
+#: customers/models.py:12
+msgid "Gender"
+msgstr ""
+
+#: customers/models.py:15 customers/models.py:31 orders/models.py:31
+msgid "Customer"
+msgstr ""
+
+#: customers/models.py:26
+msgid "State"
+msgstr ""
+
+#: customers/models.py:27
+msgid "City"
+msgstr ""
+
+#: customers/models.py:28
+msgid "Postal Code"
+msgstr ""
+
+#: customers/models.py:29
+msgid "Address Detail"
+msgstr ""
+
+#: customers/models.py:34 orders/models.py:32
+msgid "Address"
+msgstr ""
+
+#: customers/models.py:35
+msgid "Addresses"
+msgstr ""
+
+#: customers/templates/customers/login.html:51
+msgid "If you have not an account"
+msgstr ""
+
+#: customers/templates/customers/login.html:51
+msgid "Sign Up here"
+msgstr ""
+
+#: customers/templates/customers/register.html:85
+msgid "If you Already have an account"
+msgstr ""
+
+#: customers/templates/customers/register.html:85
+msgid "Sign in here"
+msgstr ""
+
+#: customers/views.py:49 templates/inc/nav/layouts/_topbar_desk.html:15
+msgid "Login"
+msgstr ""
+
+#: customers/views.py:73
+msgid "logged in successfully"
+msgstr ""
+
+#: customers/views.py:78
+msgid "Username or Password is Incorrect"
+msgstr ""
+
+#: orders/apps.py:8 orders/models.py:76
+msgid "Orders"
+msgstr ""
+
+#: orders/models.py:27
+msgid "Total Price"
+msgstr ""
+
+#: orders/models.py:28
+msgid "Final Price"
+msgstr ""
+
+#: orders/models.py:30 orders/models.py:118 orders/models.py:128
+msgid "Off Code"
+msgstr ""
+
+#: orders/models.py:35 orders/models.py:71
+msgid "Cart"
+msgstr ""
+
+#: orders/models.py:36
+msgid "Carts"
+msgstr ""
+
+#: orders/models.py:70
+msgid "Count"
+msgstr ""
+
+#: orders/models.py:72 product/models.py:28
+msgid "Product"
+msgstr ""
+
+#: orders/models.py:75
+msgid "Order"
+msgstr ""
+
+#: orders/models.py:113 orders/models.py:116
+msgid "must be greater than now"
+msgstr ""
+
+#: orders/models.py:114
+msgid "Valid From"
+msgstr ""
+
+#: orders/models.py:117
+msgid "Valid To"
+msgstr ""
+
+#: orders/models.py:119
+msgid "must be more than five letters"
+msgstr ""
+
+#: orders/models.py:129
+msgid "Off Codes"
+msgstr ""
+
+#: product/apps.py:8 product/models.py:29
+#: product/templates/product/landing/landing.html:12
+msgid "Products"
+msgstr ""
+
+#: product/models.py:14 product/models.py:72 product/models.py:87
+msgid "Name"
+msgstr ""
+
+#: product/models.py:15
+msgid "Price"
+msgstr ""
+
+#: product/models.py:16
+msgid "Description"
+msgstr ""
+
+#: product/models.py:17
+msgid "Product Image"
+msgstr ""
+
+#: product/models.py:18
+msgid "Inventory"
+msgstr ""
+
+#: product/models.py:19
+msgid "A short label for product"
+msgstr ""
+
+#: product/models.py:19
+msgid "Slug"
+msgstr ""
+
+#: product/models.py:20 product/models.py:76
+msgid "Brand"
+msgstr ""
+
+#: product/models.py:23 product/models.py:96
+msgid "Category"
+msgstr ""
+
+#: product/models.py:73
+msgid "Country"
+msgstr ""
+
+#: product/models.py:77
+msgid "Brands"
+msgstr ""
+
+#: product/models.py:89
+msgid "Parent"
+msgstr ""
+
+#: product/models.py:93
+msgid "Category Image"
+msgstr ""
+
+#: product/models.py:97
+#: product/templates/product/category/category_list.html:13
+#: templates/inc/_footer.html:8 templates/inc/nav/layouts/_menu_desk.html:10
+msgid "Categories"
+msgstr ""
+
+#: product/templates/product/category/category_detail.html:19
+#: product/templates/product/inc/filter_brand.html:4
+msgid "All Products"
+msgstr ""
+
+#: product/templates/product/inc/load_more.html:4
+msgid "Load More"
+msgstr ""
+
+#: product/templates/product/inc/product_js.html:38
+msgid "Quick View"
+msgstr ""
+
+#: product/templates/product/inc/quick_view_modal.html:106
+msgid "Add to cart"
+msgstr ""
+
+#: product/templates/product/landing/landing.html:26
+msgid "Filter"
+msgstr ""
+
+#: product/templates/product/landing/landing.html:32
+msgid "Search"
+msgstr ""
+
+#: product/templates/product/product_detail.html:117
+msgid "description"
+msgstr ""
+
+#: product/views.py:13
+msgid "landing"
+msgstr ""
+
+#: templates/inc/_footer.html:26
+msgid "GET IN TOUCH"
+msgstr ""
+
+#: templates/inc/_footer.html:30
+msgid "Any questions? Let us know in Mashhad by +989224023292"
+msgstr ""
+
+#: templates/inc/_footer.html:51
+msgid "Visit Us"
+msgstr ""
+
+#: templates/inc/nav/_nav.html:36
+msgid "Aiva Shop"
+msgstr ""
+
+#: templates/inc/nav/layouts/_cart.html:8
+msgid "Your Cart"
+msgstr ""
+
+#: templates/inc/nav/layouts/_cart.html:44
+msgid "View Cart"
+msgstr ""
+
+#: templates/inc/nav/layouts/_cart.html:48
+msgid "Check Out"
+msgstr ""
+
+#: templates/inc/nav/layouts/_menu_desk.html:5
+msgid "Home"
+msgstr ""
+
+#: templates/inc/nav/layouts/_menu_desk.html:15
+msgid "About"
+msgstr ""
+
+#: templates/inc/nav/layouts/_menu_desk.html:19
+msgid "Contact"
+msgstr ""
+
+#: templates/inc/nav/layouts/_topbar_desk.html:17
+msgid "Register"
+msgstr ""
+
+#: templates/inc/nav/layouts/_topbar_desk.html:19
+msgid "Logout"
+msgstr ""
