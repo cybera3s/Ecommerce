@@ -4,4 +4,4 @@ from .api_views import *
 router = routers.DefaultRouter()
 
 router.register('cart', CartViewSet)
-router.register('cart_item', CartItemViewSet)
+# router.register('cart_item', CartItemViewSet)
