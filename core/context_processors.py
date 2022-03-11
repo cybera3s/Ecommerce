@@ -1,5 +1,5 @@
 from product.models import Category
-from utils.cart import Cart
+from core.utils.cart import Cart
 
 
 def access_category_items(request):
