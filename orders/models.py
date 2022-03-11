@@ -75,7 +75,8 @@ class CartItem(BaseModel):
         A class used to implement cart items
     """
 
-    count = models.PositiveIntegerField(default=1, verbose_name=_('Count'))
+    count = models.PositiveIntegerField(default=1, verbose_name=_('Count'),
+                                        validators=[MinValueValidator(1, message='minimum count is 1')])
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items', verbose_name=_('Cart'))
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_('Product'))
 
