@@ -60,6 +60,16 @@ class Product(BaseModel):
         """
         return reverse('product:product_detail', args=(self.id, self.slug))
 
+    def calculate_inventory(self, count: int):
+        """
+        calculate and decrease product inventory
+        :param count: count to decrease from inventory
+        :return: remaining of product inventory
+        """
+        self.inventory -= count
+        self.save()
+        return self.inventory
+
     def __str__(self):
         return f'{self.name}'
 
