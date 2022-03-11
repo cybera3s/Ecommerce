@@ -76,7 +76,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # My context_processors to access categories in all views
                 'core.context_processors.access_category_items',
-                'core.context_processors.cart_items',
+                'core.context_processors.cart',
             ],
         },
     },
