@@ -178,7 +178,48 @@
                 });
     }
 
+     function fillCart(data){
+        let item = data.item
+        let cart = data.cart
+        let product = data.product
+        body = $('#cartBody')
+        let total_price = 0;
 
+        // if product already be in cart replace it's count
+        if (product.id in cart){
+            console.log('already exist in cart')
+            $(`#cartBody > li#${product.id}`).remove()
+            item.count = cart[product.id].count
+        }
+
+            let productAbsoluteUrl = `http://127.0.0.1:8000/en/product/${product.id}/${product.slug}`
+            cartItem = `<li class="header-cart-item flex-w flex-t m-b-12" id='${product.id}'>
+						<div class="header-cart-item-img">
+							<img src="${product.images[0]}" alt="${product.name}">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="${productAbsoluteUrl}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								${product.name}
+							</a>
+
+							<span class="header-cart-item-info">
+								${item.count} x ${product.final_worth}
+							</span>
+						</div>
+					</li>`
+
+            body.append(cartItem)
+
+        // set total price for cart
+        for (i in cart){
+            total_price += cart[i]['count'] * cart[i]['price']
+        }
+        $('#cartTotal').text(total_price)
+        console.log('new price : ' + total_price)
+
+
+    }
 
 
     // fill cart nav bar by items
