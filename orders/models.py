@@ -31,7 +31,8 @@ class Cart(BaseModel):
     off_code = models.OneToOneField('OffCode', on_delete=models.CASCADE, related_name='carts', null=True, blank=True,
                                     verbose_name=_('Off Code'))
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='carts', verbose_name=_('Customer'))
-    address = models.ForeignKey(Address, on_delete=models.RESTRICT, related_name='carts', verbose_name=_('Address'), null=True, blank=True)
+    address = models.ForeignKey(Address, on_delete=models.RESTRICT, related_name='carts', verbose_name=_('Address'),
+                                null=True, blank=True)
 
     class Meta:
         verbose_name = _('Cart')
