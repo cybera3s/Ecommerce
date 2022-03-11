@@ -102,6 +102,14 @@ class CartItem(BaseModel):
         """
         return cls.objects.filter(product__category=category)
 
+    def clean(self):
+        """
+        check and validate count to not be greater than product inventory
+        :return:
+        """
+        if self.count > self.product.inventory:
+            raise ValidationError('Maximum count is exceeded')
+
     def __str__(self):
         return f'{self.count} of {self.product}'
 
