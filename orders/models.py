@@ -1,4 +1,6 @@
 from datetime import timedelta
+
+from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MinLengthValidator
 from django.utils import timezone
 from core.models import BaseModel, BaseDiscount
@@ -58,8 +60,14 @@ class Cart(BaseModel):
         """
         self.total_price = self.total_worth()
         self.final_price = self.final_worth()
-
+        self.update_inventory()
         super().save(force_insert, force_update, using, update_fields)
+
+    def update_inventory(self):
+        """update products inventory of cart items """
+        if self.items.all():
+            for item in self.items.all():
+                item.product.calculate_inventory(item.count)
 
 
 class CartItem(BaseModel):
