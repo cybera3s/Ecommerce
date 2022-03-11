@@ -20,6 +20,7 @@ class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = CartItem
         fields = ('count', 'cart', 'product')
+        extra_kwargs = {'cart': {'required': False}}
 
     def validate_count(self, value):
         """
