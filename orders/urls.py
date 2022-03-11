@@ -1,6 +1,8 @@
 from django.urls import path, include
+from django.views.generic import TemplateView
+
 from .api_urls import router
-from .api_views import AddToCartApiView
+from .api_views import CartItemApiView
 from .views import CartCheckOutView
 
 
@@ -8,6 +10,6 @@ app_name = 'orders'
 
 urlpatterns = [
     path('api/', include(router.urls,),),
-    path('api/cart_item/', AddToCartApiView.as_view(), name='add_to_cart_api'),
-    path('checkout/cart/', CartCheckOutView.as_view(template_name='orders/cart/cart.html'), name='cart_checkout'),
+    path('api/cart_item/', CartItemApiView.as_view(), name='cart_item_api'),
+    path('cart/checkout/', CartCheckOutView.as_view(), name='cart_checkout'),
 ]
