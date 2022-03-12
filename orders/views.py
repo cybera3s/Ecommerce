@@ -1,6 +1,5 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
-from core.utils.cart import Cart
+from utils.cart import Cart
 from django.utils.translation import gettext as _
 
 
