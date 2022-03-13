@@ -7,6 +7,7 @@ from orders.serializers import CartSerializer, CartItemSerializer
 from rest_framework.views import APIView
 from product.models import Product
 from product.serializers import ProductSerializer
+from utils.cart import Cart as CookieCart
 
 
 class CartViewSet(viewsets.ModelViewSet):
@@ -41,6 +42,8 @@ class CartViewSet(viewsets.ModelViewSet):
 #
 #     # if cart is not in cookies
 #     return False
+
+
 class CartItemApiView(APIView):
     serializer_class = CartItemSerializer
 
@@ -50,21 +53,41 @@ class CartItemApiView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        from core.utils.cart import Cart
+        data = {}
         serializer = self.serializer_class(data=request.data)
-        cart = Cart(request)
+        cart = CookieCart(request)
         product = Product.objects.get(pk=request.data.get('product'))
+        data['product'] = ProductSerializer(product).data
 
         if serializer.is_valid():
             cart.add(product, serializer.validated_data['count'])
-            data = {
-                'item': serializer.data,
-                'cart': cart.cart,
-                'product': ProductSerializer(product).data
-            }
-            response = Response(data, status=status.HTTP_201_CREATED)
-            response.set_cookie('cart', json.dumps(cart.cart))
-            return response
+
+            if request.user.is_authenticated:       # add to cart for logged in users
+                db_cart, created = Cart.objects.get_or_create(customer=request.user.customer)
+                serializer.validated_data['cart_id'] = db_cart.id
+                serializer.save()
+
+                cart.merge_db_cart(request)
+
+                data.update({
+                    'item': serializer.data,
+                    'cart': cart.cart,
+                    'auth': True
+                })
+
+                return Response(data, status=status.HTTP_201_CREATED)
+
+            else:      # add to cart not logged in users
+
+                data.update({
+                    'item': serializer.data,
+                    'cart': cart.cart,
+                })
+                response = Response(data, status=status.HTTP_201_CREATED)
+                response.set_cookie('cart', json.dumps(cart.cart))          # register cart in cookies
+                return response
+
+        # Handle serializer Errors
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         # from core.utils.cart import Cart
