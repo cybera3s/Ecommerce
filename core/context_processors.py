@@ -1,5 +1,5 @@
 from product.models import Category
-from core.utils.cart import Cart
+from utils.cart import Cart
 
 
 def access_category_items(request):
@@ -61,8 +61,12 @@ def access_category_items(request):
 #
 #     return {'cart_item_count': cart_items_count, 'cart_products': products, 'cart_total_price': total_price}
 
-
 def cart(request):
+    active_cart = Cart(request)
+    if request.user.is_authenticated:
+        active_cart.merge_db_cart(request)
+        print('in context context processor : ', active_cart.cart)
+
     return {
-        'cart': Cart(request)
+        'cart': active_cart
     }
