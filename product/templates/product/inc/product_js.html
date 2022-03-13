@@ -156,7 +156,7 @@
     // add corresponding product to cart
     function addToCart(productId){
 
-        let cartIcon = $('#cartIcon')
+        let cartIcon = $('.cartIcon')
         let countProduct = $('#num-product')
         // Post request for add item to cart
         $.post(
@@ -168,13 +168,12 @@
                 },
 
                 function (data) {
-                    console.log(data)
+                    console.log('response data of add to cart:\n',data)
 
                     // set cart length for cart icon on navbar
                     let cartLength = Object.keys(data.cart).length
                     cartIcon.attr('data-notify', cartLength)
-
-                    fillCart(data)
+                        fillCart(data)
                 });
     }
 
@@ -222,37 +221,4 @@
 
     }
 
-
-    {#function fillCart(data){#}
-    {##}
-    {#    body = $('#cartBody')#}
-    {#    let total_price = 0;#}
-    {#    body.empty()#}
-    {##}
-    {#    for (let i=0; i<data.products.length;i++){#}
-    {#            let product = data.products[i]#}
-    {#            let count = data.cart[product.id]#}
-    {#            let productAbsoluteUrl = `http://127.0.0.1:8000/en/product/${product.id}/${product.slug}`#}
-    {##}
-    {#           cartItem = `<li class="header-cart-item flex-w flex-t m-b-12">#}
-	{#					<div class="header-cart-item-img">#}
-	{#						<img src="${product.images[0]}" alt="${product.name}">#}
-	{#					</div>#}
-    {##}
-	{#					<div class="header-cart-item-txt p-t-8">#}
-	{#						<a href="${productAbsoluteUrl}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">#}
-	{#							${product.name}#}
-	{#						</a>#}
-    {##}
-	{#						<span class="header-cart-item-info">#}
-	{#							${count} x ${product.final_worth}#}
-	{#						</span>#}
-	{#					</div>#}
-	{#				</li>`#}
-    {#        body.append(cartItem)#}
-    {#        total_price += Number(count) * Number(product.final_worth)#}
-    {#    }#}
-    {#    // set total price for cart#}
-    {#    $('#cartTotal').text(total_price)#}
-    {##}
 </script>
