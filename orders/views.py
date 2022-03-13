@@ -1,9 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
-from utils.cart import Cart
 from django.utils.translation import gettext as _
 
 
-class CartCheckOutView(TemplateView):
+class CartCheckOutView(LoginRequiredMixin, TemplateView):
     template_name = 'orders/cart/cart.html'
 
     def get_context_data(self, **kwargs):
