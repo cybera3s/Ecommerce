@@ -4,9 +4,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 from core.models import User
+from utils.cart import Cart
 from .forms import CustomerRegistrationForm, CustomerLoginForm
 from .models import Customer
 from django.utils.translation import gettext as _
+from utils.client import remove_cookie
 
 
 class CustomerRegisterView(View):
@@ -70,10 +72,22 @@ class CustomerLoginView(View):
             user = authenticate(request, phone=cd['phone'], password=cd['password'])
             if user is not None:
                 login(request, user)
+                # Register items in cookie in db
+                cart = Cart(request)
+                print('<logged in now> Cart: ', cart.cart)
+                cart.register_in_db(request)
+                print('<logged in now after register> Cart: ', cart.cart)
+                response = redirect('product:landing')
+                # del cart cookie
+                response.delete_cookie('cart')
+                # cart.merge_db_cart(request)
+
                 messages.success(request, _('logged in successfully'), 'success')
                 if self.next:
-                    return redirect(self.next)
-                return redirect('product:landing')
+                    response = redirect(self.next)
+                    response.delete_cookie('cart')
+                    return response
+                return response
             # Handle invalid username or password
             messages.error(request, _('Username or Password is Incorrect'), 'warning')
 
@@ -87,4 +101,6 @@ class CustomerLogoutView(LoginRequiredMixin, View):
 
     def get(self, request):
         logout(request)
-        return redirect('product:landing')
+        # del cart cookie on logout
+        response = remove_cookie(redirect('product:landing'), 'cart')
+        return response
