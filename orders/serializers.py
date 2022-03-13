@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-import product
 from orders.models import Cart, CartItem
 from product.models import Product
 from django.utils.translation import gettext_lazy as _
+
 
 class CartSerializer(serializers.HyperlinkedModelSerializer):
     customer = serializers.HyperlinkedRelatedField(view_name='customers:customer-detail', read_only=True)
@@ -35,11 +35,25 @@ class CartItemSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(_("Maximum count is {}").format(product.inventory))
 
         return value
+
+    def save(self, **kwargs):
+        """
+        overwrites count of repetitious items  otherwise normal save
+        """
+        p = self.validated_data['product']
+        item_product = CartItem.objects.filter(product=p)
+        if item_product.exists():
+            item = item_product.first()
+            item.count += self.validated_data['count']
+            item.save()
+        else:
+            return super().save(**kwargs)
+
     # Second method for using model validate
     # def validate(self, attrs):
     #     instance = CartItem(**attrs)
     #     instance.clean()
     #     return attrs
-        # if value > product.inventory:
-        #     raise serializers.ValidationError(f'Maximum count is {product.inventory}')
-        # return value
+    # if value > product.inventory:
+    #     raise serializers.ValidationError(f'Maximum count is {product.inventory}')
+    # return value
