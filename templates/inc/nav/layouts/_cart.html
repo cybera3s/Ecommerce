@@ -15,20 +15,21 @@
 
             <!-- Cart body -->
 			<div class="header-cart-content flex-w js-pscroll">
+
 				<ul class="header-cart-wrapitem w-full" id="cartBody">
-                    {% for product in cart_products %}
-                        <li class="header-cart-item flex-w flex-t m-b-12">
+                    {% for item in cart %}
+                        <li class="header-cart-item flex-w flex-t m-b-12" id='{{ item.product.id }}'>
                             <div class="header-cart-item-img">
-                                <img src="{{ product.0.pictures.first.picture.url }}" alt="{{ product.0.name }}">
+                                <img src="{{ item.product.pictures.first.picture.url }}" alt="{{ item.product.name }}">
                             </div>
 
                             <div class="header-cart-item-txt p-t-8">
-                                <a href="{{ product.0.get_absolute_url }}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                                    {{ product.0.name }}
+                                <a href="{{ item.product.get_absolute_url }}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                    {{ item.product.name }}
                                 </a>
 
                                 <span class="header-cart-item-info">
-                                    {{ product.1 }} x ${{ product.0.final_worth }}
+                                    {{ item.count }} x ${{ item.price }}
                                 </span>
                             </div>
 					    </li>
@@ -38,7 +39,7 @@
 
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-						{% trans 'Total' %}: <span id="cartTotal">{{ cart_total_price }}</span>
+						{% trans 'Total' %}: <span id="cartTotal">{{ cart.get_total_price }}</span>
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
@@ -51,6 +52,9 @@
 {#						</a>#}
 					</div>
 				</div>
+
 			</div>
+            <!-- ./Cart body -->
+
 		</div>
-	</div>
+</div>
