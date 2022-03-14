@@ -67,6 +67,18 @@
 
     }
 
+    // add item count of cart btn event
+    $('.increaseItem').on('click', (e)=>{
+         e.preventDefault();
+        let elem = $(e.target)
+        let productId = elem.attr('data-itemId')
+        let countItemsIcon = +$('#cartIcon').attr('data-notify')
+        let cartTotal = $('#cartTotal')
+        let url = "{% url 'orders:delete_cart_item' 0 %}".replace('0', productId)
+
+        console.log('Product id is : '+productId)
+
+    });
 
 
 
