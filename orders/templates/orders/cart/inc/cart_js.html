@@ -1,0 +1,74 @@
+<script>
+    // remove cart item btn event
+    $('.removeItem').on('click', (e)=>{
+             e.preventDefault();
+            let elem = $(e.target)
+            let itemId = elem.parent().attr('data-itemId')
+            let productName = $('#productName').text()
+
+            console.log(`trying to delete ${productName} with id ${itemId}`)
+
+            // beautiful alert
+            swal({
+                  title: "Are you sure?",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+            .then((willDelete) => {
+                  if (willDelete) {
+                    swal("done! item deleted!", {icon: "success",
+                         timer: 1200,
+                        buttons: false,
+                    });
+                    // on confirm delete item from cart
+                    removeItemFromCart(elem)
+
+                    } else {
+                       swal("nice choice! item kept", {
+                        icon: "success",
+                         timer: 1200,
+                         buttons: false,
+
+                            });
+                            }
+                });
+    });
+
+    // send ajax request and delete from cart
+    function removeItemFromCart(elem){
+
+            let productId = elem.parent().attr('data-itemId')
+            let countItemsIcon = +$('#cartIcon').attr('data-notify')
+            let cartTotal = $('#cartTotal')
+            let url = "{% url 'orders:delete_cart_item' 0 %}".replace('0', productId)
+
+        // delete request for delete item from cart
+        $.ajax({
+                url: url,
+                method: 'DELETE',
+                headers: {
+                    "X-CSRFToken": '{{ csrf_token }}',
+                },
+                success: function (data){
+                    console.log(`on success delete request: ${data}`)
+
+                    $('#cartBody').find(`[data-itemId="${data.item}"]`).remove();   // remove item from dynamic nav cart
+                    elem.parents('tr').remove();        // remove item from main cart page
+                    $('.cartIcon').attr('data-notify', countItemsIcon - 1);         // item count notification on nav bar
+                    cartTotal.text(data.total_price)
+                    $('.total_price').text(data.total_price)
+
+                },
+                error: function (e){
+                    console.log(e)
+                },
+            });
+
+    }
+
+
+
+
+
+</script>
