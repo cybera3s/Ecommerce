@@ -149,6 +149,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     'PAGE_SIZE': 2
 # }
 
+LOGIN_URL = '/en/customers/login/'
+
 SITE_NAME = 'Aiva'
 
 # Jazzmin Settings
