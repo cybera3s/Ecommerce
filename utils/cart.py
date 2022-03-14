@@ -71,11 +71,11 @@ class Cart:
         else:
             print('there is no items in cookies!')
 
-    def remove(self, product):
-        product_id = str(product.id)
-        if product_id in self.cart:
-            del self.cart[product_id]
-            self.save()
+    def remove(self, cart_item):
+        item_id = str(cart_item.product.id)
+
+        if item_id in self.cart:
+            del self.cart[item_id]
 
     def get_total_price(self):
         return sum(int(item['price']) * item['count'] for item in self.cart.values())
