@@ -64,8 +64,8 @@ def access_category_items(request):
 def cart(request):
     active_cart = Cart(request)
 
-    # if request.user.is_authenticated and hasattr(request.user, 'customer'):
-    #     active_cart.merge_db_cart(request)
+    if request.user.is_authenticated and hasattr(request.user, 'customer'):
+        active_cart.merge_db_cart(request)
     print('in context context processor : ', active_cart.cart)
 
     return {
