@@ -1,4 +1,5 @@
 import json
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from core.permissions import IsSuperuserPermission
@@ -18,6 +19,7 @@ class CartViewSet(viewsets.ModelViewSet):
 
 class CartItemApiView(APIView):
     serializer_class = CartItemSerializer
+    cart = CookieCart
 
     def get(self, request):
         cart_items = CartItem.objects.all()
@@ -34,7 +36,7 @@ class CartItemApiView(APIView):
         if serializer.is_valid():
             cart.add(product, serializer.validated_data['count'])
 
-            if request.user.is_authenticated:       # add to cart for logged in users
+            if request.user.is_authenticated:  # add to cart for logged in users
                 db_cart, created = Cart.objects.get_or_create(customer=request.user.customer)
                 serializer.validated_data['cart_id'] = db_cart.id
                 serializer.save()
@@ -46,18 +48,33 @@ class CartItemApiView(APIView):
                     'cart': cart.cart,
                     'auth': True
                 })
-
                 return Response(data, status=status.HTTP_201_CREATED)
 
-            else:      # add to cart not logged in users
+            else:  # add to cart not logged in users
 
                 data.update({
                     'item': serializer.data,
                     'cart': cart.cart,
                 })
                 response = Response(data, status=status.HTTP_201_CREATED)
-                response.set_cookie('cart', json.dumps(cart.cart))          # register cart in cookies
+                response.set_cookie('cart', json.dumps(cart.cart))  # register cart in cookies
                 return response
 
         # Handle serializer Errors
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        cart = CookieCart(request)
+
+        try:
+
+            item = get_object_or_404(CartItem, pk=pk)
+            item.delete()
+            cart.remove(item)
+            return Response({'msg': 'delete successfully!', 'item': pk, 'total_price': cart.get_total_price()})
+
+        except CartItem.DoesNotExist:
+            return Response({'msg': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+
