@@ -9,11 +9,17 @@ CART_SESSION_COOKIE_ID = 'cart'
 class Cart:
     def __init__(self, request):
         self.cookie = request.COOKIES
+        self.session = request.session
         cart = json.loads(self.cookie.get(CART_SESSION_COOKIE_ID)) if self.cookie.get(CART_SESSION_COOKIE_ID) else None
         # if there is no cart in cookies creates it
         if not cart:
             cart = {}
+
         self.cart = cart
+
+        if request.user.is_authenticated and hasattr(request.user, 'customer'):
+            self.merge_db_cart(request)
+
         self.is_registered_in_db = False
 
     def add(self, product, count):
