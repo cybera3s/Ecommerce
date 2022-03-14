@@ -35,16 +35,21 @@ class Cart:
             yield item
 
     def merge_db_cart(self, request):
+        """
+        copy data base cart into cart
+        :param request: corresponding request
+        :return:
+        """
         from orders.models import Cart as db_cart
 
-        if request.user.is_authenticated:
-            real_cart, created = db_cart.objects.get_or_create(customer=request.user.customer)
-            items = real_cart.items.all()
-            if items:
-                for item in items:
-                    self.cart[str(item.product.id)] = {'count': item.count, 'price': item.product.final_worth}
-            else:
-                print('cart in db is empty!')
+        real_cart, created = db_cart.objects.get_or_create(customer=request.user.customer)
+        items = real_cart.items.all()
+        if items:
+            for item in items:
+                self.cart[str(item.product.id)] = {'id': item.id, 'count': item.count,
+                                                   'price': item.product.final_worth}
+        else:
+            print('cart in db is empty!')
 
     def register_in_db(self, request):
         from orders.models import Cart as db_cart
