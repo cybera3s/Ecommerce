@@ -17,9 +17,6 @@ class Cart:
 
         self.cart = cart
 
-        if request.user.is_authenticated and hasattr(request.user, 'customer'):
-            self.merge_db_cart(request)
-
         self.is_registered_in_db = False
 
     def add(self, product, count):
