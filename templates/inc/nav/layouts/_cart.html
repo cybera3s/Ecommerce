@@ -18,7 +18,7 @@
 
 				<ul class="header-cart-wrapitem w-full" id="cartBody">
                     {% for item in cart %}
-                        <li class="header-cart-item flex-w flex-t m-b-12" id='{{ item.product.id }}'>
+                        <li class="header-cart-item flex-w flex-t m-b-12" id='{{ item.product.id }}' data-itemId="{{ item.id  }}">
                             <div class="header-cart-item-img">
                                 <img src="{{ item.product.pictures.first.picture.url }}" alt="{{ item.product.name }}">
                             </div>
