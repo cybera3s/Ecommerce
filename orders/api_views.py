@@ -65,6 +65,7 @@ class CartItemApiView(APIView):
 
     def delete(self, request, pk):
         cart = CookieCart(request)
+        cart.merge_db_cart(request)
 
         try:
 
