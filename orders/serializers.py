@@ -40,14 +40,16 @@ class CartItemSerializer(serializers.ModelSerializer):
         """
         overwrites count of repetitious items  otherwise normal save
         """
-        p = self.validated_data['product']
-        item_product = CartItem.objects.filter(product=p)
-        if item_product.exists():
-            item = item_product.first()
-            item.count += self.validated_data['count']
-            item.save()
-        else:
-            return super().save(**kwargs)
+        if not self.partial:
+            p = self.validated_data['product']
+            item_product = CartItem.objects.filter(product=p)
+            if item_product.exists():
+                item = item_product.first()
+                item.count += self.validated_data['count']
+                item.save()
+            else:
+                return super().save(**kwargs)
+        return super().save(**kwargs)
 
     # Second method for using model validate
     # def validate(self, attrs):
