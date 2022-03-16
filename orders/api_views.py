@@ -21,9 +21,15 @@ class CartItemApiView(APIView):
     serializer_class = CartItemSerializer
     cart = CookieCart
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
+        print(kwargs)
         cart_items = CartItem.objects.all()
         serializer = self.serializer_class(cart_items, many=True, context={'request': request})
+
+        if 'pk' in kwargs:
+            item = cart_items.filter(pk=kwargs['pk']).first()
+            serializer = self.serializer_class(item)
+
         return Response(serializer.data)
 
     def post(self, request):
@@ -77,5 +83,23 @@ class CartItemApiView(APIView):
         except CartItem.DoesNotExist:
             return Response({'msg': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
 
+    def patch(self, request, *args, **kwargs):
+        cart = CookieCart(request)
+        cart.merge_db_cart(request)
 
+        try:
+            item = CartItem.objects.get(pk=request.data.get('item_id'))
+        except CartItem.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
+        real_cart = Cart.objects.get(customer=request.user.customer)
+        serializer = self.serializer_class(item, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            data = {
+                'item': serializer.data,
+                'cart_total_price': real_cart.final_worth()
+            }
+            return Response(data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
