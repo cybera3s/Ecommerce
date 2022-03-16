@@ -128,6 +128,7 @@
                         let total = data.cart_total_price
                         cartTotal.text(total)
                         $('.total_price').text(data.cart_total_price)
+                        itemTotalPrice.text(data.item.count * Number(productPrice.text()))
 
                     },
                     error: function (e){
