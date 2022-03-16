@@ -102,4 +102,4 @@ class CartItemApiView(APIView):
                 'cart_total_price': real_cart.final_worth()
             }
             return Response(data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
