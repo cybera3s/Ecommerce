@@ -88,7 +88,22 @@
             let currentValue = $(this).attr('class').includes("increaseItem") ?  $(this).prev("input.num-product") : $(this).next("input.num-product");
             let url = "{% url 'orders:update_cart_item' 0 %}".replace('0', itemId)
             let countProductInNavCart = $(`#cartBody > li#${productId}`).find('.count-product-cart')
+            let productInventory = currentValue.attr('max')
+            let itemTotalPrice = $('.itemTotalPrice')
+            let productPrice = $('.productPrice')
 
+            console.log('inventory: '+productInventory)
+            if (Number(currentValue.val()) == Number(productInventory)) {
+                $(this).hide()
+                notice.showToast({
+                            text: 'maximum count!',
+                            type: 'warning'
+                        });
+            }else if (Number(currentValue.val()) < Number(productInventory)){
+                currentValue.siblings(".increaseItem").html('<i class="fs-16 zmdi zmdi-plus"></i>')
+
+                currentValue.siblings(".increaseItem").show()
+            }
             console.log(`product Id is ${productId}`)
             console.log(`item Id is ${itemId}`)
 
