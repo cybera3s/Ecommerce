@@ -39,10 +39,3 @@ class CartItemSerializerTest(TestCase):
             data = ser.validated_data
             ser.save()
 
-            product = data['product']
-            count = CartItem.objects.filter(product=product).count()
-        # if item_product:
-        #         ser.save()
-        #
-        #         self.assertEqual(count, 1)
-
