@@ -1,6 +1,4 @@
 from django.urls import path, include
-from django.views.generic import TemplateView
-
 from .api_urls import router
 from .api_views import CartItemApiView
 from .views import CartCheckOutView
