@@ -1,3 +1,5 @@
+{% load static %}
+
 <script>
     // remove cart item btn event
     $('.removeItem-btn').on('click', (e)=>{
@@ -68,18 +70,65 @@
     }
 
     // add item count of cart btn event
-    $('.increaseItem').on('click', (e)=>{
-         e.preventDefault();
-        let elem = $(e.target)
-        let productId = elem.attr('data-itemId')
-        let countItemsIcon = +$('#cartIcon').attr('data-notify')
-        let cartTotal = $('#cartTotal')
-        let url = "{% url 'orders:delete_cart_item' 0 %}".replace('0', productId)
+    $(document).ready(function(){
+        $('.increaseItem,.decreaseItem').on('click', function (e){
+            const notice = new Notice();
+            e.preventDefault()
+            // show loading
+            notice.showLoading({
+                title: 'Updating...',
+                color: '#333',
+                fontSize: 20,
+                backgroundColor: 'rgba(255,255,255,.6)'
+            });
 
-        console.log('Product id is : '+productId)
+            let itemId = $(this).attr('data-itemId')
+            let cartTotal = $('#cartTotal')
+            let productId = $(this).attr('data-productId')
+            let currentValue = $(this).attr('class').includes("increaseItem") ?  $(this).prev("input.num-product") : $(this).next("input.num-product");
+            let url = "{% url 'orders:update_cart_item' 0 %}".replace('0', itemId)
+            let countProductInNavCart = $(`#cartBody > li#${productId}`).find('.count-product-cart')
 
+            console.log(`product Id is ${productId}`)
+            console.log(`item Id is ${itemId}`)
+
+            setTimeout(
+              function()
+              {
+                // Patch request for partial update of cart item
+                $.ajax({
+                    url: url,
+                    method: 'PATCH',
+                    data: {
+                        'item_id':itemId,
+                        'count': currentValue.val(),
+                    },
+                    headers: {
+                        "X-CSRFToken": '{{ csrf_token }}',
+                    },
+                    success: function (data){
+                        console.log(`on success patch request: `, data.item)
+                        notice.hideLoading()
+                        countProductInNavCart.text(data.item.count)
+                        let total = data.cart_total_price
+                        cartTotal.text(total)
+                        $('.total_price').text(data.cart_total_price)
+
+                    },
+                    error: function (e){
+                        notice.hideLoading()
+                        notice.showToast({
+                            text: JSON.parse(e.responseText).count[0],
+                            type: 'error'
+                        });
+                        console.log(e)
+
+                    },
+                });
+
+              }, 1100);
+        });
     });
-
 
 
 
