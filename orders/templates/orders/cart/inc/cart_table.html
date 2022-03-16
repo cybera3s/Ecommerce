@@ -33,9 +33,12 @@
 
                     <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="{{ item.count }}" max="{{ item.product.inventory }}">
 
-                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m increaseItem" data-itemId="{{ item.id }}" data-productId="{{ item.product.id }}">
-                        <i class="fs-16 zmdi zmdi-plus"></i>
-                    </div>
+                  {% if item.count < item.product.inventory %}
+                         <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m increaseItem" data-itemId="{{ item.id }}" data-productId="{{ item.product.id }}">
+                            <i class="fs-16 zmdi zmdi-plus"></i>
+                        </div>
+                  {% endif %}
+
                 </div>
             </td>
             <!-- total price of cart item -->
