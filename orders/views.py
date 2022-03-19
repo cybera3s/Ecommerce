@@ -1,7 +1,9 @@
 import time
+
+import returns as returns
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, JsonResponse, Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView
 from django.utils.translation import gettext as _
@@ -39,3 +41,16 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
         # print(request.POST)
         data = request.POST
         real_cart = self.real_cart
+
+        # AJAX Post request for setting off code
+        if data.get('action') == "set_offcode":
+            code = data['offcode']
+            offcode = get_object_or_404(OffCode, code=code)
+
+            if offcode.active:
+                self.real_cart.off_code = offcode
+                self.real_cart.save()
+                return JsonResponse({'total_price': self.real_cart.final_worth()})
+            # invalid off code
+            return JsonResponse({'msg': 'Invalid code!'})
+
