@@ -154,12 +154,23 @@
     // set off code on click event of apply
     $('#add_offcode').on('click', function (){
         let offcode = $('#offcode_txt')
-        let finalPrice = $("#final_price")
-        let url = "{% url 'orders:cart_checkout' %}"
-        let applyOffcode = $('#add_offcode')
 
-        // check for empty input
-        if (offcode.val() == ''){
+        // check if off code input already set
+        if (offcode.attr('disabled') == 'disabled'){
+
+            $(this).text('Apply Off code')
+            $(this).attr('title', '')
+            $(this).addClass('hov-btn3')
+            offcode.prop('disabled', false);
+            offcode.focus()
+            return 1
+        }else {
+                let finalPrice = $("#final_price")
+                let url = "{% url 'orders:cart_checkout' %}"
+                let applyOffcode = $('#add_offcode')
+
+                // check for empty input
+                if (offcode.val() == ''){
             Toastify({
                         text: "{% trans 'please enter your off code' %}!",
                         duration: 3000,
@@ -169,34 +180,33 @@
             return 1
         }
 
-        $.post(
-            url,
-            {
-                "csrfmiddlewaretoken": "{{ csrf_token }}",
-                "action": 'set_offcode',
-                "offcode": offcode.val(),
-            },
-            function (data){
-                console.log(data)
+                $.post(
+                    url,
+                    {
+                        "csrfmiddlewaretoken": "{{ csrf_token }}",
+                        "action": 'set_offcode',
+                        "offcode": offcode.val(),
+                    },
+                    function (data){
+                        console.log(data)
 
-                Toastify({
-                        text: "{% trans 'Off code applied!' %}!",
-                        duration: 3000,
-                        close: true,
-                        stopOnFocus: true,
-                    }).showToast();
+                        Toastify({
+                                text: "{% trans 'Off code applied!' %}!",
+                                duration: 3000,
+                                close: true,
+                                stopOnFocus: true,
+                            }).showToast();
 
-                offcode.val(data.code)
-                offcode.attr('title', 'is valid until '+ data.valid_to)
-                offcode.attr('disabled', 'disabled')
-                applyOffcode.text(data.offcode)
-                applyOffcode.attr('title', 'click to change')
-                applyOffcode.removeClass('hov-btn3')
-                applyOffcode.attr('id', 'change_offcode')
+                        offcode.val(data.code)
+                        offcode.attr('title', 'is valid until '+ data.valid_to)
+                        offcode.attr('disabled', 'disabled')
+                        applyOffcode.text(data.offcode)
+                        applyOffcode.attr('title', 'click to change')
+                        applyOffcode.removeClass('hov-btn3')
 
-                finalPrice.text(data.total_price)
-            },
-        ).fail(function(error) {
+                        finalPrice.text(data.total_price)
+                    },
+                    ).fail(function(error) {
                 console.log(error)
                 Toastify({
                         text: "{% trans 'Invalid Off code' %}!",
@@ -208,10 +218,10 @@
                       }
                     }).showToast();
             })
-    })
+        }
+        })
 
-    
 
-    
+
 
 </script>
