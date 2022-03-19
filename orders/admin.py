@@ -18,9 +18,15 @@ class CartAdmin(admin.ModelAdmin):
 
 @admin.register(OffCode)
 class OffCodeAdmin(admin.ModelAdmin):
-    list_display = ('value', 'type',)
+    fields = ('code', 'valid_from', 'valid_to', 'value', 'type', 'max_price', )
+    list_display = ('code', 'value', 'type', 'active')
     search_fields = ('value', 'type')
     list_filter = ('created',)
+
+    def active(self, obj):
+        return obj.active
+
+    active.boolean = True
 
 
 @admin.register(CartItem)
