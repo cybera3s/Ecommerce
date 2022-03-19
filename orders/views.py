@@ -34,3 +34,8 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
             return model_instance.objects.get(pk=pk)
         except model_instance.DoesNotExist:
             raise Http404()
+
+    def post(self, request):
+        # print(request.POST)
+        data = request.POST
+        real_cart = self.real_cart
