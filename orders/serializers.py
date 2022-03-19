@@ -26,7 +26,8 @@ class CartItemSerializer(serializers.ModelSerializer):
         """
         Check that the count be between 1 to corresponding product inventory
         """
-        product_id = self.instance.product.id
+        product_id = self.instance.product.id if self.partial else self.initial_data.get('product')
+
         product = Product.objects.get(pk=product_id)
 
         if value > product.inventory:
