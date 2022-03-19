@@ -255,5 +255,51 @@
         }
     });
 
+    // add new address on click event of register address btn
+    $('#register_address').on('click', function () {
+        $('#addresses').val('0')
+
+        let stateName = $("input[name='state']").val()
+        let cityName = $("input[name='city']").val()
+        let postCode = $("input[name='postcode']").val()
+        let addressDetail = $("textarea[name='address_detail']").val()
+
+        let url = "{% url 'orders:cart_checkout' %}";
+
+         $.post(
+                url,
+                {
+                    "csrfmiddlewaretoken": "{{ csrf_token }}",
+                    "action": 'new_address',
+                    'state': stateName,
+                    'city': cityName,
+                    'postal_code': postCode,
+                    'address_detail': addressDetail
+                },
+                function (data) {
+                    console.log(data)
+                       swal("done! new address saved!!", {icon: "success",
+                         timer: 1200,
+                        buttons: false,
+                    });
+                    $('#addresses').append(`<option value="${data.address_id}" selected>${data.address}</option>`)
+
+                    $("#state_errors").empty()
+                    $("#city_errors").empty()
+                    $("#postal_code_errors").empty()
+                    $("#address_detail_errors").empty()
+
+                },
+            ).fail(function(error) {
+                console.log(error)
+                let errors = error.responseJSON.msg
+
+                for (let i in errors){
+                    item = $(`#${i}_errors`)
+                    item.html(`<li style="list-style-type: disc;">${errors[i][0]}</li>`)
+
+                }
+         })
+    })
 
 </script>
