@@ -221,7 +221,39 @@
         }
         })
 
+     // set Address on change of address selection event
+    $("#addresses").on('change', function () {
+        const url = "{% url 'orders:cart_checkout' %}";
 
+        if ($(this).val() != "0"){         // first option that is : select an address
+
+            $.post(
+                url,
+                {
+                    "csrfmiddlewaretoken": "{{ csrf_token }}",
+                    "action": 'set_address',
+                    "address": $(this).val(),
+                },
+                function (data) {
+                    console.log(data)
+                    Toastify({
+                        text: "{% trans 'Address was set' %}!",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true,
+                    }).showToast();
+                },
+            ).fail(function(error) {
+                console.log(error)
+                Toastify({
+                        text: "{% trans 'Something went wrong!' %}!",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true,
+                    }).showToast();
+            })
+        }
+    });
 
 
 </script>
