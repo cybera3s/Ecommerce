@@ -55,3 +55,9 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
             # invalid off code
             raise Http404()
 
+        # AJAX Post request for setting address
+        elif data.get('action') == "set_address":
+            address = self.get_object(Address, data['address'])
+            real_cart.address = address
+            real_cart.save()
+            return JsonResponse({'msg': f'Address {address.id} was set!'})
