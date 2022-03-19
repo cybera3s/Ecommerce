@@ -32,7 +32,7 @@ class Address(BaseModel):
     """
     state = models.CharField(max_length=50, verbose_name=_('State'))
     city = models.CharField(max_length=50, verbose_name=_('City'))
-    postal_code = models.IntegerField(verbose_name=_('Postal Code'))
+    postal_code = models.IntegerField(verbose_name=_('Postal Code'), unique=True)
     address_detail = models.TextField(verbose_name=_('Address Detail'))
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='addresses',
                                  verbose_name=_('Customer'))
