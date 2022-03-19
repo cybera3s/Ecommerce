@@ -62,6 +62,16 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
             real_cart.save()
             return JsonResponse({'msg': f'Address {address.id} was set!'})
 
+        # AJAX POST request for add new address
+        elif data.get('action') == 'new_address':
+            form = AddressRegisterForm(request.POST)
+            if form.is_valid():
+                new_address = form.save(commit=False)
+                new_address.customer = request.user.customer
+                new_address.save()
+                return JsonResponse({'address_id': new_address.id, 'address': str(new_address)})
+            return JsonResponse({'msg': form.errors}, status=400)
+
 
 class PaymentView(LoginRequiredMixin, View):
     def get(self, request):
