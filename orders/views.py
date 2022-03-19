@@ -61,3 +61,15 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
             real_cart.address = address
             real_cart.save()
             return JsonResponse({'msg': f'Address {address.id} was set!'})
+
+
+class PaymentView(LoginRequiredMixin, View):
+    def get(self, request):
+        real_cart = Cart.objects.get(customer=request.user.customer, is_active=True)
+
+        if hasattr(real_cart, 'address') and real_cart.items.all():
+            real_cart.deactivate()
+            real_cart.save()
+            time.sleep(5)
+            return redirect('product:landing')
+        return redirect('orders:cart_checkout')
