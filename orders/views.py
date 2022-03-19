@@ -1,6 +1,4 @@
 import time
-
-import returns as returns
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import redirect, get_object_or_404
@@ -50,7 +48,10 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
             if offcode.active:
                 self.real_cart.off_code = offcode
                 self.real_cart.save()
-                return JsonResponse({'total_price': self.real_cart.final_worth()})
+                data = {'total_price': self.real_cart.final_worth(), 'offcode': str(offcode), 'code': offcode.code,
+                        'valid_to': offcode.valid_to}
+
+                return JsonResponse(data)
             # invalid off code
-            return JsonResponse({'msg': 'Invalid code!'})
+            raise Http404()
 
