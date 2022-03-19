@@ -43,7 +43,7 @@ class CartItemApiView(APIView):
             cart.add(product, serializer.validated_data['count'])
 
             if request.user.is_authenticated:  # add to cart for logged in users
-                db_cart, created = Cart.objects.get_or_create(customer=request.user.customer)
+                db_cart, created = Cart.objects.get_or_create(customer=request.user.customer, is_active=True)
                 serializer.validated_data['cart_id'] = db_cart.id
                 serializer.save()
 
@@ -92,14 +92,15 @@ class CartItemApiView(APIView):
         except CartItem.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        real_cart = Cart.objects.get(customer=request.user.customer)
+        real_cart = Cart.objects.get(customer=request.user.customer, is_active=True)
         serializer = self.serializer_class(item, data=request.data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
             data = {
                 'item': serializer.data,
-                'cart_total_price': real_cart.final_worth()
+                'cart_total_price': real_cart.total_worth(),
+                'cart_final_price': real_cart.final_worth()
             }
             return Response(data)
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
