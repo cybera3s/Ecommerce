@@ -17,8 +17,6 @@ class Cart:
 
         self.cart = cart
 
-        self.is_registered_in_db = False
-
     def add(self, product, count):
         print('adding: ', self.cart)
         product_id = str(product.id)
@@ -45,7 +43,7 @@ class Cart:
         """
         from orders.models import Cart as db_cart
 
-        real_cart, created = db_cart.objects.get_or_create(customer=request.user.customer)
+        real_cart, created = db_cart.objects.get_or_create(customer=request.user.customer, is_active=True)
         items = real_cart.items.all()
         if items:
             for item in items:
@@ -59,7 +57,7 @@ class Cart:
         if not request.user.is_authenticated:
             print('there is no logged in users!')
             return False
-        real_cart, created = db_cart.objects.get_or_create(customer=request.user.customer)
+        real_cart, created = db_cart.objects.get_or_create(customer=request.user.customer, is_active=True)
         items = real_cart.items.all()
         item_ids = items.values_list('product', flat=True)
         cart = self.cart
