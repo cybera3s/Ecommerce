@@ -23,18 +23,6 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
         context['real_cart'] = self.real_cart
         return context
 
-    def get_object(self, model_instance, pk):
-        """
-        get a queryset of model instance using it's primary key or raise http 404 error
-        :param model_instance: An instance of model classes
-        :param pk: primary key of model
-        :return: a http 404 error or model queryset
-        """
-        try:
-            return model_instance.objects.get(pk=pk)
-        except model_instance.DoesNotExist:
-            raise Http404()
-
     def post(self, request):
         # print(request.POST)
         data = request.POST
@@ -57,7 +45,7 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
 
         # AJAX Post request for setting address
         elif data.get('action') == "set_address":
-            address = self.get_object(Address, data['address'])
+            address = get_object_or_404(Address, pk=data['address'])
             real_cart.address = address
             real_cart.save()
             return JsonResponse({'msg': f'Address {address.id} was set!'})
