@@ -22,3 +22,15 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
         context['title'] = _('Cart Checkout')
         context['real_cart'] = self.real_cart
         return context
+
+    def get_object(self, model_instance, pk):
+        """
+        get a queryset of model instance using it's primary key or raise http 404 error
+        :param model_instance: An instance of model classes
+        :param pk: primary key of model
+        :return: a http 404 error or model queryset
+        """
+        try:
+            return model_instance.objects.get(pk=pk)
+        except model_instance.DoesNotExist:
+            raise Http404()
