@@ -61,7 +61,6 @@ class Cart(BaseModel):
         """
         self.total_price = self.total_worth()
         self.final_price = self.final_worth()
-        self.update_inventory()
         super().save(force_insert, force_update, using, update_fields)
 
     def update_inventory(self):
@@ -147,4 +146,5 @@ class OffCode(BaseDiscount):
         verbose_name_plural = _('Off Codes')
 
     def __str__(self):
-        return f"Off Code {self.value}"
+        show = f"%{self.value} Discount" if self.type == 'PER' else f"${self.value} Discount"
+        return show
