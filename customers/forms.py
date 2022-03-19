@@ -2,6 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from core.models import User
 from django.utils.translation import gettext as _
+from customers.models import Address
 
 
 class CustomerRegistrationForm(forms.Form):
@@ -60,3 +61,10 @@ class CustomerLoginForm(forms.Form):
     password = forms.CharField(label='Password',
                                widget=forms.PasswordInput(
                                    attrs={'placeholder': _('your password'), 'class': 'form-control'}))
+
+
+class AddressRegisterForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ("state", 'city', 'postal_code', 'address_detail',)
+        exclude = ('customer',)
