@@ -1,0 +1,58 @@
+{% extends 'customers/dashboard/_dashboard_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Addresses' %}{% endblock %}
+{% block content %}
+    <div class="">
+
+        <div class="page-title">
+
+            <div class="title_left">
+                <h3>{% trans 'Addresses' %}</h3>
+              </div>
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                        <button class="btn btn-primary font-weight-bold" id="add_new_address-btn" type="button">{% trans 'Add New Address' %}!</button>
+                  </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+              <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <div class="col-12" id="address_body">
+                                {% for address in request.user.customer.addresses.all %}
+                                    <!-- blockquote -->
+                                    <blockquote style="border: 2px solid lightgrey;border-radius: 5px;">
+                                        <a href="" style="margin:0 5px;" title="Edit" class="edit-btn"><i class="fa fa-pencil text-success p-2 rounded" aria-hidden="true"></i></a>
+                                        <a href="" style="margin:0 5px;" title="Delete" class="remove-btn"><i class="fa fa-trash text-danger p-2 rounded" aria-hidden="true"></i></a>
+                                        <hr style=" height: 3px;color: black;background: #cfc2c2;">
+                                        <address>
+                                            <span>#{{ forloop.counter }}</span><br>
+                                            <span class="font-weight-bold">{% trans 'State' %}:</span> {{ address.state }}<br>
+                                            <span class="font-weight-bold">{% trans ' city'%}:</span> {{ address.city }}<br>
+                                            <span class="font-weight-bold">{% trans 'Postal code' %}:</span> {{ address.postal_code }}<br>
+                                            <span class="font-weight-bold">{% trans 'Address Detail' %}:</span> {{ address.address_detail }}
+                                        </address>
+    {#                                    <footer>Someone famous in <cite title="Source Title">Source Title</cite>#}
+    {#                                    </footer>#}
+                                    </blockquote>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+              </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+{% block extra_footer %}
+
+{% endblock %}
