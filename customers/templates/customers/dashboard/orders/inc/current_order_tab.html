@@ -1,0 +1,37 @@
+<div role="tabpanel" class="tab-pane fade active in" style="margin-bottom: 6rem;" id="tab_content1" aria-labelledby="current_tab">
+
+    <div class="row" id="cartBody">
+
+        {% for item in cart %}
+
+            <div class="col-md-55" id="item-{{ item.id }}">
+                <div class="thumbnail">
+
+                     <div class="image view view-first">
+
+                        <img style="width: 125px;margin: 0 auto; display: block;" src="{{ item.product.pictures.first.picture.url }}" alt="{{ item.product.name }}" />
+                        <div class="mask">
+
+                          <p><a href="{{ item.product.get_absolute_url }}" class="text-decoration-none" style="color:white;">{{ item.product.name }}</a></p>
+
+                          <div class="tools tools-bottom">
+                            <a class="removeItem-btn" data-itemid="{{ item.id }}" data-productId="{{ item.product.id }}"><i class="fa fa-times"></i></a>
+                          </div>
+
+                        </div>
+
+                     </div>
+
+                    <div class="caption">
+                            <p>{{ item.product.description }}</p>
+                            <p>{% trans 'Total Price' %}: {{ item.count }} X {{ item.product.final_worth }} = {{ item.product.final_worth|mul:item.count }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
