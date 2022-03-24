@@ -18,6 +18,12 @@ class Customer(models.Model):
     avatar = models.FileField(upload_to=user_avatar_path, verbose_name=_('Avatar'), null=True,
                               blank=True, default='customers/images/default_avatar.jpg')
 
+    def get_current_orders(self):
+        """
+        return active carts (open carts)
+        """
+        return self.carts.filter(is_active=True)
+
     class Meta:
         verbose_name = _('Customer')
         verbose_name_plural = _('Customers')
