@@ -24,6 +24,12 @@ class Customer(models.Model):
         """
         return self.carts.filter(is_active=True)
 
+    def get_finished_orders(self):
+        """
+            return finished carts
+        """
+        return self.carts.filter(is_active=False)
+
     class Meta:
         verbose_name = _('Customer')
         verbose_name_plural = _('Customers')
