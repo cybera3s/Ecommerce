@@ -23,14 +23,14 @@
                         {% for order in request.user.customer.get_finished_orders %}
                             <tr class="cart_records" >
                               <td>{{ forloop.counter }}</td>
-                              <td data-toggle="modal" data-target=".bs-example-modal-lg" style="cursor: pointer;">{{ order.total_price }}</td>
-                              <td data-toggle="modal" data-target=".bs-example-modal-lg" style="cursor: pointer;">{{ order.final_price }}</td>
-                              <td data-toggle="modal" data-target=".bs-example-modal-lg" style="cursor: pointer;">{{ order.last_updated }}</td>
-                              <td data-toggle="modal" data-target=".bs-example-modal-lg" style="cursor: pointer;">{% if order.off_code %}{{ order.off_code }}{% else %}0{% endif %}</td>
-                              <td data-toggle="modal" data-target=".bs-example-modal-lg" style="cursor: pointer;">${{ order.get_profit }}</td>
+                              <td data-toggle="modal" data-target=".bs-example-modal-lg-{{ order.id }}" style="cursor: pointer;">{{ order.total_price }}</td>
+                              <td data-toggle="modal" data-target=".bs-example-modal-lg-{{ order.id }}" style="cursor: pointer;">{{ order.final_price }}</td>
+                              <td data-toggle="modal" data-target=".bs-example-modal-lg-{{ order.id }}" style="cursor: pointer;">{{ order.last_updated }}</td>
+                              <td data-toggle="modal" data-target=".bs-example-modal-lg-{{ order.id }}" style="cursor: pointer;">{% if order.off_code %}{{ order.off_code }}{% else %}0{% endif %}</td>
+                              <td data-toggle="modal" data-target=".bs-example-modal-lg-{{ order.id }}" style="cursor: pointer;">${{ order.get_profit }}</td>
                             </tr>
 
-                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal fade bs-example-modal-lg-{{ order.id }}" tabindex="-1" role="dialog" aria-hidden="true">
 
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
