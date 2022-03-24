@@ -1,0 +1,36 @@
+{% extends 'customers/dashboard/_dashboard_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+    <div class="row top_tiles">
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-shopping-cart"></i></div>
+          <div class="count">{{ request.user.customer.carts.all.count }}</div>
+          <h3>{% trans 'Current Orders' %}</h3>
+        </div>
+      </div>
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-check"></i></div>
+                  <div class="count">0</div>
+                  <h3>{% trans 'Delivered Orders' %}</h3>
+                </div>
+              </div>
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-undo"></i></div>
+                  <div class="count">0</div>
+                  <h3>{% trans 'Referred Orders' %}</h3>
+                </div>
+              </div>
+
+    </div>
+
+
+{% endblock %}
