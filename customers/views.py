@@ -107,7 +107,7 @@ class CustomerProfileView(LoginRequiredMixin, TemplateView):
 
 
 class DashboardOrdersView(LoginRequiredMixin, TemplateView):
-    template_name = 'customers/dashboard/orders.html'
+    template_name = 'customers/dashboard/orders/orders.html'
 
 
 class DashboardAddressView(LoginRequiredMixin, TemplateView):
