@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', CustomerLoginView.as_view(), name='customer_login'),
     # Dashboard URLs
     path('profile/', CustomerProfileView.as_view(), name='customer_profile'),
+    path('dashboard/orders/', DashboardOrdersView.as_view(), name='dashboard_orders'),
     path('logout/', CustomerLogoutView.as_view(), name='customer_logout'),
     path('api/', include(router.urls)),
 ]
