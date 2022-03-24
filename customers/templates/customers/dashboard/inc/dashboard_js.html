@@ -1,0 +1,52 @@
+<script>
+     $(document).ready(function(){
+
+            // send delete request on click of trash icon of cart item
+            $(".removeItem-btn").on('click', function (e) {
+                e.preventDefault();
+                let body = $('#cartBody')
+                let itemId = $(this).attr('data-itemId')
+                let url = "{% url 'orders:delete_cart_item' 0 %}".replace('0', itemId)
+
+                  swal({
+                      title: "Are you sure?",
+                      icon: "warning",
+                      buttons: true,
+                      dangerMode: true,
+                    })
+                  .then((willDelete) => {
+                  if (willDelete) {
+                    swal("done! item deleted!", {icon: "success",
+                         timer: 1200,
+                        buttons: false,
+                    });
+                        $.ajax({
+                            url: url,
+                            method: 'DELETE',
+                            headers: {
+                                "X-CSRFToken": '{{ csrf_token }}',
+                            },
+                            success: function (data) {
+                                console.log(`on success delete request: ${data}`)
+                                body.find(`div#item-${itemId}`).remove()
+
+                            },
+                            error: function (e) {
+                                console.log(e)
+                            },
+                        });
+                    } else {
+                       swal("nice choice! item kept", {
+                        icon: "success",
+                         timer: 1200,
+                         buttons: false,
+
+                            });
+                            }
+                });
+            })
+
+
+
+     })
+</script>
