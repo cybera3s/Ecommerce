@@ -74,8 +74,8 @@ class CustomerLoginView(View):
                 login(request, user)
 
                 cart = Cart(request)
-                cart.register_in_db(request)            # Register items in cookie in db
-                response = remove_cookie(redirect('product:landing'), 'cart')          # del cart cookie
+                cart.register_in_db(request)  # Register items in cookie in db
+                response = remove_cookie(redirect('customers:customer_profile'), 'cart')  # del cart cookie
 
                 messages.success(request, _('logged in successfully'), 'success')
                 if self.next:
