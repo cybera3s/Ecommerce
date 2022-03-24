@@ -46,7 +46,16 @@
                 });
             })
 
+            // on hover to rows of cart table event
+            $(".cart_records").hover(
+                function() {
+                    $(this).css('background-color', 'lightblue');
+                    $(this).css('color', 'red');
 
+              }, function() {
+                    $(this).css('background-color', 'white');
+              }
+            );
 
      })
 </script>
