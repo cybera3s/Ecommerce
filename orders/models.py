@@ -69,6 +69,12 @@ class Cart(BaseModel):
             for item in self.items.all():
                 item.product.calculate_inventory(item.count)
 
+    def get_profit(self):
+        """
+        calculate profit of cart
+        """
+        return self.total_price - self.final_price if self.off_code else 0
+
 
 class CartItem(BaseModel):
     """
@@ -146,5 +152,5 @@ class OffCode(BaseDiscount):
         verbose_name_plural = _('Off Codes')
 
     def __str__(self):
-        show = f"%{self.value} Discount" if self.type == 'PER' else f"${self.value} Discount"
+        show = f"%{self.value}" if self.type == 'PER' else f"${self.value}"
         return show
