@@ -2,6 +2,19 @@
 {% load static %}
 {% load i18n %}
 {% block title %}{% trans 'Addresses' %}{% endblock %}
+{% block extra_header %}
+    <style>
+         .fa-pencil:hover{
+            transition: all .2s ease-in-out;
+            transform: scale(1.5);
+        }
+         .fa-trash:hover{
+             transition: all .2s ease-in-out;
+            transform: scale(1.5);
+         }
+
+    </style>
+{% endblock %}
 {% block content %}
     <div class="">
 
