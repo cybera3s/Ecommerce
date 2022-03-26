@@ -134,4 +134,28 @@
                 });
     });
 
+    // click event for edit address btn
+    $(".edit-btn").on('click', function (e) {
+        e.preventDefault()
+         let elem = $(this)
+        let addressId= elem.parent('blockquote').attr('id')
+        let state = $("#state_input_edit")
+        let city = $("#city_input_edit")
+        let postalCode = $("#postal_code_input_edit")
+        let addressDetail = $("#address_detail_input_edit")
+        $("#edit_address_btn").attr('data-addressId', addressId)
+        let url = "{% url 'customers:address-detail' 0 %}".replace('0', addressId)
+
+        // send get request to fill modal with selected address
+        $.get(
+            url,
+            function (data) {
+                state.val(data.state)
+                city.val(data.city)
+                postalCode.val(data.postal_code)
+                addressDetail.val(data.address_detail)
+            }
+        )
+    })
+
 </script>
