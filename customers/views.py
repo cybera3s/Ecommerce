@@ -112,3 +112,7 @@ class DashboardOrdersView(LoginRequiredMixin, TemplateView):
 
 class DashboardAddressView(LoginRequiredMixin, TemplateView):
     template_name = 'customers/dashboard/addresses/addresses.html'
+
+
+class DashboardUserInfoView(LoginRequiredMixin, TemplateView):
+    template_name = 'customers/dashboard/user_info/user_info.html'
