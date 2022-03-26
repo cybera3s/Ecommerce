@@ -7,7 +7,7 @@ class AddressSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Address
-        fields = ['id', 'customer', 'state', 'city', 'postal_code', 'address_detail']
+        fields = ['customer', 'state', 'city', 'postal_code', 'address_detail']
 
 
 class CustomerSerializer(serializers.ModelSerializer):
