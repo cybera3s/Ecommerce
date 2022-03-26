@@ -23,3 +23,12 @@ class AddressViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         return Address.objects.filter(customer__user=user)
+
+    def destroy(self, request, *args, **kwargs):
+        address = self.get_object()
+        try:
+            address.delete()
+        except Exception:
+            return Response({'msg': 'Address in use!'}, status=status.HTTP_403_FORBIDDEN)
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
