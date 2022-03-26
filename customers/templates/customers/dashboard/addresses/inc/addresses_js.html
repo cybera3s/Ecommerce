@@ -60,5 +60,20 @@
 
     })
 
+    // add new address to DOM
+     function addToAddressBody(data){
+        let elem = `<blockquote style="border: 2px solid lightgrey;border-radius: 5px;">
+                    <a href="" style="margin:0 5px;" title="Edit" class="edit-btn"><i class="fa fa-pencil text-success p-2 rounded" aria-hidden="true"></i></a>
+                    <a href="" style="margin:0 5px;" title="Delete" class="remove-btn"><i class="fa fa-trash text-danger p-2 rounded" aria-hidden="true"></i></a>
+                    <hr style=" height: 3px;color: black;background: #cfc2c2;">
+                    <address>
+                        <span class="font-weight-bold">{% trans 'State' %}:</span> ${data.state}<br>
+                        <span class="font-weight-bold">{% trans ' city'%}:</span> ${data.city}<br>
+                        <span class="font-weight-bold">{% trans 'Postal code' %}:</span> ${data.postal_code}<br>
+                        <span class="font-weight-bold">{% trans 'Address Detail' %}:</span> ${data.address_detail}
+                    </address>
+                </blockquote>`
+        $("#address_body").append(elem)
+    }
 
 </script>
