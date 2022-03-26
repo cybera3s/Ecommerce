@@ -1,3 +1,64 @@
+{% load i18n %}
 <script>
+    const notice = new Notice();
+
+    // click event for new address btn
+    $("#add_new_address_btn").on('click', function (e) {
+        e.preventDefault();
+        let state = $("#state_input").val()
+        let city = $("#city_input").val()
+        let postalCode = $("#postal_code_input").val()
+        let addressDetail = $("#address_detail_input").val()
+
+        console.log(state, city, postalCode, addressDetail)
+
+        // check for empty inputs
+        if (state === '' || city === '' || postalCode === '' || addressDetail === ''){
+             Toastify({
+                        text: "{% trans 'All Fields are required' %}!",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true,
+                        position: "center",
+
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+             return false
+        }
+        else{
+            let url = "{% url 'customers:address-list' %}";
+            // send post request to add new address
+            $.post(
+                url,
+                {
+                    "csrfmiddlewaretoken": "{{ csrf_token }}",
+                    'state': state,
+                    'city': city,
+                    'postal_code': postalCode,
+                    'address_detail': addressDetail,
+                    'customer': "{{ request.user.customer.id }}"
+                },
+                function (data) {
+                    console.log(data)
+                    swal("Done! New address added!!", {icon: "success",
+                         timer: 2000,
+                        buttons: false,
+                    });
+                    addToAddressBody(data)
+                },
+            ).fail(function(error) {
+                console.log(error)
+                swal("Something went wrong!",
+                    {icon: "error",
+                         timer: 2000,
+                        buttons: true,
+                    });
+            })
+        }
+
+    })
+
 
 </script>
