@@ -158,4 +158,65 @@
         )
     })
 
+    // click event of edit btn on modal
+    $("#edit_address_btn").on('click', function (e) {
+        e.preventDefault()
+
+        let addressId = $("#edit_address_btn").attr('data-addressId')
+        // address items on modal
+        let state = $("#state_input_edit")
+        let city = $("#city_input_edit")
+        let postalCode = $("#postal_code_input_edit")
+        let addressDetail = $("#address_detail_input_edit")
+        let url = "{% url 'customers:address-detail' 0 %}".replace('0', addressId)
+        // address items on page
+        let addressState = $("#address_body").find(`address#${addressId}`).find('.address_state')
+        let addressCity = $("#address_body").find(`address#${addressId}`).find('.address_city')
+        let addressPostalCode = $("#address_body").find(`address#${addressId}`).find('.address_postal_code')
+        let addressAddressDetail = $("#address_body").find(`address#${addressId}`).find('.address_address_detail')
+
+        if (state.val() === '' || city.val() === '' || postalCode.val() === '' || addressDetail.val() === ''){
+             Toastify({
+                    text: "{% trans 'All Fields are required' %}!",
+                    duration: 3000,
+                    close: true,
+                    stopOnFocus: true,
+                    position: "center",
+
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+             return false
+        }
+        else {
+            // Send Put request to update selected address
+            $.ajax({
+                url: url,
+                method: 'PUT',
+                data: {
+                    'state': state.val(),
+                    'city': city.val(),
+                    'postal_code': postalCode.val(),
+                    'address_detail': addressDetail.val(),
+                    'customer': "{{ request.user.customer.id }}"
+                },
+                headers: {
+                    "X-CSRFToken": '{{ csrf_token }}',
+                },
+                success: function (data) {
+                    console.log(`on success Put request: `, data)
+                    addressState.text(data.state)
+                    addressCity.text(data.city)
+                    addressPostalCode.text(data.postal_code)
+                    addressAddressDetail.text(data.address_detail)
+                },
+                error: function (e) {
+                    console.log(e)
+                },
+
+            })
+        }
+
+    })
 </script>
