@@ -2,7 +2,7 @@ from django.urls import path, include
 from .api_views import *
 from .api_urls import router
 from .views import CustomerRegisterView, CustomerLoginView, CustomerLogoutView, CustomerProfileView, \
-    DashboardOrdersView, DashboardAddressView
+    DashboardOrdersView, DashboardAddressView, DashboardUserInfoView
 
 app_name = 'customers'
 
@@ -15,6 +15,7 @@ urlpatterns = [
     path('profile/', CustomerProfileView.as_view(), name='customer_profile'),
     path('dashboard/orders/', DashboardOrdersView.as_view(), name='dashboard_orders'),
     path('dashboard/addresses/', DashboardAddressView.as_view(), name='dashboard_addresses'),
+    path('dashboard/user_info/', DashboardUserInfoView.as_view(), name='dashboard_user_info'),
 
 
     path('api/', include(router.urls)),
