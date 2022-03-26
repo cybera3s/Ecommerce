@@ -44,16 +44,15 @@
                             <div class="col-12" id="address_body">
                                 {% for address in request.user.customer.addresses.all %}
                                     <!-- blockquote -->
-                                    <blockquote style="border: 2px solid lightgrey;border-radius: 5px;">
-                                        <a href="" style="margin:0 5px;" title="Edit" class="edit-btn"><i class="fa fa-pencil text-success p-2 rounded" aria-hidden="true"></i></a>
+                                    <blockquote style="border: 2px solid lightgrey;border-radius: 5px;" id="{{ address.id }}">
+                                        <a href="" style="margin:0 5px;" title="Edit" data-toggle="modal" data-target=".bs-example-modal-lg-edit" class="edit-btn"><i class="fa fa-pencil text-success p-2 rounded" aria-hidden="true"></i></a>
                                         <a href="" style="margin:0 5px;" title="Delete" class="remove-btn"><i class="fa fa-trash text-danger p-2 rounded" aria-hidden="true"></i></a>
                                         <hr style=" height: 3px;color: black;background: #cfc2c2;">
-                                        <address>
-                                            <span>#{{ forloop.counter }}</span><br>
-                                            <span class="font-weight-bold">{% trans 'State' %}:</span> {{ address.state }}<br>
-                                            <span class="font-weight-bold">{% trans ' city'%}:</span> {{ address.city }}<br>
-                                            <span class="font-weight-bold">{% trans 'Postal code' %}:</span> {{ address.postal_code }}<br>
-                                            <span class="font-weight-bold">{% trans 'Address Detail' %}:</span> {{ address.address_detail }}
+                                        <address id="{{ address.id }}">
+                                            <span class="font-weight-bold">{% trans 'State' %}:</span> <span class="address_state">{{ address.state }}</span><br>
+                                            <span class="font-weight-bold">{% trans ' city'%}:</span> <span class="address_city">{{ address.city }}</span><br>
+                                            <span class="font-weight-bold">{% trans 'Postal code' %}:</span> <span class="address_postal_code">{{ address.postal_code }}</span><br>
+                                            <span class="font-weight-bold">{% trans 'Address Detail' %}:</span> <span class="address_address_detail">{{ address.address_detail }}</span>
                                         </address>
     {#                                    <footer>Someone famous in <cite title="Source Title">Source Title</cite>#}
     {#                                    </footer>#}
@@ -68,6 +67,7 @@
     </div>
 
     {% include 'customers/dashboard/addresses/inc/new_address_modal.html' %}
+    {% include 'customers/dashboard/addresses/inc/edit_address_modal.html' %}
 
 {% endblock %}
 {% block extra_footer %}
