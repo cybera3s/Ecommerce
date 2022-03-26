@@ -1,4 +1,6 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+
 from core.permissions import IsSuperuserPermission, IsOwnerPermission
 from .serializers import AddressSerializer, CustomerSerializer
 from customers.models import *
@@ -16,7 +18,7 @@ class AddressViewSet(viewsets.ModelViewSet):
     serializer_class = AddressSerializer
     queryset = Address.objects.all()
     permission_classes = [IsOwnerPermission]
-    authentication_classes = [authentication.BasicAuthentication]
+    authentication_classes = [authentication.SessionAuthentication]
 
     def get_queryset(self):
         user = self.request.user
