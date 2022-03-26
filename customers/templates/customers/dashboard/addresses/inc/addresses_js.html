@@ -76,4 +76,62 @@
         $("#address_body").append(elem)
     }
 
+    // click event for remove address btn
+    $('.remove-btn').on('click', function (e){
+            e.preventDefault();
+            let elem = $(this)
+            let addressTag = elem.parent('blockquote')
+            let addressId = addressTag.attr('id')
+            let url = "{% url 'customers:address-detail' 0 %}".replace('0', addressId)
+
+            // beautiful alert
+            swal({
+                  title: "Are you sure?",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+            .then((willDelete) => {
+                  if (willDelete) {
+
+                    // on confirm send delete request
+                    $.ajax({
+                        url: url,
+                        method: 'DELETE',
+                        headers: {
+                            "X-CSRFToken": '{{ csrf_token }}',
+                        },
+                        success: function (data){
+                            console.log(`Address #${addressId} deleted!`)
+
+                            $("#address_body").find(addressTag).remove()
+                            swal("done! item deleted!", {icon: "success",
+                                 timer: 1200,
+                                buttons: false,
+                            });
+
+                        },
+                        error: function (e){
+                            console.log(e)
+                            if (e.status === 403){
+                                swal("Address in use!", {icon: "warning",
+                                 timer: 1600,
+                                buttons: false,
+                            });
+
+                            }
+                        },
+                    });
+
+                    } else {
+                       swal("nice choice! address kept", {
+                        icon: "success",
+                         timer: 1200,
+                         buttons: false,
+
+                            });
+                            }
+                });
+    });
+
 </script>
