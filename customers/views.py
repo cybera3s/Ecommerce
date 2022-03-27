@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 
 from core.models import User
 from utils.cart import Cart
-from .forms import CustomerRegistrationForm, CustomerLoginForm
+from .forms import CustomerRegistrationForm, CustomerLoginForm, CustomerEditProfileForm, CustomerChangePassword
 from .models import Customer
 from django.utils.translation import gettext as _
 from utils.client import remove_cookie
@@ -116,3 +116,36 @@ class DashboardAddressView(LoginRequiredMixin, TemplateView):
 
 class DashboardUserInfoView(LoginRequiredMixin, TemplateView):
     template_name = 'customers/dashboard/user_info/user_info.html'
+    form_class = CustomerEditProfileForm
+    form_class1 = CustomerChangePassword
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['form'] = self.form_class(self.request.user.customer,
+                                          initial={'email': self.request.user.email,
+                                                   'first_name': self.request.user.first_name,
+                                                   'last_name': self.request.user.last_name,
+                                                   'phone_number': self.request.user.phone,
+                                                   'gender': self.request.user.customer.gender})
+        context['cp_form'] = self.form_class1()
+        return context
+
+    def post(self, request):
+        form = self.form_class(request.user.customer, request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            customer = request.user.customer
+            customer.gender = cd['gender']
+            user = request.user
+            user.email = cd['email']
+            user.first_name = cd['first_name']
+            user.last_name = cd['last_name']
+            user.phone = cd['phone_number']
+            user.save()
+            customer.save()
+            messages.success(request, _('Personal Information Updated!'), 'success personal_info')
+            return redirect('customers:dashboard_user_info')
+        # Handle Invalid Form
+        messages.error(request, _('Please correct Below Errors!'), 'error')
+        return render(request, self.template_name, {'form': form, 'cp_form': self.form_class1()})
+
