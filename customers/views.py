@@ -149,3 +149,27 @@ class DashboardUserInfoView(LoginRequiredMixin, TemplateView):
         messages.error(request, _('Please correct Below Errors!'), 'error')
         return render(request, self.template_name, {'form': form, 'cp_form': self.form_class1()})
 
+
+class ChangePasswordView(LoginRequiredMixin, View):
+    form_class = CustomerChangePassword
+    form_class1 = CustomerEditProfileForm
+
+    template_name = 'customers/dashboard/user_info/user_info.html'
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            request.user.set_password(cd['password'])
+            request.user.save()
+            messages.success(request, _('Password successfully Updated!'), 'success change_password')
+            return redirect('customers:dashboard_user_info')
+        # Handle Invalid Form
+        messages.error(request, _('Please correct Below Errors!'), 'error change_password')
+        initial = {'email': request.user.email,
+                   'first_name': request.user.first_name,
+                   'last_name': request.user.last_name,
+                   'phone_number': request.user.phone,
+                   'gender': request.user.customer.gender}
+        return render(request, self.template_name,
+                      {'cp_form': form, 'form': self.form_class1(request.user.customer, initial=initial)})
