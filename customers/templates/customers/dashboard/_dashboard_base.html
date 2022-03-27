@@ -40,8 +40,14 @@
                         <img src="{{ request.user.customer.avatar.url }}" alt="{{ request.user.customer }}" class="img-circle profile_img">
                       </div>
                       <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2>{{ request.user.customer }}</h2>
+                        <span>{% trans 'Welcome' %},</span>
+                        <h2>
+                            {% if request.user.first_name %}
+                                {{ request.user.first_name }}
+                            {% else %}
+                                {{ request.user.customer }}
+                            {% endif %}
+                        </h2>
                       </div>
                     </div>
                     <!-- /menu profile quick info -->
