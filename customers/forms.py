@@ -2,13 +2,13 @@ from django import forms
 from django.core.exceptions import ValidationError
 from core.models import User
 from django.utils.translation import gettext as _
-from customers.models import Address
+from customers.models import Address, Customer
 
 
 class CustomerRegistrationForm(forms.Form):
     GENDER_CHOICES = [('0', _('select your gender')), ('1', _('Male')), ('2', _('Female')), ('3', _('Other'))]
 
-    phone = forms.CharField(max_length=100,
+    phone = forms.CharField(max_length=13,
                             widget=forms.TextInput(
                                 attrs={'class': 'form-control', 'type': 'tel', 'placeholder': _('phone')}))
     email = forms.EmailField(max_length=100,
