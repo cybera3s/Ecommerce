@@ -131,11 +131,12 @@ class DashboardUserInfoView(LoginRequiredMixin, TemplateView):
         return context
 
     def post(self, request):
-        form = self.form_class(request.user.customer, request.POST)
+        form = self.form_class(request.user.customer, request.POST, request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
             customer = request.user.customer
             customer.gender = cd['gender']
+            customer.avatar = request.FILES.get('avatar')
             user = request.user
             user.email = cd['email']
             user.first_name = cd['first_name']
