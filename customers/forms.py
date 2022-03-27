@@ -12,7 +12,8 @@ class CustomerRegistrationForm(forms.Form):
                             widget=forms.TextInput(
                                 attrs={'class': 'form-control', 'type': 'tel', 'placeholder': _('phone')}))
     email = forms.EmailField(max_length=100,
-                             widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Email')}))
+                             widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Email')}),
+                           )
     gender = forms.ChoiceField(choices=GENDER_CHOICES,
                                widget=forms.Select(attrs={'class': 'form-select mb-3', 'placeholder': 'Gender'}))
 
