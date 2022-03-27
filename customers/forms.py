@@ -74,6 +74,7 @@ class AddressRegisterForm(forms.ModelForm):
 class CustomerEditProfileForm(forms.Form):
     GENDER_CHOICES = [('0', _('select your gender')), ('1', _('Male')), ('2', _('Female')), ('3', _('Other'))]
 
+    avatar = forms.FileField()
     first_name = forms.CharField(label=_('First Name'), max_length=150, required=False)
     last_name = forms.CharField(label=_('Last Name'), max_length=150, required=False)
     email = forms.EmailField(label=_('Email'))
