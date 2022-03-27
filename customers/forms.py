@@ -110,3 +110,18 @@ class CustomerEditProfileForm(forms.Form):
         return phone_number
 
 
+class CustomerChangePassword(forms.Form):
+    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={'placeholder': _('Password')}))
+    confirm_password = forms.CharField(label=_('Confirm Password'),
+                                       widget=forms.PasswordInput(attrs={'placeholder': _('Confirm password')}))
+
+    def clean(self):
+        """
+        Check that passwords are the same
+        """
+        cd = super().clean()
+        p1 = cd.get('password')
+        p2 = cd.get('confirm_password')
+
+        if p1 and p2 and p1 != p2:
+            raise ValidationError(_('Passwords does not match!'))
