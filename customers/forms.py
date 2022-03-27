@@ -69,3 +69,44 @@ class AddressRegisterForm(forms.ModelForm):
         model = Address
         fields = ("state", 'city', 'postal_code', 'address_detail',)
         exclude = ('customer',)
+
+
+class CustomerEditProfileForm(forms.Form):
+    GENDER_CHOICES = [('0', _('select your gender')), ('1', _('Male')), ('2', _('Female')), ('3', _('Other'))]
+
+    first_name = forms.CharField(label=_('First Name'), max_length=150, required=False)
+    last_name = forms.CharField(label=_('Last Name'), max_length=150, required=False)
+    email = forms.EmailField(label=_('Email'))
+    phone_number = forms.CharField(label=_('Phone Number'), max_length=13, widget=forms.TextInput(
+        attrs={'type': 'tel', 'placeholder': _('Phone Number')}))
+    gender = forms.ChoiceField(choices=GENDER_CHOICES,
+                               widget=forms.Select(attrs={'placeholder': 'Gender', 'class': 'form-control'}))
+
+    def __init__(self, customer, *args, **kwargs):
+        self.customer = Customer.objects.get(id=customer.id)
+        super(CustomerEditProfileForm, self).__init__(*args, **kwargs)
+
+    def clean_email(self):
+        """
+        stop repetitious email
+        """
+        email = self.cleaned_data['email']
+        user = User.objects.filter(email=email)
+        if self.customer.user != user.first():
+            if user.exists():
+                raise ValidationError('Email already exists!')
+        return email
+
+    def clean_phone_number(self):
+        """
+        stop repetitious email
+        """
+        phone_number = self.cleaned_data['phone_number']
+        user = User.objects.filter(phone=phone_number)
+
+        if self.customer.user != user.first():
+            if user.exists():
+                raise ValidationError(_('Phone Number already exists!'))
+        return phone_number
+
+
