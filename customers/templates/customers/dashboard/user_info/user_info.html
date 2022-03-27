@@ -1,6 +1,57 @@
 {% extends 'customers/dashboard/_dashboard_base.html' %}
 {% load i18n %}
 {% block title %}{% trans 'Customer Info' %}{% endblock %}
+{% block extra_header %}
+    <style>
+
+        .profile-pic {
+            color: transparent;
+            width: 150px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+            margin:20px auto;
+
+        }
+        .profile-pic input {
+      display: none;
+    }
+        .profile-pic img {
+      position: absolute;
+      object-fit: cover;
+      width: 165px;
+      height: 165px;
+      box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+      border-radius: 100px;
+      z-index: 0;
+    }
+        .profile-pic .-label {
+      cursor: pointer;
+      height: 165px;
+      width: 165px;
+    }
+        .profile-pic:hover .-label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      color: #fafafa;
+      transition: background-color 0.2s ease-in-out;
+      border-radius: 100px;
+      margin-bottom: 0;
+    }
+        .profile-pic span {
+      display: inline-flex;
+      padding: 0.2em;
+      height: 2em;
+    }
+
+    </style>
+{% endblock %}
 {% block content %}
 
     <div class="row">
@@ -30,9 +81,19 @@
                     {% endif %}
 
                     <br/>
-                    <form action="{% url 'customers:dashboard_user_info' %}" class="form-horizontal form-label-left input_mask" method="post">
+                    <form action="{% url 'customers:dashboard_user_info' %}" enctype="multipart/form-data" class="form-horizontal form-label-left input_mask" method="post">
                         {% csrf_token %}
                         {{ form.non_field_errors }}
+                        <!-- Avatar -->
+                        <div class="profile-pic">
+                          <label class="-label" for="file">
+                            <span class="glyphicon glyphicon-camera"></span>
+                            <span>{% trans 'Change Image' %}</span>
+                          </label>
+                          <input id="file" type="file" onchange="loadFile(event)" name="{{ form.avatar.html_name }}" />
+                          <img src="{{ request.user.customer.avatar.url }}" id="output" width="150" />
+                        </div>
+
                         <!-- first name -->
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left"
@@ -198,4 +259,14 @@
         </div>
 
     </div>
+{% endblock %}
+{% block extra_footer %}
+    <script>
+
+        let loadFile = function (event) {
+        let image = document.getElementById("output");
+          image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+    </script>
 {% endblock %}
