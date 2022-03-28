@@ -81,7 +81,7 @@
                 {% endif %}
 
                 <input type="submit" value="{{ title }}" class="w-100 btn btn-primary p-2 mb-3 fw-bold">
-                <h5 class="text-center">Or</h5>
+                <h5 class="text-center">{% trans 'Or' %}</h5>
                 <h5 class="text-center">{% trans 'If you Already have an account' %}? <a class="text-decoration-none" href="{% url 'customers:customer_login' %}">{% trans 'Sign in here' %}</a></h5>
             </form>
         </div>
