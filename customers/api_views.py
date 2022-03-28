@@ -11,7 +11,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
     queryset = Customer.objects.all()
     permission_classes = [IsSuperuserPermission]
-    authentication_classes = [authentication.BasicAuthentication]
+    authentication_classes = [authentication.SessionAuthentication]
 
 
 class AddressViewSet(viewsets.ModelViewSet):
