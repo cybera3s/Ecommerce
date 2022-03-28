@@ -3,7 +3,7 @@
     <ul class="topbar-mobile">
         <li>
             <div class="left-top-bar">
-                <strong>Aiva Shop</strong>
+                <strong>{% trans 'Aiva Shop' %}</strong>
             </div>
         </li>
 
@@ -20,13 +20,13 @@
 
                 <!-- Authentication -->
                 {% if not request.user.is_authenticated %}
-                    <a href="{% url 'customers:customer_login' %}" class="flex-c-m trans-04 p-lr-25">Login</a>
+                    <a href="{% url 'customers:customer_login' %}" class="flex-c-m trans-04 p-lr-25">{% trans 'Login' %}</a>
 
-                    <a href="{% url 'customers:customer_register' %}" class="flex-c-m trans-04 p-lr-25">Register</a>
+                    <a href="{% url 'customers:customer_register' %}" class="flex-c-m trans-04 p-lr-25">{% trans 'Register' %}</a>
                 {% else %}
                     <a href="{% url 'customers:customer_profile' %}"
                        class="flex-c-m trans-04 p-lr-25">{% trans 'My Account' %}</a>
-                    <a href="{% url 'customers:customer_logout' %}" class="flex-c-m trans-04 p-lr-25">Logout</a>
+                    <a href="{% url 'customers:customer_logout' %}" class="flex-c-m trans-04 p-lr-25">{% trans 'Logout' %}</a>
                 {% endif %}
 
             </div>
@@ -36,11 +36,11 @@
     <ul class="main-menu-m">
 
         <li>
-            <a href="{% url 'product:landing' %}">Home</a>
+            <a href="{% url 'product:landing' %}">{% trans 'Home' %}</a>
         </li>
 
         <li>
-            <a href="{% url 'product:category_list' %}">Categories</a>
+            <a href="{% url 'product:category_list' %}">{% trans 'Categories' %}</a>
             {% include 'inc/nav/layouts/categories_mobile.html' %}
             <span class="arrow-main-menu-m">
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -48,11 +48,11 @@
         </li>
 
         <li>
-            <a href="#">About</a>
+            <a href="#">{% trans 'About' %}</a>
         </li>
 
         <li>
-            <a href="#">Contact</a>
+            <a href="#">{% trans 'Contact' %}</a>
         </li>
     </ul>
 
