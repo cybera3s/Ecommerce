@@ -1,8 +1,8 @@
 import json
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, status, authentication
+from rest_framework import viewsets, status, authentication, permissions
 from rest_framework.response import Response
-from core.permissions import IsSuperuserPermission
+from core.permissions import IsSuperuserPermission, CustomIsAuthenticatedOrReadOnly
 from orders.models import Cart, CartItem
 from orders.serializers import CartSerializer, CartItemSerializer
 from rest_framework.views import APIView
@@ -21,6 +21,8 @@ class CartViewSet(viewsets.ModelViewSet):
 class CartItemApiView(APIView):
     serializer_class = CartItemSerializer
     cart = CookieCart
+    permission_classes = [CustomIsAuthenticatedOrReadOnly]
+    authentication_classes = [authentication.SessionAuthentication]
 
     def get(self, request, *args, **kwargs):
         cart_items = CartItem.objects.all()
