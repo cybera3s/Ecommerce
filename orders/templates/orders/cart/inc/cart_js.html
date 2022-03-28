@@ -226,6 +226,14 @@
         const url = "{% url 'orders:cart_checkout' %}";
 
         if ($(this).val() != "0"){         // first option that is : select an address
+            // show payment btn
+            elem = `<div class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="purchase">
+                                {% trans 'Proceed to Checkout' %}
+                </div>`
+            let itemsCount = "{{ real_cart.items.all.count }}"
+            if (Number(itemsCount) > 0){
+                $("#purchase").html(elem)
+            }
 
             $.post(
                 url,
