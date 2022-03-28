@@ -8,6 +8,9 @@ from .serializers import ProductSerializer, BrandSerializer
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [IsSuperuserPermission]
+
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['category', 'discount', 'brand']
     search_fields = ['name', 'brand__name']
