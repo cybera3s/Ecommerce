@@ -1,4 +1,5 @@
 import time
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import redirect, get_object_or_404
@@ -69,6 +70,7 @@ class PaymentView(LoginRequiredMixin, View):
         if hasattr(real_cart, 'address') and real_cart.items.all():
             real_cart.deactivate()
             real_cart.save()
+            real_cart.update_inventory()
             time.sleep(5)
             return redirect('product:landing')
         return redirect('orders:cart_checkout')
