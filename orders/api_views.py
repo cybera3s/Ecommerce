@@ -23,7 +23,6 @@ class CartItemApiView(APIView):
     cart = CookieCart
 
     def get(self, request, *args, **kwargs):
-        print(kwargs)
         cart_items = CartItem.objects.all()
         serializer = self.serializer_class(cart_items, many=True, context={'request': request})
 
