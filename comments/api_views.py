@@ -1,7 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework import viewsets
-from customers.models import Customer
 from .models import Comment
 from .serializers import CommentSerializer
 
