@@ -44,15 +44,16 @@
             </div>
         </div>
 
-    {% if real_cart.address and real_cart.items.all %}
 
         <a href="{% url 'orders:cart_payment' %}" class="text-decoration-none text-light" id="purchase">
-            <div class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="purchase">
-                            {% trans 'Proceed to Checkout' %}
-            </div>
+            {% if real_cart.address and real_cart.items.all %}
+
+                <div class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="purchase">
+                                {% trans 'Proceed to Checkout' %}
+                </div>
+            {% endif %}
         </a>
 
-    {% endif %}
 
 
     </div>
