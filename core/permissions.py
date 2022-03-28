@@ -1,4 +1,5 @@
 from rest_framework.permissions import BasePermission
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class IsSuperuserPermission(BasePermission):
@@ -17,3 +18,15 @@ class IsOwnerPermission(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         return request.user == obj.customer.user
+
+
+class CustomIsAuthenticatedOrReadOnly(BasePermission):
+
+    SAFE_METHODS = ('GET', 'HEAD', 'OPTIONS', 'POST')
+
+    def has_permission(self, request, view):
+        return bool(
+            request.method in self.SAFE_METHODS or
+            request.user and
+            request.user.is_authenticated
+        )
