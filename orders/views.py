@@ -73,4 +73,5 @@ class PaymentView(LoginRequiredMixin, View):
             real_cart.update_inventory()
             time.sleep(5)
             return redirect('product:landing')
+        messages.error(request, _("you don't have any items!"), 'error cart')
         return redirect('orders:cart_checkout')
