@@ -14,7 +14,8 @@ class CartCheckOutView(LoginRequiredMixin, TemplateView):
     template_name = 'orders/cart/cart.html'
 
     def setup(self, request, *args, **kwargs):
-        self.real_cart = Cart.objects.get(customer=request.user.customer, is_active=True)
+        if request.user.is_authenticated:
+            self.real_cart = Cart.objects.get(customer=request.user.customer, is_active=True)
         super().setup(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
