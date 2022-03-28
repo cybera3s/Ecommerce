@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="menu-mobile">
     <ul class="topbar-mobile">
         <li>
@@ -23,7 +24,9 @@
 
                     <a href="{% url 'customers:customer_register' %}" class="flex-c-m trans-04 p-lr-25">Register</a>
                 {% else %}
-                     <a href="{% url 'customers:customer_logout' %}" class="flex-c-m trans-04 p-lr-25">Logout</a>
+                    <a href="{% url 'customers:customer_profile' %}"
+                       class="flex-c-m trans-04 p-lr-25">{% trans 'My Account' %}</a>
+                    <a href="{% url 'customers:customer_logout' %}" class="flex-c-m trans-04 p-lr-25">Logout</a>
                 {% endif %}
 
             </div>
