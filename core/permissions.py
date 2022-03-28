@@ -7,7 +7,6 @@ class IsSuperuserPermission(BasePermission):
         return request.user.is_superuser
 
     def has_object_permission(self, request, view, obj):
-        print(obj)
         return request.user == obj.user
 
 
