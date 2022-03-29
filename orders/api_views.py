@@ -80,7 +80,8 @@ class CartItemApiView(APIView):
             item = get_object_or_404(CartItem, pk=pk)
             item.delete()
             cart.remove(item)
-            return Response({'msg': 'delete successfully!', 'item': pk, 'total_price': cart.get_total_price()})
+            return Response({'msg': 'delete successfully!', 'item': pk, 'total_price': cart.get_total_price(),
+                             'items_count': len(cart)})
 
         except CartItem.DoesNotExist:
             return Response({'msg': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
