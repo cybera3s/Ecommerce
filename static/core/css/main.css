@@ -1790,7 +1790,7 @@ button.mfp-close {
 }
 
 .btn-num-product-up,
-.btn-num-product-down {
+.btn-num-product-down,.decreaseItem,.increaseItem {
   width: 45px;
   height: 100%;
   cursor: pointer;
