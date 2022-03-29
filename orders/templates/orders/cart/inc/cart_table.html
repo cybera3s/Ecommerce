@@ -1,13 +1,14 @@
 {% load core_extras %}
+{% load i18n %}
 <table class="table-shopping-cart">
 
     <!-- headers -->
     <tr class="table_head">
-        <th class="column-1 text-center">Product</th>
-        <th class="column-2 text-center">Price</th>
-        <th class="column-3 text-center">Quantity</th>
-        <th class="column-4 text-center">Total</th>
-        <th class="column-5 text-center">Remove</th>
+        <th class="column-1 text-center">{% trans 'Product' %}</th>
+        <th class="column-2 text-center">{% trans 'Price' %}</th>
+        <th class="column-3 text-center">{% trans 'Quantity' %}</th>
+        <th class="column-4 text-center">{% trans 'Total' %}</th>
+        <th class="column-5 text-center">{% trans 'Remove' %}</th>
     </tr>
 
     {% for item in cart %}
