@@ -215,8 +215,11 @@
     /*==================================================================
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
+        const notice = new Notice();
         var numProduct = Number($(this).next().val());
-        if(numProduct > 0) $(this).next().val(numProduct - 1);
+        if(numProduct > 0 && (numProduct - 1)!== 0){ // check for minimum
+           $(this).next().val(numProduct - 1);
+        }
     });
 
     $('.btn-num-product-up').on('click', function(){
