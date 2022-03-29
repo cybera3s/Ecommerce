@@ -332,5 +332,13 @@
                 }
          })
     })
-
+    // click event for proceed to checkout btn
+    $("#purchase").on('click', function (e) {
+         swal("{% trans 'thank you for your choice' %}",{
+                  title: "{% trans 'Payment successfully' %}",
+                  icon: "success",
+                  buttons: false,
+                  timer: 3000,
+                })
+    })
 </script>
