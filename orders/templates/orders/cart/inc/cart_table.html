@@ -27,14 +27,14 @@
             <!-- product count -->
             <td class="column-3 text-center">
                 <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m decreaseItem" data-itemId="{{ item.id }}" data-productId="{{ item.product.id }}">
+                    <div class="cl8 hov-btn3 trans-04 flex-c-m decreaseItem" data-itemId="{{ item.id }}" data-productId="{{ item.product.id }}">
                         <i class="fs-16 zmdi zmdi-minus"></i>
                     </div>
 
                     <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="{{ item.count }}" max="{{ item.product.inventory }}" min="1">
 
                   {% if item.count < item.product.inventory %}
-                         <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m increaseItem" data-itemId="{{ item.id }}" data-productId="{{ item.product.id }}">
+                         <div class="cl8 hov-btn3 trans-04 flex-c-m increaseItem" data-itemId="{{ item.id }}" data-productId="{{ item.product.id }}">
                             <i class="fs-16 zmdi zmdi-plus"></i>
                         </div>
                   {% endif %}
