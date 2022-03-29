@@ -78,20 +78,39 @@
     // add item count of cart btn event
     $(document).ready(function(){
         $('.increaseItem,.decreaseItem').on('click', function (e){
-            const notice = new Notice();
             e.preventDefault()
-            // show loading
             notice.showLoading({
                 title: 'Updating...',
                 color: '#333',
                 fontSize: 20,
                 backgroundColor: 'rgba(255,255,255,.6)'
             });
-
             let itemId = $(this).attr('data-itemId')
             let cartTotal = $('#cartTotal')
             let productId = $(this).attr('data-productId')
             let currentValue = $(this).attr('class').includes("increaseItem") ?  $(this).prev("input.num-product") : $(this).next("input.num-product");
+
+            if ($(this).attr('class').includes("decreaseItem") ) {
+                if(currentValue.val() > 0 && (currentValue.val() - 1)!== 0){
+                    currentValue.val(Number(currentValue.val()) - 1);
+                // check for minimum count
+                }else{
+                    Toastify({
+                        text: "{% trans 'Minimum value for count is 1' %}!",
+                        duration: 1600,
+                        stopOnFocus: true,
+                        position: 'center',
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+                    notice.hideLoading()
+                    return 1
+                }
+            }else{
+                currentValue.val(Number(currentValue.val()) + 1);
+            }
+
             let url = "{% url 'orders:update_cart_item' 0 %}".replace('0', itemId)
             let countProductInNavCart = $(`#cartBody > li#${productId}`).find('.count-product-cart')
             let productInventory = currentValue.attr('max')
