@@ -2,7 +2,6 @@
 {% load i18n %}
 <script>
     const notice = new Notice();
-
     // remove cart item btn event
     $('.removeItem-btn').on('click', (e)=>{
              e.preventDefault();
@@ -62,7 +61,12 @@
                     $('.cartIcon').attr('data-notify', countItemsIcon - 1);         // item count notification on nav bar
                     cartTotal.text(data.total_price)
                     $('.total_price').text(data.total_price)
-
+                    let itemsCount = data.items_count
+                    // hide purchase btn if cart is empty
+                    if (Number(itemsCount) <= 0){
+                        console.log(itemsCount)
+                        $("#purchase").empty()
+                    }
                 },
                 error: function (e){
                     console.log(e)
