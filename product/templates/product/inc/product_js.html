@@ -79,8 +79,8 @@
     // fill brands section
     function brands(data) {
 
-        for (let i = 0; i <= data.length; i++) {
-            let brand = data[i]
+        for (let b of data.results) {
+            let brand = b
             elem = `<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".${brand.name}">
                     ${brand.name}
                 </button>`
