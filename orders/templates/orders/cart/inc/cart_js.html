@@ -76,7 +76,7 @@
     }
 
     // add item count of cart btn event
-    $(document).ready(function(){
+        $(document).ready(function(){
         $('.increaseItem,.decreaseItem').on('click', function (e){
             e.preventDefault()
             notice.showLoading({
@@ -114,16 +114,24 @@
             let url = "{% url 'orders:update_cart_item' 0 %}".replace('0', itemId)
             let countProductInNavCart = $(`#cartBody > li#${productId}`).find('.count-product-cart')
             let productInventory = currentValue.attr('max')
-            let itemTotalPrice = $('.itemTotalPrice')
-            let productPrice = $('.productPrice')
+            let itemTotalPrice = $(this).parents("td").next('td').children('span')
+
+            let productPrice = $(this).parents("td").prev('td').children('span')
 
             console.log('inventory: '+productInventory)
             if (Number(currentValue.val()) == Number(productInventory)) {
                 $(this).hide()
-                notice.showToast({
-                            text: 'maximum count!',
-                            type: 'warning'
-                        });
+
+                Toastify({
+                        text: "{% trans 'maximum count!' %}!",
+                        duration: 1600,
+                        stopOnFocus: true,
+                        position: 'center',
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+
             }else if (Number(currentValue.val()) < Number(productInventory)){
                 currentValue.siblings(".increaseItem").html('<i class="fs-16 zmdi zmdi-plus"></i>')
 
@@ -157,6 +165,7 @@
                         $("#final_price").text(data.cart_final_price)
 
                         itemTotalPrice.text(data.item.count * Number(productPrice.text()))
+                        console.log("total_price before: ", itemTotalPrice.find('span').text())
 
                     },
                     error: function (e){
@@ -332,8 +341,9 @@
                 }
          })
     })
+
     // click event for proceed to checkout btn
-    $("#purchase").on('click', function (e) {
+    $("#purchase").on('click', function () {
          swal("{% trans 'thank you for your choice' %}",{
                   title: "{% trans 'Payment successfully' %}",
                   icon: "success",
