@@ -3,9 +3,9 @@
     // get all Products
     function getAllProducts() {
         $.get(
-        '{% url "product:product-list" %}',
-        function (data){
-            products(data)
+            '{% url "product:product-list" %}',
+            function (data) {
+                console.log(data)
             }
         )
     }
