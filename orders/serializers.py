@@ -51,7 +51,8 @@ class CartItemSerializer(serializers.ModelSerializer):
                 item.save()
             else:
                 return super().save(**kwargs)
-        return super().save(**kwargs)
+        else:
+            return super().save(**kwargs)
 
     # Second method for using model validate
     # def validate(self, attrs):
