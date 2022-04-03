@@ -1,3 +1,4 @@
+{% load static %}
 {% load i18n %}
 <script>
     // get all Products
@@ -13,9 +14,9 @@
     // get all Brands
     function getAllBrands() {
         $.get(
-        '{% url "product:brand-list" %}',
-        function (data){
-            brands(data)
+            '{% url "product:brand-list" %}',
+            function (data) {
+                console.log(data)
             }
         )
     }
