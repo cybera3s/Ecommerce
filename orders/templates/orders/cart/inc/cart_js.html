@@ -170,10 +170,16 @@
                     },
                     error: function (e){
                         notice.hideLoading()
-                        notice.showToast({
+                        Toastify({
                             text: JSON.parse(e.responseText).count[0],
-                            type: 'error'
-                        });
+                            duration: 1600,
+                            stopOnFocus: true,
+                            position: 'center',
+                        style: {
+                            background: "red",
+                          }
+                        }).showToast();
+
                         console.log(e)
 
                     },
