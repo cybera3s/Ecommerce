@@ -1,0 +1,24 @@
+{% load i18n %}
+<div class="pagination-wrapper" id="pagination">
+    <div class="pagination">
+
+        {% if page_obj.has_previous %}
+            <a class="prev page-numbers" href="?page={{ page_obj.previous_page_number }}">{% trans 'previous' %}</a>
+        {% endif %}
+
+        {% for page in page_obj.paginator %}
+
+            {% if page.number == page_obj.number %}
+                <span aria-current="page" class="page-numbers current">{{ page.number }}</span>
+            {% else %}
+                <a class="page-numbers" href="?page={{ page.number }}">{{ page.number }}</a>
+            {% endif %}
+
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="next page-numbers" href="?page={{ page_obj.next_page_number }}">{% trans 'Next' %}</a>
+        {% endif %}
+
+    </div>
+</div>
