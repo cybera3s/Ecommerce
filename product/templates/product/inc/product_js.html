@@ -102,13 +102,13 @@
     }
 
     // get one product
-    function getProduct(productId){
+    function getProduct(productId) {
         // AJAX for Products
         let url = '{% url "product:product-detail" 0 %}'.replace('0', productId);
 
         $.get(
-        url,
-        function (data){
+            url,
+            function (data) {
                 fillModal(data)
             }
         )
