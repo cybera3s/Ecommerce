@@ -37,7 +37,7 @@ class CartItemApiView(APIView):
     def post(self, request):
         data = {}
         serializer = self.serializer_class(data=request.data)
-        cart = CookieCart(request)
+        cart = self.cart(request)
         product = Product.objects.get(pk=request.data.get('product'))
         data['product'] = ProductSerializer(product).data
 
@@ -45,6 +45,7 @@ class CartItemApiView(APIView):
             cart.add(product, serializer.validated_data['count'])
 
             if request.user.is_authenticated:  # add to cart for logged in users
+                cart.merge_db_cart(request)
                 db_cart, created = Cart.objects.get_or_create(customer=request.user.customer, is_active=True)
                 serializer.validated_data['cart_id'] = db_cart.id
                 serializer.save()
