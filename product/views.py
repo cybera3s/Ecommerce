@@ -7,11 +7,14 @@ from django.utils.translation import gettext as _
 from django.views.generic import DetailView, ListView, TemplateView
 
 from comments.forms import CommentCreateForm
-from product.models import Category, Product
+from product.models import Category, Product, Brand
 
 
-class LandingView(TemplateView):
+class LandingView(ListView):
     template_name = 'product/landing/landing.html'
+    model = Product
+    context_object_name = 'products'
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
