@@ -3,66 +3,149 @@
 {% load i18n %}
 {% block extra_head %}
     <style>
-    #products > div {
-        transition: ease 500ms;
-        padding: 1rem;
-    }
-    #products > div:hover {
+        #products > div {
+            transition: ease 500ms;
+            padding: 1rem;
+        }
 
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-        border-radius: 10px;
-    }
+        #products > div:hover {
+
+            box-shadow: rgba(0, 0, 0, 0.25) 0 25px 50px -12px;
+            border-radius: 10px;
+        }
+
+            .pagination-wrapper {
+              text-align: center;
+              margin: 40px 0;
+            }
+
+            .pagination {
+              display: inline-block;
+              height: 70px;
+              margin-top: 70px;
+              padding: 0 25px;
+              border-radius: 35px;
+              background-color: #eee;
+            }
+            @media only screen and (max-width: 1199px) {
+              .pagination {
+                height: 50px;
+                margin-top: 50px;
+                padding: 0 10px;
+                border-radius: 25px;
+              }
+            }
+
+            .page-numbers {
+              display: block;
+              padding: 0 25px;
+              float: left;
+              transition: 400ms ease;
+              color: #595959;
+              font-size: 20px;
+              letter-spacing: 0.1em;
+              line-height: 70px;
+            }
+            .page-numbers:hover, .page-numbers.current {
+              background-color: #86c023;
+              color: #fff;
+            }
+            .page-numbers.prev:hover, .page-numbers.next:hover {
+              background-color: transparent;
+              color: #86c023;
+            }
+            @media only screen and (max-width: 1199px) {
+              .page-numbers {
+                padding: 0 15px;
+                font-size: 16px;
+                line-height: 50px;
+              }
+            }
+            @media only screen and (min-width: 120px) and (max-width: 1024px) {
+              .page-numbers {
+                padding: 0 14px;
+                display: none;
+              }
+              .page-numbers:nth-of-type(2) {
+                position: relative;
+                padding-right: 50px;
+              }
+              .page-numbers:nth-of-type(2)::after {
+                content: "...";
+                position: absolute;
+                font-size: 25px;
+                top: 0;
+                left: 45px;
+              }
+              .page-numbers:nth-child(-n+3), .page-numbers:nth-last-child(-n+3) {
+                display: block;
+              }
+              .page-numbers:nth-last-child(-n+4) {
+                padding-right: 14px;
+              }
+              .page-numbers:nth-last-child(-n+4)::after {
+                content: none;
+              }
+            }
 
     </style>
 {% endblock %}
 {% block content %}
 
     <section class="bg0 p-t-23 p-b-140" style="padding-top: 6rem;">
-		<div class="container">
+        <div class="container">
 
             <!-- section title -->
-			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">
-					{% trans 'Products' %}
-				</h3>
-			</div>
+            <div class="p-b-10">
+                <h3 class="ltext-103 cl5">
+                    {% trans 'Products' %}
+                </h3>
+            </div>
 
             <!-- Search & Filter -->
-			<div class="flex-w flex-sb-m p-b-52">
+            <div class="flex-w flex-sb-m p-b-52">
 
                 <!-- filter By Brands -->
                 {% include 'product/inc/filter_brand.html' %}
                 <!-- Search & Filter buttons -->
-				<div class="flex-w flex-c-m m-tb-10">
-					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 {% trans 'Filter' %}
-					</div>
+                <div class="flex-w flex-c-m m-tb-10">
+                    <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+                        <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+                        <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                        {% trans 'Filter' %}
+                    </div>
 
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						{% trans 'Search' %}
-					</div>
-				</div>
+                    <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+                        <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+                        <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                        {% trans 'Search' %}
+                    </div>
+                </div>
 
-				<!-- Search product -->
+                <!-- Search product -->
                 {% include 'product/inc/search_pro.html' %}
 
-				<!-- Filter -->
+                <!-- Filter -->
                 {% include 'product/inc/filter.html' %}
 
-			</div>
+            </div>
 
             <!-- Product Section -->
-			<div class="row isotope-grid" id="products"></div>
+            <div class="row isotope-grid products" id="products">
 
-			<!-- Load more -->
-            {% include 'product/inc/load_more.html' %}
+                {% for product in products %}
+                    {% include 'product/inc/single_product.html' with product=product %}
+                {% endfor %}
 
-		</div>
-	</section>
+            </div>
+
+            <!-- Pagination section -->
+            {% include 'product/landing/inc/pagination.html' %}
+
+            {#  {% include 'product/inc/load_more.html' %}#}
+
+        </div>
+    </section>
 
     <!-- Modal1 -->
     {% include 'product/inc/quick_view_modal.html' %}
@@ -70,10 +153,6 @@
 
 {% block extra_footer %}
     {% include 'product/inc/product_js.html' %}
-    <script>
-        getAllProducts()
-        getAllBrands()
-    </script>
 {% endblock %}
 
 
