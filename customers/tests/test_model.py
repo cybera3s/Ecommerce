@@ -1,4 +1,4 @@
-from customers.models import Customer
+from customers.models import Customer, Address
 from orders.models import OffCode, Cart, CartItem
 from product.models import Product, Brand, Discount, Category
 from django.test import TestCase
@@ -59,3 +59,19 @@ class CustomerTest(TestCase):
         self.cart1.deactivate()
         self.assertEqual(self.customer1.get_finished_orders().first().is_active, False)
         self.assertNotIn(self.cart2, self.customer1.get_finished_orders())
+
+
+class AddressTest(TestCase):
+    def setUp(self) -> None:
+        # customers
+        self.user1 = User.objects.create_user(email='test1@email.com', phone='09224023292', password='1234')
+        self.customer1 = Customer.objects.create(gender=1, user=self.user1)
+
+        # addresses
+        self.address1 = Address.objects.create(state='Tehran', city='Karaj', postal_code=1234567890,
+                                               address_detail='somewhere', customer=self.customer1)
+
+    def test1_address_create_success(self):
+        print(self.address1.__str__())
+        self.assertIsInstance(self.address1, Address)
+
