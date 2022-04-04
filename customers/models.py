@@ -2,11 +2,7 @@ from django.db import models
 from core.models import User
 from django.utils.translation import gettext as _
 from core.models import BaseModel
-
-
-def user_avatar_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return 'customers/images/avatars/user_{0}/{1}'.format(instance.user.id, filename)
+from utils.utils import user_avatar_path
 
 
 class Customer(models.Model):
