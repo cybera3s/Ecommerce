@@ -4,6 +4,8 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 import os
 from selenium.webdriver.common.by import By
 
+from core.models import User
+
 
 class RegistrationLiveTest(StaticLiveServerTestCase):
     driver: WebDriver
@@ -42,4 +44,35 @@ class RegistrationLiveTest(StaticLiveServerTestCase):
         self.driver.find_element(by=By.XPATH, value="//input[@type='submit']").click()
 
         self.assertIn('Login', self.driver.title)
+        time.sleep(5)
+
+
+class LoginLiveTest(StaticLiveServerTestCase):
+    driver: WebDriver
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.driver = WebDriver(os.getcwd() + '/chromedriver')
+        cls.driver.implicitly_wait(10)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+        super().tearDownClass()
+
+    def test_login_success(self):
+        self.driver.get(self.live_server_url + '/customers/login/')
+
+        User.objects.create_user(email='test1@email.com', phone='09123456789', password='1234')
+
+        self.assertIn('Login', self.driver.title)
+
+        phone_input = self.driver.find_element(by=By.NAME, value="phone")
+        phone_input.send_keys('09123456789')
+
+        password_input = self.driver.find_element(by=By.NAME, value="password")
+        password_input.send_keys('1234')
+
+        self.driver.find_element(by=By.XPATH, value="//input[@type='submit']").click()
         time.sleep(5)
