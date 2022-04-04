@@ -141,6 +141,7 @@
         $('#modal-finalPrice').html(product.final_worth)
         $('#modal-description').html(product.description)
         $('#addToCart-btn').attr('name', product.id)    // set product id as name for button
+        $("#num-product").attr('max', product.inventory)
     }
 
     // get a specific cookie
@@ -179,7 +180,19 @@
                     // set cart length for cart icon on navbar
                     let cartLength = Object.keys(data.cart).length
                     cartIcon.attr('data-notify', cartLength)
-                        fillCart(data)
+                    fillCart(data)
+                    swal("added to cart !",
+                        {icon: "success",
+                         timer: 1600,
+                        buttons: false,
+                    });
+                }
+                ).fail(function (error) {
+                if (error.status == 400){
+                        swal(error.responseJSON.count[0],
+                            {icon: "error",
+                        });
+                    }
                 });
     }
 
