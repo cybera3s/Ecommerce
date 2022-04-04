@@ -1,4 +1,4 @@
-# import time
+import time
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.chrome.webdriver import WebDriver
 import os
@@ -39,5 +39,7 @@ class RegistrationLiveTest(StaticLiveServerTestCase):
         confirm_password_input = self.driver.find_element(by=By.NAME, value="confirm_password")
         confirm_password_input.send_keys('123456789')
 
-        self.driver.find_element(by=By.XPATH, value='/html/body/div/div/form/input[2]').click()
+        self.driver.find_element(by=By.XPATH, value="//input[@type='submit']").click()
+
         self.assertIn('Login', self.driver.title)
+        time.sleep(5)
