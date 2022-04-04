@@ -1,6 +1,6 @@
 import json
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, status, authentication, permissions
+from rest_framework import viewsets, status, authentication
 from rest_framework.response import Response
 from core.permissions import IsSuperuserPermission, CustomIsAuthenticatedOrReadOnly
 from orders.models import Cart, CartItem
