@@ -12,7 +12,7 @@ class RegistrationLiveTest(StaticLiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.driver = WebDriver(os.getcwd() + '/chromedriver')
-        cls.driver.implicitly_wait(20)
+        cls.driver.implicitly_wait(10)
 
     @classmethod
     def tearDownClass(cls):
