@@ -56,10 +56,10 @@ class CustomerRegistrationForm(forms.Form):
 
 
 class CustomerLoginForm(forms.Form):
-    phone = forms.CharField(max_length=100, label='Phone Number',
+    phone = forms.CharField(max_length=100, label=_('Phone Number'),
                             widget=forms.TextInput(
                                 attrs={'placeholder': _('phone number or email'), 'class': 'form-control'}))
-    password = forms.CharField(label='Password',
+    password = forms.CharField(label=_('Password'),
                                widget=forms.PasswordInput(
                                    attrs={'placeholder': _('your password'), 'class': 'form-control'}))
 
