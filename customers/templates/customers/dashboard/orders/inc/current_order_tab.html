@@ -31,7 +31,8 @@
 
                 </div>
             </div>
-
+        {% empty %}
+            <div class="alert alert-info font-weight-bold w-50 mx-auto">{% trans 'There is no item' %}!</div>
         {% endfor %}
 
     </div>
