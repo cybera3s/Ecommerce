@@ -61,6 +61,8 @@
 
                 {% for product in products %}
                     {% include 'product/inc/single_product.html' with product=product %}
+                {% empty %}
+                    <div class="alert alert-info w-50 mx-auto">{% trans 'There is no Items' %}!</div>
                 {% endfor %}
 
             </div>
