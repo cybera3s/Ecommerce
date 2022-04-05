@@ -260,7 +260,7 @@
 
          // set Address on change of address selection event
         $("#addresses").on('change', function () {
-        const url = "{% url 'orders:cart_checkout' %}";
+            const url = "{% url 'orders:cart_checkout' %}";
 
         if ($(this).val() != "0"){         // first option that is : select an address
             // show payment btn
@@ -302,14 +302,17 @@
 
         // add new address on click event of register address btn
         $('#register_address').on('click', function () {
-        $('#addresses').val('0')
+            $('#addresses').val('0')
 
-        let stateName = $("input[name='state']").val()
-        let cityName = $("input[name='city']").val()
-        let postCode = $("input[name='postcode']").val()
-        let addressDetail = $("textarea[name='address_detail']").val()
+            let stateName = $("input[name='state']").val()
+            let cityName = $("input[name='city']").val()
+            let postCode = $("input[name='postcode']").val()
+            let addressDetail = $("textarea[name='address_detail']").val()
 
-        let url = "{% url 'orders:cart_checkout' %}";
+            let url = "{% url 'orders:cart_checkout' %}";
+            elem = `<div class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="purchase">
+                                {% trans 'Proceed to Checkout' %}
+                </div>`
 
          $.post(
                 url,
@@ -333,6 +336,7 @@
                     $("#city_errors").empty()
                     $("#postal_code_errors").empty()
                     $("#address_detail_errors").empty()
+                    $("#purchase").html(elem)
 
                 },
             ).fail(function(error) {
@@ -349,7 +353,7 @@
 
         // click event for proceed to checkout btn
         $("#purchase").on('click', function () {
-         swal("{% trans 'thank you for your choice' %}",{
+            swal("{% trans 'thank you for your choice' %}",{
                   title: "{% trans 'Payment successfully' %}",
                   icon: "success",
                   buttons: false,
