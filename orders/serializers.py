@@ -31,7 +31,7 @@ class CartItemSerializer(serializers.ModelSerializer):
         product = Product.objects.get(pk=product_id)
 
         if value > product.inventory:
-            raise serializers.ValidationError(_("Maximum count is {}").format(product.inventory))
+            raise serializers.ValidationError(_("Maximum count is ") + str(product.inventory))
             
         if value < 1:
             raise serializers.ValidationError(_("Minimum count is 1"))
