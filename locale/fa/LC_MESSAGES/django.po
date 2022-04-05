@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-03 23:44+0330\n"
-"PO-Revision-Date: 2022-03-01 16:28+0000\n"
-"Last-Translator:   <>\n"
+"POT-Creation-Date: 2022-04-05 09:49+0000\n"
+"PO-Revision-Date: 2022-04-05 10:06+0000\n"
+"Last-Translator:   <cybera.3s@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: comments/apps.py:8
+#: customers/templates/customers/dashboard/inc/_sidebar.html:18
+msgid "Comments"
+msgstr "نظرات"
+
+#: comments/models.py:10
+msgid "Can Publish"
+msgstr "قابل انتشار"
+
+#: comments/models.py:11 comments/models.py:27 customers/models.py:12
+msgid "User"
+msgstr "کاربر"
+
+#: comments/models.py:12 comments/models.py:28 orders/models.py:87
+#: orders/templates/orders/cart/inc/cart_table.html:7 product/models.py:27
+msgid "Product"
+msgstr "محصول"
+
+#: comments/models.py:14
+msgid "Reply"
+msgstr "پاسخ"
+
+#: comments/models.py:15
+msgid "Is Reply?"
+msgstr "آیا پاسخ است؟"
+
+#: comments/models.py:16
+msgid "Body"
+msgstr "بدنه"
 
 #: core/apps.py:8
 msgid "Core"
@@ -79,7 +109,9 @@ msgstr "نوع درصدی باید بین 0 تا 100 باشد"
 msgid "Price type has no max price!"
 msgstr "نوع قیمتی بیشترین قیمت ندارد!"
 
-#: core/models.py:82 product/models.py:22 product/models.py:91
+#: core/models.py:82
+#: customers/templates/customers/dashboard/orders/inc/finished_order_tab.html:17
+#: product/models.py:21 product/models.py:114
 msgid "Discount"
 msgstr "تخفیف"
 
@@ -87,93 +119,355 @@ msgstr "تخفیف"
 msgid "Discounts"
 msgstr "تخفیف ها"
 
-#: core/models.py:102
+#: core/models.py:102 customers/forms.py:59 customers/forms.py:81
+#: customers/forms.py:82
 msgid "Phone Number"
 msgstr "شماره تماس"
 
-#: customers/apps.py:8 customers/models.py:16
-msgid "Customers"
-msgstr "مشتریان"
+#: core/templates/core/about.html:5
+#: templates/inc/nav/layouts/_menu_desk.html:15
+#: templates/inc/nav/layouts/_menu_mobile.html:51
+msgid "About"
+msgstr "درباره"
 
-#: customers/forms.py:8
-msgid "select your gender"
-msgstr "جنسیت خود را انتخاب کنید"
+#: core/templates/core/about.html:22
+msgid "Our Story"
+msgstr "داستان ما"
 
-#: customers/forms.py:8
-msgid "Male"
-msgstr "مذکر"
+#: core/templates/core/about.html:52
+msgid "Our Mission"
+msgstr "ماموریت ما"
 
-#: customers/forms.py:8
-msgid "Female"
-msgstr "مونث"
+#: core/templates/core/contact_us.html:5
+msgid "Contact Us"
+msgstr "تماس با ما"
 
-#: customers/forms.py:8
-msgid "Other"
-msgstr "دیگر"
+#: core/templates/core/contact_us.html:37
+msgid "Send Us A Message"
+msgstr "برای ما یک پیام بفرس"
 
-#: customers/forms.py:12
-msgid "phone"
-msgstr "شماره تلفن"
+#: core/templates/core/contact_us.html:42
+msgid "Your Email Address"
+msgstr "آدرس ایمیل شما"
 
-#: customers/forms.py:14
-msgid "Email"
-msgstr "آدرس ایمیل"
+#: core/templates/core/contact_us.html:57
+msgid "How Can We Help?"
+msgstr "چطور میتونیم کمک کنیم ؟"
 
-#: customers/forms.py:20 customers/forms.py:22
-msgid "confirm password"
-msgstr "تایید پسورد"
+#: core/templates/core/contact_us.html:67
+#: product/templates/product/inc/detail/add_comment.html:81
+msgid "Submit"
+msgstr "ثبت کردن"
 
-#: customers/forms.py:31
-msgid "User with this phone number already exists!"
-msgstr "کاربری با این شماره تماس وجود دارد"
-
-#: customers/forms.py:53
-msgid "passwords does not match!"
-msgstr "کلمات عبور مطابقت ندارند۱"
-
-#: customers/forms.py:59
-msgid "phone number or email"
-msgstr "شماره تماس یا ایمیل"
-
-#: customers/forms.py:62
-msgid "your password"
-msgstr "کلمه عبور شما"
-
-#: customers/models.py:11
-msgid "User"
-msgstr "کاربر"
-
-#: customers/models.py:12
-msgid "Gender"
-msgstr "جنسیت"
-
-#: customers/models.py:15 customers/models.py:31 orders/models.py:31
-msgid "Customer"
-msgstr "مشتری"
-
-#: customers/models.py:26
-msgid "State"
-msgstr "وضعیت"
-
-#: customers/models.py:27
-msgid "City"
-msgstr "شهر"
-
-#: customers/models.py:28
-msgid "Postal Code"
-msgstr "کد پستی"
-
-#: customers/models.py:29
-msgid "Address Detail"
-msgstr "جزئیات آدرس"
-
-#: customers/models.py:34 orders/models.py:32
+#: core/templates/core/contact_us.html:79 customers/models.py:49
+#: orders/models.py:34
 msgid "Address"
 msgstr "آدرس"
 
-#: customers/models.py:35
+#: core/templates/core/contact_us.html:95
+msgid "Lets Talk"
+msgstr "بیا صحبت کنیم"
+
+#: core/templates/core/contact_us.html:111
+msgid "Sale Support"
+msgstr "پشتیبانی فروش"
+
+#: core/views.py:34
+msgid "Thanks for your Feedback"
+msgstr "از شما برای دیدگاهتان متشکریم"
+
+#: core/views.py:37
+msgid "Please Correct Below errors"
+msgstr "لطفا خطاهای زیر را برطرف کنید"
+
+#: customers/apps.py:8 customers/models.py:31
+msgid "Customers"
+msgstr "مشتریان"
+
+#: customers/forms.py:9 customers/forms.py:75
+msgid "select your gender"
+msgstr "جنسیت خود را انتخاب کنید"
+
+#: customers/forms.py:9 customers/forms.py:75
+msgid "Male"
+msgstr "مذکر"
+
+#: customers/forms.py:9 customers/forms.py:75
+msgid "Female"
+msgstr "مونث"
+
+#: customers/forms.py:9 customers/forms.py:75
+msgid "Other"
+msgstr "دیگر"
+
+#: customers/forms.py:13
+msgid "phone"
+msgstr "شماره تلفن"
+
+#: customers/forms.py:15 customers/forms.py:80
+msgid "Email"
+msgstr "آدرس ایمیل"
+
+#: customers/forms.py:22 customers/forms.py:24
+msgid "confirm password"
+msgstr "تایید پسورد"
+
+#: customers/forms.py:33
+msgid "User with this phone number already exists!"
+msgstr "کاربری با این شماره تماس وجود دارد"
+
+#: customers/forms.py:55
+msgid "passwords does not match!"
+msgstr "کلمات عبور مطابقت ندارند۱"
+
+#: customers/forms.py:61
+msgid "phone number or email"
+msgstr "شماره تماس یا ایمیل"
+
+#: customers/forms.py:62 customers/forms.py:115
+msgid "Password"
+msgstr "کلمه عبور"
+
+#: customers/forms.py:64
+msgid "your password"
+msgstr "کلمه عبور شما"
+
+#: customers/forms.py:78
+msgid "First Name"
+msgstr "نام"
+
+#: customers/forms.py:79
+msgid "Last Name"
+msgstr "نام خانوادگی"
+
+#: customers/forms.py:110
+msgid "Phone Number already exists!"
+msgstr "کاربری با این شماره تماس وجود دارد"
+
+#: customers/forms.py:116
+msgid "Confirm Password"
+msgstr "تایید پسورد"
+
+#: customers/forms.py:117
+msgid "Confirm password"
+msgstr "تایید پسورد"
+
+#: customers/forms.py:128
+msgid "Passwords does not match!"
+msgstr "کلمات عبور مطابقت ندارند۱"
+
+#: customers/models.py:13
+msgid "Gender"
+msgstr "جنسیت"
+
+#: customers/models.py:14
+msgid "Avatar"
+msgstr "آواتار"
+
+#: customers/models.py:30 customers/models.py:46 orders/models.py:33
+msgid "Customer"
+msgstr "مشتری"
+
+#: customers/models.py:41
+#: customers/templates/customers/dashboard/addresses/addresses.html:52
+#: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:70
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:17
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:20
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:17
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:20
+#: orders/templates/orders/cart/inc/address.html:32
+msgid "State"
+msgstr "وضعیت"
+
+#: customers/models.py:42
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:27
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:30
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:27
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:30
+#: orders/templates/orders/cart/inc/address.html:38
+msgid "City"
+msgstr "شهر"
+
+#: customers/models.py:43
+msgid "Postal Code"
+msgstr "کد پستی"
+
+#: customers/models.py:44
+#: customers/templates/customers/dashboard/addresses/addresses.html:55
+#: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:73
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:47
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:50
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:47
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:50
+#: orders/templates/orders/cart/inc/address.html:50
+msgid "Address Detail"
+msgstr "جزئیات آدرس"
+
+#: customers/models.py:50
+#: customers/templates/customers/dashboard/addresses/addresses.html:4
+#: customers/templates/customers/dashboard/addresses/addresses.html:24
+#: customers/templates/customers/dashboard/inc/_sidebar.html:14
 msgid "Addresses"
 msgstr "آدرس ها"
+
+#: customers/templates/customers/dashboard/_dashboard_base.html:43
+msgid "Welcome"
+msgstr "خوش آمدید"
+
+#: customers/templates/customers/dashboard/addresses/addresses.html:31
+#: orders/templates/orders/cart/inc/address.html:25
+msgid "Add New Address"
+msgstr "افزودن آدرس جدید"
+
+#: customers/templates/customers/dashboard/addresses/addresses.html:53
+#: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:71
+msgid " city"
+msgstr "شهر"
+
+#: customers/templates/customers/dashboard/addresses/addresses.html:54
+#: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:72
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:37
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:40
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:37
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:40
+msgid "Postal code"
+msgstr "کد پستی"
+
+#: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:18
+#: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:180
+msgid "All Fields are required"
+msgstr "همه فیلد ها ضروری هستند"
+
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:10
+msgid "Edit Address"
+msgstr "ویرایش آدرس"
+
+#: customers/templates/customers/dashboard/addresses/inc/edit_address_modal.html:55
+msgid "Edit"
+msgstr "ویرایش"
+
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:10
+#| msgid "Address"
+msgid "New Address"
+msgstr "آدرس جدید"
+
+#: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:55
+#| msgid "Address"
+msgid "Add"
+msgstr "افزودن"
+
+#: customers/templates/customers/dashboard/dashboard.html:13
+#| msgid "Orders"
+msgid "Current Orders"
+msgstr "سفارش های جاری"
+
+#: customers/templates/customers/dashboard/dashboard.html:21
+msgid "Finished Orders"
+msgstr "سفارش های تکمیل شده"
+
+#: customers/templates/customers/dashboard/inc/_sidebar.html:5
+msgid "General"
+msgstr "عمومی"
+
+#: customers/templates/customers/dashboard/inc/_sidebar.html:7
+msgid "Dashboard"
+msgstr "داشبورد"
+
+#: customers/templates/customers/dashboard/inc/_sidebar.html:11
+#: orders/apps.py:8 orders/models.py:91
+msgid "Orders"
+msgstr "سفارش ها"
+
+#: customers/templates/customers/dashboard/inc/_sidebar.html:16
+msgid "Wishlist"
+msgstr "لیست علاقه مندی ها"
+
+#: customers/templates/customers/dashboard/inc/_sidebar.html:20
+#: customers/templates/customers/dashboard/user_info/user_info.html:3
+#| msgid "Customer"
+msgid "Customer Info"
+msgstr "اطلاعات مشتری"
+
+#: customers/templates/customers/dashboard/inc/_sidebar.html:22
+msgid "Personal Info"
+msgstr "اطلاعات شخصی"
+
+#: customers/templates/customers/dashboard/inc/_sidebar.html:23
+#: customers/templates/customers/dashboard/user_info/user_info.html:187
+msgid "Change Password"
+msgstr "تغییر کلمه عبور"
+
+#: customers/templates/customers/dashboard/inc/_sidebar.html:28
+#: templates/inc/auth_nav.html:39
+#: templates/inc/nav/layouts/_menu_mobile.html:29
+#: templates/inc/nav/layouts/_topbar_desk.html:20
+msgid "Logout"
+msgstr "خروج از حساب"
+
+#: customers/templates/customers/dashboard/inc/_top_navigation.html:16
+msgid "Profile Info"
+msgstr "اطلاعات پروفایل"
+
+#: customers/templates/customers/dashboard/orders/inc/current_order_tab.html:29
+#: customers/templates/customers/dashboard/orders/inc/finished_order_tab.html:14
+#: orders/models.py:29
+msgid "Total Price"
+msgstr "قیمت کل"
+
+#: customers/templates/customers/dashboard/orders/inc/finished_order_tab.html:15
+#: orders/models.py:30 orders/templates/orders/cart/inc/finish_cart.html:36
+msgid "Final Price"
+msgstr "قیمت نهایی"
+
+#: customers/templates/customers/dashboard/orders/inc/finished_order_tab.html:16
+msgid "Payment Date"
+msgstr "تاریخ پرداخت"
+
+#: customers/templates/customers/dashboard/orders/inc/finished_order_tab.html:18
+msgid "Profit"
+msgstr "سود"
+
+#: customers/templates/customers/dashboard/orders/orders.html:12
+#| msgid "Orders"
+msgid "Orders History"
+msgstr "تاریخچه سفارشات"
+
+#: customers/templates/customers/dashboard/orders/orders.html:21
+#| msgid "Parent"
+msgid "Current"
+msgstr "جاری"
+
+#: customers/templates/customers/dashboard/orders/orders.html:25
+msgid "Finished"
+msgstr "تمام شده"
+
+#: customers/templates/customers/dashboard/user_info/user_info.html:64
+#| msgid "User"
+msgid "User Info"
+msgstr "اطلاعات کاربر"
+
+#: customers/templates/customers/dashboard/user_info/user_info.html:91
+#| msgid "Category Image"
+msgid "Change Image"
+msgstr "تغییر تصویر"
+
+#: customers/templates/customers/dashboard/user_info/user_info.html:170
+msgid "Update Info"
+msgstr "بروزرسانی اطلاعات"
+
+#: customers/templates/customers/dashboard/user_info/user_info.html:250
+msgid "Update Password"
+msgstr "بروز رسانی کلمه عبور"
+
+#: customers/templates/customers/login.html:47
+#| msgid "your password"
+msgid "Forget your Password?"
+msgstr "فراموشی رمز عبور"
+
+#: customers/templates/customers/login.html:50
+#: customers/templates/customers/register.html:84
+msgid "Or"
+msgstr "یا"
 
 #: customers/templates/customers/login.html:51
 msgid "If you have not an account"
@@ -191,138 +485,280 @@ msgstr "اگر حساب کاربری دارید"
 msgid "Sign in here"
 msgstr "از اینجا وارد شوید"
 
-#: customers/views.py:49 templates/inc/nav/layouts/_topbar_desk.html:15
+#: customers/views.py:53 templates/inc/auth_nav.html:32
+#: templates/inc/nav/layouts/_menu_mobile.html:23
+#: templates/inc/nav/layouts/_topbar_desk.html:15
 msgid "Login"
 msgstr "ورود"
 
-#: customers/views.py:73
-msgid "logged in successfully"
-msgstr "با موفقیت وارد شدید !"
-
-#: customers/views.py:78
+#: customers/views.py:88
 msgid "Username or Password is Incorrect"
 msgstr "نام کاربری یا کلمه ی عبور اشتباه است"
 
-#: orders/apps.py:8 orders/models.py:76
-msgid "Orders"
-msgstr "سفارش ها"
+#: customers/views.py:147
+msgid "Personal Information Updated!"
+msgstr "اطلاعات شخصی بروز شد !"
 
-#: orders/models.py:27
-msgid "Total Price"
-msgstr "قیمت کل"
+#: customers/views.py:150 customers/views.py:169
+msgid "Please correct Below Errors!"
+msgstr "لطفا خطاهای زیر را برطرف کنید"
 
-#: orders/models.py:28
-msgid "Final Price"
-msgstr "قیمت نهایی"
+#: customers/views.py:166
+msgid "Password successfully Updated!"
+msgstr "کلمه عبور با موفقیت بروز شد!"
 
-#: orders/models.py:30 orders/models.py:118 orders/models.py:128
+#: orders/models.py:32 orders/models.py:141 orders/models.py:151
 msgid "Off Code"
 msgstr "کد تخفیف"
 
-#: orders/models.py:35 orders/models.py:71
+#: orders/models.py:38 orders/models.py:86
+#: orders/templates/orders/cart/inc/breadcrumb.html:10
 msgid "Cart"
 msgstr "سبد خرید"
 
-#: orders/models.py:36
+#: orders/models.py:39
 msgid "Carts"
 msgstr "سبد های خرید"
 
-#: orders/models.py:70
+#: orders/models.py:84
 msgid "Count"
 msgstr "تعداد"
 
-#: orders/models.py:72 product/models.py:28
-msgid "Product"
-msgstr "محصول"
-
-#: orders/models.py:75
+#: orders/models.py:90
 msgid "Order"
 msgstr "سفارش"
 
-#: orders/models.py:113 orders/models.py:116
+#: orders/models.py:136 orders/models.py:139
 msgid "must be greater than now"
 msgstr "باید از زمان کنونی بیشتر باشد"
 
-#: orders/models.py:114
+#: orders/models.py:137
 msgid "Valid From"
 msgstr "شروع اعتبار"
 
-#: orders/models.py:117
+#: orders/models.py:140
 msgid "Valid To"
 msgstr "پایان اعتبار"
 
-#: orders/models.py:119
+#: orders/models.py:142
 msgid "must be more than five letters"
 msgstr "باید از پنج حرف بیشتر باشد"
 
-#: orders/models.py:129
+#: orders/models.py:152
 msgid "Off Codes"
 msgstr "کد های تخفیف"
 
-#: product/apps.py:8 product/models.py:29
-#: product/templates/product/landing/landing.html:12
+#: orders/serializers.py:34
+msgid "Maximum count is "
+msgstr "کمترین تعداد هست"
+
+#: orders/serializers.py:37
+msgid "Minimum count is 1"
+msgstr "کمترین تعداد 1 است"
+
+#: orders/templates/orders/cart/inc/address.html:13
+msgid "Select an address"
+msgstr "یک آدرس انتخاب کنید"
+
+#: orders/templates/orders/cart/inc/address.html:44
+msgid "Postcode / Zip"
+msgstr "کد پستی"
+
+#: orders/templates/orders/cart/inc/address.html:56
+#| msgid "Register"
+msgid "Register Address"
+msgstr "ثبت آدرس"
+
+#: orders/templates/orders/cart/inc/breadcrumb.html:5
+#: templates/inc/auth_nav.html:17 templates/inc/nav/layouts/_menu_desk.html:5
+#: templates/inc/nav/layouts/_menu_mobile.html:39
+msgid "Home"
+msgstr "خانه"
+
+#: orders/templates/orders/cart/inc/cart_js.html:100
+msgid "Minimum value for count is 1"
+msgstr "کمترین مقدار برای تعداد ۱ است"
+
+#: orders/templates/orders/cart/inc/cart_js.html:127
+msgid "maximum count!"
+msgstr "نهایت تعداد!"
+
+#: orders/templates/orders/cart/inc/cart_js.html:212
+msgid "please enter your off code"
+msgstr "لطفا کد تخفیف خود را وارد کنید"
+
+#: orders/templates/orders/cart/inc/cart_js.html:231
+msgid "Off code applied!"
+msgstr "کد تخفیف اعمال شد!"
+
+#: orders/templates/orders/cart/inc/cart_js.html:249
+msgid "Invalid Off code"
+msgstr "کد تخفیف نا معتبر"
+
+#: orders/templates/orders/cart/inc/cart_js.html:268
+#: orders/templates/orders/cart/inc/finish_cart.html:52
+msgid "Proceed to Checkout"
+msgstr "ادامه جهت بازبینی"
+
+#: orders/templates/orders/cart/inc/cart_js.html:285
+#| msgid "Address Detail"
+msgid "Address was set"
+msgstr "آدرس ثبت شد"
+
+#: orders/templates/orders/cart/inc/cart_js.html:294
+msgid "Something went wrong!"
+msgstr "خطایی رخ داده است!"
+
+#: orders/templates/orders/cart/inc/cart_js.html:352
+msgid "thank you for your choice"
+msgstr "از انتخاب شما متشکریم"
+
+#: orders/templates/orders/cart/inc/cart_js.html:353
+#| msgid "logged in successfully"
+msgid "Payment successfully"
+msgstr "پرداخت موفقیت آمیز"
+
+#: orders/templates/orders/cart/inc/cart_table.html:8 product/models.py:15
+msgid "Price"
+msgstr "قیمت"
+
+#: orders/templates/orders/cart/inc/cart_table.html:9
+msgid "Quantity"
+msgstr "تعداد"
+
+#: orders/templates/orders/cart/inc/cart_table.html:10
+#: templates/inc/nav/layouts/_cart.html:42
+#| msgid "Total Price"
+msgid "Total"
+msgstr "کل"
+
+#: orders/templates/orders/cart/inc/cart_table.html:11
+msgid "Remove"
+msgstr "پاک کردن"
+
+#: orders/templates/orders/cart/inc/finish_cart.html:6
+#| msgid "Carts"
+msgid "Cart Totals"
+msgstr "سبد های خرید"
+
+#: orders/templates/orders/cart/inc/finish_cart.html:13
+#| msgid "Total Price"
+msgid " Total Price"
+msgstr "قیمت کل"
+
+#: orders/templates/orders/cart/inc/offcode_update.html:15
+#| msgid "Off Code"
+msgid "Off code here"
+msgstr "کد تخفیف اینجا"
+
+#: orders/templates/orders/cart/inc/offcode_update.html:17
+#| msgid "Off Code"
+msgid "Apply Off Code"
+msgstr "اعمال کد تخفیف"
+
+#: orders/views.py:24
+#| msgid "Check Out"
+msgid "Cart Checkout"
+msgstr "بازیبینی سبد خرید"
+
+#: orders/views.py:76
+msgid "you don't have any items!"
+msgstr "شما هیچ اقلامی ندارید!"
+
+#: product/apps.py:8 product/models.py:28
+#: product/templates/product/landing/landing.html:27
 msgid "Products"
 msgstr "محصولات"
 
-#: product/models.py:14 product/models.py:72 product/models.py:87
+#: product/models.py:14 product/models.py:95 product/models.py:110
 msgid "Name"
 msgstr "نام"
-
-#: product/models.py:15
-msgid "Price"
-msgstr "قیمت"
 
 #: product/models.py:16
 msgid "Description"
 msgstr "توضیحات"
 
 #: product/models.py:17
-msgid "Product Image"
-msgstr "عکس محصول"
-
-#: product/models.py:18
 msgid "Inventory"
 msgstr "موجودی"
 
-#: product/models.py:19
+#: product/models.py:18
 msgid "A short label for product"
 msgstr "برچسب برای محصول"
 
-#: product/models.py:19
+#: product/models.py:18
 msgid "Slug"
 msgstr "برچسب "
 
-#: product/models.py:20 product/models.py:76
+#: product/models.py:19 product/models.py:99
 msgid "Brand"
 msgstr "برند"
 
-#: product/models.py:23 product/models.py:96
+#: product/models.py:22 product/models.py:119
 msgid "Category"
 msgstr "دسته بندی"
 
-#: product/models.py:73
+#: product/models.py:78
+msgid "Product Image"
+msgstr "عکس محصول"
+
+#: product/models.py:80
+msgid "Corresponding product"
+msgstr "محصول مورد نظر"
+
+#: product/models.py:81
+msgid "pictures"
+msgstr "تصاویر"
+
+#: product/models.py:84
+msgid "Picture"
+msgstr "تصویر"
+
+#: product/models.py:85
+msgid "Pictures"
+msgstr "تصاویر"
+
+#: product/models.py:96
 msgid "Country"
 msgstr "کشور"
 
-#: product/models.py:77
+#: product/models.py:100
 msgid "Brands"
 msgstr "برند ها"
 
-#: product/models.py:89
+#: product/models.py:112
 msgid "Parent"
 msgstr "والد"
 
-#: product/models.py:93
+#: product/models.py:116
 msgid "Category Image"
 msgstr "تصویر دسته بندی"
 
-#: product/models.py:97
+#: product/models.py:120
 #: product/templates/product/category/category_list.html:13
-#: templates/inc/_footer.html:8 templates/inc/nav/layouts/_menu_desk.html:10
+#: templates/inc/_footer.html:8 templates/inc/auth_nav.html:21
+#: templates/inc/nav/layouts/_menu_desk.html:10
+#: templates/inc/nav/layouts/_menu_mobile.html:43
 msgid "Categories"
 msgstr "دسته بندی ها"
 
-#: product/templates/product/category/category_detail.html:19
+#: product/templates/product/inc/add_to_cart.html:19
+#: product/templates/product/inc/detail/add_to_cart.html:21
+msgid "Add to cart"
+msgstr "افزودن به سبد خرید"
+
+#: product/templates/product/inc/detail/add_comment.html:7
+msgid "Add a Comment"
+msgstr "ثبت نظر"
+
+#: product/templates/product/inc/detail/add_comment.html:49
+msgid "comment"
+msgstr "نظر"
+
+#: product/templates/product/inc/detail/reviews.html:47
+msgid "There is No Comments"
+msgstr "هیچ نظری وجود ندارد"
+
 #: product/templates/product/inc/filter_brand.html:4
 msgid "All Products"
 msgstr "همه محصولات"
@@ -331,27 +767,32 @@ msgstr "همه محصولات"
 msgid "Load More"
 msgstr "نمایش بیشتر"
 
-#: product/templates/product/inc/product_js.html:38
+#: product/templates/product/inc/product_js.html:40
+#: product/templates/product/inc/single_product.html:13
 msgid "Quick View"
 msgstr "نمایش سریع"
 
-#: product/templates/product/inc/quick_view_modal.html:106
-msgid "Add to cart"
-msgstr "افزودن به سبد خرید"
+#: product/templates/product/landing/inc/pagination.html:6
+msgid "previous"
+msgstr "قبلی"
 
-#: product/templates/product/landing/landing.html:26
+#: product/templates/product/landing/inc/pagination.html:20
+msgid "Next"
+msgstr "بعدی"
+
+#: product/templates/product/landing/landing.html:41
 msgid "Filter"
 msgstr "فیلتر کردن"
 
-#: product/templates/product/landing/landing.html:32
+#: product/templates/product/landing/landing.html:47
 msgid "Search"
 msgstr "جستجو"
 
-#: product/templates/product/product_detail.html:117
-msgid "description"
-msgstr "توضیحات"
+#: product/templates/product/product_detail.html:47
+msgid "this item is not available in inventory"
+msgstr "این مورد در انبار موجود نمی باشد"
 
-#: product/views.py:13
+#: product/views.py:21
 msgid "landing"
 msgstr "صفحه اصلی"
 
@@ -368,7 +809,14 @@ msgstr ""
 msgid "Visit Us"
 msgstr "به ما سر بزنید"
 
+#: templates/inc/auth_nav.html:35
+#: templates/inc/nav/layouts/_menu_mobile.html:25
+#: templates/inc/nav/layouts/_topbar_desk.html:17
+msgid "Register"
+msgstr "ثبت نام"
+
 #: templates/inc/nav/_nav.html:36
+#: templates/inc/nav/layouts/_menu_mobile.html:6
 msgid "Aiva Shop"
 msgstr "فروشگاه آیوا"
 
@@ -376,30 +824,22 @@ msgstr "فروشگاه آیوا"
 msgid "Your Cart"
 msgstr "سبد خرید شما"
 
-#: templates/inc/nav/layouts/_cart.html:44
+#: templates/inc/nav/layouts/_cart.html:47
 msgid "View Cart"
 msgstr "نمایش سبد خرید"
 
-#: templates/inc/nav/layouts/_cart.html:48
-msgid "Check Out"
-msgstr "بازبینی"
-
-#: templates/inc/nav/layouts/_menu_desk.html:5
-msgid "Home"
-msgstr "خانه"
-
-#: templates/inc/nav/layouts/_menu_desk.html:15
-msgid "About"
-msgstr "درباره"
-
 #: templates/inc/nav/layouts/_menu_desk.html:19
+#: templates/inc/nav/layouts/_menu_mobile.html:55
 msgid "Contact"
 msgstr "تماس با ما"
 
-#: templates/inc/nav/layouts/_topbar_desk.html:17
-msgid "Register"
-msgstr "ثبت نام"
-
+#: templates/inc/nav/layouts/_menu_mobile.html:28
 #: templates/inc/nav/layouts/_topbar_desk.html:19
-msgid "Logout"
-msgstr "خروج از حساب"
+msgid "My Account"
+msgstr "حساب من"
+
+#~ msgid "logged in successfully"
+#~ msgstr "با موفقیت وارد شدید !"
+
+#~ msgid "description"
+#~ msgstr "توضیحات"
