@@ -18,7 +18,7 @@ class Cart:
         self.cart = cart
 
     def add(self, product, count):
-        print('adding: ', self.cart)
+        # print('adding: ', self.cart)
         product_id = str(product.id)
         if product_id not in self.cart:
             self.cart[product_id] = {'count': count, 'price': str(product.final_worth)}
@@ -62,7 +62,7 @@ class Cart:
         items = real_cart.items.all()
         item_ids = items.values_list('product', flat=True)
         cart = self.cart
-        print('cart copy in cookie: ', cart)
+        # print('cart copy in cookie: ', cart)
         if cart:
             for i in cart:
                 if int(i) not in item_ids:
