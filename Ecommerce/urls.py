@@ -21,6 +21,7 @@ from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
+    path('rosetta/', include('rosetta.urls')),
     path('', include('core.urls', namespace='core')),
     path('', include('product.urls', namespace='product')),
     path('customers/', include('customers.urls', namespace='customers')),
