@@ -21,7 +21,7 @@ Categories
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-pic hov-img0">
-                                <img {% if category.picture %}src="{{ category.picture.url }}"{% else %}src="{% static 'images/product/category/category-default.jpg' %}"{% endif %} alt="{{ category.name }}" width="200" height="300">
+                                <img {% if category.picture %}src="{{ category.picture.url }}" {% else %}src="{% static 'core/images/cat_default.png' %}"{% endif %} alt="{{ category.name }}" width="200" height="300">
 
                             </div>
 
@@ -42,7 +42,7 @@ Categories
                         </div>
                     </div>
                 {% empty %}
-                    <div>There is no item</div>
+                    <div>{% trans 'There is no item' %}</div>
                 {% endfor %}
 
 			</div>
