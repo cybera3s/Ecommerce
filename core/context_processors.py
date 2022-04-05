@@ -15,7 +15,7 @@ def cart(request):
 
     if request.user.is_authenticated and hasattr(request.user, 'customer'):
         active_cart.merge_db_cart(request)
-    print('in context context processor : ', active_cart.cart)
+    # print('in context context processor : ', active_cart.cart)
 
     return {
         'cart': active_cart
