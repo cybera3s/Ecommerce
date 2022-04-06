@@ -70,7 +70,7 @@ class LoginLiveTest(StaticLiveServerTestCase):
         self.assertIn('Login', self.driver.title)
 
         phone_input = self.driver.find_element(by=By.NAME, value="phone")
-        phone_input.send_keys('09150000000')
+        phone_input.send_keys('09123456789')
 
         password_input = self.driver.find_element(by=By.NAME, value="password")
         password_input.send_keys('1234')
