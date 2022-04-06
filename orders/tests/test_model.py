@@ -68,7 +68,7 @@ class CartTest(TestCase):
 
     def test1_total_worth_success(self):
         total_price = self.cart1.total_worth()
-        sum_item_prices = self.cart_item1.product.final_price + self.cart_item2.product.final_price
+        sum_item_prices = self.cart_item1.product.final_price * self.cart_item1.count + self.cart_item2.product.final_price * self.cart_item2.count
 
         self.assertGreater(total_price, 0)
         self.assertEqual(total_price, sum_item_prices)
