@@ -1,5 +1,6 @@
 import time
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.urls import reverse
 from selenium.webdriver.chrome.webdriver import WebDriver
 import os
 from selenium.webdriver.common.by import By
@@ -22,7 +23,7 @@ class RegistrationLiveTest(StaticLiveServerTestCase):
         super().tearDownClass()
 
     def test_register_success(self):
-        self.driver.get(self.live_server_url + '/customers/register/')
+        self.driver.get(self.live_server_url + reverse("customers:customer_register"))
 
         self.assertIn('Register', self.driver.title)
 
