@@ -63,14 +63,14 @@ class LoginLiveTest(StaticLiveServerTestCase):
         super().tearDownClass()
 
     def test_login_success(self):
-        self.driver.get(self.live_server_url + '/customers/login/')
+        self.driver.get(self.live_server_url + reverse("customers:customer_login"))
 
         User.objects.create_user(email='test1@email.com', phone='09123456789', password='1234')
 
         self.assertIn('Login', self.driver.title)
 
         phone_input = self.driver.find_element(by=By.NAME, value="phone")
-        phone_input.send_keys('09123456789')
+        phone_input.send_keys('09150000000')
 
         password_input = self.driver.find_element(by=By.NAME, value="password")
         password_input.send_keys('1234')
