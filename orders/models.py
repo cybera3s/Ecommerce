@@ -73,7 +73,7 @@ class Cart(BaseModel):
         """
         calculate profit of cart
         """
-        return self.total_price - self.final_price if self.off_code else 0
+        return self.total_worth() - self.final_worth() if self.off_code else 0
 
 
 class CartItem(BaseModel):
