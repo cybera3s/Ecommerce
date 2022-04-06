@@ -140,3 +140,4 @@ dmypy.json
 /core/migrations/
 /customers/migrations/
 comments/migrations/
+media/
