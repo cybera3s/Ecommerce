@@ -21,3 +21,18 @@ class TestLandingView(TestCase):
         self.assertEqual(len(response.context['products']), 1)
         self.assertEqual(response.context['title'], 'landing')
         self.assertQuerysetEqual(response.context['brands'], Brand.objects.all())
+
+
+class TestCategoryListView(TestCase):
+
+    def setUp(self) -> None:
+        self.category1 = Category.objects.create(name='Electrical')
+        self.category2 = Category.objects.create(name='mobile', root=self.category1)
+        self.category3 = Category.objects.create(name='Laptop', root=self.category1)
+
+    def test_get_method(self):
+        response = self.client.get(reverse('product:category_list'))
+        self.assertEqual(response.status_code, 200)
+        #
+        self.assertIsInstance(response.context['categories'].first(), Category)
+        self.assertEqual(len(response.context['categories']), 1)
