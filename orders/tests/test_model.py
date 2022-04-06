@@ -60,11 +60,11 @@ class CartTest(TestCase):
 
         # cart items
 
-        self.cart_item1 = CartItem.objects.create(cart=self.cart1, product=self.product1)
-        self.cart_item2 = CartItem.objects.create(cart=self.cart1, product=self.product2)
+        self.cart_item1 = CartItem.objects.create(cart=self.cart1, product=self.product1, count=2)
+        self.cart_item2 = CartItem.objects.create(cart=self.cart1, product=self.product2, count=3)
 
-        self.cart_item3 = CartItem.objects.create(cart=self.cart2, product=self.product3)
-        self.cart_item4 = CartItem.objects.create(cart=self.cart2, product=self.product4)
+        self.cart_item3 = CartItem.objects.create(cart=self.cart2, product=self.product3, count=4)
+        self.cart_item4 = CartItem.objects.create(cart=self.cart2, product=self.product4, count=5)
 
     def test1_total_worth_success(self):
         total_price = self.cart1.total_worth()
