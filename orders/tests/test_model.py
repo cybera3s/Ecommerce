@@ -104,7 +104,13 @@ class OffCodeTest(TestCase):
     def test1_is_active_success(self):
         off_code = self.off_code1
 
-        self.assertTrue(off_code.valid_from <= timezone.now() < off_code.valid_to)
+        self.assertTrue(off_code.active)
+
+    def test_is_active_fail(self):
+        off_code = self.off_code1
+        off_code.valid_from = timezone.now() - timedelta(days=2)
+        off_code.valid_to = timezone.now() - timedelta(days=1)
+        self.assertFalse(off_code.active)
 
 
 class CartItemTest(TestCase):
@@ -176,4 +182,3 @@ class CartItemTest(TestCase):
         item = self.cart_item4
         item.count = 6
         self.assertRaises(ValidationError, item.clean)
-
