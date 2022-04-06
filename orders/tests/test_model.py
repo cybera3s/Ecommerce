@@ -167,6 +167,10 @@ class CartItemTest(TestCase):
         self.cart_item3 = CartItem.objects.create(cart=self.cart2, product=self.product3, count=4)
         self.cart_item4 = CartItem.objects.create(cart=self.cart2, product=self.product4, count=5)
 
+    def test_create_success(self):
+        self.assertIsInstance(self.cart_item1, CartItem)
+        self.assertTrue(str(self.cart_item1))
+
     def test_clean(self):
         p = self.product4
         item = self.cart_item4
