@@ -79,6 +79,15 @@ class CartTest(TestCase):
         self.assertLess(self.cart1.final_worth(), total_price)
         self.assertEqual(self.cart1.final_worth(), total_price - self.off_code1.profit_value(total_price))
 
+    def test_update_inventory_success(self):
+        cart = self.cart1
+        cart_detail = cart.items.all().values_list('product__inventory', 'count')
+        product_inventory = list(cart.items.all().values_list('product__inventory', flat=True)).copy()
+        cart.update_inventory()
+        self.assertEqual(list(map(lambda t: sum(t), cart_detail)), product_inventory, msg='lists are not same')
+        # print(cart_detail)
+        # print(product_inventory)
+
 
 class OffCodeTest(TestCase):
     def setUp(self) -> None:
