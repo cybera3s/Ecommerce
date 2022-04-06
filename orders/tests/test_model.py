@@ -88,6 +88,12 @@ class CartTest(TestCase):
         # print(cart_detail)
         # print(product_inventory)
 
+    def test_get_profit_success(self):
+        cart = self.cart2
+        self.assertEqual(cart.get_profit(), cart.total_worth() - cart.final_worth())
+        cart.off_code.delete()
+        self.assertEqual(cart.get_profit(), 0)
+
 
 class OffCodeTest(TestCase):
     def setUp(self) -> None:
