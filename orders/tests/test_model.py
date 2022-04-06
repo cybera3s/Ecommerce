@@ -1,5 +1,6 @@
+from core.models import User
 from orders.models import Cart, CartItem, OffCode
-from customers.models import Customer
+from customers.models import Customer, Address
 from product.models import Product, Brand, Discount, Category
 from django.test import TestCase
 from datetime import timedelta
@@ -11,15 +12,21 @@ class CartTest(TestCase):
         # brands
         self.brand1 = Brand.objects.create(name='LG', country='Japan')
         self.brand2 = Brand.objects.create(name='samsung', country='Korea')
+        self.brand3 = Brand.objects.create(name='Lenovo', country='China')
 
         # categories
         self.category1 = Category.objects.create(name='Electrical')
-        self.category2 = Category.objects.create(name='mobil', root=self.category1)
+        self.category2 = Category.objects.create(name='mobile', root=self.category1)
+        self.category3 = Category.objects.create(name='Laptop', root=self.category1)
 
         # discounts
         self.discount1 = Discount.objects.create(value=2000, type='PRI')
         self.discount2 = Discount.objects.create(value=35, type='PER')
 
+        self.off_code1 = OffCode.objects.create(value=10000, type='PRI', code='123465', valid_from=timezone.now(),
+                                                valid_to=timezone.now() + timedelta(days=5))
+        self.off_code2 = OffCode.objects.create(value=20, type='PER', code='abed', valid_from=timezone.now(),
+                                                valid_to=timezone.now() + timedelta(days=2))
         # products
         self.product1 = Product.objects.create(name='TV', price=100000, description='some text', inventory=5,
                                                brand=self.brand1,
@@ -28,17 +35,36 @@ class CartTest(TestCase):
                                                brand=self.brand2,
                                                category=self.category2, slug='another-text')
 
-        # Cart requirements
-        self.customer1 = Customer.objects.create_user('test1', 'test1@email.com', 'test1', gender=1,
-                                                      phone_number='09224023292')
-        self.off_code1 = OffCode.objects.create(value=10000, type='PRI', code='123465', valid_from=timezone.now(),
-                                                valid_to=timezone.now() + timedelta(days=5))
-        self.cart1 = Cart.objects.create(customer=self.customer1, off_code=self.off_code1)
+        self.product3 = Product.objects.create(name='a51', price=10000, description='a51', inventory=5,
+                                               brand=self.brand2,
+                                               category=self.category2, slug='another-text')
+        self.product4 = Product.objects.create(name='Z-book', price=10000, description='Z-book', inventory=5,
+                                               brand=self.brand3,
+                                               category=self.category3, slug='another-text')
+        # customers
+        self.user1 = User.objects.create_user(email='test1@email.com', phone='09224023292', password='1234')
+        self.customer1 = Customer.objects.create(gender=1, user=self.user1)
+
+        self.user2 = User.objects.create_user(email='test2@email.com', phone='09123456789', password='1234')
+        self.customer2 = Customer.objects.create(gender=1, user=self.user2)
+        # addresses
+        self.address1 = Address.objects.create(state='Tehran', city='Tehran', postal_code=1234567890,
+                                               address_detail='somewhere', customer=self.customer1)
+        self.address2 = Address.objects.create(state='Mashhad', city='Mashhad', postal_code=1234567891,
+                                               address_detail='somewhere', customer=self.customer2)
+
+        # Carts
+
+        self.cart1 = Cart.objects.create(customer=self.customer1, off_code=self.off_code1, address=self.address1)
+        self.cart2 = Cart.objects.create(customer=self.customer2, off_code=self.off_code2, address=self.address2)
 
         # cart items
 
         self.cart_item1 = CartItem.objects.create(cart=self.cart1, product=self.product1)
         self.cart_item2 = CartItem.objects.create(cart=self.cart1, product=self.product2)
+
+        self.cart_item3 = CartItem.objects.create(cart=self.cart2, product=self.product3)
+        self.cart_item4 = CartItem.objects.create(cart=self.cart2, product=self.product4)
 
     def test1_total_worth_success(self):
         total_price = self.cart1.total_worth()
@@ -98,4 +124,3 @@ class CartItemTest(TestCase):
 
         self.cart_item1 = CartItem.objects.create(cart=self.cart1, product=self.product1)
         self.cart_item2 = CartItem.objects.create(cart=self.cart1, product=self.product2)
-
