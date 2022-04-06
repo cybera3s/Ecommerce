@@ -90,24 +90,6 @@ class CartItem(BaseModel):
         verbose_name = _('Order')
         verbose_name_plural = _('Orders')
 
-    @classmethod
-    def filter_by_product(cls, product: Product):
-        """
-         filter Cart Items by a specific product
-        :param product: (product object)
-        :return: cart items with corresponding product
-        """
-        return cls.objects.filter(product=product)
-
-    @classmethod
-    def filter_by_product_category(cls, category: Category):
-        """
-         filter Cart Items that their product consist of this category
-        :param category: ( category object )
-        :return: cart items with corresponding product category
-        """
-        return cls.objects.filter(product__category=category)
-
     def clean(self):
         """
         check and validate count to not be greater than product inventory
