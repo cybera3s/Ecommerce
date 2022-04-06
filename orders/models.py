@@ -91,15 +91,6 @@ class CartItem(BaseModel):
         verbose_name_plural = _('Orders')
 
     @classmethod
-    def filter_by_category(cls, category: Category):
-        """
-        filter products by a Category
-        :param category: (category object)
-        :return: products with corresponding category
-        """
-        return cls.objects.filter(category=category)
-
-    @classmethod
     def filter_by_product(cls, product: Product):
         """
          filter Cart Items by a specific product
