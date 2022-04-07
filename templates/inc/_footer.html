@@ -13,7 +13,7 @@
 
                         {% if not category.root %}
                             <li class="p-b-10">
-                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">{{ category.name }}</a>
+                                <a href="{{ category.get_absolute_url }}" class="stext-107 cl7 hov-cl1 trans-04">{{ category.name }}</a>
                             </li>
                         {% endif %}
 
