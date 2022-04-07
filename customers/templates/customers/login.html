@@ -44,7 +44,7 @@
                         </ul>
                     {% endfor %}
                 {% endif %}
-                <p><a href="">{% trans 'Forget your Password?' %}</a></p>
+                <p><a href="{% url 'customers:reset_password' %}">{% trans 'Forget your Password?' %}</a></p>
 
                 <input type="submit" value="{{ title }}" class="w-100 btn btn-primary p-2 mb-3 fw-bold">
                 <h5 class="text-center">{% trans 'Or' %}</h5>
