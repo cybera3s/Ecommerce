@@ -2,9 +2,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView
-
+from django.contrib.auth import views as auth_views
 from core.models import User
 from utils.cart import Cart
 from .forms import CustomerRegistrationForm, CustomerLoginForm, CustomerEditProfileForm, CustomerChangePassword
@@ -100,6 +101,25 @@ class CustomerLogoutView(LoginRequiredMixin, View):
         # del cart cookie on logout
         response = remove_cookie(redirect('product:landing'), 'cart')
         return response
+
+
+class UserPasswordResetView(auth_views.PasswordResetView):
+    template_name = 'customers/password_reset/password_reset_form.html'
+    success_url = reverse_lazy('customers:password_reset_done')
+    email_template_name = 'customers/password_reset/password_reset_email.html'
+
+
+class UserPasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'customers/password_reset/password_reset_done.html'
+
+
+class UserPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'customers/password_reset/password_reset_confirm.html'
+    success_url = reverse_lazy('customers:password_reset_complete')
+
+
+class UserPasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'customers/password_reset/password_reset_complete.html'
 
 
 class CustomerProfileView(LoginRequiredMixin, TemplateView):

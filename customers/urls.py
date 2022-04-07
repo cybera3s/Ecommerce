@@ -1,5 +1,4 @@
 from django.urls import path, include
-from .api_views import *
 from .api_urls import router
 from .views import *
 
@@ -9,6 +8,12 @@ urlpatterns = [
     path('register/', CustomerRegisterView.as_view(), name='customer_register'),
     path('login/', CustomerLoginView.as_view(), name='customer_login'),
     path('logout/', CustomerLogoutView.as_view(), name='customer_logout'),
+
+    # Password Reset
+    path('reset/', UserPasswordResetView.as_view(), name='reset_password'),
+    path('reset/done/', UserPasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('confirm/<uidb64>/<token>/', UserPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('confirm/complete', UserPasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
     # Dashboard URLs
     path('profile/', CustomerProfileView.as_view(), name='customer_profile'),
