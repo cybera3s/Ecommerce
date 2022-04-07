@@ -78,6 +78,7 @@ class ProductDetailView(DetailView):
         context = self.get_context_data(object=self.object)
         context['comments'] = self.comments
         context['comment_form'] = self.form_class
+        context['related_products'] = Product.objects.filter(category=self.object.category)
         return self.render_to_response(context)
 
     @method_decorator(login_required)
