@@ -48,11 +48,15 @@ class CategoryDetailView(View):
         return super().setup(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
+
         data = {
             'title': self.category_instance.name,
             'category_id': self.kwargs['category_id'],
-            'brands': Brand.objects.all()
+            'brands': Brand.objects.all(),
+            'products': Product.objects.filter(category_id=self.kwargs['category_id'])
         }
+        if self.request.GET.get('search'):
+            data['products'] = data['products'].filter(name__icontains=self.request.GET['search'])
 
         return render(request, self.template_name, data)
 
