@@ -16,6 +16,13 @@ class LandingView(ListView):
     context_object_name = 'products'
     paginate_by = 10
 
+    def get_queryset(self):
+        queryset = Product.objects.all()
+
+        if self.request.GET.get('search'):
+            queryset = queryset.filter(name__icontains=self.request.GET['search'])
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = _('landing')
