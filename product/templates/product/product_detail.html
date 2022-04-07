@@ -62,9 +62,11 @@
 
 
     <!-- Related Products  -->
-    {#    {% include 'product/inc/related_products.html' %}#}
+        {% include 'product/inc/related_products.html' %}
+    <!-- Modal1 -->
+        {% include 'product/inc/quick_view_modal.html' %}
 
 {% endblock %}
 {% block extra_footer %}
-    {% include 'product/inc/product_js.html' %}
+        {% include 'product/inc/product_js.html' %}
 {% endblock %}
