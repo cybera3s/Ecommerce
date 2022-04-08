@@ -65,4 +65,7 @@
 </header>
 
 <!-- Cart -->
-{% include 'inc/nav/layouts/_cart.html' %}
+{% url 'orders:cart_checkout' as checkout %}
+{% if request.path != checkout %}
+    {% include 'inc/nav/layouts/_cart.html' %}
+{% endif %}
