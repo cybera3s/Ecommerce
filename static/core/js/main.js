@@ -195,6 +195,11 @@
     /*==================================================================
     [ Cart ]*/
     $('.js-show-cart').on('click',function(){
+        if (window.location.href.includes('en/orders/cart/checkout/')){
+            console.log('nav bar cart is not available in checkout page!')
+            return 1
+        }
+
         $('.js-panel-cart').addClass('show-header-cart');
     });
 
