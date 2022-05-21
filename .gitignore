@@ -139,6 +139,7 @@ dmypy.json
 /product/migrations/
 /core/migrations/
 /customers/migrations/
+static
 comments/migrations/
 media/
 upgrades.txt
