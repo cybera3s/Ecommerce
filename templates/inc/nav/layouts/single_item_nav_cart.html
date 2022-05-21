@@ -1,0 +1,50 @@
+{% load i18n %}
+<li class="header-cart-item flex-w flex-t m-b-12" id='{{ item.product.id }}'
+    data-itemId="{{ item.id }}">
+
+    <div class="header-cart-item-img">
+                            <img src="{{ item.product.pictures.first.picture.url }}" alt="{{ item.product.name }}">
+                        </div>
+
+    <div class="row header-cart-item-txt">
+
+        <div class="col-8 p-0">
+            <a href="{{ item.product.get_absolute_url }}"
+               class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                {{ item.product.name }}
+            </a>
+            <span class="header-cart-item-info">
+                <span class="count-product-cart">{{ item.count }}</span> x ${{ item.price }}
+            </span>
+        </div>
+
+        <div class="col-4 p-0">
+{#            <!-- Remove Item -->#}
+{#            <div>#}
+{#                <a class="nav-removeItem-btn" data-productId="{{ item.product.id }}"#}
+{#                   title="{% trans 'remove item' %}">#}
+{#                    <i class="fa fa-trash text-danger p-2 rounded" aria-hidden="true"></i>#}
+{#                </a>#}
+{#            </div>#}
+{##}
+{#            <!-- reduce Item -->#}
+{#            <span class="mx-2">#}
+{#                <a class="nav-reduceItem-btn text-danger" data-productId="{{ item.product.id }}"#}
+{#                   title="{% trans 'reduce item' %}" >#}
+{#                    <i class="fa fa-minus" aria-hidden="true"></i>#}
+{#                </a>#}
+{#            </span>#}
+{##}
+{#            <!-- add Item -->#}
+{#            <span class="mx-2">#}
+{#                <a class="nav-addItem-btn text-primary" data-productId="{{ item.product.id }}"#}
+{#                   title="{% trans 'add item' %}">#}
+{#                    <i class="fa fa-plus" aria-hidden="true"></i>#}
+{#                </a>#}
+{#            </span>#}
+
+        </div>
+
+    </div>
+
+</li>
