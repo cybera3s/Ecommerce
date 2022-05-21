@@ -49,7 +49,6 @@ class CartItemApiView(APIView):
                 db_cart, created = Cart.objects.get_or_create(customer=request.user.customer, is_active=True)
                 serializer.validated_data['cart_id'] = db_cart.id
                 serializer.save()
-
                 cart.merge_db_cart(request)
 
                 data.update({
@@ -74,18 +73,31 @@ class CartItemApiView(APIView):
 
     def delete(self, request, pk):
         cart = CookieCart(request)
-        cart.merge_db_cart(request)
 
-        try:
+        if request.user.is_authenticated:
+            cart.merge_db_cart(request)
 
-            item = get_object_or_404(CartItem, pk=pk)
-            item.delete()
-            cart.remove(item)
-            return Response({'msg': 'delete successfully!', 'item': pk, 'total_price': cart.get_total_price(),
-                             'items_count': len(cart)})
+            try:
 
-        except CartItem.DoesNotExist:
-            return Response({'msg': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
+                item = get_object_or_404(CartItem, product_id=int(pk))
+                item.delete()
+                cart.remove(item)
+                return Response({'msg': 'delete successfully!', 'item': pk, 'total_price': cart.get_total_price(),
+                                 'items_count': len(cart)})
+
+            except CartItem.DoesNotExist:
+                return Response({'msg': 'Not found', 'total_price': cart.get_total_price()},
+                                status=status.HTTP_404_NOT_FOUND)
+        else:
+
+            product = get_object_or_404(Product, id=int(pk))
+            response = Response({'msg': 'deleted'}, status=status.HTTP_200_OK)
+            cart_in_cookie = json.loads(request.COOKIES.get('cart'))
+            poped_item = cart_in_cookie.pop(str(pk))
+            response.data["total_price"] = cart.get_total_price() - (int(poped_item["count"]) * int(poped_item["price"]))
+            response.set_cookie('cart', json.dumps(cart_in_cookie))  # register cart in cookies
+            # response.delete_cookie('cookie_name1')
+            return response
 
     def patch(self, request, *args, **kwargs):
         cart = CookieCart(request)
