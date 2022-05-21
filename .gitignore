@@ -141,3 +141,4 @@ dmypy.json
 /customers/migrations/
 comments/migrations/
 media/
+upgrades.txt
