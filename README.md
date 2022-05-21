@@ -63,9 +63,9 @@ create virtual environment
 
     source venv/bin/activate
 
-extract static folder
+extract static folder and remove archive file
 
-    tar -xf static.tar.xz
+    tar -xf static.tar.xz && rm static.tar.xz
 
 install required packages
 
