@@ -17,7 +17,7 @@ class IsOwnerPermission(BasePermission):
 
 class CustomIsAuthenticatedOrReadOnly(BasePermission):
 
-    SAFE_METHODS = ('GET', 'HEAD', 'OPTIONS', 'POST')
+    SAFE_METHODS = ('GET', 'HEAD', 'OPTIONS', 'POST', 'DELETE')
 
     def has_permission(self, request, view):
         return bool(
