@@ -3404,3 +3404,9 @@ input.num-product::-webkit-inner-spin-button {
     content: none;
   }
 }
+/* modification icons in cart */
+.fa-trash:hover, .fa-plus:hover, .fa-minus:hover{
+            transition: all .2s ease-in-out;
+            transform: scale(1.5);
+            cursor: pointer;
+        }
