@@ -22,6 +22,8 @@ I faced various challenges in this project, including:
   </p>
 </div>
 
+<img src="https://user-images.githubusercontent.com/74768669/169667903-ac1291af-53de-49da-bb68-87e95de2b2f6.png" alt="index page" >
+
 
 ### Built With
  * [Django](https://www.djangoproject.com/)
