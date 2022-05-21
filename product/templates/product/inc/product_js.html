@@ -201,7 +201,8 @@
         let item = data.item
         let cart = data.cart
         let product = data.product
-        body = $('#cartBody')
+        let body = $('#cartBody')
+        body.find('div#emptyAlert').remove()
         let total_price = 0;
 
         // if product already be in cart replace it's count
@@ -217,14 +218,43 @@
 							<img src="${product.images[0]}" alt="${product.name}">
 						</div>
 
-						<div class="header-cart-item-txt p-t-8">
-							<a href="${productAbsoluteUrl}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								${product.name}
-							</a>
+						<div class="row header-cart-item-txt">
+                            <div class="col-8 p-0">
+                                <a href="${productAbsoluteUrl}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								    ${product.name}
+							    </a>
 
-							<span class="header-cart-item-info">
-								<span class="count-product-cart">${item.count}</span> x ${product.final_worth}
-							</span>
+                                <span class="header-cart-item-info">
+								    <span class="count-product-cart">${item.count}</span> x ${product.final_worth}
+							    </span>
+                            </div>
+
+                            <div class="col-4 p-0">
+                               <div>
+                                    <a class="nav-removeItem-btn" data-productId="${product.id}"
+                                       title="remove item">
+                                        <i class="fa fa-trash text-danger p-2 rounded" aria-hidden="true"></i>
+                                    </a>
+                               </div>
+
+                                {#<span class="mx-2">#}
+                                {#    <a class="nav-reduceItem-btn text-danger" data-productId="${product.id}"#}
+                                {#       title="reduce item">#}
+                                {#        <i class="fa fa-minus" aria-hidden="true"></i>#}
+                                {#    </a>#}
+                                {#</span>#}
+
+                                {#<span class="mx-2">#}
+                                {#    <a class="nav-addItem-btn text-primary" data-productId="${product.id}"#}
+                                {#       title="add item">#}
+                                {#        <i class="fa fa-plus" aria-hidden="true"></i>#}
+                                {#    </a>#}
+                                {#</span>#}
+
+                            </div>
+
+
+
 						</div>
 					</li>`
 
