@@ -7,10 +7,10 @@
 
 
 
-<div align="center">
+<div>
   <h1 align="center">Ecommerce</h3>
 
-  <p align="center">
+  <p>
 This is an example of an <b> e-commerce </b> website that offers online shopping.
 It uses the Django server as a back-end, a Django for the front-end for dynamic performance, and the Django REST Framework to serve REST API service and manipulate data. Uses Bootstrap for responsiveness and better display on different devices
 I faced various challenges in this project, including:
