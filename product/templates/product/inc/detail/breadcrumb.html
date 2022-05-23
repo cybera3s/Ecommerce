@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+        <a href="{% url 'product:landing' %}" class="stext-109 cl8 hov-cl1 trans-04">
+            Home
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+        {% with product.category.get_ancestors as ancestors %}
+
+            {% for parent in ancestors %}
+                <a href="{{ parent.get_absolute_url }}" class="stext-109 cl8 hov-cl1 trans-04">
+                    {{ parent }}
+                    <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+                </a>
+            {% endfor %}
+
+        {% endwith %}
+
+        <span class="stext-109 cl4">
+            {{ product }}
+        </span>
+    </div>
+</div>

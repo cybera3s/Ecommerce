@@ -1,0 +1,56 @@
+{% load static %}
+{% load i18n %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% get_current_language as current_lang %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+<!DOCTYPE html>
+<html lang="{{ current_lang }}" {% if LANGUAGE_BIDI %}dir="rtl" {% else %}dir="ltr"{% endif %}>
+<head>
+	<title>
+        {% block title %}
+            {{ title }}
+	    {% endblock %}
+    </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block static_links %}
+        {% include 'inc/css_links.html' %}
+    {% endblock %}
+
+    {% block extra_head %}
+    {% endblock %}
+</head>
+<body class="animsition">
+
+	<!-- Header -->
+    {% include 'inc/nav/_nav.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    {% block footer %}
+{#            {% include 'inc/_footer.html' %}#}
+    {% endblock %}
+
+    <!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+    <!-- JS link -->
+    {% block js_links %}
+
+        {% include 'inc/js_links.html' %}
+        {% block extra_footer %}
+        {% endblock %}
+
+    {% endblock %}
+
+
+</body>
+</html>

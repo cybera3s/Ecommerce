@@ -1,0 +1,103 @@
+<script>
+
+    $('#submit_Comment').on('click', ()=> {
+         userId = {{ request.user.id }};
+         productId = {{ product.id }};
+
+            // Ajax To create Comment
+             $.post('http://127.0.0.1:8000/en/comments/api/comments/',
+                 {
+                "csrfmiddlewaretoken": "{{ csrf_token }}",
+                "user": userId,
+                "product": productId,
+                "is_reply": false,
+                "body": $('#review').val()
+                },
+                function (data) {
+                    console.log(data);
+                    alert('ok')
+                                }
+             )
+
+
+    });
+
+    $("#submit_Comment").click(function (e) {
+        // preventing from page reload and default actions
+        e.preventDefault();
+         let userId = {{ request.user.customer.id }};
+         let productId = {{ product.id }};
+         let data = {
+                {#"csrfmiddlewaretoken": "{{ csrf_token }}",#}
+                "user": userId,
+                "name": $('#name').val(),
+                "email":$('#email').val(),
+                "product": productId,
+                "is_reply": false,
+                "body": $('#review').val()
+                }
+                console.log(typeof userId,typeof productId, data)
+        // make POST ajax call
+        $.ajax({
+            type: 'POST',
+
+            url: "{% url 'comments:comment-list' %}",
+            data: data,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+            },
+            success: function (response) {
+                // on successful creating object
+                alert('ok');
+                AppendComment(response)
+
+            },
+            error: function (response) {
+                // alert the error if any error occurred
+                alert(response);
+                console.log(response)
+                AppendComment(response)
+                var data = response
+            }
+        })
+    })
+
+    function AppendComment(data) {
+        let name = $('#name').val()
+        let email = $('#email').val()
+        let comment = `<div class="flex-w flex-t p-b-68">
+                        <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+                            <img src="{{ request.user.customer.avatar.url }}" alt="Avatar">
+                        </div>
+
+                        <div class="size-207">
+                        <div class="flex-w flex-sb-m p-b-17">
+                            <span class="mtext-107 cl2 p-r-20">
+                                ${name}
+                            </span>
+
+                            <span class="font-weight-light">
+                                {% now 'DATETIME_FORMAT' %}
+                            </span>
+
+                            <span class="fs-18 cl11">
+                                <i class="zmdi zmdi-star"></i>
+                                <i class="zmdi zmdi-star"></i>
+                                <i class="zmdi zmdi-star"></i>
+                                <i class="zmdi zmdi-star"></i>
+                                <i class="zmdi zmdi-star-half"></i>
+                            </span>
+                        </div>
+                        <!-- comment body -->
+                        <p class="stext-102 cl6">
+                            ${data.body}
+
+                        </p>
+                    </div>
+                    </div>`
+
+        $('#comments').append(comment)
+    }
+
+
+</script>

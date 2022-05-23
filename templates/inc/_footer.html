@@ -1,0 +1,75 @@
+{% load i18n %}
+<footer class="bg3 p-t-75 p-b-32">
+    <div class="container">
+        <div class="row justify-content-between">
+
+            <div class="col-sm-6 col-lg-3 p-b-50">
+                <h4 class="stext-301 cl0 p-b-30">
+                    {% trans 'Categories' %}
+                </h4>
+
+                <ul>
+                    {% for category in nav_categories %}
+
+                        {% if not category.root %}
+                            <li class="p-b-10">
+                                <a href="{{ category.get_absolute_url }}" class="stext-107 cl7 hov-cl1 trans-04">{{ category.name }}</a>
+                            </li>
+                        {% endif %}
+
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 p-b-50">
+                <h4 class="stext-301 cl0 p-b-30">
+                    {% trans 'GET IN TOUCH' %}
+                </h4>
+
+                <p class="stext-107 cl7 size-201">
+                    {% trans 'Any questions? Let us know in Mashhad by +989224023292' %}
+                </p>
+                <!-- Social Media -->
+                <div class="p-t-27">
+
+                    <a href="https://www.instagram.com/s.sajadsafa/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+
+                    <a href="https://github.com/cybera3s" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <i class="fa fa-github"></i>
+                    </a>
+
+                    <a class="fs-18 cl7 hov-cl1 trans-04 m-r-16" href="https://linkedin.com/in/cybera3s">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 p-b-50">
+                <h4 class="stext-301 cl0 p-b-30">
+                    {% trans 'Visit Us' %}
+                </h4>
+
+                <div class="map-responsive">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d17667.875925495093!2d59.529926989706645!3d36.317460718502375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfa!2s!4v1645963586561!5m2!1sfa!2s"
+                            height="300" style="border:0;border-radius: 5px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="p-t-40">
+
+            <p class="stext-107 cl6 txt-center">
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                All rights reserved | Made By
+                <a href="{% url 'product:landing' %}">Aiva Shop</a>
+
+            </p>
+
+        </div>
+
+    </div>
+</footer>

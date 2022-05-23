@@ -1,0 +1,272 @@
+{% extends 'customers/dashboard/_dashboard_base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Customer Info' %}{% endblock %}
+{% block extra_header %}
+    <style>
+
+        .profile-pic {
+            color: transparent;
+            width: 150px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+            margin:20px auto;
+
+        }
+        .profile-pic input {
+      display: none;
+    }
+        .profile-pic img {
+      position: absolute;
+      object-fit: cover;
+      width: 165px;
+      height: 165px;
+      box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+      border-radius: 100px;
+      z-index: 0;
+    }
+        .profile-pic .-label {
+      cursor: pointer;
+      height: 165px;
+      width: 165px;
+    }
+        .profile-pic:hover .-label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      color: #fafafa;
+      transition: background-color 0.2s ease-in-out;
+      border-radius: 100px;
+      margin-bottom: 0;
+    }
+        .profile-pic span {
+      display: inline-flex;
+      padding: 0.2em;
+      height: 2em;
+    }
+
+    </style>
+{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <!-- Personal Info form -->
+        <div class="col-md-12 col-sm-12 col-xs-12" id="personal_info">
+
+            <div class="x_panel">
+
+                <div class="x_title">
+                    <h2>{% trans 'User Info' %}</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    {% if messages %}
+                        {% for msg in messages %}
+                            {% if "personal_info" in msg.tags %}
+                            <div class="alert alert-{% if 'error' in msg.tags %}danger{% else %}success{% endif %} alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                {{ msg }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                    <br/>
+                    <form action="{% url 'customers:dashboard_user_info' %}" enctype="multipart/form-data" class="form-horizontal form-label-left input_mask" method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <!-- Avatar -->
+                        <div class="profile-pic">
+                          <label class="-label" for="file">
+                            <span class="glyphicon glyphicon-camera"></span>
+                            <span>{% trans 'Change Image' %}</span>
+                          </label>
+                          <input id="file" type="file" onchange="loadFile(event)" name="{{ form.avatar.html_name }}" />
+                          <img src="{{ request.user.customer.avatar.url }}" id="output" width="150" />
+                        </div>
+
+                        <!-- first name -->
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input type="text" class="form-control has-feedback-left"
+                                   placeholder="{{ form.first_name.label }}" name="{{ form.first_name.html_name }}"
+                                   id="{{ form.first_name.id_for_label }}"
+                                   value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}">
+                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            {% if form.first_name.errors %}
+                                {% for error in form.first_name.errors %}
+                                    <ul>
+                                        <li class="text-danger">{{ error|escape }}</li>
+                                    </ul>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Last name-->
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input type="text" class="form-control" id="inputSuccess3"
+                                   placeholder="{{ form.last_name.label }}" name="{{ form.last_name.html_name }}"
+                                   value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}">
+                            <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                            {% if form.last_name.errors %}
+                                {% for error in form.last_name.errors %}
+                                    <ul>
+                                        <li class="text-danger">{{ error|escape }}</li>
+                                    </ul>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Email-->
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input type="email" class="form-control has-feedback-left" id="inputSuccess4"
+                                   placeholder="{{ form.email.label }}" name="{{ form.email.html_name }}"
+                                   value="{% if form.email.value %}{{ form.email.value }}{% endif %}">
+                            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                            {% if form.email.errors %}
+                                {% for error in form.email.errors %}
+                                    <ul>
+                                        <li class="text-danger">{{ error|escape }}</li>
+                                    </ul>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Phone Number-->
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input type="text" class="form-control" id="inputSuccess5"
+                                   placeholder="{{ form.phone_number.label }}" name="{{ form.phone_number.html_name }}"
+                                   value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}">
+                            <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                            {% if form.phone_number.errors %}
+                                {% for error in form.phone_number.errors %}
+                                    <ul>
+                                        <li class="text-danger">{{ error|escape }}</li>
+                                    </ul>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12"
+                                   style="text-align: left;">{{ form.gender.label }}</label>
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                {{ form.gender }}
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group">
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="submit" class="btn btn-success" value="{% trans 'Update Info' %}">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- change Password form -->
+        <div class="col-md-12 col-sm-12 col-xs-12" id="change_password">
+
+            <div class="x_panel">
+
+                <div class="x_title">
+                    <h2>{% trans 'Change Password' %}</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    {% if messages %}
+                        {% for msg in messages %}
+                            {% if "change_password" in msg.tags %}
+                            <div class="alert alert-{% if 'error' in msg.tags %}danger{% else %}success{% endif %} alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                {{ msg }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <br/>
+                    <form class="form-horizontal form-label-left input_mask" method="post"
+                          action="{% url 'customers:change_password_user_info' %}">
+                        {% csrf_token %}
+                        {{ cp_form.non_field_errors }}
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12"
+                                   style="text-align: left;">{{ cp_form.password.label }}</label>
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <input type="password" class="form-control" placeholder="{{ cp_form.password.label }}"
+                                       name="{{ cp_form.password.html_name }}">
+                                {% if cp_form.password.errors %}
+                                    {% for error in cp_form.password.errors %}
+                                        <ul>
+                                            <li class="text-danger">{{ error|escape }}</li>
+                                        </ul>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- confirm Password -->
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" style="text-align: left;">
+                                {{ cp_form.confirm_password.label }}
+                            </label>
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <input type="password" class="form-control"
+                                       placeholder="{{ cp_form.confirm_password.label }}"
+                                       name="{{ cp_form.confirm_password.html_name }}">
+                                {% if cp_form.confirm_password.errors %}
+                                    {% for error in cp_form.confirm_password.errors %}
+                                        <ul>
+                                            <li class="text-danger">{{ error|escape }}</li>
+                                        </ul>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group">
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="submit" class="btn btn-success" value="{% trans 'Update Password' %}">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+{% block extra_footer %}
+    <script>
+
+        let loadFile = function (event) {
+        let image = document.getElementById("output");
+          image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+    </script>
+{% endblock %}

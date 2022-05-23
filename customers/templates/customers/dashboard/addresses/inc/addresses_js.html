@@ -1,0 +1,222 @@
+{% load i18n %}
+<script>
+    const notice = new Notice();
+
+    // click event for new address btn
+    $("#add_new_address_btn").on('click', function (e) {
+        e.preventDefault();
+        let state = $("#state_input").val()
+        let city = $("#city_input").val()
+        let postalCode = $("#postal_code_input").val()
+        let addressDetail = $("#address_detail_input").val()
+
+        console.log(state, city, postalCode, addressDetail)
+
+        // check for empty inputs
+        if (state === '' || city === '' || postalCode === '' || addressDetail === ''){
+             Toastify({
+                        text: "{% trans 'All Fields are required' %}!",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true,
+                        position: "center",
+
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+             return false
+        }
+        else{
+            let url = "{% url 'customers:address-list' %}";
+            // send post request to add new address
+            $.post(
+                url,
+                {
+                    "csrfmiddlewaretoken": "{{ csrf_token }}",
+                    'state': state,
+                    'city': city,
+                    'postal_code': postalCode,
+                    'address_detail': addressDetail,
+                    'customer': "{{ request.user.customer.id }}"
+                },
+                function (data) {
+                    console.log(data)
+                    swal("Done! New address added!!", {icon: "success",
+                         timer: 2000,
+                        buttons: false,
+                    });
+                    addToAddressBody(data)
+                },
+            ).fail(function(error) {
+                console.log(error)
+                swal("Something went wrong!",
+                    {icon: "error",
+                         timer: 2000,
+                        buttons: true,
+                    });
+            })
+        }
+
+    })
+
+    // add new address to DOM
+     function addToAddressBody(data){
+        let elem = `<blockquote style="border: 2px solid lightgrey;border-radius: 5px;">
+                    <a href="" style="margin:0 5px;" title="Edit" class="edit-btn"><i class="fa fa-pencil text-success p-2 rounded" aria-hidden="true"></i></a>
+                    <a href="" style="margin:0 5px;" title="Delete" class="remove-btn"><i class="fa fa-trash text-danger p-2 rounded" aria-hidden="true"></i></a>
+                    <hr style=" height: 3px;color: black;background: #cfc2c2;">
+                    <address>
+                        <span class="font-weight-bold">{% trans 'State' %}:</span> ${data.state}<br>
+                        <span class="font-weight-bold">{% trans ' city'%}:</span> ${data.city}<br>
+                        <span class="font-weight-bold">{% trans 'Postal code' %}:</span> ${data.postal_code}<br>
+                        <span class="font-weight-bold">{% trans 'Address Detail' %}:</span> ${data.address_detail}
+                    </address>
+                </blockquote>`
+        $("#address_body").append(elem)
+    }
+
+    // click event for remove address btn
+    $('.remove-btn').on('click', function (e){
+            e.preventDefault();
+            let elem = $(this)
+            let addressTag = elem.parent('blockquote')
+            let addressId = addressTag.attr('id')
+            let url = "{% url 'customers:address-detail' 0 %}".replace('0', addressId)
+
+            // beautiful alert
+            swal({
+                  title: "Are you sure?",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+            .then((willDelete) => {
+                  if (willDelete) {
+
+                    // on confirm send delete request
+                    $.ajax({
+                        url: url,
+                        method: 'DELETE',
+                        headers: {
+                            "X-CSRFToken": '{{ csrf_token }}',
+                        },
+                        success: function (data){
+                            console.log(`Address #${addressId} deleted!`)
+
+                            $("#address_body").find(addressTag).remove()
+                            swal("done! item deleted!", {icon: "success",
+                                 timer: 1200,
+                                buttons: false,
+                            });
+
+                        },
+                        error: function (e){
+                            console.log(e)
+                            if (e.status === 403){
+                                swal("Address in use!", {icon: "warning",
+                                 timer: 1600,
+                                buttons: false,
+                            });
+
+                            }
+                        },
+                    });
+
+                    } else {
+                       swal("nice choice! address kept", {
+                        icon: "success",
+                         timer: 1200,
+                         buttons: false,
+
+                            });
+                            }
+                });
+    });
+
+    // click event for edit address btn
+    $(".edit-btn").on('click', function (e) {
+        e.preventDefault()
+         let elem = $(this)
+        let addressId= elem.parent('blockquote').attr('id')
+        let state = $("#state_input_edit")
+        let city = $("#city_input_edit")
+        let postalCode = $("#postal_code_input_edit")
+        let addressDetail = $("#address_detail_input_edit")
+        $("#edit_address_btn").attr('data-addressId', addressId)
+        let url = "{% url 'customers:address-detail' 0 %}".replace('0', addressId)
+
+        // send get request to fill modal with selected address
+        $.get(
+            url,
+            function (data) {
+                state.val(data.state)
+                city.val(data.city)
+                postalCode.val(data.postal_code)
+                addressDetail.val(data.address_detail)
+            }
+        )
+    })
+
+    // click event of edit btn on modal
+    $("#edit_address_btn").on('click', function (e) {
+        e.preventDefault()
+
+        let addressId = $("#edit_address_btn").attr('data-addressId')
+        // address items on modal
+        let state = $("#state_input_edit")
+        let city = $("#city_input_edit")
+        let postalCode = $("#postal_code_input_edit")
+        let addressDetail = $("#address_detail_input_edit")
+        let url = "{% url 'customers:address-detail' 0 %}".replace('0', addressId)
+        // address items on page
+        let addressState = $("#address_body").find(`address#${addressId}`).find('.address_state')
+        let addressCity = $("#address_body").find(`address#${addressId}`).find('.address_city')
+        let addressPostalCode = $("#address_body").find(`address#${addressId}`).find('.address_postal_code')
+        let addressAddressDetail = $("#address_body").find(`address#${addressId}`).find('.address_address_detail')
+
+        if (state.val() === '' || city.val() === '' || postalCode.val() === '' || addressDetail.val() === ''){
+             Toastify({
+                    text: "{% trans 'All Fields are required' %}!",
+                    duration: 3000,
+                    close: true,
+                    stopOnFocus: true,
+                    position: "center",
+
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+             return false
+        }
+        else {
+            // Send Put request to update selected address
+            $.ajax({
+                url: url,
+                method: 'PUT',
+                data: {
+                    'state': state.val(),
+                    'city': city.val(),
+                    'postal_code': postalCode.val(),
+                    'address_detail': addressDetail.val(),
+                    'customer': "{{ request.user.customer.id }}"
+                },
+                headers: {
+                    "X-CSRFToken": '{{ csrf_token }}',
+                },
+                success: function (data) {
+                    console.log(`on success Put request: `, data)
+                    addressState.text(data.state)
+                    addressCity.text(data.city)
+                    addressPostalCode.text(data.postal_code)
+                    addressAddressDetail.text(data.address_detail)
+                },
+                error: function (e) {
+                    console.log(e)
+                },
+
+            })
+        }
+
+    })
+</script>

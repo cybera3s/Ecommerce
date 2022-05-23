@@ -1,0 +1,365 @@
+{% load static %}
+{% load i18n %}
+<script>
+    $(document).ready(function(){
+
+        const notice = new Notice();
+        // remove cart item btn event
+        $('.removeItem-btn').on('click', (e)=>{
+             e.preventDefault();
+            let elem = $(e.target)
+            let itemId = elem.parent().attr('data-itemId')
+            let productName = $('#productName').text()
+
+            console.log(`trying to delete ${productName} with id ${itemId}`)
+
+            // beautiful alert
+            swal({
+                  title: "Are you sure?",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+            .then((willDelete) => {
+                  if (willDelete) {
+                    swal("done! item deleted!", {icon: "success",
+                         timer: 1200,
+                        buttons: false,
+                    });
+                    // on confirm delete item from cart
+                    removeItemFromCart(elem)
+
+                    } else {
+                       swal("nice choice! item kept", {
+                        icon: "success",
+                         timer: 1200,
+                         buttons: false,
+
+                            });
+                            }
+                });
+    });
+
+        // send ajax request and delete from cart
+        function removeItemFromCart(elem){
+
+            let productId = elem.parent().attr('data-itemId')
+            let countItemsIcon = +$('#cartIcon').attr('data-notify')
+            let cartTotal = $('#cartTotal')
+            let url = "{% url 'orders:delete_cart_item' 0 %}".replace('0', productId)
+
+        // delete request for delete item from cart
+        $.ajax({
+                url: url,
+                method: 'DELETE',
+                headers: {
+                    "X-CSRFToken": '{{ csrf_token }}',
+                },
+                success: function (data){
+                    console.log(`on success delete request: ${data}`)
+
+                    $('#cartBody').find(`[data-itemId="${data.item}"]`).remove();   // remove item from dynamic nav cart
+                    elem.parents('tr').remove();        // remove item from main cart page
+                    $('.cartIcon').attr('data-notify', countItemsIcon - 1);         // item count notification on nav bar
+                    cartTotal.text(data.total_price)
+                    $('.total_price').text(data.total_price)
+                    let itemsCount = data.items_count
+                    // hide purchase btn if cart is empty
+                    if (Number(itemsCount) <= 0){
+                        console.log(itemsCount)
+                        $("#purchase").empty()
+                    }
+                },
+                error: function (e){
+                    console.log(e)
+                },
+            });
+
+    }
+
+        // add item count of cart btn event
+        $('.increaseItem,.decreaseItem').on('click', function (e){
+            e.preventDefault()
+            notice.showLoading({
+                title: 'Updating...',
+                color: '#333',
+                fontSize: 20,
+                backgroundColor: 'rgba(255,255,255,.6)'
+            });
+            let itemId = $(this).attr('data-itemId')
+            let cartTotal = $('#cartTotal')
+            let productId = $(this).attr('data-productId')
+            let currentValue = $(this).attr('class').includes("increaseItem") ?  $(this).prev("input.num-product") : $(this).next("input.num-product");
+
+            if ($(this).attr('class').includes("decreaseItem") ) {
+                if(currentValue.val() > 0 && (currentValue.val() - 1)!== 0){
+                    currentValue.val(Number(currentValue.val()) - 1);
+                // check for minimum count
+                }else{
+                    Toastify({
+                        text: "{% trans 'Minimum value for count is 1' %}!",
+                        duration: 1600,
+                        stopOnFocus: true,
+                        position: 'center',
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+                    notice.hideLoading()
+                    return 1
+                }
+            }else{
+                currentValue.val(Number(currentValue.val()) + 1);
+            }
+
+            let url = "{% url 'orders:update_cart_item' 0 %}".replace('0', itemId)
+            let countProductInNavCart = $(`#cartBody > li#${productId}`).find('.count-product-cart')
+            let productInventory = currentValue.attr('max')
+            let itemTotalPrice = $(this).parents("td").next('td').children('span')
+
+            let productPrice = $(this).parents("td").prev('td').children('span')
+
+            console.log('inventory: '+productInventory)
+            if (Number(currentValue.val()) == Number(productInventory)) {
+                $(this).hide()
+
+                Toastify({
+                        text: "{% trans 'maximum count!' %}!",
+                        duration: 1600,
+                        stopOnFocus: true,
+                        position: 'center',
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+
+            }else if (Number(currentValue.val()) < Number(productInventory)){
+                currentValue.siblings(".increaseItem").html('<i class="fs-16 zmdi zmdi-plus"></i>')
+
+                currentValue.siblings(".increaseItem").show()
+            }
+            console.log(`product Id is ${productId}`)
+            console.log(`item Id is ${itemId}`)
+
+            setTimeout(
+              function()
+              {
+                // Patch request for partial update of cart item
+                $.ajax({
+                    url: url,
+                    method: 'PATCH',
+                    data: {
+                        'item_id':itemId,
+                        'count': currentValue.val(),
+                    },
+                    headers: {
+                        "X-CSRFToken": '{{ csrf_token }}',
+                    },
+                    success: function (data){
+                        console.log(`on success patch request: `, data.item)
+                        notice.hideLoading()
+                        countProductInNavCart.text(data.item.count)
+                        let total = data.cart_total_price
+                        cartTotal.text(total)
+                        {#$('.total_price').text(data.cart_total_price)#}
+                        $("#total_price").text(data.cart_total_price)
+                        $("#final_price").text(data.cart_final_price)
+
+                        itemTotalPrice.text(data.item.count * Number(productPrice.text()))
+
+                    },
+                    error: function (e){
+                        notice.hideLoading()
+                        Toastify({
+                            text: JSON.parse(e.responseText).count[0],
+                            duration: 1600,
+                            stopOnFocus: true,
+                            position: 'center',
+                        style: {
+                            background: "red",
+                          }
+                        }).showToast();
+
+                        console.log(e)
+
+                    },
+                });
+
+              }, 1100);
+        });
+
+        // set off code on click event of apply
+        $('#add_offcode').on('click', function (){
+        let offcode = $('#offcode_txt')
+
+        // check if off code input already set
+        if (offcode.attr('disabled') == 'disabled'){
+
+            $(this).text('Apply Off code')
+            $(this).attr('title', '')
+            $(this).addClass('hov-btn3')
+            offcode.prop('disabled', false);
+            offcode.focus()
+            return 1
+        }else {
+                let finalPrice = $("#final_price")
+                let url = "{% url 'orders:cart_checkout' %}"
+                let applyOffcode = $('#add_offcode')
+
+                // check for empty input
+                if (offcode.val() == ''){
+            Toastify({
+                        text: "{% trans 'please enter your off code' %}!",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true,
+                    }).showToast();
+            return 1
+        }
+
+                $.post(
+                    url,
+                    {
+                        "csrfmiddlewaretoken": "{{ csrf_token }}",
+                        "action": 'set_offcode',
+                        "offcode": offcode.val(),
+                    },
+                    function (data){
+                        console.log(data)
+
+                        Toastify({
+                                text: "{% trans 'Off code applied!' %}!",
+                                duration: 3000,
+                                close: true,
+                                stopOnFocus: true,
+                            }).showToast();
+
+                        offcode.val(data.code)
+                        offcode.attr('title', 'is valid until '+ data.valid_to)
+                        offcode.attr('disabled', 'disabled')
+                        applyOffcode.text(data.offcode)
+                        applyOffcode.attr('title', 'click to change')
+                        applyOffcode.removeClass('hov-btn3')
+
+                        finalPrice.text(data.total_price)
+                    },
+                    ).fail(function(error) {
+                console.log(error)
+                Toastify({
+                        text: "{% trans 'Invalid Off code' %}!",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true,
+                    style: {
+                        background: "red",
+                      }
+                    }).showToast();
+            })
+        }
+        })
+
+         // set Address on change of address selection event
+        $("#addresses").on('change', function () {
+            const url = "{% url 'orders:cart_checkout' %}";
+
+        if ($(this).val() != "0"){         // first option that is : select an address
+            // show payment btn
+            elem = `<div class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="purchase">
+                                {% trans 'Proceed to Checkout' %}
+                </div>`
+            let itemsCount = "{{ real_cart.items.all.count }}"
+            if (Number(itemsCount) > 0){
+                $("#purchase").html(elem)
+            }
+
+            $.post(
+                url,
+                {
+                    "csrfmiddlewaretoken": "{{ csrf_token }}",
+                    "action": 'set_address',
+                    "address": $(this).val(),
+                },
+                function (data) {
+                    console.log(data)
+                    Toastify({
+                        text: "{% trans 'Address was set' %}!",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true,
+                    }).showToast();
+                },
+            ).fail(function(error) {
+                console.log(error)
+                Toastify({
+                        text: "{% trans 'Something went wrong!' %}!",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true,
+                    }).showToast();
+            })
+        }
+    });
+
+        // add new address on click event of register address btn
+        $('#register_address').on('click', function () {
+            $('#addresses').val('0')
+
+            let stateName = $("input[name='state']").val()
+            let cityName = $("input[name='city']").val()
+            let postCode = $("input[name='postcode']").val()
+            let addressDetail = $("textarea[name='address_detail']").val()
+
+            let url = "{% url 'orders:cart_checkout' %}";
+            elem = `<div class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="purchase">
+                                {% trans 'Proceed to Checkout' %}
+                </div>`
+
+         $.post(
+                url,
+                {
+                    "csrfmiddlewaretoken": "{{ csrf_token }}",
+                    "action": 'new_address',
+                    'state': stateName,
+                    'city': cityName,
+                    'postal_code': postCode,
+                    'address_detail': addressDetail
+                },
+                function (data) {
+                    console.log(data)
+                       swal("done! new address saved!!", {icon: "success",
+                         timer: 1200,
+                        buttons: false,
+                    });
+                    $('#addresses').append(`<option value="${data.address_id}" selected>${data.address}</option>`)
+
+                    $("#state_errors").empty()
+                    $("#city_errors").empty()
+                    $("#postal_code_errors").empty()
+                    $("#address_detail_errors").empty()
+                    $("#purchase").html(elem)
+
+                },
+            ).fail(function(error) {
+                console.log(error)
+                let errors = error.responseJSON.msg
+
+                for (let i in errors){
+                    item = $(`#${i}_errors`)
+                    item.html(`<li style="list-style-type: disc;">${errors[i][0]}</li>`)
+
+                }
+         })
+    })
+
+        // click event for proceed to checkout btn
+        $("#purchase").on('click', function () {
+            swal("{% trans 'thank you for your choice' %}",{
+                  title: "{% trans 'Payment successfully' %}",
+                  icon: "success",
+                  buttons: false,
+                  timer: 3000,
+                })
+    })
+
+    });
+</script>

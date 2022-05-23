@@ -1,0 +1,35 @@
+{% load i18n %}
+<div id="sidebar-menu" class="menu_fixed hidden-print main_menu">
+    <div class="menu_section">
+
+        <h3>{% trans 'General' %}</h3>
+        <ul class="nav side-menu">
+            <li><a href="{% url 'customers:customer_profile' %}"><i class="fa fa-home"></i>{% trans 'Dashboard' %}</a>
+            </li>
+
+            <li><a href="{% url 'customers:dashboard_orders' %}"><i
+                    class="fa fa-cart-arrow-down"></i>{% trans 'Orders' %}</a></li>
+
+            <li><a href="{% url 'customers:dashboard_addresses' %}"><i
+                    class="fa fa-map-marker"></i>{% trans 'Addresses' %}</a></li>
+
+            <li><a><i class="fa fa-heart"></i>{% trans 'Wishlist' %}</a></li>
+
+            <li><a><i class="fa fa-comment"></i>{% trans 'Comments' %}</a></li>
+
+            <li><a><i class="fa fa-user"></i>{% trans 'Customer Info' %}<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="display: block;">
+                      <li><a href="{% url 'customers:dashboard_user_info' %}#personal_info">{% trans 'Personal Info' %}</a></li>
+                      <li><a href="{% url 'customers:dashboard_user_info' %}#change_password">{% trans 'Change Password' %}</a></li>
+
+                </ul>
+            </li>
+
+            <li><a href="{% url 'customers:customer_logout' %}"><i class="fa fa-sign-out"></i>{% trans 'Logout' %}</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>

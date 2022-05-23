@@ -1,0 +1,49 @@
+{% extends 'customers/dashboard/_dashboard_base.html' %}
+{% load i18n %}
+{% load core_extras %}
+{% block title %}Orders{% endblock %}
+{% block extra_header %}
+{% endblock %}
+{% block content %}
+
+    <div class="x_content">
+
+        <div class="orders_title">
+            <h1>{% trans 'Orders History' %}</h1>
+            <hr>
+        </div>
+
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+
+                <li role="presentation" class="active"><a href="#tab_content1" id="current_tab" role="tab"
+                                                          data-toggle="tab" aria-expanded="true">{% trans 'Current' %}</a>
+                </li>
+
+                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="finished-tab" data-toggle="tab"
+                                                    aria-expanded="false">{% trans 'Finished' %}</a>
+                </li>
+
+            </ul>
+
+            <div id="myTabContent" class="tab-content">
+
+                <!-- Current Orders Tab -->
+                {% include 'customers/dashboard/orders/inc/current_order_tab.html' %}
+
+                <!-- Current Orders Tab -->
+                {% include 'customers/dashboard/orders/inc/finished_order_tab.html' %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
+{% block extra_footer %}
+    {% include 'customers/dashboard/inc/dashboard_js.html' %}
+{% endblock %}

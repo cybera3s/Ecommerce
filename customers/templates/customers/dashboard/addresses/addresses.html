@@ -1,0 +1,75 @@
+{% extends 'customers/dashboard/_dashboard_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Addresses' %}{% endblock %}
+{% block extra_header %}
+    <style>
+         .fa-pencil:hover{
+            transition: all .2s ease-in-out;
+            transform: scale(1.5);
+        }
+         .fa-trash:hover{
+             transition: all .2s ease-in-out;
+            transform: scale(1.5);
+         }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="">
+
+        <div class="page-title">
+
+            <div class="title_left">
+                <h3>{% trans 'Addresses' %}</h3>
+              </div>
+
+            <!-- Add new Address section -->
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                        <button class="btn btn-primary font-weight-bold" data-toggle="modal" data-target=".bs-example-modal-lg" type="button">{% trans 'Add New Address' %}!</button>
+                  </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+              <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <div class="col-12" id="address_body">
+                                {% for address in request.user.customer.addresses.all %}
+                                    <!-- blockquote -->
+                                    <blockquote style="border: 2px solid lightgrey;border-radius: 5px;" id="{{ address.id }}">
+                                        <a href="" style="margin:0 5px;" title="Edit" data-toggle="modal" data-target=".bs-example-modal-lg-edit" class="edit-btn"><i class="fa fa-pencil text-success p-2 rounded" aria-hidden="true"></i></a>
+                                        <a href="" style="margin:0 5px;" title="Delete" class="remove-btn"><i class="fa fa-trash text-danger p-2 rounded" aria-hidden="true"></i></a>
+                                        <hr style=" height: 3px;color: black;background: #cfc2c2;">
+                                        <address id="{{ address.id }}">
+                                            <span class="font-weight-bold">{% trans 'State' %}:</span> <span class="address_state">{{ address.state }}</span><br>
+                                            <span class="font-weight-bold">{% trans ' city'%}:</span> <span class="address_city">{{ address.city }}</span><br>
+                                            <span class="font-weight-bold">{% trans 'Postal code' %}:</span> <span class="address_postal_code">{{ address.postal_code }}</span><br>
+                                            <span class="font-weight-bold">{% trans 'Address Detail' %}:</span> <span class="address_address_detail">{{ address.address_detail }}</span>
+                                        </address>
+    {#                                    <footer>Someone famous in <cite title="Source Title">Source Title</cite>#}
+    {#                                    </footer>#}
+                                    </blockquote>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+              </div>
+        </div>
+
+    </div>
+
+    {% include 'customers/dashboard/addresses/inc/new_address_modal.html' %}
+    {% include 'customers/dashboard/addresses/inc/edit_address_modal.html' %}
+
+{% endblock %}
+{% block extra_footer %}
+    {% include 'customers/dashboard/addresses/inc/addresses_js.html' %}
+{% endblock %}

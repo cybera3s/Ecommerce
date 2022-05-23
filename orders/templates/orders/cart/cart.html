@@ -1,0 +1,53 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+{% block extra_head %}
+    <style>
+        .fa-trash:hover{
+            transition: all .2s ease-in-out;
+            transform: scale(1.5);
+        }
+    </style>
+{% endblock %}
+{% block content %}
+ 	<!-- breadcrumb -->
+    {% include 'orders/cart/inc/breadcrumb.html' %}
+    {% if messages %}
+        {% for msg in messages %}
+            {% if 'cart' in msg.tags %}
+                <div style="padding-left: 1.5rem;" class="alert alert-{% if 'success' in msg.tags %}success{% else %}danger{% endif %} alert-dismissible fade show w-50 mx-auto mt-3" role="alert">
+                    {{ msg }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+	<!-- Shoping Cart -->
+	<form class="bg0 p-t-75 p-b-85">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+
+						<div class="wrap-table-shopping-cart">{% include 'orders/cart/inc/cart_table.html' %}</div>
+
+                        <!-- Apply off code and update cart -->
+                        {% include 'orders/cart/inc/offcode_update.html' %}
+
+					</div>
+				</div>
+
+                {% include 'orders/cart/inc/finish_cart.html' %}
+
+			</div>
+		</div>
+	</form>
+{% endblock %}
+{% block extra_footer %}
+    {% include 'orders/cart/inc/cart_js.html' %}
+{% endblock %}

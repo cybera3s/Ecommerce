@@ -1,0 +1,53 @@
+{% load core_extras %}
+{% load i18n %}
+<table class="table-shopping-cart">
+
+    <!-- headers -->
+    <tr class="table_head">
+        <th class="column-1 text-center">{% trans 'Product' %}</th>
+        <th class="column-2 text-center">{% trans 'Price' %}</th>
+        <th class="column-3 text-center">{% trans 'Quantity' %}</th>
+        <th class="column-4 text-center">{% trans 'Total' %}</th>
+        <th class="column-5 text-center">{% trans 'Remove' %}</th>
+    </tr>
+
+    {% for item in cart %}
+
+        <tr class="table_row" >
+            <td class="column-1 text-center">
+                <div class="how-itemcart1">
+                    <img src="{{ item.product.pictures.first.picture.url }}" alt="{{ item.product.name }}"><br>
+                </div>
+                <!-- Product name -->
+                <div class="text-left">
+                    <a class="text-decoration-none" href="{{ item.product.get_absolute_url }}" data-id="{{ item.product.id }}" id="productName">{{ item.product.name }}</a>
+                </div>
+
+            </td>
+            <td class="column-2 text-center">$ <span class="productPrice">{{ item.product.final_worth }}</span></td>
+            <!-- product count -->
+            <td class="column-3 text-center">
+                <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                    <div class="cl8 hov-btn3 trans-04 flex-c-m decreaseItem" data-itemId="{{ item.id }}" data-productId="{{ item.product.id }}">
+                        <i class="fs-16 zmdi zmdi-minus"></i>
+                    </div>
+
+                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="{{ item.count }}" max="{{ item.product.inventory }}" min="1">
+
+                  {% if item.count < item.product.inventory %}
+                         <div class="cl8 hov-btn3 trans-04 flex-c-m increaseItem" data-itemId="{{ item.id }}" data-productId="{{ item.product.id }}">
+                            <i class="fs-16 zmdi zmdi-plus"></i>
+                        </div>
+                  {% endif %}
+
+                </div>
+            </td>
+            <!-- total price of cart item -->
+            <td class="column-4 text-center itemTotalPrice">$ <span>{{ item.product.final_worth|mul:item.count }}</span></td>
+            <td class="column-5 text-center"><a href="" class="removeItem-btn" data-itemId="{{ item.id }}"><i class="fa fa-trash text-danger p-2 rounded" aria-hidden="true"></i></a></td>
+        </tr>
+
+    {% endfor %}
+
+</table>
+

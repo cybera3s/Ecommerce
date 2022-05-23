@@ -1,0 +1,62 @@
+{% load i18n %}
+<div class="p-r-18 p-r-0-sm w-full-ssm">
+
+    <div class="p-t-15">
+
+         <div class="mtext-109 bg0 m-b-12">
+            <span>Address:</span>
+        </div>
+        <!-- address select -->
+        <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+
+            <select name="address" id="addresses" class="form-control">
+                <option value="0">{% trans 'Select an address' %} ...</option>
+                {% if request.user.customer.addresses.all %}
+                    {% for address in request.user.customer.addresses.all %}
+                        <option value="{{ address.id }}" {% if real_cart.address == address %}selected{% endif %}>{{ address }}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+
+        </div>
+
+        <div>
+            <span class="font-weight-bold rounded p-2">
+                {% trans 'Add New Address' %}
+            </span>
+            <hr>
+        </div>
+
+        <div class="bor8 bg0 m-b-12">
+            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state"
+                   placeholder="{% trans 'State' %}">
+        </div>
+        <ul id="state_errors" class="text-danger"></ul>
+
+        <div class="bor8 bg0 m-b-12">
+            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="city"
+                   placeholder="{% trans 'City' %}">
+        </div>
+        <ul id="city_errors" class="text-danger"></ul>
+
+        <div class="bor8 bg0 m-b-22">
+            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode"
+                   placeholder="{% trans 'Postcode / Zip' %}">
+        </div>
+        <ul id="postal_code_errors" class="text-danger"></ul>
+
+        <div class="bor8 bg0 m-b-22">
+            <textarea class="plh3 size-111 p-lr-15" type="text" name="address_detail"
+                      placeholder="{% trans 'Address Detail' %}" cols="10" style="height: 100px;"></textarea>
+        </div>
+        <ul id="address_detail_errors" class="text-danger"></ul>
+
+        <div class="flex-w">
+            <div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer" id="register_address">
+                {% trans 'Register Address' %}
+            </div>
+        </div>
+
+    </div>
+
+</div>

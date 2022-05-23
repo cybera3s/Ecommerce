@@ -1,0 +1,59 @@
+{% load i18n %}
+<div class="menu-mobile">
+    <ul class="topbar-mobile">
+        <li>
+            <div class="left-top-bar">
+                <strong>{% trans 'Aiva Shop' %}</strong>
+            </div>
+        </li>
+
+        <li>
+            <div class="right-top-bar flex-w h-full">
+                <!-- languages -->
+                {% for lang in languages %}
+
+                    <a href="/{{ lang.code }}/" title="{{ lang.name_local }}" class="flex-c-m trans-04 p-lr-25">
+                        {{ lang.code }}
+                    </a>
+
+                {% endfor %}
+
+                <!-- Authentication -->
+                {% if not request.user.is_authenticated %}
+                    <a href="{% url 'customers:customer_login' %}" class="flex-c-m trans-04 p-lr-25">{% trans 'Login' %}</a>
+
+                    <a href="{% url 'customers:customer_register' %}" class="flex-c-m trans-04 p-lr-25">{% trans 'Register' %}</a>
+                {% else %}
+                    <a href="{% url 'customers:customer_profile' %}"
+                       class="flex-c-m trans-04 p-lr-25">{% trans 'My Account' %}</a>
+                    <a href="{% url 'customers:customer_logout' %}" class="flex-c-m trans-04 p-lr-25">{% trans 'Logout' %}</a>
+                {% endif %}
+
+            </div>
+        </li>
+    </ul>
+
+    <ul class="main-menu-m">
+
+        <li>
+            <a href="{% url 'product:landing' %}">{% trans 'Home' %}</a>
+        </li>
+
+        <li>
+            <a href="{% url 'product:category_list' %}">{% trans 'Categories' %}</a>
+            {% include 'inc/nav/layouts/categories_mobile.html' %}
+            <span class="arrow-main-menu-m">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </span>
+        </li>
+
+        <li>
+            <a href="{% url 'core:about' %}">{% trans 'About' %}</a>
+        </li>
+
+        <li>
+            <a href="{% url 'core:contact_us' %}">{% trans 'Contact' %}</a>
+        </li>
+    </ul>
+
+</div>

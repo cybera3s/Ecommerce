@@ -1,0 +1,42 @@
+{% load i18n %}
+<div class="bor10 m-t-50 p-t-43 p-b-40">
+    <!-- Tab01 -->
+    <div class="tab01">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item p-b-10">
+                <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+            </li>
+
+        <!-- additional information-->
+{#            <li class="nav-item p-b-10">#}
+{#                <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional information</a>#}
+{#            </li>#}
+
+            <li class="nav-item p-b-10">
+                <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews ({{  comments.count  }})</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content p-t-43">
+            <!-- description- -->
+            <div class="tab-pane fade show active" id="description" role="tabpanel">
+                <div class="how-pos2 p-lr-15-md">
+                    <p class="stext-102 cl6">
+                        {{ product.description }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- information- -->
+{#            {% include 'product/inc/detail/information.html' %}#}
+
+
+            <!-- reviews- -->
+            {% include 'product/inc/detail/reviews.html' %}
+        </div>
+
+    </div>
+
+</div>
