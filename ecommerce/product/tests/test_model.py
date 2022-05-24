@@ -51,7 +51,7 @@ class ProductTest(TestCase):
         self.assertTrue(product.final_price)
 
     def test_highest_price_success(self):
-        print(Product.highest_price())
+        # print(Product.highest_price())
         self.assertEqual(Product.highest_price(), self.product2)
 
     def test_calculate_inventory_success(self):
@@ -59,5 +59,5 @@ class ProductTest(TestCase):
         self.assertEqual(product.inventory - 5, product.calculate_inventory(5))
 
     def test_get_absolute_url(self):
-        print(self.product1.get_absolute_url())
+        # print(self.product1.get_absolute_url())
         self.assertEqual(self.product1.get_absolute_url(), f'/en/product/{self.product1.id}/{self.product1.slug}')
