@@ -6,7 +6,6 @@
             <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
-
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
@@ -15,7 +14,7 @@
                             <img src="{{ request.user.customer.avatar.url }}" alt="{{ request.user.customer }}">
                             {{ request.user.customer }}
                         {% else %}
-                            <img src="{% static 'core/images/avatar/default_avatar.jpg'%}" alt="{{ request.user }}">
+                            <img src="{% static 'core/images/avatar/default_avatar.jpg' %}" alt="{{ request.user }}">
                             {{ request.user.username }}
                         {% endif %}
                         <span class=" fa fa-angle-down"></span>
