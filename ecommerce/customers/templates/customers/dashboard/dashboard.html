@@ -27,7 +27,17 @@
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-check"></i></div>
-                  <div class="count">{{ request.user.customer.get_finished_orders.count }}</div>
+                  <div class="count">
+                      {% with request.user.customer.get_finished_orders.count as finished_orders_count %}
+
+                         {% if finished_orders_count %}
+                            {{ finished_orders_count }}
+                         {% else %}
+                             0
+                         {% endif %}
+
+                      {% endwith %}
+                  </div>
                   <h3>{% trans 'Finished Orders' %}</h3>
                 </div>
               </div>
