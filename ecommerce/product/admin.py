@@ -1,3 +1,5 @@
+from dataclasses import fields
+
 from django.contrib import admin
 from .models import Product, Brand, Category, Discount, Picture
 
@@ -34,6 +36,7 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    exclude = ('created', "last_updated", "delete_timestamp", "deleted_at", "is_deleted", "is_active")
     list_display = ('name', 'root')
     search_fields = ('name',)
     list_filter = ('name',)
