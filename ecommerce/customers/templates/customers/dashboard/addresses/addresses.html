@@ -57,6 +57,10 @@
     {#                                    <footer>Someone famous in <cite title="Source Title">Source Title</cite>#}
     {#                                    </footer>#}
                                     </blockquote>
+                                {% empty %}
+                                    <div class="alert alert-info text-center h4 empty">
+                                        There is no Address!
+                                    </div>
                                 {% endfor %}
                             </div>
                         </div>
