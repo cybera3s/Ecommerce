@@ -133,13 +133,12 @@ dmypy.json
 .idea
 
  # django
-*/migrations/*
-!*/migrations/__init__.py
-static
+/ecommerce/*/migrations/*
+!*/ecommerce/*/migrations/__init__.py
+/ecommerce/static
 db.sqlite3
 
 # extra files
 upgrades.txt
-
 media/
-upgrades.txt
+
