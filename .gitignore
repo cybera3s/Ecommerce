@@ -135,7 +135,7 @@ dmypy.json
  # django
 */migrations/*
 !*/migrations/__init__.py
-
+static
  db.sqlite3
 
 media/
