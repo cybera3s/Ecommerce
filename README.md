@@ -129,7 +129,7 @@ Project Link: [https://github.com/cybera3s/Ecommerce](https://github.com/cybera3
 [forks-shield]: https://img.shields.io/github/forks/cybera3s/Ecommerce.svg?style=for-the-badge
 [forks-url]: https://github.com/cybera3s/Ecommerce/network/members
 [stars-shield]: https://img.shields.io/github/stars/cybera3s/Ecommerce.svg?style=for-the-badge
-[stars-url]: https://github.com/cybera3s/repo_name/stargazers
+[stars-url]: https://github.com/cybera3s/Ecommerce/stargazers
 [issues-shield]: https://img.shields.io/github/issues/cybera3s/Ecommerce.svg?style=for-the-badge
 [issues-url]: https://github.com/cybera3s/Ecommerce/issues
 [license-shield]: https://img.shields.io/github/license/cybera3s/Ecommerce.svg?style=for-the-badge
