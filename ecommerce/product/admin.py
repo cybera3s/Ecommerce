@@ -45,6 +45,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Discount)
 class DiscountAdmin(admin.ModelAdmin):
+    fields = ("value", "type", "max_price")
     list_display = ('value', 'type')
     search_fields = ('value',)
 
