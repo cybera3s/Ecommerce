@@ -110,7 +110,12 @@
                                  timer: 1200,
                                 buttons: false,
                             });
-
+                            if ($("#address_body").children("blockquote").length == 0){
+                                emt =  `<div class="alert alert-info text-center h4 empty">
+                                            There is no Address!
+                                        </div>`
+                                $("#address_body").append(emt)
+                            }
                         },
                         error: function (e){
                             console.log(e)
