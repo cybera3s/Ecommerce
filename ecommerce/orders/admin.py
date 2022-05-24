@@ -31,6 +31,7 @@ class OffCodeAdmin(admin.ModelAdmin):
 
 @admin.register(CartItem)
 class CartItemAdmin(admin.ModelAdmin):
+    fields = ('count', "cart", "product")
     list_display = ('product', 'count',)
     search_fields = ('product',)
     list_filter = ('cart',)
