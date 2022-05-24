@@ -51,7 +51,7 @@ class CustomerTest(TestCase):
         self.assertEqual(self.user1.username, self.customer1.__str__())
 
     def test2_get_current_orders_success(self):
-        print(self.customer1.carts.filter(is_active=True))
+        # print(self.customer1.carts.filter(is_active=True))
         self.assertIn(self.cart1, self.customer1.get_current_orders())
         self.assertTrue(all(map(lambda cart: cart.is_active, self.customer1.get_current_orders())))
 
@@ -72,6 +72,6 @@ class AddressTest(TestCase):
                                                address_detail='somewhere', customer=self.customer1)
 
     def test1_address_create_success(self):
-        print(self.address1.__str__())
+        # print(self.address1.__str__())
         self.assertIsInstance(self.address1, Address)
 
