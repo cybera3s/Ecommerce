@@ -25,6 +25,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
+    fields = ('name', 'country')
     list_display = ('name', 'country')
     list_display_links = ('name',)
     search_fields = ('name', 'country')
