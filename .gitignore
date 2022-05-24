@@ -136,7 +136,10 @@ dmypy.json
 */migrations/*
 !*/migrations/__init__.py
 static
- db.sqlite3
+db.sqlite3
+
+# extra files
+upgrades.txt
 
 media/
 upgrades.txt
