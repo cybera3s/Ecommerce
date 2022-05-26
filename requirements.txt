@@ -6,6 +6,7 @@ cffi==1.15.0
 charset-normalizer==2.0.12
 cryptography==36.0.1
 Django==4.0.4
+django-environ==0.8.1
 django-filter==21.1
 django-jazzmin==2.4.9
 django-rosetta==0.9.8
