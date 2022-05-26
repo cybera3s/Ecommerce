@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 09:49+0000\n"
-"PO-Revision-Date: 2022-04-05 10:06+0000\n"
+"POT-Creation-Date: 2022-05-26 22:32+0000\n"
+"PO-Revision-Date: 2022-05-26 22:34+0000\n"
 "Last-Translator:   <cybera.3s@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -20,7 +20,6 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
 #: comments/apps.py:8
-#: customers/templates/customers/dashboard/inc/_sidebar.html:18
 msgid "Comments"
 msgstr "نظرات"
 
@@ -310,7 +309,7 @@ msgstr "جزئیات آدرس"
 msgid "Addresses"
 msgstr "آدرس ها"
 
-#: customers/templates/customers/dashboard/_dashboard_base.html:43
+#: customers/templates/customers/dashboard/_dashboard_base.html:46
 msgid "Welcome"
 msgstr "خوش آمدید"
 
@@ -334,7 +333,7 @@ msgid "Postal code"
 msgstr "کد پستی"
 
 #: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:18
-#: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:180
+#: customers/templates/customers/dashboard/addresses/inc/addresses_js.html:186
 msgid "All Fields are required"
 msgstr "همه فیلد ها ضروری هستند"
 
@@ -347,21 +346,18 @@ msgid "Edit"
 msgstr "ویرایش"
 
 #: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:10
-#| msgid "Address"
 msgid "New Address"
 msgstr "آدرس جدید"
 
 #: customers/templates/customers/dashboard/addresses/inc/new_address_modal.html:55
-#| msgid "Address"
 msgid "Add"
 msgstr "افزودن"
 
-#: customers/templates/customers/dashboard/dashboard.html:13
-#| msgid "Orders"
+#: customers/templates/customers/dashboard/dashboard.html:23
 msgid "Current Orders"
 msgstr "سفارش های جاری"
 
-#: customers/templates/customers/dashboard/dashboard.html:21
+#: customers/templates/customers/dashboard/dashboard.html:41
 msgid "Finished Orders"
 msgstr "سفارش های تکمیل شده"
 
@@ -378,33 +374,33 @@ msgstr "داشبورد"
 msgid "Orders"
 msgstr "سفارش ها"
 
-#: customers/templates/customers/dashboard/inc/_sidebar.html:16
+#: customers/templates/customers/dashboard/inc/_sidebar.html:18
 msgid "Wishlist"
 msgstr "لیست علاقه مندی ها"
 
-#: customers/templates/customers/dashboard/inc/_sidebar.html:20
+#: customers/templates/customers/dashboard/inc/_sidebar.html:23
 #: customers/templates/customers/dashboard/user_info/user_info.html:3
-#| msgid "Customer"
 msgid "Customer Info"
 msgstr "اطلاعات مشتری"
 
-#: customers/templates/customers/dashboard/inc/_sidebar.html:22
+#: customers/templates/customers/dashboard/inc/_sidebar.html:25
 msgid "Personal Info"
 msgstr "اطلاعات شخصی"
 
-#: customers/templates/customers/dashboard/inc/_sidebar.html:23
+#: customers/templates/customers/dashboard/inc/_sidebar.html:26
 #: customers/templates/customers/dashboard/user_info/user_info.html:187
+#: customers/templates/customers/password_reset/password_reset_confirm.html:47
 msgid "Change Password"
 msgstr "تغییر کلمه عبور"
 
-#: customers/templates/customers/dashboard/inc/_sidebar.html:28
+#: customers/templates/customers/dashboard/inc/_sidebar.html:31
 #: templates/inc/auth_nav.html:39
 #: templates/inc/nav/layouts/_menu_mobile.html:29
 #: templates/inc/nav/layouts/_topbar_desk.html:20
 msgid "Logout"
 msgstr "خروج از حساب"
 
-#: customers/templates/customers/dashboard/inc/_top_navigation.html:16
+#: customers/templates/customers/dashboard/inc/_top_navigation.html:23
 msgid "Profile Info"
 msgstr "اطلاعات پروفایل"
 
@@ -413,6 +409,13 @@ msgstr "اطلاعات پروفایل"
 #: orders/models.py:29
 msgid "Total Price"
 msgstr "قیمت کل"
+
+#: customers/templates/customers/dashboard/orders/inc/current_order_tab.html:35
+#: product/templates/product/category/category_list.html:45
+#, fuzzy
+#| msgid "There is No Comments"
+msgid "There is no item"
+msgstr "هیچ نظری وجود ندارد"
 
 #: customers/templates/customers/dashboard/orders/inc/finished_order_tab.html:15
 #: orders/models.py:30 orders/templates/orders/cart/inc/finish_cart.html:36
@@ -428,12 +431,10 @@ msgid "Profit"
 msgstr "سود"
 
 #: customers/templates/customers/dashboard/orders/orders.html:12
-#| msgid "Orders"
 msgid "Orders History"
 msgstr "تاریخچه سفارشات"
 
 #: customers/templates/customers/dashboard/orders/orders.html:21
-#| msgid "Parent"
 msgid "Current"
 msgstr "جاری"
 
@@ -442,12 +443,10 @@ msgid "Finished"
 msgstr "تمام شده"
 
 #: customers/templates/customers/dashboard/user_info/user_info.html:64
-#| msgid "User"
 msgid "User Info"
 msgstr "اطلاعات کاربر"
 
 #: customers/templates/customers/dashboard/user_info/user_info.html:91
-#| msgid "Category Image"
 msgid "Change Image"
 msgstr "تغییر تصویر"
 
@@ -460,7 +459,6 @@ msgid "Update Password"
 msgstr "بروز رسانی کلمه عبور"
 
 #: customers/templates/customers/login.html:47
-#| msgid "your password"
 msgid "Forget your Password?"
 msgstr "فراموشی رمز عبور"
 
@@ -477,6 +475,60 @@ msgstr "اگر شما حساب کاربری ندارید"
 msgid "Sign Up here"
 msgstr "از اینجا ثبت نام کنید"
 
+#: customers/templates/customers/password_reset/password_reset_complete.html:5
+#, fuzzy
+#| msgid "Password successfully Updated!"
+msgid "Your password successfully changed"
+msgstr "کلمه عبور با موفقیت بروز شد!"
+
+#: customers/templates/customers/password_reset/password_reset_confirm.html:4
+#, fuzzy
+#| msgid "Update Password"
+msgid "Set New Password"
+msgstr "بروز رسانی کلمه عبور"
+
+#: customers/templates/customers/password_reset/password_reset_confirm.html:20
+#, fuzzy
+#| msgid "Password"
+msgid "Password Here"
+msgstr "کلمه عبور"
+
+#: customers/templates/customers/password_reset/password_reset_confirm.html:34
+#, fuzzy
+#| msgid "Confirm Password"
+msgid "Confirm Password Here"
+msgstr "تایید پسورد"
+
+#: customers/templates/customers/password_reset/password_reset_confirm.html:51
+#, fuzzy
+#| msgid "this item is not available in inventory"
+msgid "this link is not valid , try again"
+msgstr "این مورد در انبار موجود نمی باشد"
+
+#: customers/templates/customers/password_reset/password_reset_done.html:5
+msgid "We have sent you a verification email"
+msgstr "ما برای شما یک ایمیل تاییده فرستادیم"
+
+#: customers/templates/customers/password_reset/password_reset_form.html:4
+#, fuzzy
+#| msgid "Forget your Password?"
+msgid "recover Password"
+msgstr "فراموشی رمز عبور"
+
+#: customers/templates/customers/password_reset/password_reset_form.html:16
+#, fuzzy
+#| msgid "Your Email Address"
+msgid "Email Address here"
+msgstr "آدرس ایمیل شما"
+
+#: customers/templates/customers/password_reset/password_reset_form.html:18
+msgid "We'll never share your email with anyone else"
+msgstr "ما هیچوقت ادرس ایمیل شمارا با دیگران به اشتراک نمیگذاریم"
+
+#: customers/templates/customers/password_reset/password_reset_form.html:30
+msgid "Send verification email"
+msgstr "ارسال کد تایید"
+
 #: customers/templates/customers/register.html:85
 msgid "If you Already have an account"
 msgstr "اگر حساب کاربری دارید"
@@ -485,29 +537,29 @@ msgstr "اگر حساب کاربری دارید"
 msgid "Sign in here"
 msgstr "از اینجا وارد شوید"
 
-#: customers/views.py:53 templates/inc/auth_nav.html:32
+#: customers/views.py:54 templates/inc/auth_nav.html:32
 #: templates/inc/nav/layouts/_menu_mobile.html:23
 #: templates/inc/nav/layouts/_topbar_desk.html:15
 msgid "Login"
 msgstr "ورود"
 
-#: customers/views.py:88
+#: customers/views.py:89
 msgid "Username or Password is Incorrect"
 msgstr "نام کاربری یا کلمه ی عبور اشتباه است"
 
-#: customers/views.py:147
+#: customers/views.py:167
 msgid "Personal Information Updated!"
 msgstr "اطلاعات شخصی بروز شد !"
 
-#: customers/views.py:150 customers/views.py:169
+#: customers/views.py:170 customers/views.py:189
 msgid "Please correct Below Errors!"
 msgstr "لطفا خطاهای زیر را برطرف کنید"
 
-#: customers/views.py:166
+#: customers/views.py:186
 msgid "Password successfully Updated!"
 msgstr "کلمه عبور با موفقیت بروز شد!"
 
-#: orders/models.py:32 orders/models.py:141 orders/models.py:151
+#: orders/models.py:32 orders/models.py:114 orders/models.py:124
 msgid "Off Code"
 msgstr "کد تخفیف"
 
@@ -528,23 +580,23 @@ msgstr "تعداد"
 msgid "Order"
 msgstr "سفارش"
 
-#: orders/models.py:136 orders/models.py:139
+#: orders/models.py:109 orders/models.py:112
 msgid "must be greater than now"
 msgstr "باید از زمان کنونی بیشتر باشد"
 
-#: orders/models.py:137
+#: orders/models.py:110
 msgid "Valid From"
 msgstr "شروع اعتبار"
 
-#: orders/models.py:140
+#: orders/models.py:113
 msgid "Valid To"
 msgstr "پایان اعتبار"
 
-#: orders/models.py:142
+#: orders/models.py:115
 msgid "must be more than five letters"
 msgstr "باید از پنج حرف بیشتر باشد"
 
-#: orders/models.py:152
+#: orders/models.py:125
 msgid "Off Codes"
 msgstr "کد های تخفیف"
 
@@ -565,7 +617,6 @@ msgid "Postcode / Zip"
 msgstr "کد پستی"
 
 #: orders/templates/orders/cart/inc/address.html:56
-#| msgid "Register"
 msgid "Register Address"
 msgstr "ثبت آدرس"
 
@@ -596,12 +647,12 @@ msgid "Invalid Off code"
 msgstr "کد تخفیف نا معتبر"
 
 #: orders/templates/orders/cart/inc/cart_js.html:268
+#: orders/templates/orders/cart/inc/cart_js.html:314
 #: orders/templates/orders/cart/inc/finish_cart.html:52
 msgid "Proceed to Checkout"
 msgstr "ادامه جهت بازبینی"
 
 #: orders/templates/orders/cart/inc/cart_js.html:285
-#| msgid "Address Detail"
 msgid "Address was set"
 msgstr "آدرس ثبت شد"
 
@@ -609,12 +660,11 @@ msgstr "آدرس ثبت شد"
 msgid "Something went wrong!"
 msgstr "خطایی رخ داده است!"
 
-#: orders/templates/orders/cart/inc/cart_js.html:352
+#: orders/templates/orders/cart/inc/cart_js.html:356
 msgid "thank you for your choice"
 msgstr "از انتخاب شما متشکریم"
 
-#: orders/templates/orders/cart/inc/cart_js.html:353
-#| msgid "logged in successfully"
+#: orders/templates/orders/cart/inc/cart_js.html:357
 msgid "Payment successfully"
 msgstr "پرداخت موفقیت آمیز"
 
@@ -627,8 +677,7 @@ msgid "Quantity"
 msgstr "تعداد"
 
 #: orders/templates/orders/cart/inc/cart_table.html:10
-#: templates/inc/nav/layouts/_cart.html:42
-#| msgid "Total Price"
+#: templates/inc/nav/layouts/_cart.html:33
 msgid "Total"
 msgstr "کل"
 
@@ -637,27 +686,22 @@ msgid "Remove"
 msgstr "پاک کردن"
 
 #: orders/templates/orders/cart/inc/finish_cart.html:6
-#| msgid "Carts"
 msgid "Cart Totals"
 msgstr "سبد های خرید"
 
 #: orders/templates/orders/cart/inc/finish_cart.html:13
-#| msgid "Total Price"
 msgid " Total Price"
 msgstr "قیمت کل"
 
 #: orders/templates/orders/cart/inc/offcode_update.html:15
-#| msgid "Off Code"
 msgid "Off code here"
 msgstr "کد تخفیف اینجا"
 
 #: orders/templates/orders/cart/inc/offcode_update.html:17
-#| msgid "Off Code"
 msgid "Apply Off Code"
 msgstr "اعمال کد تخفیف"
 
 #: orders/views.py:24
-#| msgid "Check Out"
 msgid "Cart Checkout"
 msgstr "بازیبینی سبد خرید"
 
@@ -742,6 +786,20 @@ msgstr "تصویر دسته بندی"
 msgid "Categories"
 msgstr "دسته بندی ها"
 
+#: product/templates/product/category/category_detail.html:30
+#: product/templates/product/inc/search_pro.html:8
+#: product/templates/product/landing/landing.html:47
+msgid "Search"
+msgstr "جستجو"
+
+#: product/templates/product/category/category_detail.html:43
+#: product/templates/product/inc/related_products.html:60
+#: product/templates/product/landing/landing.html:65
+#, fuzzy
+#| msgid "There is No Comments"
+msgid "There is no Items"
+msgstr "هیچ نظری وجود ندارد"
+
 #: product/templates/product/inc/add_to_cart.html:19
 #: product/templates/product/inc/detail/add_to_cart.html:21
 msgid "Add to cart"
@@ -768,9 +826,16 @@ msgid "Load More"
 msgstr "نمایش بیشتر"
 
 #: product/templates/product/inc/product_js.html:40
+#: product/templates/product/inc/related_products.html:26
 #: product/templates/product/inc/single_product.html:13
 msgid "Quick View"
 msgstr "نمایش سریع"
+
+#: product/templates/product/inc/related_products.html:7
+#, fuzzy
+#| msgid "All Products"
+msgid "Related Products"
+msgstr "همه محصولات"
 
 #: product/templates/product/landing/inc/pagination.html:6
 msgid "previous"
@@ -780,19 +845,11 @@ msgstr "قبلی"
 msgid "Next"
 msgstr "بعدی"
 
-#: product/templates/product/landing/landing.html:41
-msgid "Filter"
-msgstr "فیلتر کردن"
-
-#: product/templates/product/landing/landing.html:47
-msgid "Search"
-msgstr "جستجو"
-
 #: product/templates/product/product_detail.html:47
 msgid "this item is not available in inventory"
 msgstr "این مورد در انبار موجود نمی باشد"
 
-#: product/views.py:21
+#: product/views.py:28
 msgid "landing"
 msgstr "صفحه اصلی"
 
@@ -815,7 +872,7 @@ msgstr "به ما سر بزنید"
 msgid "Register"
 msgstr "ثبت نام"
 
-#: templates/inc/nav/_nav.html:36
+#: templates/inc/nav/_nav.html:37
 #: templates/inc/nav/layouts/_menu_mobile.html:6
 msgid "Aiva Shop"
 msgstr "فروشگاه آیوا"
@@ -824,7 +881,7 @@ msgstr "فروشگاه آیوا"
 msgid "Your Cart"
 msgstr "سبد خرید شما"
 
-#: templates/inc/nav/layouts/_cart.html:47
+#: templates/inc/nav/layouts/_cart.html:39
 msgid "View Cart"
 msgstr "نمایش سبد خرید"
 
@@ -837,6 +894,13 @@ msgstr "تماس با ما"
 #: templates/inc/nav/layouts/_topbar_desk.html:19
 msgid "My Account"
 msgstr "حساب من"
+
+#: templates/inc/nav/layouts/single_item_nav_cart.html:25
+msgid "remove item"
+msgstr "حذف مورد"
+
+#~ msgid "Filter"
+#~ msgstr "فیلتر کردن"
 
 #~ msgid "logged in successfully"
 #~ msgstr "با موفقیت وارد شدید !"
