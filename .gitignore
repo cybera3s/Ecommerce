@@ -136,7 +136,6 @@ dmypy.json
 /ecommerce/*/migrations/*
 !*/ecommerce/*/migrations/__init__.py
 /ecommerce/static
-db.sqlite3
 
 # extra files
 upgrades.txt
