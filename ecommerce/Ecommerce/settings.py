@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'Ecommerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'aiva',
-        'USER': 'aiva',
-        'PASSWORD': 'aiva123456',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USERNAME'),
+        'PASSWORD': env('DATABASE_PASSWORD'),
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT'),
     }
 }
 
