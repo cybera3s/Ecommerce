@@ -136,7 +136,7 @@ dmypy.json
 /ecommerce/*/migrations/*
 !*/ecommerce/*/migrations/__init__.py
 /ecommerce/static
-
+/ecommerce/media
 # extra files
 upgrades.txt
 .env
