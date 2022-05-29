@@ -28,7 +28,7 @@ class ContactUsView(TemplateView):
             message = "From: " + body['email'] + "\nmessage: " + body['message']
 
             try:
-                send_mail(subject, message, 'cybera.3s@gmail.com', ['cybera.3s@gmail.com'])
+                send_mail(subject, message, 'aiva.ecommerce@gmail.com', ['aiva.ecommerce@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             except Exception:
