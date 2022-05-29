@@ -1,3 +1,6 @@
+import json
+
+from core.models import Setting
 from product.models import Category
 from utils.cart import Cart
 
@@ -20,3 +23,13 @@ def cart(request):
     return {
         'cart': active_cart
     }
+
+
+def app_settings(request):
+    """Global values to pass to templates"""
+    settings_dict = dict()
+    settings = dict()
+    for obj in Setting.objects.all():
+        settings[obj.name] = obj.value
+    settings_dict['settings'] = json.dumps(settings)
+    return settings_dict
