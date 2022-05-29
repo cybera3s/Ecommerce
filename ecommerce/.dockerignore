@@ -1,0 +1,5 @@
+static
+chromedriver
+__pycache__
+media/*
+.env
