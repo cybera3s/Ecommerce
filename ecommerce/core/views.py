@@ -31,6 +31,12 @@ class ContactUsView(TemplateView):
                 send_mail(subject, message, 'cybera.3s@gmail.com', ['cybera.3s@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
+            except Exception:
+                messages.warning(request,
+                                 'set your own config for email backend (EMAIL_HOST_USER and EMAIL_HOST_PASSWORD)',
+                                 'warning contact_us')
+                return redirect("core:contact_us")
+
             messages.success(request, _('Thanks for your Feedback'), 'success contact_us')
             return redirect("core:contact_us")
         # handle Invalid form data
