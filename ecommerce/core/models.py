@@ -15,7 +15,7 @@ class Setting(models.Model):
     value = JSONField(null=True, blank=True,
                       help_text="Value of site-wide variable that scripts can reference - must be valid JSON")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
