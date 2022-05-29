@@ -14,6 +14,10 @@
     {% endblock %}
 </head>
 <body>
+    <script type="text/javascript">
+    //Auto-exported site-wide settings
+        {% autoescape off %}var site_settings = {{ settings|safe|default:"{}" }};{% endautoescape %}
+    </script>
     {% include 'inc/auth_nav.html' %}
     {% include 'inc/messages.html' %}
     {% block content %}
