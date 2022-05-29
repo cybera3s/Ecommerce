@@ -256,6 +256,7 @@ JAZZMIN_SETTINGS = {
         'product.Discount': 'fa fa-percent',
         'orders.Cart': 'fa fa-shopping-cart',
         'orders.Offcode': 'fa fa-percent',
+        'core.Setting': 'fa fa-cog',
 
     },
     # Icons that are used when one is not manually specified
