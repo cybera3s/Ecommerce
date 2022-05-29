@@ -328,7 +328,7 @@ JAZZMIN_UI_TWEAKS = {
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'cybera.3s@gmail.com'
+EMAIL_HOST_USER = env('EMAIL_HOST_USER') or None
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD') or None
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = 'gipnyhnlitrktpui'
 EMAIL_USE_TLS = True
