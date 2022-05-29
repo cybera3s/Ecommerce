@@ -79,6 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # app setting context
+                'core.context_processors.app_settings',
                 # My context_processors to access categories in all views
                 'core.context_processors.access_category_items',
                 'core.context_processors.cart',
