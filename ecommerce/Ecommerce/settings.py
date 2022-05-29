@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Rest Framework
     'rest_framework',
     'django_filters',
+    'django_json_widget',
     # my apps
     'rosetta',
     'core.apps.CoreConfig',
