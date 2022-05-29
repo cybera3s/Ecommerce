@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Rest Framework
     'rest_framework',
-    'django_filters',
     'django_json_widget',
     # my apps
     'rosetta',
