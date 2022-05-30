@@ -8,13 +8,14 @@ from django.views.generic import DetailView, ListView, TemplateView
 
 from comments.forms import CommentCreateForm
 from product.models import Category, Product, Brand
+from core.models import Setting
 
 
 class LandingView(ListView):
     template_name = 'product/landing/landing.html'
     model = Product
     context_object_name = 'products'
-    paginate_by = 10
+    paginate_by = Setting.objects.get(name="index_page").value.get('paginated_by_count')
 
     def get_queryset(self):
         queryset = Product.objects.all()
@@ -48,7 +49,6 @@ class CategoryDetailView(View):
         return super().setup(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-
         data = {
             'title': self.category_instance.name,
             'category_id': self.kwargs['category_id'],
