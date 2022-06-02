@@ -15,7 +15,8 @@ class LandingView(ListView):
     template_name = 'product/landing/landing.html'
     model = Product
     context_object_name = 'products'
-    paginate_by = Setting.objects.get(name="index_page").value.get('paginated_by_count')
+    paginate_by = Setting.objects.filter(name="index_page")[0].value.get('paginated_by_count') if Setting.objects.filter(
+        name="index_page") else 3
 
     def get_queryset(self):
         queryset = Product.objects.all()
