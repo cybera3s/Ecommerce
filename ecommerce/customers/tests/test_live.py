@@ -4,8 +4,11 @@ from django.urls import reverse
 from selenium.webdriver.chrome.webdriver import WebDriver
 import os
 from selenium.webdriver.common.by import By
-
 from core.models import User
+from django.conf import settings
+
+
+CHROME_DRIVER_PATH = settings.CHROMEDRIVERPATH
 
 
 class RegistrationLiveTest(StaticLiveServerTestCase):
@@ -14,7 +17,7 @@ class RegistrationLiveTest(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.driver = WebDriver(os.getcwd() + '/chromedriver')
+        cls.driver = WebDriver(CHROME_DRIVER_PATH)
         cls.driver.implicitly_wait(10)
 
     @classmethod
@@ -54,7 +57,7 @@ class LoginLiveTest(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.driver = WebDriver(os.getcwd() + '/chromedriver')
+        cls.driver = WebDriver(CHROME_DRIVER_PATH)
         cls.driver.implicitly_wait(10)
 
     @classmethod

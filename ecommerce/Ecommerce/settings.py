@@ -331,3 +331,7 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER') or None
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD') or None
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+# chrome WebDriver path
+CHROMEDRIVERPATH = os.path.join(BASE_DIR, 'driver/chromedriver')
