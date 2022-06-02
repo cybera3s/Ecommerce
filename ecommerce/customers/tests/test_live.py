@@ -2,7 +2,6 @@ import time
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.urls import reverse
 from selenium.webdriver.chrome.webdriver import WebDriver
-import os
 from selenium.webdriver.common.by import By
 from core.models import User
 from django.conf import settings
