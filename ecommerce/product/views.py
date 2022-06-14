@@ -8,15 +8,13 @@ from django.views.generic import DetailView, ListView
 
 from comments.forms import CommentCreateForm
 from product.models import Category, Product, Brand
-from core.models import Setting
 
 
 class LandingView(ListView):
     template_name = 'product/landing/landing.html'
     model = Product
     context_object_name = 'products'
-    paginate_by = Setting.objects.filter(name="index_page")[0].value.get('paginated_by_count') if Setting.objects.filter(
-        name="index_page") else 3
+    paginate_by = 3
 
     def get_queryset(self):
         queryset = Product.objects.all()
