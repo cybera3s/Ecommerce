@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'Ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': env('DATABASE_ENGINE'),
         'NAME': env('DATABASE_USERNAME'),
         'USER': env('DATABASE_USERNAME'),
         'PASSWORD': env('DATABASE_PASSWORD'),
