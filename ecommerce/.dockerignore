@@ -1,0 +1,11 @@
+**/__pycache__/
+__pycache__/
+.env
+.idea
+driver
+*/.env
+*/migrations/*
+Dockerfile
+static
+!*/migrations/__init__.py
+*~
