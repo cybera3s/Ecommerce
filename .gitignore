@@ -140,3 +140,4 @@ dmypy.json
 # extra files
 upgrades.txt
 .env
+*~
