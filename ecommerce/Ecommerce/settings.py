@@ -13,12 +13,21 @@ import os
 from pathlib import Path
 import environ
 
-
-env = environ.Env()
-environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env(
+    DATABASE_ENGINE=(str, 'django.db.backends.sqlite3'),
+    DATABASE_NAME=(str, BASE_DIR / 'db.sqlite3'),
+    DATABASE_USERNAME=(str, ''),
+    DATABASE_PASSWORD=(str, ''),
+    DATABASE_HOST=(str, ''),
+    DATABASE_PORT=(None, None),
+    EMAIL_HOST_USER=(None, None),
+    EMAIL_HOST_PASSWORD=(None, None),
+)
+
+environ.Env.read_env()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
