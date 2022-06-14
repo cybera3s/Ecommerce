@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+  app:
+    build: './ecommerce'
+    image: "cybera3s/ecommerce:app-1.0.0"
+    container_name: "app"
+    expose:
+      - "8000"
+    volumes:
+      - type: 'bind'
+        source: './ecommerce'
+        target: '/app'
+    restart: 'always'
+    depends_on:
+        - "nginx"
+
+
+  nginx:
+    build: './nginx'
+    image: "cybera3s/ecommerce:nginx-1.0.0"
+    container_name: 'nginx'
+    restart: 'always'
+    ports:
+      - "8000:80"
+    volumes:
+      - type: 'bind'
+        source: './ecommerce/media'
+        target: '/app/media'
+
+      - type: 'bind'
+        source: './ecommerce/static'
+        target: '/app/static'
+
+  postgres:
+    container_name: 'postgres'
+    image: cybera3s/ecommerce:postgres-1.0.0
+    build: './postgres'
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pass
+    expose:
+      - '5432'
+    restart: 'always'
+    volumes:
+      - type: 'bind'
+        source: './volumes/dbdata'
+        target: '/var/lib/postgresql/data'
+
+
