@@ -5,7 +5,7 @@ services:
     build: './ecommerce'
     image: "cybera3s/ecommerce:app-1.0.0"
     container_name: "app"
-    expose:
+    ports:
       - "8000"
     volumes:
       - type: 'bind'
@@ -13,24 +13,7 @@ services:
         target: '/app'
     restart: 'always'
     depends_on:
-        - "nginx"
-
-
-  nginx:
-    build: './nginx'
-    image: "cybera3s/ecommerce:nginx-1.0.0"
-    container_name: 'nginx'
-    restart: 'always'
-    ports:
-      - "8000:80"
-    volumes:
-      - type: 'bind'
-        source: './ecommerce/media'
-        target: '/app/media'
-
-      - type: 'bind'
-        source: './ecommerce/static'
-        target: '/app/static'
+        - "postgres"
 
   postgres:
     container_name: 'postgres'
