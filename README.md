@@ -60,13 +60,17 @@ create virtual environment
 
     source venv/bin/activate
 
-extract static folder and remove archive file
-
-    tar -xf static.tar.xz && rm static.tar.xz
-
 install required packages
 
     pip install -r requirements.txt
+
+change to Project folder  
+
+    cd ecommerce/
+
+extract static folder and remove archive file
+
+    tar -xf static.tar.xz && rm static.tar.xz
 
 create databse tables
 
