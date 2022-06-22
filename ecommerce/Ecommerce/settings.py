@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'Ecommerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': env('DATABASE_ENGINE'),
-        'NAME': env('DATABASE_USERNAME'),
+        'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USERNAME'),
         'PASSWORD': env('DATABASE_PASSWORD'),
         'HOST': env('DATABASE_HOST'),
