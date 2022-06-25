@@ -1,0 +1,291 @@
+[
+{
+    "model": "product.product",
+    "pk": 1,
+    "fields": {
+        "created": "2022-06-24T18:44:24.617Z",
+        "last_updated": "2022-06-24T18:44:24.617Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "IPhone 13",
+        "price": 2000,
+        "description": "Introduced on September 14, 2021, the iPhone 13 and iPhone 13 mini are Apple's newest flagship iPhones at the more affordable end, and are being sold alongside the more expensive iPhone 13 Pro and iPhone 13 Pro Max. The iPhone 13 and iPhone 13 mini are ideal for those who don't need pro-level camera features. The 5.4-inch iPhone 13 mini is the successor to the iPhone 12 mini, while the 6.1-inch iPhone 13 is the replacement for the iPhone 12. Both of the new iPhone 13 models are nearly identical in design to the iPhone 12 models, featuring flat edges, an aerospace-grade aluminum enclosure, a glass back, and a slight increase in thickness (7.65mm). The iPhone 13 models are available in Pink, Blue, Midnight (black), Starlight (silver/gold), (PRODUCT)RED, and Green.",
+        "inventory": 1000,
+        "slug": "iphone-13",
+        "brand": 2,
+        "discount": null,
+        "category": 2,
+        "final_worth": 2000
+    }
+},
+{
+    "model": "product.product",
+    "pk": 2,
+    "fields": {
+        "created": "2022-06-24T18:50:37.257Z",
+        "last_updated": "2022-06-24T18:50:37.257Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "Redmi Note 11 Pro 5G",
+        "price": 1500,
+        "description": "Xiaomi has long proven by now that it is one of the best manufacturers of budget-friendly phones, offering flagship-like features for affordable price tags. Well, here we have the Redmi Note 11 Pro 5G, which has arrived to prove that statement once again. The Redmi Note 11 Pro 5G is just one of the Note 11 Pro trio from Redmi. The other two are the Redmi Note 11 Pro and the Redmi Note 11 Pro Plus 5G. Now, yes, it definitely has its downfalls and certainly is not for everyone, but depending on what you are looking for, it could be the perfect fit both for your needs and your wallet. The prices of the Redmi Note 11 Pro 5G can vary, but it goes somewhere between $330 to $400 in the US and €330 to €400 in Europe. It comes in three RAM/storage combos: 6/64GB, 6/128GB, and 8/128GB.",
+        "inventory": 1000,
+        "slug": "redmi-note-11-pro-5g",
+        "brand": 3,
+        "discount": null,
+        "category": 2,
+        "final_worth": 1500
+    }
+},
+{
+    "model": "product.product",
+    "pk": 3,
+    "fields": {
+        "created": "2022-06-24T18:52:51.071Z",
+        "last_updated": "2022-06-24T18:53:19.058Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "HP ProBook 455 G8 Notebook PC - Customizable",
+        "price": 10000,
+        "description": "With a new compact design, the HP ProBook 455 Laptop PC delivers commercial performance, security, and durability to professionals at growing companies who move from desk to meeting room to home. A new design that fits modern workstyles The compact, light, slim chassis with aluminum components is easy to carry from place to place. Enjoy over an 87-percent screen-to-body ratio and a quiet, responsive keyboard. Multi-layered security protection HP Wolf Security for Business creates a hardware-enforced, always-on, resilient defense. From the BIOS to the browser, above, in, and below the OS, these constantly evolving solutions help protect your PC from modern threats.[4] Power that lasts Power through your day with the latest AMD® Ryzen™ PRO processor[2] and high- performance memory. The HP ProBook 455 drives performance with long battery life and high-speed solid-state drives.",
+        "inventory": 1000,
+        "slug": "hp-probook-455-g8-notebook-pc",
+        "brand": 4,
+        "discount": null,
+        "category": 3,
+        "final_worth": 10000
+    }
+},
+{
+    "model": "product.picture",
+    "pk": 1,
+    "fields": {
+        "created": "2022-06-24T18:44:24.619Z",
+        "last_updated": "2022-06-24T18:44:24.619Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "picture": "products/images/2022/06/24/apple-iphone-13-pro-max-2.jpg",
+        "product": 1
+    }
+},
+{
+    "model": "product.picture",
+    "pk": 2,
+    "fields": {
+        "created": "2022-06-24T18:44:24.621Z",
+        "last_updated": "2022-06-24T18:44:24.621Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "picture": "products/images/2022/06/24/apple-iphone-13-pro-review-163353465816x9.webp",
+        "product": 1
+    }
+},
+{
+    "model": "product.picture",
+    "pk": 3,
+    "fields": {
+        "created": "2022-06-24T18:44:24.622Z",
+        "last_updated": "2022-06-24T18:44:24.622Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "picture": "products/images/2022/06/24/photo-1632582593957-e28f748ba619.jpeg",
+        "product": 1
+    }
+},
+{
+    "model": "product.picture",
+    "pk": 4,
+    "fields": {
+        "created": "2022-06-24T18:50:37.258Z",
+        "last_updated": "2022-06-24T18:50:37.258Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "picture": "products/images/2022/06/24/xiaomi-redmi-note-11-pro-5g-global-1.jpg",
+        "product": 2
+    }
+},
+{
+    "model": "product.picture",
+    "pk": 5,
+    "fields": {
+        "created": "2022-06-24T18:53:19.060Z",
+        "last_updated": "2022-06-24T18:53:19.060Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "picture": "products/images/2022/06/24/c07982191.png",
+        "product": 3
+    }
+},
+{
+    "model": "product.picture",
+    "pk": 6,
+    "fields": {
+        "created": "2022-06-24T18:53:19.064Z",
+        "last_updated": "2022-06-24T18:53:19.064Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "picture": "products/images/2022/06/24/c07038654.png",
+        "product": 3
+    }
+},
+{
+    "model": "product.brand",
+    "pk": 1,
+    "fields": {
+        "created": "2022-06-24T18:37:24.129Z",
+        "last_updated": "2022-06-24T18:37:24.129Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "Samsung",
+        "country": "south korea"
+    }
+},
+{
+    "model": "product.brand",
+    "pk": 2,
+    "fields": {
+        "created": "2022-06-24T18:38:17.740Z",
+        "last_updated": "2022-06-24T18:38:17.740Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "Apple",
+        "country": "USA"
+    }
+},
+{
+    "model": "product.brand",
+    "pk": 3,
+    "fields": {
+        "created": "2022-06-24T18:46:11.707Z",
+        "last_updated": "2022-06-24T18:46:11.707Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "Xiaomi",
+        "country": "China"
+    }
+},
+{
+    "model": "product.brand",
+    "pk": 4,
+    "fields": {
+        "created": "2022-06-24T18:52:00.645Z",
+        "last_updated": "2022-06-24T18:52:00.645Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "HP",
+        "country": "south korea"
+    }
+},
+{
+    "model": "product.category",
+    "pk": 1,
+    "fields": {
+        "created": "2022-06-24T18:38:29.809Z",
+        "last_updated": "2022-06-24T18:38:29.809Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "Digital",
+        "root": null,
+        "discount": null,
+        "slug": "digital",
+        "picture": ""
+    }
+},
+{
+    "model": "product.category",
+    "pk": 2,
+    "fields": {
+        "created": "2022-06-24T18:38:41.583Z",
+        "last_updated": "2022-06-24T18:38:41.583Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "Mobile",
+        "root": 1,
+        "discount": null,
+        "slug": "mobile",
+        "picture": ""
+    }
+},
+{
+    "model": "product.category",
+    "pk": 3,
+    "fields": {
+        "created": "2022-06-24T18:51:21.054Z",
+        "last_updated": "2022-06-24T18:51:21.054Z",
+        "delete_timestamp": null,
+        "deleted_at": null,
+        "is_deleted": false,
+        "is_active": true,
+        "name": "laptop",
+        "root": 1,
+        "discount": null,
+        "slug": "laptop",
+        "picture": ""
+    }
+},
+{
+    "model": "core.setting",
+    "pk": 1,
+    "fields": {
+        "name": "about_us",
+        "value": {
+            "our_story": {
+                "text": {
+                    "paragraphs": [
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit.",
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit.",
+                        "Any questions? Let us know in store at Mashhad - Park Melat or call us on (+98) 9224023292"
+                    ]
+                },
+                "title": "our story",
+                "pic_url": "/static/core/images/about_page/about1.png"
+            },
+            "our_mission": {
+                "text": {
+                    "paragraphs": [
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit."
+                    ],
+                    "quotations": [
+                        {
+                            "quote": "Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.",
+                            "narrator": "- Steve Job’s"
+                        }
+                    ]
+                },
+                "title": "our story",
+                "pic_url": "/static/core/images/about_page/about2.jpg"
+            }
+        }
+    }
+}
+]
