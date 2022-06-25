@@ -73,7 +73,7 @@ class CustomerLoginView(View):
         if form.is_valid():
             cd = form.cleaned_data
             user = authenticate(request, phone=cd['phone'], password=cd['password'])
-            if user.is_admin:
+            if user.is_staff:
                 messages.error(request, _('Your are not a Customer'), 'warning')
                 return redirect('customers:customer_login')
             if user is not None:
