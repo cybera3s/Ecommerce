@@ -18,8 +18,28 @@ I faced various challenges in this project, including:
   
   </p>
 </div>
-
+<h1 align="center">Home Page</h1>
 <img src="https://user-images.githubusercontent.com/74768669/169667903-ac1291af-53de-49da-bb68-87e95de2b2f6.png" alt="index page" >
+
+<h1 align="center">Detail Page</h1>
+<img src="https://user-images.githubusercontent.com/74768669/175774302-5a083999-dbe5-46d3-8b67-b02d20e2d802.png"
+     alt="detial page" />
+<h1 align="center">Contact Us Page</h1>
+<img src="https://user-images.githubusercontent.com/74768669/175774378-f09082f0-b069-4a38-a718-77b318f80bf2.png"
+     alt="contact us page" />
+<h1 align="center">Customer Panel Page</h1>
+<img src="https://user-images.githubusercontent.com/74768669/175774467-75612e26-4a94-49b3-bbeb-2d199261c867.png" 
+     alt="customer panel page" />
+<h1 align="left">Checkout Page</h1>
+<img src="https://user-images.githubusercontent.com/74768669/175774512-5dd270be-754c-4a7d-a032-97cf1d6ad666.png"
+    alt="Checkout page" />
+<h1 align="right">Mobile size Overview</h1>
+
+
+https://user-images.githubusercontent.com/74768669/175774849-ec6bc154-e0b5-4655-890e-2459ace22cc0.mp4
+
+
+
 
 
 ### Built With
