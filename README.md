@@ -68,7 +68,7 @@ change to Project folder
 
     cd ecommerce/
 
-extract static folder and remove archive file
+extract static and media folder and remove archive file
 
     tar -xf media-static.tar.xz && rm media-static.tar.xz
 
