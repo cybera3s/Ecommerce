@@ -48,10 +48,11 @@ https://user-images.githubusercontent.com/74768669/175774849-ec6bc154-e0b5-4655-
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
 
-# Deployed
-```
-https://aivashop.pythonanywhere.com/en/
-  ```
+# Deployment
+<h3>
+    for visit deployed version go to this link
+    <a href="https://aivashop.pythonanywhere.com/en/">Aiva Shop</a>
+</h3>
 
 
 ### Prerequisites
