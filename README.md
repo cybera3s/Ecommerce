@@ -9,7 +9,7 @@
 
   <p>
 This is an example of an <b> e-commerce </b> website that offers online shopping.
-It uses the Django server as a back-end, a Django for the front-end for dynamic performance, and the Django REST Framework to serve REST API service and manipulate data. Uses Bootstrap for responsiveness and better display on different devices
+It uses the Django server as a back-end and also as the front-end for dynamic performance, and the Django REST Framework to serve REST API service and manipulate data. Uses Bootstrap for responsiveness and better display on different devices
 I faced various challenges in this project, including:
 
 - storing user information and orders in cookies when user is not logged in and using that information after the user logged in
@@ -27,6 +27,11 @@ I faced various challenges in this project, including:
  * [Django REST Framework](https://www.django-rest-framework.org/)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
+
+# Deployed
+```
+https://aivashop.pythonanywhere.com/en/
+  ```
 
 
 ### Prerequisites
