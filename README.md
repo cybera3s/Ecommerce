@@ -33,7 +33,7 @@ I faced various challenges in this project, including:
 <h1 align="left">Checkout Page</h1>
 <img src="https://user-images.githubusercontent.com/74768669/175774512-5dd270be-754c-4a7d-a032-97cf1d6ad666.png"
     alt="Checkout page" />
-<h1 align="right">Mobile size Overview</h1>
+<h1 align="left">Mobile size Overview</h1>
 
 
 https://user-images.githubusercontent.com/74768669/175774849-ec6bc154-e0b5-4655-890e-2459ace22cc0.mp4
