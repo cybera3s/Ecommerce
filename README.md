@@ -5,7 +5,7 @@
 
 
 <div>
-  <h1 align="center">Ecommerce</h3>
+  <h1 align="center">Ecommerce</h1>
 
   <p>
 This is an example of an <b> e-commerce </b> website that offers online shopping.
@@ -15,7 +15,7 @@ I faced various challenges in this project, including:
 - storing user information and orders in cookies when user is not logged in and using that information after the user logged in
 - Implementing cart page single-page using asynchronous JavaScript requests to the server and making changes without refreshing the page
 
-  </p>
+  
   </p>
 </div>
 
@@ -70,7 +70,7 @@ change to Project folder
 
 extract static folder and remove archive file
 
-    tar -xf static.tar.xz && rm static.tar.xz
+    tar -xf media-static.tar.xz && rm media-static.tar.xz
 
 create databse tables
 
@@ -82,7 +82,11 @@ create a super user
 
     python manage.py createsuperuser
 
-start Django deveopment server
+load prepared data
+
+    python manage.py loaddata data.json
+
+start Django development server
 
     python manage.py runserver
 
