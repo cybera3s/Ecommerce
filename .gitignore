@@ -129,13 +129,12 @@ dmypy.json
 .pyre/
 
 # pycharm
-
 .idea
 
  # django
-/ecommerce/*/migrations/*
-!*/ecommerce/*/migrations/__init__.py
-/ecommerce/static
+/**/migrations/*
+!**/migrations/__init__.py
+/**/static
 /**/media
 # extra files
 upgrades.txt
