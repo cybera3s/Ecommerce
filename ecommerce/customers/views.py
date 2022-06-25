@@ -73,6 +73,9 @@ class CustomerLoginView(View):
         if form.is_valid():
             cd = form.cleaned_data
             user = authenticate(request, phone=cd['phone'], password=cd['password'])
+            if user.is_admin:
+                messages.error(request, _('login through admin panel'), 'warning')
+
             if user is not None:
                 login(request, user)
 
