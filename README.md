@@ -94,6 +94,10 @@ load prepared data
 
     python manage.py loaddata data.json
 
+compile translated messages
+
+    python manage.py compilemessages
+
 start Django development server
 
     python manage.py runserver
