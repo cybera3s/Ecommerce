@@ -68,13 +68,16 @@ change to Project folder
 
     cd ecommerce/
 
-extract static folder and remove archive file
+extract static and media folder and remove archive file
 
     tar -xf media-static.tar.xz && rm media-static.tar.xz
 
-create databse tables
+create migrations
 
     python manage.py makemigrations 
+
+
+create database tables
 
     python manage.py migrate
 
